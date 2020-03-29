@@ -1,0 +1,133 @@
+.navbar{
+  height: 50px;
+  border-top: 3px solid #f48024;
+  padding: 3px;
+  box-shadow: 5px 2px rgba(0,0,0,0.1);
+}
+.navbar *{
+  box-sizing: border-box;
+}
+
+.navbar-brand{
+  padding-left: 130px ;
+}
+
+.btns{
+  margin-right: 140px;
+}
+
+.btn-sm{
+  padding: 5px 10px;
+}
+
+.btn-outline-primary{
+  background-color: #e1ecf4;
+  color: #39739d;
+  border-color: #7aa7c7;
+}
+
+.btn-outline-primary:hover{
+  color: #2c5777;
+  background-color: #b3d3ea;
+  border-color: #7aa7c7;
+}
+
+.searchbar {
+  -webkit-transform: translate3d(0, 0, 0);
+  flex-shrink: 10000;
+  margin-left: 20px;
+}
+
+.barItems{
+  font-size: 14px;
+  color:  rgba(0, 0, 0, 0.6);
+}
+
+.px12 {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.fl-grow1 {
+  flex-grow: 1;
+}
+
+.ps-relative {
+  position: relative !important;
+}
+
+.searchbar .s-input {
+  border-color: #bbc0c4;
+  background-color: var(--white);
+  box-shadow: none;
+  color: #3c4146;
+}
+.s-input.s-input__search, .s-input.s-input__creditcard {
+  padding-left: 32px;
+}
+
+.s-input, .s-textarea {
+  width: 100%;
+  margin: 0;
+  padding: .6em .7em;
+  border: 1px solid #bbc0c4;
+  border-radius: 3px;
+  background-color: var(--white);
+  color: var(--fc-dark);
+  font-size: 13px;
+  font-family: inherit;
+  line-height: 1.15384615;
+  scrollbar-color: var(--scrollbar) transparent;
+}
+
+.gg-search {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs,1));
+  width: 16px;
+  height: 16px;
+  border: 2px solid;
+  border-radius: 100%;
+  margin-left: -4px;
+  margin-top: -4px;
+  color:#bbc0c4;
+  position: absolute;
+  top: 37%;
+  left: .7em;
+}
+.gg-search::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  border-radius: 3px;
+  width: 2px;
+  height: 8px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  top: 10px;
+  left: 12px
+}
+
+.s-input-icon {
+  position: absolute;
+  top: 50%;
+  right: .7em;
+  margin-top: -9px;
+  pointer-events: none;
+}
+
+.brandIcon{
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width:968px) {
+  .navbar-brand{
+    padding-left: 20px ;
+  }
+  .btns{
+    margin-right: 30px;
+  }
+}

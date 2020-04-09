@@ -12,14 +12,21 @@
   "author": "Mayank Aggarwal",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "config": "^3.3.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "express-validator": "^6.4.0",
+    "flash": "^1.1.0",
+    "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
     "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "request": "^2.88.2"
   },
   "devDependencies": {

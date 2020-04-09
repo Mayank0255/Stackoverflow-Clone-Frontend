@@ -3,6 +3,8 @@
   border-top: 3px solid #f48024;
   padding: 3px;
   box-shadow: 5px 2px rgba(0,0,0,0.1);
+  z-index: 1000;
+  background-color: #fff;
 }
 .navbar *{
   box-sizing: border-box;
@@ -41,6 +43,7 @@
 .barItems{
   font-size: 14px;
   color:  rgba(0, 0, 0, 0.6);
+  margin: 0 10px;
 }
 
 .px12 {
@@ -123,11 +126,22 @@
   height: 24px;
 }
 
-@media (max-width:968px) {
+.HeaderIcon{
+  color: #696969;
+  width: 16px;
+}
+
+@media(max-width: 1200px) {
+  .btns{
+    margin-right: 30px;
+  }
+}
+
+@media (max-width:986px) {
   .navbar-brand{
     padding-left: 20px ;
   }
   .btns{
-    margin-right: 30px;
+    margin-right: 20px;
   }
 }

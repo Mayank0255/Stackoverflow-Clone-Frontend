@@ -120,10 +120,10 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
             <div className="sideBar-tags">
                 <h4 className="tag-headline">Top Ten Tags</h4>
                 {tags.slice(0, 10).map(tag => (
-                    <div className="tag-content">
-                        <Link className="tag-link" to={`/tags/${tag.tagname}`}>
+                    <div key={tag.tagname} className="tag-content">
+                        <a className="tag-link" href={`/tags/${tag.tagname}`}>
                             {tag.tagname}
-                        </Link>
+                        </a>
                         &nbsp;
                         <span className="tag-mult">
                             <span>&times;</span>

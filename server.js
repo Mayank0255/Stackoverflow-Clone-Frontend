@@ -203,22 +203,6 @@ app.delete('/api/posts/:id', auth , function(req,res){
 
 // ------------------------------------------- ANSWERS ROUTES ----------------------------------------------------------
 
-//all answers
-app.get('/api/answers',function(req,res) {
-    try {
-        connection.query("SELECT * FROM answers;", function(err, results) {
-            if (err) throw err;
-            if (results.length == 0){
-                res.status(400).json({ msg: 'There are no answers.' });
-            } else {
-                res.json(results);
-            }
-        });
-    } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
-    }
-});
 
 //answers from a particular users
 app.get('/api/posts/answers/me', auth , function(req,res) {
@@ -310,22 +294,6 @@ app.delete('/api/answers/:id', auth , function(req,res){
 
 // ---------------------------------------- COMMENTS ROUTES ------------------------------------------------------------
 
-//all comments
-app.get('/api/comments',function(req,res) {
-    try {
-        connection.query("SELECT * FROM comments;", function(err, results) {
-            if (err) throw err;
-            if (results.length == 0){
-                res.status(400).json({ msg: 'There are no comments.' });
-            } else {
-                res.json(results);
-            }
-        });
-    } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
-    }
-});
 
 //comments from the logged in user
 app.get('/api/posts/comments/me', auth , function(req,res) {
@@ -436,26 +404,47 @@ app.get('/api/tags',function(req,res){
 });
 
 
+//USERS ROUTE
 
-
-//=================================== REGISTER ROUTE ===================================================================
-
+//GET ALL USERS
 app.get("/api/users", (req, res) => {
     try {
         connection.query("SELECT users.id,username,users.created_at,COUNT(DISTINCT posts.id) as posts_count,COUNT(DISTINCT tagname) as tags_count FROM users LEFT JOIN posts ON posts.user_id = users.id LEFT JOIN posttag ON posttag.post_id = posts.id LEFT JOIN tags ON posttag.tag_id = tags.id GROUP BY users.id ORDER BY posts_count DESC;",
             function(err, results) {
-            if (err) throw err;
-            if (results.length == 0){
-                res.status(400).json({ msg: 'There are no users' });
-            } else {
-                res.json(results);
-            }
-        });
+                if (err) throw err;
+                if (results.length == 0){
+                    res.status(400).json({ msg: 'There are no users' });
+                } else {
+                    res.json(results);
+                }
+            });
     } catch (err) {
         console.log(err.message);
         res.status(500).send('Server Error');
     }
 });
+
+//GET SINGLE USER
+app.get("/api/user/:id", (req, res) => {
+    try {
+        connection.query("SELECT users.id,username,users.created_at,COUNT(DISTINCT posts.id) as post_count,COUNT(DISTINCT tagname) as tag_count, COUNT(DISTINCT answers.id) as answer_count, COUNT(DISTINCT comments.id) as comment_count FROM users LEFT JOIN posts ON posts.user_id = users.id LEFT JOIN posttag ON posttag.post_id = posts.id LEFT JOIN tags ON tags.id = posttag.tag_id LEFT JOIN answers ON answers.user_id = users.id LEFT JOIN comments ON comments.user_id = users.id WHERE users.id = ? GROUP BY users.id;",
+            [ req.params.id ],
+            function(err, results) {
+                if (err) throw err;
+                if (results.length == 0){
+                    res.status(400).json({ msg: "This user doesn't exists" });
+                } else {
+                    res.json(results[0]);
+                }
+            });
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+
+//=================================== REGISTER ROUTE ===================================================================
 
 
 app.post(

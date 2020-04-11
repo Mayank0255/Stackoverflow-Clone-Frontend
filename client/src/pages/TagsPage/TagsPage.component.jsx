@@ -28,7 +28,7 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
                     <div className='user-browser'>
                         <div className='grid-layout'>
                             {tags.map(tag => (
-                                <TagPanel key={tag.id} tag = {tag}/>))}
+                                <TagPanel key={tag.tagname} tag = {tag}/>))}
                         </div>
                     </div>
                 </div>

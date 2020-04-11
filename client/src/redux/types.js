@@ -15,6 +15,7 @@ export const POST_ERROR = 'POST_ERROR';
 export const DELETE_POST = 'DELETE_POST';
 export const ADD_POST = 'ADD_POST';
 export const GET_USERS = 'GET_USERS';
+export const GET_USER = 'GET_USER';
 export const USER_ERROR = 'USER_ERROR';
 export const GET_TAGS = 'GET_TAGS';
 export const TAG_ERROR = 'TAG_ERROR';

@@ -14,6 +14,7 @@ import Login from "./pages/Login/Login.component";
 import Post from "./pages/Post/Post.component";
 import PostForm from "./pages/PostForm/PostForm.component";
 import TagPage from './pages/TagPage/TagPage.component';
+import UserPage from './pages/UserPage/UserPage.component';
 
 import Alert from './components/alert/alert.component';
 import { loadUser } from "./redux/auth/auth.actions";
@@ -44,6 +45,7 @@ const App = () => {
                     <Route exact path='/register' component={Register} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/questions/:id' component={Post} />
+                    <Route exact path='/users/:id' component={UserPage} />
                     <Route exact path='/tags/:tagname' component={TagPage} />
                     <Route exact path='/add/question' component={PostForm} />
                 </Switch>

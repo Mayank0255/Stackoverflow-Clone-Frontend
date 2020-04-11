@@ -79,7 +79,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                             <div className="grid">
                                 Use the power of Stack Overflow inside your organization.
                                 <br/>
-                                Try a <a href='https://stackoverflow.com/teams?utm_source=so-owned&utm_medium=product&utm_campaign=public-sign-up&utm_content=teams'>free trial of Stack Overflow for Teams</a>.
+                                Try a <Link to='https://stackoverflow.com/teams?utm_source=so-owned&utm_medium=product&utm_campaign=public-sign-up&utm_content=teams'>free trial of Stack Overflow for Teams</Link>.
                             </div>
                         </div>
 

@@ -1,5 +1,6 @@
 import {
     GET_USERS,
+    GET_USER,
     USER_ERROR
 } from "../types";
 
@@ -16,6 +17,12 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 users: action.payload,
+                loading: false
+            };
+        case GET_USER:
+            return {
+                ...state,
+                user: action.payload,
                 loading: false
             };
         case USER_ERROR:

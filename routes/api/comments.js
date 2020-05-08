@@ -5,7 +5,6 @@ const auth = require('../../middleware/auth');
 
 // @route    /api/posts/comments
 // @access   Private
-
 //comments from the logged in user
 router.get('/me', auth , function(req,res) {
     try {

@@ -8,7 +8,6 @@ const config = require('config');
 
 // @route    /api/auth
 // @access   Private
-
 // ===================================== LOGIN ROUTE OR AUTH ROUTE ==================================================
 
 

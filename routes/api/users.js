@@ -7,7 +7,6 @@ const config = require('config');
 
 // @route    /api/users
 // @access   Private
-
 //GET ALL USERS
 router.get("/", (req, res) => {
     try {

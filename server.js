@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-var express = require('express'),
+const express = require('express'),
     path = require('path'),
     mysql = require('mysql'),
     bodyParser = require('body-parser');

@@ -12,7 +12,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USER,
     password: process.env.PASSWORD,

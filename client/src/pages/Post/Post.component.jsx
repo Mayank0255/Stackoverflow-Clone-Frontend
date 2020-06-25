@@ -32,7 +32,6 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = async e => {
-        e.preventDefault();
         addComment(match.params.id,{body});
         setFormData({
             body: ''
@@ -48,7 +47,6 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
     const onChangeAnswer = e => setFormDataAnswer({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmitAnswer = async e => {
-        e.preventDefault();
         addAnswer(match.params.id,{text});
         setFormDataAnswer({
             text: ''

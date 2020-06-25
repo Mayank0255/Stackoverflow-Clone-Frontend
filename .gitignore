@@ -2,3 +2,4 @@
 .env
 ".env" 
 /.idea
+/client/node_modules

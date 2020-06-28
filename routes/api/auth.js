@@ -17,11 +17,11 @@ router.get('/' , auth , function (req,res) {
         connection.query("Select id,username,created_at FROM users WHERE id = '"+ req.user.id +"';", function (err, results) {
             if (err) throw err;
             user = results[0];
-            res.json(user);
+            return res.json(user);
         });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 
@@ -49,7 +49,7 @@ router.post(
             connection.query("SELECT * FROM users WHERE username = '"+ username +"';",async function(err, results){
                 if (err) throw err;
                 if (!results[0]){
-                    res.status(400).json({ errors: [ { msg: 'Invalid Credentials' } ] });
+                    return res.status(400).json({ errors: [ { msg: 'Invalid Credentials' } ] });
                 } else {
                     user = results[0];
 
@@ -72,14 +72,14 @@ router.post(
                             { expiresIn: 3600000 },
                             (err, token) => {
                                 if (err) throw err;
-                                res.json({ token });
+                                return res.json({ token });
                             });
                     }
                 }
             });
-        } catch (e) {
-            console.log(e.message);
-            res.status(500).send('Server Error');
+        } catch (err) {
+            console.log(err);
+            return res.status(500).send('Server Error');
         }
 
     }

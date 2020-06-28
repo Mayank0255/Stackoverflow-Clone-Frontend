@@ -12,14 +12,14 @@ router.get('/',function(req,res){
             function(err, results) {
                 if (err) throw err;
                 if (results.length === 0){
-                    res.status(400).json({ msg: 'There are no posts' });
+                    return res.status(400).json({ msg: 'There are no posts' });
                 } else {
-                    res.json(results);
+                    return res.json(results);
                 }
             });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 
@@ -31,14 +31,14 @@ router.get('/top',function(req,res){
             function(err, results) {
                 if (err) throw err;
                 if (results.length === 0){
-                    res.status(400).json({ msg: 'There are no posts' });
+                    return res.status(400).json({ msg: 'There are no posts' });
                 } else {
-                    res.json(results);
+                    return res.json(results);
                 }
             });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 
@@ -50,14 +50,14 @@ router.get('/tag/:tagname',function(req,res){
             function(err, results) {
                 if (err) throw err;
                 if (results.length === 0){
-                    res.status(400).json({ msg: 'There are no posts for this tag' });
+                    return res.status(400).json({ msg: 'There are no posts for this tag' });
                 } else {
-                    res.json(results);
+                    return res.json(results);
                 }
             });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 
@@ -66,14 +66,14 @@ router.get('/me', auth , function(req,res){
         connection.query("SELECT posts.id,user_id,tag_id,title,body,tagname,posts.created_at FROM posts JOIN posttag ON posts.id = post_id JOIN tags ON tag_id = tags.id WHERE user_id = '"+ req.user.id +"';", function(err, results) {
             if (err) throw err;
             if (results.length === 0){
-                res.status(400).json({ msg: 'There are no posts from this users' });
+                return res.status(400).json({ msg: 'There are no posts from this users' });
             } else {
-                res.json(results);
+                return res.json(results);
             }
         });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 
@@ -86,14 +86,14 @@ router.get('/:id',function(req,res){
             function(err, results) {
                 if (err) throw err;
                 if (results.length === 0){
-                    res.status(400).json({ msg: 'There isn\'t any post by this id' });
+                    return res.status(400).json({ msg: 'There isn\'t any post by this id' });
                 } else {
-                    res.json(results[0]);
+                    return res.json(results[0]);
                 }
             });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 
@@ -130,11 +130,11 @@ router.post(
                     , [req.body.title,req.body.body,req.user.id,req.body.tagname,req.body.tagname] ,
                     function(err,results) {
                         if (err) throw err;
-                        res.json({ msg:'Post Added Successfully' });
+                        return res.json({ msg:'Post Added Successfully' });
                     });
             } catch (err) {
-                console.log(err.message);
-                res.status(500).send('Server Error');
+                console.log(err);
+                return res.status(500).send('Server Error');
             }
 
         }
@@ -150,14 +150,13 @@ router.delete('/:id', auth , function(req,res){
             } else {
                 connection.query("DELETE FROM posttag WHERE post_id = ?; DELETE FROM comments WHERE post_id = ?; DELETE FROM answers WHERE post_id = ?; DELETE FROM posts WHERE id = ? ;" , [ req.params.id,req.params.id,req.params.id,req.params.id ] , function(err, results) {
                     if (err) throw err;
-                    res.json({ msg: 'Post Deleted' });
-
+                    return res.json({ msg: 'Post Deleted' });
                 });
             }
         });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 

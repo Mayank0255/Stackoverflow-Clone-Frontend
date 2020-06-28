@@ -10,15 +10,15 @@ router.get('/me', auth , function(req,res) {
     try {
         connection.query("SELECT answers.id,post_id,answers.user_id,answers.text, answers.created_at FROM answers JOIN users ON users.id = answers.user_id WHERE user_id = " + req.user.id + ";", function(err, results) {
             if (err) throw err;
-            if (results.length == 0){
-                res.status(400).json({ msg: 'There are no answers from this users.' });
+            if (results.length === 0){
+                return res.status(400).json({ msg: 'There are no answers from this users.' });
             } else {
-                res.json(results);
+                return res.json(results);
             }
         });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 
@@ -27,15 +27,15 @@ router.get('/:id',function(req,res) {
     try {
         connection.query("SELECT answers.id,post_id,answers.user_id,username,answers.text, answers.created_at FROM answers JOIN posts ON posts.id = post_id JOIN users ON users.id = answers.user_id WHERE post_id = " + req.params.id + ";", function(err, results) {
             if (err) throw err;
-            if (results.length == 0){
-                res.status(400).json({ msg: 'There are no answers for this post' });
+            if (results.length === 0){
+                return res.status(400).json({ msg: 'There are no answers for this post' });
             } else {
-                res.json(results);
+                return res.json(results);
             }
         });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 
@@ -60,13 +60,12 @@ router.post(
                     , [req.body.text, req.user.id, req.params.id ] ,
                     function(err,results) {
                         if (err) throw err;
-                        res.json({ msg: 'Answer to the Respective Post Added Successfully' });
+                        return res.json({ msg: 'Answer to the Respective Post Added Successfully' });
                     });
             } catch (err) {
-                console.log(err.message);
-                res.status(500).send('Server Error');
+                console.log(err);
+                return res.status(500).send('Server Error');
             }
-
         }
     });
 
@@ -80,13 +79,13 @@ router.delete('/:id', auth , function(req,res){
             } else {
                 connection.query("DELETE FROM answers WHERE id = " + req.params.id , function(err, results) {
                     if (err) throw err;
-                    res.json({ msg: 'Answer Deleted' });
+                    return res.json({ msg: 'Answer Deleted' });
                 });
             }
         });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 

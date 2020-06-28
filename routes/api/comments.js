@@ -10,15 +10,15 @@ router.get('/me', auth , function(req,res) {
     try {
         connection.query("SELECT comments.id,post_id,comments.user_id,comments.body, comments.created_at FROM comments JOIN users ON users.id = comments.user_id WHERE user_id = " + req.user.id + ";", function(err, results) {
             if (err) throw err;
-            if (results.length == 0){
-                res.status(400).json({ msg: 'There are no comments from this user.' });
+            if (results.length === 0){
+                return res.status(400).json({ msg: 'There are no comments from this user.' });
             } else {
-                res.json(results);
+                return res.json(results);
             }
         });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 
@@ -29,15 +29,15 @@ router.get('/:id',function(req,res) {
     try {
         connection.query("SELECT comments.id,post_id,comments.user_id,username,comments.body, comments.created_at FROM comments JOIN posts ON posts.id = comments.post_id JOIN users ON users.id = comments.user_id WHERE post_id = " + req.params.id + ";", function(err, results) {
             if (err) throw err;
-            if (results.length == 0){
-                res.status(400).json({ msg: 'There are no comments for this post' });
+            if (results.length === 0){
+                return res.status(400).json({ msg: 'There are no comments for this post' });
             } else {
-                res.json(results);
+                return res.json(results);
             }
         });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 
@@ -62,11 +62,11 @@ router.post(
                     , [req.body.body, req.user.id, req.params.id ] ,
                     function(err,results) {
                         if (err) throw err;
-                        res.json({ msg: 'Comment Added Successfully' });
+                        return res.json({ msg: 'Comment Added Successfully' });
                     });
             } catch (err) {
-                console.log(err.message);
-                res.status(500).send('Server Error');
+                console.log(err);
+                return res.status(500).send('Server Error');
             }
 
         }
@@ -82,13 +82,13 @@ router.delete('/:id', auth , function(req,res){
             } else {
                 connection.query("DELETE FROM comments WHERE id = ?;", [req.params.id], function(err, results) {
                     if (err) throw err;
-                    res.json({ msg: 'Comment Deleted' });
+                    return res.json({ msg: 'Comment Deleted' });
                 });
             }
         });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 

@@ -14,14 +14,14 @@ router.get('/', (req, res) => {
             function(err, results) {
                 if (err) throw err;
                 if (results.length == 0){
-                    res.status(400).json({ msg: 'There are no users' });
+                    return res.status(400).json({ msg: 'There are no users' });
                 } else {
-                    res.json(results);
+                    return res.json(results);
                 }
             });
     } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
+        console.log(err);
+        return res.status(500).send('Server Error');
     }
 });
 
@@ -33,14 +33,14 @@ router.get('/:id', (req, res) => {
             function(err, results) {
                 if (err) throw err;
                 if (results.length == 0){
-                    res.status(400).json({ msg: 'This user doesn\'t exists' });
+                    return res.status(400).json({ msg: 'This user doesn\'t exists' });
                 } else {
-                    res.json(results[0]);
+                    return res.json(results[0]);
                 }
             });
     } catch (err) {
         console.log(err.message);
-        res.status(500).send('Server Error');
+        return res.status(500).send('Server Error');
     }
 });
 
@@ -62,16 +62,14 @@ router.post(
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-
         const { username,password } = req.body;
 
         try{
-
             let user;
             connection.query("SELECT * FROM users WHERE username = '"+ username +"';",async function(err, results){
                 if (err) throw err;
                 if (results[0]){
-                    res.status(400).json({ errors: [ { msg: 'User already exists' } ] });
+                    return res.status(400).json({ errors: [ { msg: 'User already exists' } ] });
                 } else {
                     user = { username,password };
                     const salt = await bcrypt.genSalt(10);
@@ -97,14 +95,14 @@ router.post(
                             { expiresIn: 3600000 },
                             (err, token) => {
                                 if (err) throw err;
-                                res.json({ token });
+                                return res.json({ token });
                             });
                     });
                 }
             });
         } catch (e) {
-            console.log(e.message);
-            res.status(500).send('Server Error');
+            console.log(e);
+            return res.status(500).send('Server Error');
         }
 
     }

@@ -6,7 +6,7 @@ import {
     POST_ERROR,
     DELETE_POST,
     ADD_POST
-} from "../types";
+} from '../types';
 
 
 const initialState = {

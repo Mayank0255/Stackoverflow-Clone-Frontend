@@ -8,7 +8,7 @@ const config = require('config');
 // @route    /api/users
 // @access   Private
 //GET ALL USERS
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
     try {
         connection.query("SELECT users.id,username,users.created_at,COUNT(DISTINCT posts.id) as posts_count,COUNT(DISTINCT tagname) as tags_count FROM users LEFT JOIN posts ON posts.user_id = users.id LEFT JOIN posttag ON posttag.post_id = posts.id LEFT JOIN tags ON posttag.tag_id = tags.id GROUP BY users.id ORDER BY posts_count DESC;",
             function(err, results) {
@@ -26,14 +26,14 @@ router.get("/", (req, res) => {
 });
 
 //GET SINGLE USER
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
     try {
         connection.query("SELECT users.id,username,users.created_at,COUNT(DISTINCT posts.id) as post_count,COUNT(DISTINCT tagname) as tag_count, COUNT(DISTINCT answers.id) as answer_count, COUNT(DISTINCT comments.id) as comment_count FROM users LEFT JOIN posts ON posts.user_id = users.id LEFT JOIN posttag ON posttag.post_id = posts.id LEFT JOIN tags ON tags.id = posttag.tag_id LEFT JOIN answers ON answers.user_id = users.id LEFT JOIN comments ON comments.user_id = users.id WHERE users.id = ? GROUP BY users.id;",
             [ req.params.id ],
             function(err, results) {
                 if (err) throw err;
                 if (results.length == 0){
-                    res.status(400).json({ msg: "This user doesn't exists" });
+                    res.status(400).json({ msg: 'This user doesn\'t exists' });
                 } else {
                     res.json(results[0]);
                 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setAlert } from "../alert/alert.actions";
+import { setAlert } from '../alert/alert.actions';
 import {
     GET_POSTS,
     GET_POST,

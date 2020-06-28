@@ -58,14 +58,14 @@ const TagPanel = ({ tag: {id,tagname,created_at,posts_count} }) => {
         return getFormattedDate(date); // 10. January 2017. at 10:20
     }
     return (
-        <div className="tag-card">
-            <div className="grid">
-                <div className="grid-cell">
+        <div className='tag-card'>
+            <div className='grid'>
+                <div className='grid-cell'>
                     <a href={`/tags/${tagname}`}>{tagname}</a>
 
                 </div>
             </div>
-            <div className="caption">
+            <div className='caption'>
                 <div>
                     {posts_count} questions
                 </div>

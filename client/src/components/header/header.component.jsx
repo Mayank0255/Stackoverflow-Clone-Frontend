@@ -12,57 +12,57 @@ import './header.styles.scss';
 const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
 
     const authLinks = (
-        <div className="btns">
+        <div className='btns'>
             <Link onClick={logout} to='/login'>
-                <button type="button" className="btn btn-outline-primary btn-sm">Log out</button>
+                <button type='button' className='btn btn-outline-primary btn-sm'>Log out</button>
             </Link>
         </div>
     );
 
     const authTabs = (
         <div>
-            <span className="barItems">Products</span>
+            <span className='barItems'>Products</span>
         </div>
     );
 
     const guestTabs = (
         <div>
-            <span className="barItems">Products</span>
-            <span className="barItems">Customers</span>
-            <span className="barItems">Use cases</span>
+            <span className='barItems'>Products</span>
+            <span className='barItems'>Customers</span>
+            <span className='barItems'>Use cases</span>
         </div>
     );
 
     const guestLinks = (
-        <div className="btns">
+        <div className='btns'>
             <Link to='/login'>
-                <button type="button" className="btn btn-outline-primary btn-sm">Log in</button>
+                <button type='button' className='btn btn-outline-primary btn-sm'>Log in</button>
             </Link>
             <Link to='/register'>
-                <button type="button" className="btn btn-primary btn-sm">Sign up</button>
+                <button type='button' className='btn btn-primary btn-sm'>Sign up</button>
             </Link>
         </div>
 
     );
 
     return(
-        <nav className="navbar fixed-top navbar-expand-lg navbar-light">
-            <a className="navbar-brand" href="/">
-                <Logo className="brandIcon"/>
+        <nav className='navbar fixed-top navbar-expand-lg navbar-light'>
+            <a className='navbar-brand' href='/'>
+                <Logo className='brandIcon'/>
                 stack<strong>overflow</strong>
             </a>
             {!loading && (
                 <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>
             )}
-            <form id="search"
-                  className="grid--cell fl-grow1 searchbar px12 js-searchbar " autoComplete="off">
-                <div className="ps-relative">
-                    <input name="q"
-                           type="text"
-                           placeholder="Search…"
-                           maxLength="240"
-                           className="s-input s-input__search js-search-field "/>
-                    <i className="gg-search"/>
+            <form id='search'
+                  className='grid--cell fl-grow1 searchbar px12 js-searchbar ' autoComplete='off'>
+                <div className='ps-relative'>
+                    <input name='q'
+                           type='text'
+                           placeholder='Search…'
+                           maxLength='240'
+                           className='s-input s-input__search js-search-field '/>
+                    <i className='gg-search'/>
                 </div>
             </form>
             {!loading && (

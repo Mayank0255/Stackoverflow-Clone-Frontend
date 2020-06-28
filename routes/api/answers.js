@@ -60,7 +60,7 @@ router.post(
                     , [req.body.text, req.user.id, req.params.id ] ,
                     function(err,results) {
                         if (err) throw err;
-                        res.json({ msg: "Answer to the Respective Post Added Successfully" });
+                        res.json({ msg: 'Answer to the Respective Post Added Successfully' });
                     });
             } catch (err) {
                 console.log(err.message);

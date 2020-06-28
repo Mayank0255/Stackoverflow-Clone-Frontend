@@ -62,7 +62,7 @@ router.post(
                     , [req.body.body, req.user.id, req.params.id ] ,
                     function(err,results) {
                         if (err) throw err;
-                        res.json({ msg: "Comment Added Successfully" });
+                        res.json({ msg: 'Comment Added Successfully' });
                     });
             } catch (err) {
                 console.log(err.message);

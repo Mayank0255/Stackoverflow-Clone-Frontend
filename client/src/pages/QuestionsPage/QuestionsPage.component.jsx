@@ -1,12 +1,12 @@
 import React, {useEffect,Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getPosts } from "../../redux/posts/posts.actions";
-import { Link } from "react-router-dom";
+import { getPosts } from '../../redux/posts/posts.actions';
+import { Link } from 'react-router-dom';
 
-import SideBar from "../../components/SideBar/SideBar.component";
+import SideBar from '../../components/SideBar/SideBar.component';
 import PostItem from '../../components/PostItem/PostItem.component';
-import RightSideBar from "../../components/right-sideBar/right-sideBar.component";
+import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
 
 import './QuestionsPage.styles.scss'
 
@@ -17,7 +17,7 @@ const QuestionsPage = ({ getPosts, auth, post: { posts, loading }  }) => {
     }, [getPosts]);
 
     return loading || posts === null ? <Fragment>Loading...</Fragment> : <Fragment>
-        <div className="page">
+        <div className='page'>
             <SideBar/>
 
             <div className='questionspage'>

@@ -3,7 +3,7 @@ import {
     ANSWER_ERROR,
     ADD_ANSWER,
     DELETE_ANSWER
-} from "../types";
+} from '../types';
 
 const initialState = {
     answers: [],

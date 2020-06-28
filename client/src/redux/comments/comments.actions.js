@@ -3,10 +3,10 @@ import {
     COMMENT_ERROR,
     ADD_COMMENT,
     DELETE_COMMENT
-} from "../types";
+} from '../types';
 
-import axios from "axios";
-import {setAlert} from "../alert/alert.actions";
+import axios from 'axios';
+import {setAlert} from '../alert/alert.actions';
 
 export const getComments = id => async dispatch => {
     try {

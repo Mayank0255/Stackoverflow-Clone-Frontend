@@ -2,11 +2,11 @@ import React, {Fragment, useEffect} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { getTopPosts } from "../../redux/posts/posts.actions";
+import { getTopPosts } from '../../redux/posts/posts.actions';
 
-import SideBar from "../../components/SideBar/SideBar.component";
+import SideBar from '../../components/SideBar/SideBar.component';
 import PostItem from '../../components/PostItem/PostItem.component';
-import RightSideBar from "../../components/right-sideBar/right-sideBar.component";
+import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
 
 import './HomePage.styles.scss'
 
@@ -16,7 +16,7 @@ const HomePage = ({ getTopPosts,auth, post: { posts, loading }  }) => {
     }, [getTopPosts]);
 
     return loading || posts === null ? <Fragment>Loading...</Fragment> : <Fragment>
-        <div className="page">
+        <div className='page'>
             <SideBar/>
             <div className='homepage'>
                 <div className='mainbar'>

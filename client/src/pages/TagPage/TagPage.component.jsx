@@ -1,12 +1,12 @@
 import React, {useEffect,Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getTagPosts } from "../../redux/posts/posts.actions";
-import { Link } from "react-router-dom";
+import { getTagPosts } from '../../redux/posts/posts.actions';
+import { Link } from 'react-router-dom';
 
-import SideBar from "../../components/SideBar/SideBar.component";
+import SideBar from '../../components/SideBar/SideBar.component';
 import PostItem from '../../components/PostItem/PostItem.component';
-import RightSideBar from "../../components/right-sideBar/right-sideBar.component";
+import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
 
 import './TagPage.styles.scss'
 
@@ -18,7 +18,7 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
     }, [getTagPosts]);
 
     return loading || posts === null ? <Fragment>Loading...</Fragment> : <Fragment>
-        <div className="page">
+        <div className='page'>
             <SideBar/>
 
             <div className='questionspage'>
@@ -35,7 +35,7 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
                         <span>19,204,360 questions</span>
                     </div>
                     <div className='questions'>
-                        {posts.length === 0 ? ( <h4 style={{margin: "30px 30px"}}>There are no questions from this tag</h4> ) :
+                        {posts.length === 0 ? ( <h4 style={{margin: '30px 30px'}}>There are no questions from this tag</h4> ) :
                             posts.map(post => (
                                 <PostItem key={post.id} post={post} />
                             ))

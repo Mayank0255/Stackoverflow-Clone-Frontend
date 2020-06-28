@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getUsers } from "../../redux/users/users.actions";
-// import { Link } from "react-router-dom";
+import { getUsers } from '../../redux/users/users.actions';
+// import { Link } from 'react-router-dom';
 
 import './UsersPage.styles.scss'
-import SideBar from "../../components/SideBar/SideBar.component";
-import UserPanel from "../../components/UserPanel/UserPanel.component";
-import RightSideBar from "../../components/right-sideBar/right-sideBar.component";
+import SideBar from '../../components/SideBar/SideBar.component';
+import UserPanel from '../../components/UserPanel/UserPanel.component';
+import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
 
 const UsersPage = ({ getUsers, user: { users, loading }  }) => {
     useEffect(() => {
@@ -15,7 +15,7 @@ const UsersPage = ({ getUsers, user: { users, loading }  }) => {
     }, [getUsers]);
 
     return (
-        <div className="page">
+        <div className='page'>
             <SideBar/>
             <div className='userspage'>
                 <div className='mainbar'>

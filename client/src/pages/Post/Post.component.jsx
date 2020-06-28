@@ -2,15 +2,15 @@ import React, {useEffect, Fragment,useState} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { getPost,deletePost } from "../../redux/posts/posts.actions";
-import { getAnswers,deleteAnswer, addAnswer } from "../../redux/answers/answers.actions";
-import { getComments,deleteComment,addComment } from "../../redux/comments/comments.actions";
+import { getPost,deletePost } from '../../redux/posts/posts.actions';
+import { getAnswers,deleteAnswer, addAnswer } from '../../redux/answers/answers.actions';
+import { getComments,deleteComment,addComment } from '../../redux/comments/comments.actions';
 
-import { ReactComponent as UpVote } from "../../assets/sort-up-solid.svg";
-import { ReactComponent as DownVote } from "../../assets/sort-down-solid.svg";
+import { ReactComponent as UpVote } from '../../assets/sort-up-solid.svg';
+import { ReactComponent as DownVote } from '../../assets/sort-down-solid.svg';
 
-import SideBar from "../../components/SideBar/SideBar.component";
-import RightSideBar from "../../components/right-sideBar/right-sideBar.component";
+import SideBar from '../../components/SideBar/SideBar.component';
+import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
 
 import './Post.styles.scss'
 
@@ -107,7 +107,7 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
     }
 
     return loading || post === null ? <Fragment>Loading...</Fragment> : <Fragment>
-        <div className="page">
+        <div className='page'>
             <SideBar/>
             <div className='Post'>
                 <div className='main-entity'>
@@ -134,18 +134,18 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                             <div className='question'>
                                 <div className='post-layout'>
                                     <div className='vote-cell'>
-                                        <div className="stats">
-                                            <div className="vote">
-                                                <span className="vote-count">{post.answer_count}</span>
-                                                <div className="count-text">answers</div>
+                                        <div className='stats'>
+                                            <div className='vote'>
+                                                <span className='vote-count'>{post.answer_count}</span>
+                                                <div className='count-text'>answers</div>
                                             </div>
-                                            <div className="vote">
-                                                <span className="vote-count">{post.comment_count}</span>
-                                                <div className="count-text">comments</div>
+                                            <div className='vote'>
+                                                <span className='vote-count'>{post.comment_count}</span>
+                                                <div className='count-text'>comments</div>
                                             </div>
-                                            <div className="vote">
-                                                <span className="vote-count">1</span>
-                                                <div className="count-text">tags</div>
+                                            <div className='vote'>
+                                                <span className='vote-count'>1</span>
+                                                <div className='count-text'>tags</div>
                                             </div>
                                         </div>
                                     </div>
@@ -154,23 +154,23 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                                             {post.post_body}
                                         </div>
                                         <div className='post-tags'>
-                                            <div className="tag-cell">
+                                            <div className='tag-cell'>
                                                 <Link to={`/tags/${post.tagname}`}>{post.tagname}</Link>
                                             </div>
                                         </div>
                                         <div className='post-actions'>
                                             <div className='post-actions-extended'>
                                                 <div className='post-btns'>
-                                                    <div className="post-menu">
-                                                        <Link className="post-links" title="short permalink to this question" to="/">
+                                                    <div className='post-menu'>
+                                                        <Link className='post-links' title='short permalink to this question' to='/'>
                                                             share
                                                         </Link>
-                                                        <Link className="post-links" title='Follow this question to receive notifications' to="/">
+                                                        <Link className='post-links' title='Follow this question to receive notifications' to='/'>
                                                             follow
                                                         </Link>
                                                         {!auth.loading && auth.isAuthenticated && parseInt(post.user_id) === auth.user.id && (
                                                             <Link
-                                                                className="post-links"
+                                                                className='post-links'
                                                                 title='Delete the post'
                                                                 onClick={e => deletePost(post.id)}
                                                                 to='/questions'
@@ -181,17 +181,17 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                                                     </div>
                                                 </div>
                                                 <div className='post-owner'>
-                                                    <div className="user-block">
-                                                        <div className="action-time">asked {timeAgo(post.created_at)}</div>
-                                                        <div className="user-logo">
-                                                            <Link className="user-link" to={`/users/${post.user_id}`}>
-                                                                <div className="logo-wrapper">
-                                                                    <img alt='user_logo' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAASFBMVEXw8PB3xdTX5en69PL08vGTzNhyw9Ntw9Kd0NvT4+d5xtRvwtPa5+pxxNP08vCPy9jq7u5jwNG/3OOm0tz+9vSFyNa72+Ku1d7kOy6EAAADxElEQVR4nO2djXKiQBCE/YFdZUFOo3fv/6ZHBD1RU/ZeDUu7didUIGWG+bZnQCvrulhIkiRJkiRJkiRJ0qeqgESZ1Q4K9WuFqE6MaJhVsQqueaXlvl1PDhWflYeyKlZu+Vq+TE1ol9U7E4bsCVEPG0pCu6w+wUMRvj+h+nAeQnkYQ5i/hyIU4RQSoQinimUnEcYR6o4/D6GqVIS3sdSH8xDKwxjC/D0UoQinkG0fcl5p8vdQhCK8jcXZh4nv+FVD6SH6H1LfK4RuO3+fd/u9bjd0O2FfHq/zH7C5G1HaPRzWfTKhTyAMKfrr4XnDZhcUdVsCOm3SqjwBSbVf0AyRYg3ouNm/nhvxk0L0X3jn6yOSFwKIqdggfWGoZpt4Ak+x8UkBK5eeMCQlXM5AiNyf7CQPpyBM62H+hKrSKQjz91B9aCv14RSE+VepPLSV+nAKQnlorOw9nOM1vjy0lZ6XTkGoKhVhnPLvQ93xpyDMvw/loa3Uh1MQykNjzUCY9v+HHaFl9og2rqq64um+q5s8qqe7r1SdH3yJNfwcH1bd68PRBIbn8yMMV42oS+9eC+zVJ394v9v4Q228aoQbvr73mn+/uBz6U719rQPE10KhHtmHwz6l82a7asTxaZmMVScPlXheG2coyxlktISGaZkN1o6VkDEUaVq2HqoPI9JiHCzSgae9W5B6yJiWqpSaEJp+TluljAVPWloiFOE4FmPz0HrIOFikAy/COELG0iJ9Pz7nYJGWFm2VMoYiLS3aPmQMRZqW+jCOkHHgVaUiHMfS3WKOtFSlIhzHYiwt9eFshIyhaD3Uq6cYQsbSoq1SxlCkadESMrY06cCLMI6QsbTk4WyEjOVAOvCf0Iekz9oYB4u0tGirlDEUaWnR9iFjKNK01IdxhIwDryoVIX9an3ClIfWQcbBoCfP3UH0YQ5i/hyKch1DX0hhCLC3oTfT9ihD917AWxMOh43w/ftMCizjUh/slEJ7Jn6BQQFKmhEt3XUziusBEv3LDzaFzv4H1IFalH0K5m+3+EMnJlhBSs0U+osVuIRjLPoSELQxkuFxRcg9pCe08hJZVlYcREuHnEKoPYdF6KEJcIKHZ8n20hG98pcneQ/Xh+xPSeqhXT7BoCfWsDRath7qWwqL1UNdSWPkTqg9FGC1daS6E6kNY+XtIS6g+hEVLKA9xgYRmJ4QWe+0IfafQb+H753/L7THCfdM/fjhb8E9PHH7cvW576NMfFnVbWqmtkSH9Y3bC9gv6MJpibafkJ0TOJ0mSJEmSJEmSJEk56i+zk7G+y6HSlQAAAABJRU5ErkJggg=="/>
+                                                    <div className='user-block'>
+                                                        <div className='action-time'>asked {timeAgo(post.created_at)}</div>
+                                                        <div className='user-logo'>
+                                                            <Link className='user-link' to={`/users/${post.user_id}`}>
+                                                                <div className='logo-wrapper'>
+                                                                    <img alt='user_logo' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAASFBMVEXw8PB3xdTX5en69PL08vGTzNhyw9Ntw9Kd0NvT4+d5xtRvwtPa5+pxxNP08vCPy9jq7u5jwNG/3OOm0tz+9vSFyNa72+Ku1d7kOy6EAAADxElEQVR4nO2djXKiQBCE/YFdZUFOo3fv/6ZHBD1RU/ZeDUu7didUIGWG+bZnQCvrulhIkiRJkiRJkiRJ0qeqgESZ1Q4K9WuFqE6MaJhVsQqueaXlvl1PDhWflYeyKlZu+Vq+TE1ol9U7E4bsCVEPG0pCu6w+wUMRvj+h+nAeQnkYQ5i/hyIU4RQSoQinimUnEcYR6o4/D6GqVIS3sdSH8xDKwxjC/D0UoQinkG0fcl5p8vdQhCK8jcXZh4nv+FVD6SH6H1LfK4RuO3+fd/u9bjd0O2FfHq/zH7C5G1HaPRzWfTKhTyAMKfrr4XnDZhcUdVsCOm3SqjwBSbVf0AyRYg3ouNm/nhvxk0L0X3jn6yOSFwKIqdggfWGoZpt4Ak+x8UkBK5eeMCQlXM5AiNyf7CQPpyBM62H+hKrSKQjz91B9aCv14RSE+VepPLSV+nAKQnlorOw9nOM1vjy0lZ6XTkGoKhVhnPLvQ93xpyDMvw/loa3Uh1MQykNjzUCY9v+HHaFl9og2rqq64um+q5s8qqe7r1SdH3yJNfwcH1bd68PRBIbn8yMMV42oS+9eC+zVJ394v9v4Q228aoQbvr73mn+/uBz6U719rQPE10KhHtmHwz6l82a7asTxaZmMVScPlXheG2coyxlktISGaZkN1o6VkDEUaVq2HqoPI9JiHCzSgae9W5B6yJiWqpSaEJp+TluljAVPWloiFOE4FmPz0HrIOFikAy/COELG0iJ9Pz7nYJGWFm2VMoYiLS3aPmQMRZqW+jCOkHHgVaUiHMfS3WKOtFSlIhzHYiwt9eFshIyhaD3Uq6cYQsbSoq1SxlCkadESMrY06cCLMI6QsbTk4WyEjOVAOvCf0Iekz9oYB4u0tGirlDEUaWnR9iFjKNK01IdxhIwDryoVIX9an3ClIfWQcbBoCfP3UH0YQ5i/hyKch1DX0hhCLC3oTfT9ihD917AWxMOh43w/ftMCizjUh/slEJ7Jn6BQQFKmhEt3XUziusBEv3LDzaFzv4H1IFalH0K5m+3+EMnJlhBSs0U+osVuIRjLPoSELQxkuFxRcg9pCe08hJZVlYcREuHnEKoPYdF6KEJcIKHZ8n20hG98pcneQ/Xh+xPSeqhXT7BoCfWsDRath7qWwqL1UNdSWPkTqg9FGC1daS6E6kNY+XtIS6g+hEVLKA9xgYRmJ4QWe+0IfafQb+H753/L7THCfdM/fjhb8E9PHH7cvW576NMfFnVbWqmtkSH9Y3bC9gv6MJpibafkJ0TOJ0mSJEmSJEmSJEk56i+zk7G+y6HSlQAAAABJRU5ErkJggg=='/>
                                                                 </div>
                                                             </Link>
                                                         </div>
-                                                        <div className="user-profile">
-                                                            <Link className="user-profile-link" to={`/users/${post.user_id}`}>{post.username}</Link>
+                                                        <div className='user-profile'>
+                                                            <Link className='user-profile-link' to={`/users/${post.user_id}`}>{post.username}</Link>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -199,26 +199,26 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                                         </div>
                                     </div>
                                     <div className='comments-cell'>
-                                        <div className="comments">
-                                            <ul className="comments-list">
+                                        <div className='comments'>
+                                            <ul className='comments-list'>
                                                 {comments.map(comment => (
-                                                    <li className="comments-item" key={comment.id} >
-                                                        <div className="comment-text">
-                                                            <div className="comment-body">
-                                                                <span className="body">
+                                                    <li className='comments-item' key={comment.id} >
+                                                        <div className='comment-text'>
+                                                            <div className='comment-body'>
+                                                                <span className='body'>
                                                                     {comment.body}
                                                                 </span>
                                                                 &nbsp;&ndash;&nbsp;
-                                                                <Link className="user" to={`/users/${comment.user_id}`}>
+                                                                <Link className='user' to={`/users/${comment.user_id}`}>
                                                                     {comment.username}
                                                                 </Link>
                                                                 <span title={comment.created_at}
-                                                                      className="date">{timeAgo(comment.created_at)}
+                                                                      className='date'>{timeAgo(comment.created_at)}
                                                                 </span>
                                                             </div>
                                                             {!auth.loading && auth.isAuthenticated && parseInt(comment.user_id) === auth.user.id && (
                                                                 <Link
-                                                                    className="comment-links"
+                                                                    className='comment-links'
                                                                     title='Delete the comment'
                                                                     onClick={e => deleteComment(comment.id)}
                                                                     to={`/questions/${post.id}`}
@@ -231,21 +231,21 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                                                 ))}
                                             </ul>
                                         </div>
-                                        <div className="add-comment">
+                                        <div className='add-comment'>
                                             <form className='comment-form' onSubmit={e => onSubmit(e)}>
                                                 <div>
                                                     <input
-                                                        className="title-input s-input"
-                                                        type="text"
-                                                        name="body"
+                                                        className='title-input s-input'
+                                                        type='text'
+                                                        name='body'
                                                         value={body}
                                                         onChange={e => onChange(e)}
-                                                        id="title"
+                                                        id='title'
                                                         placeholder='add comment'
                                                     />
                                                 </div>
-                                                {/*<a href={`/questions/${post.id}`} className="comment-button">*/}
-                                                {/*    <a className="btn btn-primary" id="submit-button" name="submit-button">Add your comment</a>*/}
+                                                {/*<a href={`/questions/${post.id}`} className='comment-button'>*/}
+                                                {/*    <a className='btn btn-primary' id='submit-button' name='submit-button'>Add your comment</a>*/}
                                                 {/*</a>*/}
                                             </form>
                                         </div>
@@ -254,20 +254,20 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                                 </div>
                             </div>
                             <div className='answer'>
-                                <div className="answer-header">
-                                    <div className="answer-subheader">
-                                        <div className="answer-headline">
+                                <div className='answer-header'>
+                                    <div className='answer-subheader'>
+                                        <div className='answer-headline'>
                                             <h2>Answers</h2>
                                         </div>
-                                        <div className="answer-tabs">
-                                            <div className="tabs">
-                                                <Link to="/" className="answer-tab-links active" style={{borderBottomLeftRadius: "3px",borderTopLeftRadius: "3px"}}>
+                                        <div className='answer-tabs'>
+                                            <div className='tabs'>
+                                                <Link to='/' className='answer-tab-links active' style={{borderBottomLeftRadius: '3px',borderTopLeftRadius: '3px'}}>
                                                     Active
                                                 </Link>
-                                                <Link to="/" className="answer-tab-links">
+                                                <Link to='/' className='answer-tab-links'>
                                                     Oldest
                                                 </Link>
-                                                <Link to="/" className="answer-tab-links" style={{borderBottomRightRadius: "3px",borderTopRightRadius: "3px"}}>
+                                                <Link to='/' className='answer-tab-links' style={{borderBottomRightRadius: '3px',borderTopRightRadius: '3px'}}>
                                                     Votes
                                                 </Link>
                                             </div>
@@ -275,43 +275,43 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                                     </div>
                                 </div>
                                 {answers.map(answer => (
-                                    <div key={answer.id} className="answers">
-                                        <div className="answer-layout">
-                                            <div className="vote-cell">
-                                                <div className="vote-container">
+                                    <div key={answer.id} className='answers'>
+                                        <div className='answer-layout'>
+                                            <div className='vote-cell'>
+                                                <div className='vote-container'>
                                                     <button
-                                                        className="vote-up"
-                                                        title="This answer is useful (click again to undo)"
+                                                        className='vote-up'
+                                                        title='This answer is useful (click again to undo)'
                                                     >
-                                                        <UpVote className="icon"/>
+                                                        <UpVote className='icon'/>
                                                     </button>
-                                                    <div className="vote-count">0</div>
+                                                    <div className='vote-count'>0</div>
                                                     <button
-                                                        className="vote-down"
-                                                        title="This answer is not useful (click again to undo)"
+                                                        className='vote-down'
+                                                        title='This answer is not useful (click again to undo)'
                                                     >
-                                                        <DownVote className="icon"/>
+                                                        <DownVote className='icon'/>
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div className="answer-item">
-                                                <div className="answer-content">
+                                            <div className='answer-item'>
+                                                <div className='answer-content'>
                                                     <p>
                                                         {answer.text}
                                                     </p>
                                                 </div>
-                                                <div className="answer-actions">
-                                                    <div className="action-btns">
-                                                        <div className="answer-menu">
-                                                            <Link className="answer-links" title="short permalink to this question" to="/">
+                                                <div className='answer-actions'>
+                                                    <div className='action-btns'>
+                                                        <div className='answer-menu'>
+                                                            <Link className='answer-links' title='short permalink to this question' to='/'>
                                                                 share
                                                             </Link>
-                                                            <Link className="answer-links" title='Follow this question to receive notifications' to="/">
+                                                            <Link className='answer-links' title='Follow this question to receive notifications' to='/'>
                                                                 follow
                                                             </Link>
                                                             {!auth.loading && auth.isAuthenticated && parseInt(answer.user_id) === auth.user.id && (
                                                                 <Link
-                                                                    className="answer-links"
+                                                                    className='answer-links'
                                                                     title='Delete the answer'
                                                                     onClick={e => deleteAnswer(answer.id)}
                                                                     to={`/questions/${post.id}`}
@@ -321,21 +321,21 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                                                             )}
                                                         </div>
                                                     </div>
-                                                    <div className="answer-owner">
-                                                        <div className="answer-user">
-                                                            <div className="answer-user-time">
+                                                    <div className='answer-owner'>
+                                                        <div className='answer-user'>
+                                                            <div className='answer-user-time'>
                                                                 answered&nbsp;
                                                                 <span>{timeAgo(answer.created_at)}</span>
                                                             </div>
-                                                            <div className="answer-logo">
-                                                                <Link className="answer-user-link" to={`/users/${answer.user_id}`}>
-                                                                    <div className="answer-logo-wrapper">
-                                                                        <img alt='user_logo' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAARVBMVEXw8PDZbnzx9vbr2dvYZHTZa3rdiZTq1Nbej5nw8vHXYXHdh5Lcg47YaHfs3d7z/PvWWmvgnqbv6+zbeobnwcXac4Dip66dwP2nAAACXUlEQVR4nO3dUVLCQBRE0ZghgSQQMKD7X6pLsKeqG1+V9y6gMwf0L47DQERERERERPRPW4yVfOByNF+H8sDd97xdIS7tcXL1OAtPHOfV9bz1OkrC04erkyS8TK7nTTNChL0hRNgbQoT9IUTYG0KE/SFE2BtChP0hRNgbQoT9IUTYG0KE/SFE2BtChP0hrC2chNY2/t79clO23i78moWu20XoKU0pRKdwmu/C17Ovwpdz06a0UzmFwlbNqaLHQoiw/rEQIqx/LIQI6x8LIcL6x0KIsP6xECKsfyyECOsfCyHC+sdCiLD+sRAirH8shAjrH6usULmeQboIoahwOM5KTXjppqpQvLbkzaeyCm0hRJja8oUQYWrLF0KEqS1fCBGmtnwhRJja8oUQYWrLF0KEqS1fCBGmtnwhRJja8oUQYWrLF0KEqS1fXqHvmoBR+o8aypB4ecEmCfercovDU7kPYlZeQhi/lalNOdX2qb1doHyk2nUdq3a3iTTVpB8aBailXblivL1FmnKGEGFmyhlChJkpZwgRZqacIUSYmXKGEGFmyhlChJkpZwgRZqacIUSYmXKGEGFmyhlChJkpZwgRZqbEpD+h/wPhaPrT/mE5mtC+rcKFEA9JOCtT60s6lnZ7gXaZRVMuhDikBypLL+ljUK7YkN/Nubt+aKRfi5F3ohCGtnwhRJja8oUQYWrLF0KEqS1fCBGmtnwhRJja8oUQYWrLF0KEqS1fCBGmtnwhRJja8oUQYWrLF8I+oe9+Bl/OU2m3Roj3M9iynkq6NcJ5P4NUzVMRERERERERlekH6WecNo06EQoAAAAASUVORK5CYII="/>
+                                                            <div className='answer-logo'>
+                                                                <Link className='answer-user-link' to={`/users/${answer.user_id}`}>
+                                                                    <div className='answer-logo-wrapper'>
+                                                                        <img alt='user_logo' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAARVBMVEXw8PDZbnzx9vbr2dvYZHTZa3rdiZTq1Nbej5nw8vHXYXHdh5Lcg47YaHfs3d7z/PvWWmvgnqbv6+zbeobnwcXac4Dip66dwP2nAAACXUlEQVR4nO3dUVLCQBRE0ZghgSQQMKD7X6pLsKeqG1+V9y6gMwf0L47DQERERERERPRPW4yVfOByNF+H8sDd97xdIS7tcXL1OAtPHOfV9bz1OkrC04erkyS8TK7nTTNChL0hRNgbQoT9IUTYG0KE/SFE2BtChP0hRNgbQoT9IUTYG0KE/SFE2BtChP0hrC2chNY2/t79clO23i78moWu20XoKU0pRKdwmu/C17Ovwpdz06a0UzmFwlbNqaLHQoiw/rEQIqx/LIQI6x8LIcL6x0KIsP6xECKsfyyECOsfCyHC+sdCiLD+sRAirH8shAjrH6usULmeQboIoahwOM5KTXjppqpQvLbkzaeyCm0hRJja8oUQYWrLF0KEqS1fCBGmtnwhRJja8oUQYWrLF0KEqS1fCBGmtnwhRJja8oUQYWrLF0KEqS1fXqHvmoBR+o8aypB4ecEmCfercovDU7kPYlZeQhi/lalNOdX2qb1doHyk2nUdq3a3iTTVpB8aBailXblivL1FmnKGEGFmyhlChJkpZwgRZqacIUSYmXKGEGFmyhlChJkpZwgRZqacIUSYmXKGEGFmyhlChJkpZwgRZqbEpD+h/wPhaPrT/mE5mtC+rcKFEA9JOCtT60s6lnZ7gXaZRVMuhDikBypLL+ljUK7YkN/Nubt+aKRfi5F3ohCGtnwhRJja8oUQYWrLF0KEqS1fCBGmtnwhRJja8oUQYWrLF0KEqS1fCBGmtnwhRJja8oUQYWrLF8I+oe9+Bl/OU2m3Roj3M9iynkq6NcJ5P4NUzVMRERERERERlekH6WecNo06EQoAAAAASUVORK5CYII='/>
                                                                     </div>
                                                                 </Link>
                                                             </div>
-                                                            <div className="answer-details">
-                                                                <Link className="answer-user-profile-link" to={`/users/${answer.user_id}`}>{answer.username}</Link>
+                                                            <div className='answer-details'>
+                                                                <Link className='answer-user-profile-link' to={`/users/${answer.user_id}`}>{answer.username}</Link>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -344,12 +344,12 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                                         </div>
                                     </div>
                                 ))}
-                                <div className="add-answer">
+                                <div className='add-answer'>
                                     <form
                                         className='answer-form'
                                         onSubmit={e => onSubmitAnswer(e)}
                                     >
-                                        <div className="answer-grid">
+                                        <div className='answer-grid'>
                                             <label>Your Answer</label>
                                             <textarea
                                                 className='text-input'
@@ -362,7 +362,7 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                                                 id='text'
                                             >
                                             </textarea>
-                                            <button className="btn btn-primary">Post your answer</button>
+                                            <button className='btn btn-primary'>Post your answer</button>
                                         </div>
                                     </form>
                                 </div>

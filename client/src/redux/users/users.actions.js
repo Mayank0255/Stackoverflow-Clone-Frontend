@@ -2,9 +2,9 @@ import {
     GET_USERS,
     GET_USER,
     USER_ERROR
-} from "../types";
+} from '../types';
 
-import axios from "axios";
+import axios from 'axios';
 
 // Get users
 export const getUsers = () => async dispatch => {

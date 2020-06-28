@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getTags } from "../../redux/tags/tags.actions";
+import { getTags } from '../../redux/tags/tags.actions';
 
 import './TagsPage.styles.scss'
-import SideBar from "../../components/SideBar/SideBar.component";
-import TagPanel from "../../components/TagPanel/TagPanel.component";
-import RightSideBar from "../../components/right-sideBar/right-sideBar.component";
+import SideBar from '../../components/SideBar/SideBar.component';
+import TagPanel from '../../components/TagPanel/TagPanel.component';
+import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
 
 const TagsPage = ({ getTags , tag: { tags, loading }}) => {
     useEffect(() => {
@@ -14,7 +14,7 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
     }, [getTags]);
 
     return (
-        <div className="page">
+        <div className='page'>
             <SideBar/>
             <div className='tagspage'>
                 <div className='mainbar'>

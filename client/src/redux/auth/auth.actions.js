@@ -10,7 +10,7 @@ import {
     LOGOUT
 } from '../types';
 
-import setAuthToken from "./auth.utils";
+import setAuthToken from './auth.utils';
 
 // Load User
 export const loadUser = () => async dispatch => {

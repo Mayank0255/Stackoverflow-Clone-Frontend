@@ -3,10 +3,10 @@ import {
     ANSWER_ERROR,
     ADD_ANSWER,
     DELETE_ANSWER
-} from "../types";
+} from '../types';
 
-import axios from "axios";
-import {setAlert} from "../alert/alert.actions";
+import axios from 'axios';
+import {setAlert} from '../alert/alert.actions';
 
 export const getAnswers = id => async dispatch => {
     try {

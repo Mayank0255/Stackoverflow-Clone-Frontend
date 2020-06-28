@@ -86,7 +86,7 @@ router.get('/:id',function(req,res){
             function(err, results) {
                 if (err) throw err;
                 if (results.length === 0){
-                    res.status(400).json({ msg: "There isn't any post by this id" });
+                    res.status(400).json({ msg: 'There isn\'t any post by this id' });
                 } else {
                     res.json(results[0]);
                 }
@@ -130,7 +130,7 @@ router.post(
                     , [req.body.title,req.body.body,req.user.id,req.body.tagname,req.body.tagname] ,
                     function(err,results) {
                         if (err) throw err;
-                        res.json({ msg:"Post Added Successfully" });
+                        res.json({ msg:'Post Added Successfully' });
                     });
             } catch (err) {
                 console.log(err.message);

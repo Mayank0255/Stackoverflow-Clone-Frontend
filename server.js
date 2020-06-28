@@ -45,7 +45,7 @@ app.use('/api/posts/comments', require('./routes/api/comments'));
 //----------------------- ROUTES ---------------------------------------------------------------------------------------
 
 app.get('/', function(req, res) {
-    res.send("API Running...")
+    res.send('API Running...');
 });
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

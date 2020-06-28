@@ -61,22 +61,6 @@ router.get('/tag/:tagname',function(req,res){
     }
 });
 
-router.get('/me', auth , function(req,res){
-    try {
-        connection.query("SELECT posts.id,user_id,tag_id,title,body,tagname,posts.created_at FROM posts JOIN posttag ON posts.id = post_id JOIN tags ON tag_id = tags.id WHERE user_id = '"+ req.user.id +"';", function(err, results) {
-            if (err) throw err;
-            if (results.length === 0){
-                return res.status(400).json({ msg: 'There are no posts from this users' });
-            } else {
-                return res.json(results);
-            }
-        });
-    } catch (err) {
-        console.log(err);
-        return res.status(500).send('Server Error');
-    }
-});
-
 //GET SINGLE POST
 
 router.get('/:id',function(req,res){

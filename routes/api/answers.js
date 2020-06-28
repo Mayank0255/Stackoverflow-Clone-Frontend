@@ -6,23 +6,6 @@ const auth = require('../../middleware/auth');
 // @route    /api/posts/answers
 // @access   Private
 
-router.get('/me', auth , function(req,res) {
-    try {
-        connection.query("SELECT answers.id,post_id,answers.user_id,answers.text, answers.created_at FROM answers JOIN users ON users.id = answers.user_id WHERE user_id = " + req.user.id + ";", function(err, results) {
-            if (err) throw err;
-            if (results.length === 0){
-                return res.status(400).json({ msg: 'There are no answers from this users.' });
-            } else {
-                return res.json(results);
-            }
-        });
-    } catch (err) {
-        console.log(err);
-        return res.status(500).send('Server Error');
-    }
-});
-
-
 router.get('/:id',function(req,res) {
     try {
         connection.query("SELECT answers.id,post_id,answers.user_id,username,answers.text, answers.created_at FROM answers JOIN posts ON posts.id = post_id JOIN users ON users.id = answers.user_id WHERE post_id = " + req.params.id + ";", function(err, results) {

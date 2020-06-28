@@ -5,24 +5,6 @@ const auth = require('../../middleware/auth');
 
 // @route    /api/posts/comments
 // @access   Private
-//comments from the logged in user
-router.get('/me', auth , function(req,res) {
-    try {
-        connection.query("SELECT comments.id,post_id,comments.user_id,comments.body, comments.created_at FROM comments JOIN users ON users.id = comments.user_id WHERE user_id = " + req.user.id + ";", function(err, results) {
-            if (err) throw err;
-            if (results.length === 0){
-                return res.status(400).json({ msg: 'There are no comments from this user.' });
-            } else {
-                return res.json(results);
-            }
-        });
-    } catch (err) {
-        console.log(err);
-        return res.status(500).send('Server Error');
-    }
-});
-
-
 
 //comments of a particular post
 router.get('/:id',function(req,res) {

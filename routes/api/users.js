@@ -10,10 +10,18 @@ const config = require('config');
 //GET ALL USERS
 router.get('/', (req, res) => {
     try {
-        connection.query("SELECT users.id,username,users.created_at,COUNT(DISTINCT posts.id) as posts_count,COUNT(DISTINCT tagname) as tags_count FROM users LEFT JOIN posts ON posts.user_id = users.id LEFT JOIN posttag ON posttag.post_id = posts.id LEFT JOIN tags ON posttag.tag_id = tags.id GROUP BY users.id ORDER BY posts_count DESC;",
+        const query = ` SELECT 
+                        users.id,username,users.created_at,COUNT(DISTINCT posts.id) 
+                        as posts_count,COUNT(DISTINCT tagname) as tags_count 
+                        FROM users 
+                        LEFT JOIN posts ON posts.user_id = users.id 
+                        LEFT JOIN posttag ON posttag.post_id = posts.id 
+                        LEFT JOIN tags ON posttag.tag_id = tags.id 
+                        GROUP BY users.id ORDER BY posts_count DESC;`
+        connection.query(query,
             function(err, results) {
                 if (err) throw err;
-                if (results.length == 0){
+                if (results.length === 0){
                     return res.status(400).json({ msg: 'There are no users' });
                 } else {
                     return res.json(results);
@@ -28,7 +36,19 @@ router.get('/', (req, res) => {
 //GET SINGLE USER
 router.get('/:id', (req, res) => {
     try {
-        connection.query("SELECT users.id,username,users.created_at,COUNT(DISTINCT posts.id) as post_count,COUNT(DISTINCT tagname) as tag_count, COUNT(DISTINCT answers.id) as answer_count, COUNT(DISTINCT comments.id) as comment_count FROM users LEFT JOIN posts ON posts.user_id = users.id LEFT JOIN posttag ON posttag.post_id = posts.id LEFT JOIN tags ON tags.id = posttag.tag_id LEFT JOIN answers ON answers.user_id = users.id LEFT JOIN comments ON comments.user_id = users.id WHERE users.id = ? GROUP BY users.id;",
+        connection.query( ` SELECT 
+                                    users.id,username,users.created_at,COUNT(DISTINCT posts.id) 
+                                    as post_count,COUNT(DISTINCT tagname) 
+                                    as tag_count, COUNT(DISTINCT answers.id) 
+                                    as answer_count, COUNT(DISTINCT comments.id) 
+                                    as comment_count 
+                                    FROM users 
+                                    LEFT JOIN posts ON posts.user_id = users.id 
+                                    LEFT JOIN posttag ON posttag.post_id = posts.id 
+                                    LEFT JOIN tags ON tags.id = posttag.tag_id 
+                                    LEFT JOIN answers ON answers.user_id = users.id 
+                                    LEFT JOIN comments ON comments.user_id = users.id 
+                                    WHERE users.id = ? GROUP BY users.id;`,
             [ req.params.id ],
             function(err, results) {
                 if (err) throw err;
@@ -66,7 +86,7 @@ router.post(
 
         try{
             let user;
-            connection.query("SELECT * FROM users WHERE username = '"+ username +"';",async function(err, results){
+            connection.query(`SELECT * FROM users WHERE username = '${username}';`,async function(err, results){
                 if (err) throw err;
                 if (results[0]){
                     return res.status(400).json({ errors: [ { msg: 'User already exists' } ] });
@@ -75,11 +95,14 @@ router.post(
                     const salt = await bcrypt.genSalt(10);
                     user.password = await bcrypt.hash(password, salt);
 
-                    await connection.query("INSERT INTO users(username,password) VALUES(?,?)", [ user.username,user.password ] , function(err, results){
+                    await connection.query('INSERT INTO users(username,password) VALUES(?,?)',
+                        [ user.username,user.password ],
+                        function(err, results){
                         if (err) throw err;
                     });
 
-                    connection.query("SELECT * FROM users WHERE username = '"+ username +"';", function(err, results){
+                    connection.query(`SELECT * FROM users WHERE username = '${username}';`,
+                        function(err, results){
                         if (err) throw err;
                         user = results[0];
 

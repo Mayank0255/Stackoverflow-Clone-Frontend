@@ -9,7 +9,13 @@ const auth = require('../../middleware/auth');
 //comments of a particular post
 router.get('/:id',function(req,res) {
     try {
-        connection.query("SELECT comments.id,post_id,comments.user_id,username,comments.body, comments.created_at FROM comments JOIN posts ON posts.id = comments.post_id JOIN users ON users.id = comments.user_id WHERE post_id = " + req.params.id + ";", function(err, results) {
+        connection.query( ` SELECT
+                                    comments.id, post_id, comments.user_id, username, comments.body, comments.created_at 
+                                    FROM comments 
+                                    JOIN posts ON posts.id = comments.post_id 
+                                    JOIN users ON users.id = comments.user_id 
+                                    WHERE post_id = ${req.params.id};`,
+            function(err, results) {
             if (err) throw err;
             if (results.length === 0){
                 return res.status(400).json({ msg: 'There are no comments for this post' });
@@ -57,7 +63,9 @@ router.post(
 //DELETE ROUTE
 router.delete('/:id', auth , function(req,res){
     try {
-        connection.query("SELECT user_id FROM comments WHERE id = ?;",[req.params.id] ,function(err,results) {
+        connection.query('SELECT user_id FROM comments WHERE id = ?;',
+            [req.params.id] ,
+            function(err,results) {
             if (err) throw err;
             if (results[0].user_id !== req.user.id ){
                 return res.status(401).json({ msg: 'User not authorized to delete' });

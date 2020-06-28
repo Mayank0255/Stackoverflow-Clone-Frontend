@@ -6,7 +6,15 @@ const router = express.Router();
 
 router.get('/',function(req,res){
     try {
-        connection.query("SELECT tags.id,posts.id,tagname,COUNT(DISTINCT posts.id) as posts_count,tags.created_at FROM tags LEFT JOIN posttag ON posttag.tag_id = tags.id LEFT JOIN posts ON posts.id = posttag.post_id GROUP BY tags.id ORDER BY posts_count DESC;",
+        const query =  `SELECT 
+                        tags.id,posts.id,tagname,COUNT(DISTINCT posts.id) 
+                        as posts_count,tags.created_at 
+                        FROM tags 
+                        LEFT JOIN posttag ON posttag.tag_id = tags.id 
+                        LEFT JOIN posts ON posts.id = posttag.post_id 
+                        GROUP BY tags.id ORDER BY posts_count DESC;`
+
+        connection.query(query,
             function(err, results) {
                 if (err) throw err;
                 if (results.length === 0){

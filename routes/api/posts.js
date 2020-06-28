@@ -7,7 +7,18 @@ const auth = require('../../middleware/auth');
 // @access   Private
 router.get('/',function(req,res){
     try {
-        const q = "SELECT posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) as answer_count,COUNT(DISTINCT comments.id) as comment_count,tag_id,title,posts.body,tagname,posts.created_at FROM posts JOIN posttag ON posts.id = post_id JOIN tags ON tag_id = tags.id JOIN users ON user_id = users.id LEFT JOIN answers ON answers.post_id = posts.id LEFT JOIN comments ON posts.id = comments.post_id GROUP BY posts.id ORDER BY posts.created_at DESC;";
+        const q = ` SELECT 
+                    posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
+                    as answer_count,COUNT(DISTINCT comments.id) 
+                    as comment_count,tag_id,title,posts.body,tagname,posts.created_at 
+                    FROM posts 
+                    JOIN posttag ON posts.id = post_id 
+                    JOIN tags ON tag_id = tags.id 
+                    JOIN users ON user_id = users.id 
+                    LEFT JOIN answers ON answers.post_id = posts.id 
+                    LEFT JOIN comments ON posts.id = comments.post_id 
+                    GROUP BY posts.id 
+                    ORDER BY posts.created_at DESC;`;
         connection.query(q,
             function(err, results) {
                 if (err) throw err;
@@ -26,7 +37,18 @@ router.get('/',function(req,res){
 //TOP POSTS
 router.get('/top',function(req,res){
     try {
-        const q ="SELECT posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) as answer_count,COUNT(DISTINCT comments.id) as comment_count,tag_id,title,posts.body,tagname,posts.created_at FROM posts JOIN posttag ON posts.id = post_id JOIN tags ON tag_id = tags.id JOIN users ON user_id = users.id LEFT JOIN answers ON answers.post_id = posts.id LEFT JOIN comments ON posts.id = comments.post_id GROUP BY posts.id ORDER BY answer_count DESC,comment_count DESC;";
+        const q = ` SELECT 
+                    posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
+                    as answer_count,COUNT(DISTINCT comments.id) 
+                    as comment_count,tag_id,title,posts.body,tagname,posts.created_at 
+                    FROM posts 
+                    JOIN posttag ON posts.id = post_id 
+                    JOIN tags ON tag_id = tags.id 
+                    JOIN users ON user_id = users.id 
+                    LEFT JOIN answers ON answers.post_id = posts.id 
+                    LEFT JOIN comments ON posts.id = comments.post_id 
+                    GROUP BY posts.id 
+                    ORDER BY answer_count DESC,comment_count DESC;`;
         connection.query(q,
             function(err, results) {
                 if (err) throw err;
@@ -45,8 +67,19 @@ router.get('/top',function(req,res){
 //NEWEST POSTS BASED OF A SPECIFIC TAG
 router.get('/tag/:tagname',function(req,res){
     try {
-        connection.query("SELECT posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) as answer_count,COUNT(DISTINCT comments.id) as comment_count,tag_id,title,posts.body,tagname,posts.created_at FROM posts JOIN posttag ON posts.id = post_id JOIN tags ON tag_id = tags.id JOIN users ON user_id = users.id LEFT JOIN answers ON answers.post_id = posts.id LEFT JOIN comments ON posts.id = comments.post_id WHERE tags.tagname = ? GROUP BY posts.id ORDER BY posts.created_at DESC;",
-            [ req.params.tagname ],
+        connection.query(`  SELECT
+                                    posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
+                                    as answer_count,COUNT(DISTINCT comments.id) 
+                                    as comment_count,tag_id,title,posts.body,tagname,posts.created_at 
+                                    FROM posts 
+                                    JOIN posttag ON posts.id = post_id 
+                                    JOIN tags ON tag_id = tags.id 
+                                    JOIN users ON user_id = users.id 
+                                    LEFT JOIN answers ON answers.post_id = posts.id 
+                                    LEFT JOIN comments ON posts.id = comments.post_id 
+                                    WHERE tags.tagname = '${req.params.tagname}' 
+                                    GROUP BY posts.id 
+                                    ORDER BY posts.created_at DESC;`,
             function(err, results) {
                 if (err) throw err;
                 if (results.length === 0){
@@ -65,7 +98,18 @@ router.get('/tag/:tagname',function(req,res){
 
 router.get('/:id',function(req,res){
     try {
-        const q = "SELECT posts.id,posts.user_id,tag_id,COUNT(DISTINCT answers.id) as answer_count,COUNT(DISTINCT comments.id) as comment_count,username,title,posts.body as post_body,tagname,posts.created_at FROM posts JOIN posttag ON posts.id = post_id JOIN tags ON tag_id = tags.id JOIN users ON user_id = users.id LEFT JOIN answers ON answers.post_id = posts.id LEFT JOIN comments ON posts.id = comments.post_id WHERE posts.id = "+req.params.id+";";
+        const q = ` SELECT 
+                    posts.id,posts.user_id,tag_id,COUNT(DISTINCT answers.id) 
+                    as answer_count,COUNT(DISTINCT comments.id) 
+                    as comment_count,username,title,posts.body 
+                    as post_body,tagname,posts.created_at 
+                    FROM posts 
+                    JOIN posttag ON posts.id = post_id 
+                    JOIN tags ON tag_id = tags.id 
+                    JOIN users ON user_id = users.id 
+                    LEFT JOIN answers ON answers.post_id = posts.id 
+                    LEFT JOIN comments ON posts.id = comments.post_id 
+                    WHERE posts.id = ${req.params.id};`;
         connection.query(q,
             function(err, results) {
                 if (err) throw err;
@@ -110,8 +154,8 @@ router.post(
         } else {
             try {
                 connection.query(
-                    "INSERT INTO posts(title,body,user_id) VALUES (?,?,?);SET @v1 := (SELECT LAST_INSERT_ID());INSERT IGNORE INTO tags(tagname) VALUES (?);SET @v2 := (SELECT id FROM tags WHERE tagname = ?);INSERT INTO posttag(post_id,tag_id) VALUES(@v1,@v2);"
-                    , [req.body.title,req.body.body,req.user.id,req.body.tagname,req.body.tagname] ,
+                    'INSERT INTO posts(title,body,user_id) VALUES (?,?,?);SET @v1 := (SELECT LAST_INSERT_ID());INSERT IGNORE INTO tags(tagname) VALUES (?);SET @v2 := (SELECT id FROM tags WHERE tagname = ?);INSERT INTO posttag(post_id,tag_id) VALUES(@v1,@v2);'
+                    , [ req.body.title, req.body.body, req.user.id, req.body.tagname, req.body.tagname ],
                     function(err,results) {
                         if (err) throw err;
                         return res.json({ msg:'Post Added Successfully' });
@@ -127,12 +171,17 @@ router.post(
 //DELETE ROUTE
 router.delete('/:id', auth , function(req,res){
     try {
-        connection.query("SELECT user_id FROM posts WHERE id = " + req.params.id ,function(err,results) {
+        connection.query( ` SELECT user_id 
+                                    FROM posts 
+                                    WHERE id = ${req.params.id};`,
+            function(err,results) {
             if (err) throw err;
             if (results[0].user_id !== req.user.id ){
                 return res.status(401).json({ msg: 'User not authorized to delete' });
             } else {
-                connection.query("DELETE FROM posttag WHERE post_id = ?; DELETE FROM comments WHERE post_id = ?; DELETE FROM answers WHERE post_id = ?; DELETE FROM posts WHERE id = ? ;" , [ req.params.id,req.params.id,req.params.id,req.params.id ] , function(err, results) {
+                connection.query('DELETE FROM posttag WHERE post_id = ?; DELETE FROM comments WHERE post_id = ?; DELETE FROM answers WHERE post_id = ?; DELETE FROM posts WHERE id = ? ;' ,
+                    [ req.params.id,req.params.id,req.params.id,req.params.id ] ,
+                    function(err, results) {
                     if (err) throw err;
                     return res.json({ msg: 'Post Deleted' });
                 });

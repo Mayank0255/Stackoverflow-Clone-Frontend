@@ -1,3 +1,5 @@
+CREATE DATABASE stackoverflow;
+
 USE stackoverflow;
 
 
@@ -51,14 +53,3 @@ CREATE TABLE posttag(
     created_at TIMESTAMP DEFAULT NOW(),
     PRIMARY KEY(post_id, tag_id)
 );
-
-SELECT posts.id, username, COUNT(answers.id) FROM posts JOIN users ON users.id = posts.user_id LEFT JOIN comments ON comments.post_id = posts.id LEFT JOIN answers ON answers.post_id = posts.id GROUP BY p
-osts.id,answers.id;
-
-sum(case when level = 'exec' then 1 else 0 end) AS ExecCount
-
-SUM(CASE WHEN answers.id > 0 then 1 else 0 end)
-
-SELECT posts.id,posts.user_id,username,COUNT(CASE WHEN answers.id > 0 THEN 1 ELSE 0 END) as answer_count FROM posts JOIN posttag ON posts.id = post_id JOIN tags ON tag_id = tags.id JOIN users ON user_id
-= users.id LEFT JOIN answers ON answers.post_id = posts.id LEFT JOIN comments ON posts.id = comments.post_id GROUP BY posts.id;
-

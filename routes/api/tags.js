@@ -4,7 +4,7 @@ const router = express.Router();
 // @route    /api/tags
 // @access   Private
 
-router.get('/',function(req,res){
+router.get('/',(req, res) => {
     try {
         const query =  `SELECT 
                         tags.id,posts.id,tagname,COUNT(DISTINCT posts.id) 
@@ -15,7 +15,7 @@ router.get('/',function(req,res){
                         GROUP BY tags.id ORDER BY posts_count DESC;`
 
         connection.query(query,
-            function(err, results) {
+            (err, results) => {
                 if (err) throw err;
                 if (results.length === 0){
                     return res.status(400).json({ msg: 'There are no tags' });

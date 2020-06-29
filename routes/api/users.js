@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
                         LEFT JOIN tags ON posttag.tag_id = tags.id 
                         GROUP BY users.id ORDER BY posts_count DESC;`
         connection.query(query,
-            function(err, results) {
+            (err, results) => {
                 if (err) throw err;
                 if (results.length === 0){
                     return res.status(400).json({ msg: 'There are no users' });
@@ -50,9 +50,9 @@ router.get('/:id', (req, res) => {
                                     LEFT JOIN comments ON comments.user_id = users.id 
                                     WHERE users.id = ? GROUP BY users.id;`,
             [ req.params.id ],
-            function(err, results) {
+            (err, results) => {
                 if (err) throw err;
-                if (results.length == 0){
+                if (results.length === 0){
                     return res.status(400).json({ msg: 'This user doesn\'t exists' });
                 } else {
                     return res.json(results[0]);
@@ -86,7 +86,7 @@ router.post(
 
         try{
             let user;
-            connection.query(`SELECT * FROM users WHERE username = '${username}';`,async function(err, results){
+            connection.query(`SELECT * FROM users WHERE username = '${username}';`,async (err, results) => {
                 if (err) throw err;
                 if (results[0]){
                     return res.status(400).json({ errors: [ { msg: 'User already exists' } ] });
@@ -97,12 +97,12 @@ router.post(
 
                     await connection.query('INSERT INTO users(username,password) VALUES(?,?)',
                         [ user.username,user.password ],
-                        function(err, results){
+                        (err, results) => {
                         if (err) throw err;
                     });
 
                     connection.query(`SELECT * FROM users WHERE username = '${username}';`,
-                        function(err, results){
+                        (err, results) => {
                         if (err) throw err;
                         user = results[0];
 

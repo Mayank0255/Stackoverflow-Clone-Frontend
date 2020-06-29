@@ -5,7 +5,7 @@ const auth = require('../../middleware/auth');
 
 // @route    /api/posts
 // @access   Private
-router.get('/',function(req,res){
+router.get('/',(req,res) => {
     try {
         const q = ` SELECT 
                     posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
@@ -20,7 +20,7 @@ router.get('/',function(req,res){
                     GROUP BY posts.id 
                     ORDER BY posts.created_at DESC;`;
         connection.query(q,
-            function(err, results) {
+            (err, results) => {
                 if (err) throw err;
                 if (results.length === 0){
                     return res.status(400).json({ msg: 'There are no posts' });
@@ -35,7 +35,7 @@ router.get('/',function(req,res){
 });
 
 //TOP POSTS
-router.get('/top',function(req,res){
+router.get('/top',(req, res) => {
     try {
         const q = ` SELECT 
                     posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
@@ -50,7 +50,7 @@ router.get('/top',function(req,res){
                     GROUP BY posts.id 
                     ORDER BY answer_count DESC,comment_count DESC;`;
         connection.query(q,
-            function(err, results) {
+            (err, results) => {
                 if (err) throw err;
                 if (results.length === 0){
                     return res.status(400).json({ msg: 'There are no posts' });
@@ -65,7 +65,7 @@ router.get('/top',function(req,res){
 });
 
 //NEWEST POSTS BASED OF A SPECIFIC TAG
-router.get('/tag/:tagname',function(req,res){
+router.get('/tag/:tagname',(req,res) => {
     try {
         connection.query(`  SELECT
                                     posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
@@ -80,7 +80,7 @@ router.get('/tag/:tagname',function(req,res){
                                     WHERE tags.tagname = '${req.params.tagname}' 
                                     GROUP BY posts.id 
                                     ORDER BY posts.created_at DESC;`,
-            function(err, results) {
+            (err, results) => {
                 if (err) throw err;
                 if (results.length === 0){
                     return res.status(400).json({ msg: 'There are no posts for this tag' });
@@ -96,7 +96,7 @@ router.get('/tag/:tagname',function(req,res){
 
 //GET SINGLE POST
 
-router.get('/:id',function(req,res){
+router.get('/:id',(req,res) => {
     try {
         const q = ` SELECT 
                     posts.id,posts.user_id,tag_id,COUNT(DISTINCT answers.id) 
@@ -111,7 +111,7 @@ router.get('/:id',function(req,res){
                     LEFT JOIN comments ON posts.id = comments.post_id 
                     WHERE posts.id = ${req.params.id};`;
         connection.query(q,
-            function(err, results) {
+            (err, results) => {
                 if (err) throw err;
                 if (results.length === 0){
                     return res.status(400).json({ msg: 'There isn\'t any post by this id' });
@@ -147,7 +147,7 @@ router.post(
             check('body','Enter a body with minimum 30 characters').isLength({min:30})
         ],
     ],
-    function (req,res) {
+    (req,res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
@@ -156,7 +156,7 @@ router.post(
                 connection.query(
                     'INSERT INTO posts(title,body,user_id) VALUES (?,?,?);SET @v1 := (SELECT LAST_INSERT_ID());INSERT IGNORE INTO tags(tagname) VALUES (?);SET @v2 := (SELECT id FROM tags WHERE tagname = ?);INSERT INTO posttag(post_id,tag_id) VALUES(@v1,@v2);'
                     , [ req.body.title, req.body.body, req.user.id, req.body.tagname, req.body.tagname ],
-                    function(err,results) {
+                    (err,results) => {
                         if (err) throw err;
                         return res.json({ msg:'Post Added Successfully' });
                     });
@@ -169,19 +169,19 @@ router.post(
     });
 
 //DELETE ROUTE
-router.delete('/:id', auth , function(req,res){
+router.delete('/:id', auth , (req,res) => {
     try {
         connection.query( ` SELECT user_id 
                                     FROM posts 
                                     WHERE id = ${req.params.id};`,
-            function(err,results) {
+            (err,results) => {
             if (err) throw err;
             if (results[0].user_id !== req.user.id ){
                 return res.status(401).json({ msg: 'User not authorized to delete' });
             } else {
                 connection.query('DELETE FROM posttag WHERE post_id = ?; DELETE FROM comments WHERE post_id = ?; DELETE FROM answers WHERE post_id = ?; DELETE FROM posts WHERE id = ? ;' ,
                     [ req.params.id,req.params.id,req.params.id,req.params.id ] ,
-                    function(err, results) {
+                    (err, results) => {
                     if (err) throw err;
                     return res.json({ msg: 'Post Deleted' });
                 });

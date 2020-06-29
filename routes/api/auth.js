@@ -11,11 +11,11 @@ const config = require('config');
 // ===================================== LOGIN ROUTE OR AUTH ROUTE ==================================================
 
 
-router.get('/' , auth , function (req,res) {
+router.get('/' , auth , (req,res) => {
     try{
         let user;
         connection.query(`Select id,username,created_at FROM users WHERE id = '${req.user.id}';`,
-            function (err, results) {
+            (err, results) => {
             if (err) throw err;
             user = results[0];
             return res.json(user);
@@ -47,7 +47,7 @@ router.post(
         try{
 
             let user;
-            connection.query(`SELECT * FROM users WHERE username = '${username}';`,async function(err, results){
+            connection.query(`SELECT * FROM users WHERE username = '${username}';`,async (err, results) => {
                 if (err) throw err;
                 if (!results[0]){
                     return res.status(400).json({ errors: [ { msg: 'Invalid Credentials' } ] });

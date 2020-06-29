@@ -44,7 +44,7 @@ app.use('/api/posts/comments', require('./routes/api/comments'));
 
 //----------------------- ROUTES ---------------------------------------------------------------------------------------
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
     res.send('API Running...');
 });
 

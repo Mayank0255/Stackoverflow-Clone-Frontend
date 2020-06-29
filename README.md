@@ -1,7 +1,7 @@
 # StackOverflowClone
 > Copyright © 2020 Mayank Aggarwal
 
-As the name suggests, this project is a clone of a famous Q/A website for professional and enthusiast programmers built solely by me on a completely different stack.
+As the name suggests, this project is a clone of a famous Q/A website for professional and enthusiast programmers built solely by me using a completely different stack.
 
 ## My Tech Stack (MERN)
 
@@ -14,11 +14,6 @@ As the name suggests, this project is a clone of a famous Q/A website for profes
 * As Database: `MySQL`
 * API tested using: `POSTMAN`
 
-**NOTE: 3 servers will run concurrently<br/>**
-&nbsp;&nbsp;**1.&nbsp;&nbsp;Front-end React.js Server<br/>**
-&nbsp;&nbsp;**2.&nbsp;&nbsp;Back-end API Server<br/>**
-&nbsp;&nbsp;**3.&nbsp;&nbsp;Mysql database server<br/>**
-
 ### Original Tech Stack
 * For handling server requests: `C#`
 * As Database: `Microsoft SQL Server`
@@ -27,11 +22,11 @@ As the name suggests, this project is a clone of a famous Q/A website for profes
 ## Guidelines to setup
 
 ### Prerequisites
-* NPM should be installed - `NPM version > 6.8.5`
-* NODE should be installed - `NODE LTS version > 10.12.8`
-* MySQL should be installed - `MYSQL version > 8.0.10`
+* NPM should be installed: `NPM version > 6.8.5`
+* NODE should be installed: `NODE LTS version > 10.12.8`
+* MySQL should be installed: `MYSQL version > 8.0.10`
 
-### Steps to run
+### Steps
 1. Create a `.env` file and the format should be as given in `.env.example`.
 2. Run these commands then - 
     ```
@@ -55,6 +50,8 @@ As the name suggests, this project is a clone of a famous Q/A website for profes
     
     npm run client (for frontend server only)
     ```
+_NOTE: Might take sometime to start as there will be 2 servers running._
+
 
 ## DEMO
 

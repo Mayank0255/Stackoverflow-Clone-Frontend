@@ -30,11 +30,11 @@ As the name suggests, this project is a clone of a famous Q/A website for profes
 1. Create a `.env` file and the format should be as given in `.env.example`.
 2. Run these commands then - 
     ```
-    npm i
+    npm i (Install all the dependencies)
     
     cd client (Move to client directory)
     
-    npm i
+    npm i (Install all the client side dependencies)
     
     npm audit fix (Run whenever it dhows that there are vulnerabilities)
     ```
@@ -44,7 +44,11 @@ As the name suggests, this project is a clone of a famous Q/A website for profes
     ```
 4. Start the servers
     ```
-    npm run dev (for running both the servers simultaneously)
+    Option 1 (for running both the servers simultaneously):
+    
+    npm run dev
+    
+    Option 2 (for running both the servers individually):
     
     npm run server (for backend server only)
     

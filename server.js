@@ -1,16 +1,19 @@
-require('dotenv').config();
-
-const express = require('express'),
-    path = require('path'),
-    mysql = require('mysql'),
-    bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const express = require('express');
+const path = require('path');
+const http = require('http');
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
+const index = require('./server/routes/index.route');
 
 const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+dotenv.config();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
+const server = http.createServer(app);
 
 const connection = mysql.createConnection({
     host: process.env.HOST,
@@ -33,19 +36,8 @@ connection.query('USE stackoverflow');
 global.connection = connection;
 
 //DEFINE ROUTES
-app.use('/api/auth', require('./server/routes/api/auth'));
-app.use('/api/users', require('./server/routes/api/users'));
-app.use('/api/posts', require('./server/routes/api/posts'));
-app.use('/api/tags', require('./server/routes/api/tags'));
-app.use('/api/posts/answers', require('./server/routes/api/answers'));
-app.use('/api/posts/comments', require('./server/routes/api/comments'));
+app.use('/api', index);
 
-
-
-//----------------------- ROUTES ---------------------------------------------------------------------------------------
-
-app.get('/', (req, res) => {
-    res.send('API Running...');
+server.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`)
 });
-
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

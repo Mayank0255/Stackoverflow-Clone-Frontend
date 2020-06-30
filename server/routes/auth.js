@@ -1,10 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const { check, validationResult } = require('express-validator');
-const auth = require('../../middleware/auth');
+const auth = require('../middleware/auth');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const express = require('express');
+const router = express.Router();
+const {
+    check,
+    validationResult
+} = require('express-validator');
 
 // @route    /api/auth
 // @access   Private

@@ -1,9 +1,9 @@
-const auth = require('./api/auth');
-const users = require('./api/users');
-const posts = require('./api/posts');
-const tags = require('./api/tags');
-const answers = require('./api/answers');
-const comments = require('./api/comments');
+const auth = require('./auth');
+const users = require('./users');
+const posts = require('./posts');
+const tags = require('./tags');
+const answers = require('./answers');
+const comments = require('./comments');
 
 const express = require('express');
 const router = express.Router();

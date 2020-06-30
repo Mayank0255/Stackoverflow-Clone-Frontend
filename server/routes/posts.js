@@ -1,7 +1,10 @@
+const auth = require('../middleware/auth');
 const express = require('express');
 const router = express.Router();
-const { check, validationResult } = require('express-validator');
-const auth = require('../../middleware/auth');
+const {
+    check,
+    validationResult
+} = require('express-validator');
 
 // @route    /api/posts
 // @access   Private

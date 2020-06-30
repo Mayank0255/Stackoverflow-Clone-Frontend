@@ -8,8 +8,8 @@
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "installDev": "npm i & (cd client && npm i)",
-    "installing": "npm i && cd client && npm i"
+    "installDep": "npm i && cd client && npm i",
+    "auditDep": "npm audit fix && cd client && npm audit fix"
   },
   "author": "Mayank Aggarwal",
   "license": "ISC",

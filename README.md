@@ -1,5 +1,4 @@
 # StackOverflowClone
-> Copyright © 2020 Mayank Aggarwal
 
 As the name suggests, this project is a clone of a famous Q/A website for professional and enthusiast programmers built solely by me using a completely different stack.
 
@@ -30,13 +29,9 @@ As the name suggests, this project is a clone of a famous Q/A website for profes
 1. Create a `.env` file and the format should be as given in `.env.example`.
 2. Run these commands then - 
     ```
-    npm i (Install all the dependencies)
+    npm run installDep (To install all the dependencies)
     
-    cd client (Move to client directory)
-    
-    npm i (Install all the client side dependencies)
-    
-    npm audit fix (Run whenever it dhows that there are vulnerabilities)
+    npm run auditDep (Run this to audit fix all the vulnerabilities)
     ```
 3. Run `databaseConfig.sql` file in the mysql client
     ```

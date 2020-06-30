@@ -33,12 +33,12 @@ connection.query('USE stackoverflow');
 global.connection = connection;
 
 //DEFINE ROUTES
-app.use('/api/auth', require('./routes/api/auth'));
-app.use('/api/users', require('./routes/api/users'));
-app.use('/api/posts', require('./routes/api/posts'));
-app.use('/api/tags', require('./routes/api/tags'));
-app.use('/api/posts/answers', require('./routes/api/answers'));
-app.use('/api/posts/comments', require('./routes/api/comments'));
+app.use('/api/auth', require('./server/routes/api/auth'));
+app.use('/api/users', require('./server/routes/api/users'));
+app.use('/api/posts', require('./server/routes/api/posts'));
+app.use('/api/tags', require('./server/routes/api/tags'));
+app.use('/api/posts/answers', require('./server/routes/api/answers'));
+app.use('/api/posts/comments', require('./server/routes/api/comments'));
 
 
 

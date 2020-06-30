@@ -1,20 +1,29 @@
-const dotenv = require('dotenv');
-const express = require('express');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const compression = require('compression');
 const path = require('path');
 const http = require('http');
 const mysql = require('mysql');
-const bodyParser = require('body-parser');
 const index = require('./server/routes/index.route');
 
-const PORT = process.env.PORT || 5000;
-
+const express = require('express');
 const app = express();
 
+// environment variable config
+const dotenv = require('dotenv');
 dotenv.config();
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.json());
-const server = http.createServer(app);
 
+// compressing api response
+app.use(compression());
+
+// logger
+app.use(morgan("dev"));
+
+// body-parser
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+// database connection
 const connection = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USER,
@@ -23,6 +32,10 @@ const connection = mysql.createConnection({
     multipleStatements: true
 });
 
+connection.query('USE stackoverflow');
+global.connection = connection;
+
+// connection with client setup
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 
@@ -31,13 +44,15 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-
-connection.query('USE stackoverflow');
-global.connection = connection;
-
-//DEFINE ROUTES
+// all the api routes
 app.use('/api', index);
 
+// port initialized
+const PORT = process.env.PORT || 5000;
+
+// server setup
+const server = http.createServer(app);
+
 server.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`)
+    console.log(`Server started on port ${PORT}`);
 });

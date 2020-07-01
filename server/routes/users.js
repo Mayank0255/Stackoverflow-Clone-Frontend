@@ -3,14 +3,22 @@ const router = express.Router();
 const { check } = require('express-validator');
 const usersController = require('../controllers/users');
 
-// @route    /api/users
-// @access   Private
-//GET ALL USERS
+/** @route      GET /api/users
+ *  @desc       fetch all the users
+ *  @access     Private
+ */
 router.get('/', usersController.getAllUsers);
 
-//GET SINGLE USER
+/** @route      GET /api/users/:id
+ *  @desc       fetch single user
+ *  @access     Private
+ */
 router.get('/:id', usersController.getSingleUser);
 
+/** @route      POST /api/users/:id
+ *  @desc       register a new user
+ *  @access     Private
+ */
 router.post(
     '/',
     [

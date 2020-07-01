@@ -4,19 +4,34 @@ const router = express.Router();
 const { check } = require('express-validator');
 const postsController = require('../controllers/posts');
 
-// @route    /api/posts
-// @access   Private
-router.get('/', postsController.getPosts);
+/** @route      GET /api/posts
+ *  @desc       fetch all posts
+ *  @access     Private
+ */
+router.get('/', postsController.getAllPosts);
 
-//TOP POSTS
+/** @route      GET /api/posts/top
+ *  @desc       fetch all posts sorted by maximum interactivity
+ *  @access     Private
+ */
 router.get('/top', postsController.getTopPosts);
 
-//NEWEST POSTS BASED OF A SPECIFIC TAG
+/** @route      GET /api/posts/tag/:tagname
+ *  @desc       fetch all posts of a specific tag
+ *  @access     Private
+ */
 router.get('/tag/:tagname', postsController.getTagPosts);
 
-//GET SINGLE POST
+/** @route      GET /api/posts/:id
+ *  @desc       fetch a single post
+ *  @access     Private
+ */
 router.get('/:id',postsController.getSinglePost);
 
+/** @route      POST /api/posts/
+ *  @desc       add a post
+ *  @access     Private
+ */
 router.post(
     '/',
     [
@@ -27,6 +42,10 @@ router.post(
         ],
     ], postsController.addPost);
 
+/** @route      DELETE /api/posts/:id
+ *  @desc       delete a post
+ *  @access     Private
+ */
 router.delete('/:id', auth , postsController.deletePost);
 
 module.exports = router;

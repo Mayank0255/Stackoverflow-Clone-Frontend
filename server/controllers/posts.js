@@ -2,7 +2,7 @@ const { validationResult } = require('express-validator');
 
 // @route    /api/posts
 // @access   Private
-const getPosts = (req,res) => {
+const getAllPosts = (req,res) => {
     try {
         const q = ` SELECT 
                     posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
@@ -181,7 +181,7 @@ const deletePost =  (req,res) => {
 
 
 module.exports = postsController = {
-    getPosts,
+    getAllPosts,
     getTopPosts,
     getTagPosts,
     getSinglePost,

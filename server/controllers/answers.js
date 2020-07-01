@@ -1,8 +1,5 @@
 const { validationResult } = require('express-validator');
 
-// @route    /api/posts/answers
-// @access   Private
-
 const getAnswers = (req, res) => {
     try {
         connection.query( ` SELECT 
@@ -25,7 +22,6 @@ const getAnswers = (req, res) => {
     }
 };
 
-//add answer to post
 const addAnswer = (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -46,7 +42,6 @@ const addAnswer = (req, res) => {
     }
 };
 
-//DELETE ROUTE
 const deleteAnswer = (req, res) => {
     try {
         connection.query( ` SELECT user_id

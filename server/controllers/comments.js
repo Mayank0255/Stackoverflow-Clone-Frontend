@@ -1,9 +1,5 @@
 const { validationResult } = require('express-validator');
 
-// @route    /api/posts/comments
-// @access   Private
-
-//comments of a particular post
 const getComments = (req,res) => {
     try {
         connection.query( ` SELECT
@@ -26,7 +22,6 @@ const getComments = (req,res) => {
     }
 };
 
-//add comment to post
 const addComment = (req,res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -47,7 +42,6 @@ const addComment = (req,res) => {
     }
 };
 
-//DELETE ROUTE
 const deleteComment =  (req,res) => {
     try {
         connection.query('SELECT user_id FROM comments WHERE id = ?;',
@@ -68,8 +62,6 @@ const deleteComment =  (req,res) => {
         return res.status(500).send('Server Error');
     }
 };
-
-
 
 module.exports = commentsController = {
     getComments,

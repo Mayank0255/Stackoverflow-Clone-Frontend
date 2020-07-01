@@ -1,7 +1,5 @@
 const { validationResult } = require('express-validator');
 
-// @route    /api/posts
-// @access   Private
 const getAllPosts = (req,res) => {
     try {
         const q = ` SELECT 
@@ -31,7 +29,6 @@ const getAllPosts = (req,res) => {
     }
 };
 
-//TOP POSTS
 const getTopPosts = (req, res) => {
     try {
         const q = ` SELECT 
@@ -61,7 +58,6 @@ const getTopPosts = (req, res) => {
     }
 };
 
-//NEWEST POSTS BASED OF A SPECIFIC TAG
 const getTagPosts = (req,res) => {
     try {
         connection.query(`  SELECT
@@ -90,8 +86,6 @@ const getTagPosts = (req,res) => {
         return res.status(500).send('Server Error');
     }
 };
-
-//GET SINGLE POST
 
 const getSinglePost = (req,res) => {
     try {
@@ -122,17 +116,6 @@ const getSinglePost = (req,res) => {
     }
 };
 
-
-//----------------------- POST CREATE ROUTE ------------------------------
-
-/*
-{
-    "title": "any title",
-    "body": "any body",
-    "tagname": "any tagname"
-}
-
-*/
 const addPost = (req,res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -154,7 +137,6 @@ const addPost = (req,res) => {
     }
 };
 
-//DELETE ROUTE
 const deletePost =  (req,res) => {
     try {
         connection.query( ` SELECT user_id 

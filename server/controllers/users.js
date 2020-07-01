@@ -3,9 +3,6 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const { validationResult } = require('express-validator');
 
-// @route    /api/users
-// @access   Private
-//GET ALL USERS
 const getAllUsers = (req, res) => {
     try {
         const query = ` SELECT 
@@ -31,7 +28,6 @@ const getAllUsers = (req, res) => {
     }
 };
 
-//GET SINGLE USER
 const getSingleUser = (req, res) => {
     try {
         connection.query( ` SELECT 
@@ -61,9 +57,6 @@ const getSingleUser = (req, res) => {
         return res.status(500).send('Server Error');
     }
 };
-
-
-//=================================== REGISTER ROUTE ===================================================================
 
 const register = (req,res) => {
     const errors = validationResult(req);

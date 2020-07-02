@@ -55,7 +55,7 @@ const addComment = (req,res) => {
                 }
                 return res
                     .status(200)
-                    .json(helperFunction.responseHandler(true, 200, 'Comment Added Successfully', null));
+                    .json(helperFunction.responseHandler(true, 200, 'Comment Added Successfully', results.insertId));
             });
     } catch (err) {
         console.log(err);

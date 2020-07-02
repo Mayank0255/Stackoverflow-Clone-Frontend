@@ -41,8 +41,10 @@ export const addComment = (postId,formData) => async dispatch => {
         });
 
         dispatch(setAlert(res.data.message, 'success'));
+
+        dispatch(getComments(postId));
     } catch (err) {
-        dispatch(setAlert(err.response.data.message, 'danger'));
+        // dispatch(setAlert(err.response.data.message, 'danger'));
 
         dispatch({
             type: COMMENT_ERROR,

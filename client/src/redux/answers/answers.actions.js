@@ -41,6 +41,8 @@ export const addAnswer = (postId,formData) => async dispatch => {
         });
 
         dispatch(setAlert(res.data.message, 'success'));
+
+        dispatch(getAnswers(postId));
     } catch (err) {
         dispatch(setAlert(err.response.data.message, 'danger'));
 

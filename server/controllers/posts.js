@@ -181,7 +181,7 @@ const addPost = (req,res) => {
                     }
                     return res
                         .status(200)
-                        .json(helperFunction.responseHandler(true, 200, 'Post Created', null));
+                        .json(helperFunction.responseHandler(true, 200, 'Post Created', results.insertId));
                 });
         } catch (err) {
             console.log(err);

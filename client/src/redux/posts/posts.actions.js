@@ -103,6 +103,8 @@ export const addPost = formData => async dispatch => {
         });
 
         dispatch(setAlert(res.data.message, 'success'));
+
+        dispatch(getPosts());
     } catch (err) {
         dispatch(setAlert(err.response.data.message, 'danger'));
 

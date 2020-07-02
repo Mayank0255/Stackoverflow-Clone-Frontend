@@ -54,7 +54,7 @@ const addAnswer = (req, res) => {
                 }
                 return res
                     .status(200)
-                    .json(helperFunction.responseHandler(true, 200, 'Answer Added', null));
+                    .json(helperFunction.responseHandler(true, 200, 'Answer Added', results.insertId));
             });
     } catch (err) {
         console.log(err);

@@ -22,7 +22,7 @@ router.get('/:id', usersController.getSingleUser);
 router.post(
     '/',
     [
-        check('username', 'Please include a valid username').isLength({min:5}),
+        check('username', 'Please include a valid username').isLength({ min: 5 }),
         check(
             'password',
             'Please enter a password with 5 or more characters'

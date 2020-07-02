@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const helperFunction = require('../helpers/helperFunction')
 
-module.exports = function(req,res,next){
-
+module.exports = (req,res,next) => {
     const token = req.header('x-auth-token');
 
     // Check if not token

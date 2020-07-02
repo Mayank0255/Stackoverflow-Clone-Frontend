@@ -61,30 +61,47 @@ const getSingleUser = (req, res) => {
 const register = (req,res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res
+            .status(400)
+            .json(helperFunction.responseHandler(false, 400, errors.array()[0].msg, null));
     }
     const { username,password } = req.body;
 
     try{
         let user;
         connection.query(`SELECT * FROM users WHERE username = '${username}';`,async (err, results) => {
-            if (err) throw err;
+            if (err) {
+                return res
+                    .status(err.statusCode)
+                    .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
+            }
             if (results[0]){
-                return res.status(400).json({ errors: [ { msg: 'User already exists' } ] });
+                return res
+                    .status(400)
+                    .json(helperFunction.responseHandler(false, 400, 'User already exists', null));
             } else {
-                user = { username,password };
+                user = { username, password };
                 const salt = await bcrypt.genSalt(10);
                 user.password = await bcrypt.hash(password, salt);
 
                 await connection.query('INSERT INTO users(username,password) VALUES(?,?)',
                     [ user.username,user.password ],
-                    (err, results) => {
-                        if (err) throw err;
+                    (err, results, fields) => {
+                        if (err) {
+                            return res
+                                .status(err.statusCode)
+                                .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
+                        }
+                        console.log(results);
                     });
 
                 connection.query(`SELECT * FROM users WHERE username = '${username}';`,
                     (err, results) => {
-                        if (err) throw err;
+                        if (err) {
+                            return res
+                                .status(err.statusCode)
+                                .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
+                        }
                         user = results[0];
 
                         const payload = {
@@ -99,14 +116,18 @@ const register = (req,res) => {
                             { expiresIn: 3600000 },
                             (err, token) => {
                                 if (err) throw err;
-                                return res.json({ token });
+                                return res
+                                    .status(200)
+                                    .json(helperFunction.responseHandler(true, 200, 'User registered', {'token': token}));
                             });
                     });
             }
         });
-    } catch (e) {
-        console.log(e);
-        return res.status(500).send('Server Error');
+    } catch (err) {
+        console.log(err);
+        return res
+            .status(500)
+            .json(helperFunction.responseHandler(true, 500, 'Server Error', null));
     }
 };
 

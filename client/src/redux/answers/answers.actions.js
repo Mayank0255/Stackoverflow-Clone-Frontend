@@ -14,7 +14,7 @@ export const getAnswers = id => async dispatch => {
 
         dispatch({
             type: GET_ANSWERS,
-            payload: res.data
+            payload: res.data.data
         });
     } catch (err) {
         dispatch({
@@ -37,11 +37,13 @@ export const addAnswer = (postId,formData) => async dispatch => {
 
         dispatch({
             type: ADD_ANSWER,
-            payload: res.data
+            payload: res.data.data
         });
 
-        dispatch(setAlert('Answer Added', 'success'));
+        dispatch(setAlert(res.data.message, 'success'));
     } catch (err) {
+        dispatch(setAlert(err.response.data.message, 'danger'));
+
         dispatch({
             type: ANSWER_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }
@@ -53,15 +55,17 @@ export const addAnswer = (postId,formData) => async dispatch => {
 export const deleteAnswer = AnswerId => async dispatch => {
     try {
 
-        await axios.delete(`/api/posts/answers/${AnswerId}`);
+        const res = await axios.delete(`/api/posts/answers/${AnswerId}`);
 
         dispatch({
             type: DELETE_ANSWER,
             payload: AnswerId
         });
 
-        dispatch(setAlert('Answer Removed', 'success'));
+        dispatch(setAlert(res.data.message, 'success'));
     } catch (err) {
+        dispatch(setAlert(err.response.data.message, 'danger'));
+
         dispatch({
             type: ANSWER_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }

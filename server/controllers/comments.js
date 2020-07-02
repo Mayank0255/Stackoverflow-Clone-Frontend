@@ -1,4 +1,5 @@
 const { validationResult } = require('express-validator');
+const helperFunction = require('../helpers/helperFunction');
 
 const getComments = (req,res) => {
     try {

@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const helperFunction = require('../helpers/helperFunction');
 const { validationResult } = require('express-validator');
 
 const getAllUsers = (req, res) => {
@@ -15,16 +16,26 @@ const getAllUsers = (req, res) => {
                         GROUP BY users.id ORDER BY posts_count DESC;`
         connection.query(query,
             (err, results) => {
-                if (err) throw err;
+                if (err) {
+                    return res
+                        .status(err.statusCode)
+                        .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
+                }
                 if (results.length === 0){
-                    return res.status(400).json({ msg: 'There are no users' });
+                    return res
+                        .status(400)
+                        .json(helperFunction.responseHandler(false, 400, 'There are no users', null));
                 } else {
-                    return res.json(results);
+                    return res
+                        .status(200)
+                        .json(helperFunction.responseHandler(true, 200, 'success', results));
                 }
             });
     } catch (err) {
         console.log(err);
-        return res.status(500).send('Server Error');
+        return res
+            .status(500)
+            .json(helperFunction.responseHandler(false, 500, 'Server Error', null));
     }
 };
 
@@ -45,16 +56,26 @@ const getSingleUser = (req, res) => {
                                     WHERE users.id = ? GROUP BY users.id;`,
             [ req.params.id ],
             (err, results) => {
-                if (err) throw err;
+                if (err) {
+                    return res
+                        .status(err.statusCode)
+                        .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
+                }
                 if (results.length === 0){
-                    return res.status(400).json({ msg: 'This user doesn\'t exists' });
+                    return res
+                        .status(400)
+                        .json(helperFunction.responseHandler(false, 400, 'This user doesn\'t exists', null));
                 } else {
-                    return res.json(results[0]);
+                    return res
+                        .status(200)
+                        .json(helperFunction.responseHandler(true, 200, 'success', results[0]));
                 }
             });
     } catch (err) {
-        console.log(err.message);
-        return res.status(500).send('Server Error');
+        console.log(err);
+        return res
+            .status(500)
+            .json(helperFunction.responseHandler(false, 500, 'Server Error', null));
     }
 };
 

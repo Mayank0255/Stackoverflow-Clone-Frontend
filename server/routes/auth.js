@@ -17,11 +17,11 @@ router.get('/' , auth , authController.loadUser);
 router.post(
     '/',
     [
-        check('username', 'Please include a valid username'),
+        check('username', 'Please include a valid username').isLength({min:5}),
         check(
             'password',
             'Password is required'
-        ).exists()
+        ).not().isEmpty()
     ], authController.login);
 
 module.exports = router;

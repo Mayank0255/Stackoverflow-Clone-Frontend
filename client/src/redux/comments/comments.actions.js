@@ -14,7 +14,7 @@ export const getComments = id => async dispatch => {
 
         dispatch({
             type: GET_COMMENTS,
-            payload: res.data
+            payload: res.data.data
         });
     } catch (err) {
         dispatch({
@@ -33,16 +33,17 @@ export const addComment = (postId,formData) => async dispatch => {
     };
 
     try {
-
         const res = await axios.post(`/api/posts/comments/${postId}`, formData, config);
 
         dispatch({
             type: ADD_COMMENT,
-            payload: res.data
+            payload: res.data.data
         });
 
-        dispatch(setAlert('Comment Added', 'success'));
+        dispatch(setAlert(res.data.message, 'success'));
     } catch (err) {
+        dispatch(setAlert(err.response.data.message, 'danger'));
+
         dispatch({
             type: COMMENT_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }
@@ -53,15 +54,17 @@ export const addComment = (postId,formData) => async dispatch => {
 // Delete Comment
 export const deleteComment = CommentId => async dispatch => {
     try {
-        await axios.delete(`/api/posts/comments/${CommentId}`);
+        const res = await axios.delete(`/api/posts/comments/${CommentId}`);
 
         dispatch({
             type: DELETE_COMMENT,
             payload: CommentId
         });
 
-        dispatch(setAlert('Comment Removed', 'success'));
+        dispatch(setAlert(res.data.message, 'success'));
     } catch (err) {
+        dispatch(setAlert(err.response.data.message, 'danger'));
+
         dispatch({
             type: COMMENT_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }

@@ -27,11 +27,11 @@ const getAllPosts = (req,res) => {
                     return res
                         .status(400)
                         .json(helperFunction.responseHandler(false, 400, 'There are no posts', null));
-                } else {
-                    return res
-                        .status(200)
-                        .json(helperFunction.responseHandler(true, 200, 'success', results));
                 }
+
+                return res
+                    .status(200)
+                    .json(helperFunction.responseHandler(true, 200, 'success', results));
             });
     } catch (err) {
         console.log(err);
@@ -67,11 +67,11 @@ const getTopPosts = (req, res) => {
                     return res
                         .status(400)
                         .json(helperFunction.responseHandler(false, 400, 'There are no posts', null));
-                } else {
-                    return res
-                        .status(200)
-                        .json(helperFunction.responseHandler(true, 200, 'success', results));
                 }
+
+                return res
+                    .status(200)
+                    .json(helperFunction.responseHandler(true, 200, 'success', results));
             });
     } catch (err) {
         console.log(err);
@@ -107,11 +107,11 @@ const getTagPosts = (req,res) => {
                     return res
                         .status(400)
                         .json(helperFunction.responseHandler(false, 400, 'There are no posts for this tag', null));
-                } else {
-                    return res
-                        .status(200)
-                        .json(helperFunction.responseHandler(true, 200, 'success', results));
                 }
+
+                return res
+                    .status(200)
+                    .json(helperFunction.responseHandler(true, 200, 'success', results));
             });
     } catch (err) {
         console.log(err);
@@ -147,11 +147,11 @@ const getSinglePost = (req,res) => {
                     return res
                         .status(400)
                         .json(helperFunction.responseHandler(false, 400, 'There isn\'t any post by this id', null));
-                } else {
-                    return res
-                        .status(200)
-                        .json(helperFunction.responseHandler(true, 200, 'success', results[0]));
                 }
+
+                return res
+                    .status(200)
+                    .json(helperFunction.responseHandler(true, 200, 'success', results[0]));
             });
     } catch (err) {
         console.log(err);
@@ -209,21 +209,21 @@ const deletePost =  (req,res) => {
                     return res
                         .status(401)
                         .json(helperFunction.responseHandler(false, 401, 'User not authorized to delete', null));
-                } else {
-                    connection.query('DELETE FROM posttag WHERE post_id = ?; DELETE FROM comments WHERE post_id = ?; DELETE FROM answers WHERE post_id = ?; DELETE FROM posts WHERE id = ? ;' ,
-                        [ req.params.id,req.params.id,req.params.id,req.params.id ] ,
-                        (err, results) => {
-                            if (err) {
-                                console.log(err);
-                                return res
-                                    .status(err.statusCode)
-                                    .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                            }
-                            return res
-                                .status(200)
-                                .json(helperFunction.responseHandler(true, 200, 'Post Removed', null));
-                        });
                 }
+
+                connection.query('DELETE FROM posttag WHERE post_id = ?; DELETE FROM comments WHERE post_id = ?; DELETE FROM answers WHERE post_id = ?; DELETE FROM posts WHERE id = ? ;' ,
+                    [ req.params.id,req.params.id,req.params.id,req.params.id ] ,
+                    (err, results) => {
+                        if (err) {
+                            console.log(err);
+                            return res
+                                .status(err.statusCode)
+                                .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
+                        }
+                        return res
+                            .status(200)
+                            .json(helperFunction.responseHandler(true, 200, 'Post Removed', null));
+                    });
             });
     } catch (err) {
         console.log(err);

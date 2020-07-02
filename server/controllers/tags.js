@@ -22,11 +22,11 @@ const getTags = (req, res) => {
                     return res
                         .status(400)
                         .json(helperFunction.responseHandler(false, 400, 'There are no tags', null));
-                } else {
-                    return res
-                        .status(200)
-                        .json(helperFunction.responseHandler(true, 200, 'Success', results));
                 }
+
+                return res
+                    .status(200)
+                    .json(helperFunction.responseHandler(true, 200, 'Success', results));
             });
     } catch (err) {
         console.log(err);

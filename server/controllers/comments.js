@@ -20,11 +20,11 @@ const getComments = (req,res) => {
                     return res
                         .status(400)
                         .json(helperFunction.responseHandler(false, 400, 'There are no comments for this post', null));
-                } else {
-                    return res
-                        .status(200)
-                        .json(helperFunction.responseHandler(true, 200, 'Success', results));
                 }
+
+                return res
+                    .status(200)
+                    .json(helperFunction.responseHandler(true, 200, 'Success', results));
             });
     } catch (err) {
         console.log(err);
@@ -37,29 +37,31 @@ const getComments = (req,res) => {
 const addComment = (req,res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    } else {
-        try {
-            connection.query(
-                'INSERT INTO comments(body,user_id,post_id) VALUES(?,?,?);'
-                , [req.body.body, req.user.id, req.params.id ] ,
-                (err,results) => {
-                    if (err) {
-                        console.log(err);
-                        return res
-                            .status(err.statusCode)
-                            .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                    }
+        return res
+            .status(400)
+            .json(helperFunction.responseHandler(false, 400, errors.array()[0].msg, null));
+    }
+
+    try {
+        connection.query(
+            'INSERT INTO comments(body,user_id,post_id) VALUES(?,?,?);'
+            , [req.body.body, req.user.id, req.params.id ] ,
+            (err,results) => {
+                if (err) {
+                    console.log(err);
                     return res
-                        .status(200)
-                        .json(helperFunction.responseHandler(true, 200, 'Comment Added Successfully', null));
-                });
-        } catch (err) {
-            console.log(err);
-            return res
-                .status(500)
-                .json(helperFunction.responseHandler(false, 500, 'Server Error', null));
-        }
+                        .status(err.statusCode)
+                        .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
+                }
+                return res
+                    .status(200)
+                    .json(helperFunction.responseHandler(true, 200, 'Comment Added Successfully', null));
+            });
+    } catch (err) {
+        console.log(err);
+        return res
+            .status(500)
+            .json(helperFunction.responseHandler(false, 500, 'Server Error', null));
     }
 };
 
@@ -78,19 +80,19 @@ const deleteComment =  (req,res) => {
                     return res
                         .status(401)
                         .json(helperFunction.responseHandler(false, 401, 'User not authorized to delete', null));
-                } else {
-                    connection.query("DELETE FROM comments WHERE id = ?;", [req.params.id], (err, results) => {
-                        if (err) {
-                            console.log(err);
-                            return res
-                                .status(err.statusCode)
-                                .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                        }
-                        return res
-                            .status(200)
-                            .json(helperFunction.responseHandler(true, 200, 'Comment Deleted', null));
-                    });
                 }
+
+                connection.query("DELETE FROM comments WHERE id = ?;", [req.params.id], (err, results) => {
+                    if (err) {
+                        console.log(err);
+                        return res
+                            .status(err.statusCode)
+                            .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
+                    }
+                    return res
+                        .status(200)
+                        .json(helperFunction.responseHandler(true, 200, 'Comment Deleted', null));
+                });
             });
     } catch (err) {
         console.log(err);

@@ -15,8 +15,9 @@ const loadUser = (req,res) => {
                         .status(err.statusCode)
                         .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
                 }
-                user = results[0];
-                return res.json(helperFunction.responseHandler(true, 200, 'success', user));
+                return res
+                    .status(200)
+                    .json(helperFunction.responseHandler(true, 200, 'success', results[0]));
             });
     } catch (err) {
         console.log(err);
@@ -47,34 +48,34 @@ const login = (req,res) => {
                 return res
                     .status(404)
                     .json(helperFunction.responseHandler(false, 404, 'User does not exists', null));
-            } else {
-                user = results[0];
-
-                const isMatch = await bcrypt.compare(password, user.password);
-
-                if(!isMatch){
-                    return res
-                        .status(400)
-                        .json(helperFunction.responseHandler(false, 400, 'Incorrect password', null));
-                } else {
-                    const payload = {
-                        user: {
-                            id: user.id
-                        }
-                    };
-
-                    jwt.sign(
-                        payload,
-                        config.get('jwtSecret'),
-                        { expiresIn: 3600000 },
-                        (err, token) => {
-                            if (err) throw err;
-                            return res
-                                .status(200)
-                                .json(helperFunction.responseHandler(true, 200, 'User logged in', {'token': token}));
-                        });
-                }
             }
+
+            user = results[0];
+
+            const isMatch = await bcrypt.compare(password, user.password);
+
+            if(!isMatch){
+                return res
+                    .status(400)
+                    .json(helperFunction.responseHandler(false, 400, 'Incorrect password', null));
+            }
+
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            };
+
+            jwt.sign(
+                payload,
+                config.get('jwtSecret'),
+                { expiresIn: 3600000 },
+                (err, token) => {
+                    if (err) throw err;
+                    return res
+                        .status(200)
+                        .json(helperFunction.responseHandler(true, 200, 'User logged in', {'token': token}));
+                });
         });
     } catch (err) {
         console.log(err);

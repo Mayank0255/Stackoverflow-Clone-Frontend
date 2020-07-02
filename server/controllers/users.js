@@ -25,11 +25,11 @@ const getAllUsers = (req, res) => {
                     return res
                         .status(400)
                         .json(helperFunction.responseHandler(false, 400, 'There are no users', null));
-                } else {
-                    return res
-                        .status(200)
-                        .json(helperFunction.responseHandler(true, 200, 'success', results));
                 }
+
+                return res
+                    .status(200)
+                    .json(helperFunction.responseHandler(true, 200, 'success', results));
             });
     } catch (err) {
         console.log(err);
@@ -65,11 +65,11 @@ const getSingleUser = (req, res) => {
                     return res
                         .status(400)
                         .json(helperFunction.responseHandler(false, 400, 'This user doesn\'t exists', null));
-                } else {
-                    return res
-                        .status(200)
-                        .json(helperFunction.responseHandler(true, 200, 'success', results[0]));
                 }
+
+                return res
+                    .status(200)
+                    .json(helperFunction.responseHandler(true, 200, 'success', results[0]));
             });
     } catch (err) {
         console.log(err);
@@ -100,49 +100,49 @@ const register = (req,res) => {
                 return res
                     .status(400)
                     .json(helperFunction.responseHandler(false, 400, 'User already exists', null));
-            } else {
-                user = { username, password };
-                const salt = await bcrypt.genSalt(10);
-                user.password = await bcrypt.hash(password, salt);
-
-                await connection.query('INSERT INTO users(username,password) VALUES(?,?)',
-                    [ user.username,user.password ],
-                    (err, results, fields) => {
-                        if (err) {
-                            return res
-                                .status(err.statusCode)
-                                .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                        }
-                        console.log(results);
-                    });
-
-                connection.query(`SELECT * FROM users WHERE username = '${username}';`,
-                    (err, results) => {
-                        if (err) {
-                            return res
-                                .status(err.statusCode)
-                                .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                        }
-                        user = results[0];
-
-                        const payload = {
-                            user: {
-                                id: user.id
-                            }
-                        };
-
-                        jwt.sign(
-                            payload,
-                            config.get('jwtSecret'),
-                            { expiresIn: 3600000 },
-                            (err, token) => {
-                                if (err) throw err;
-                                return res
-                                    .status(200)
-                                    .json(helperFunction.responseHandler(true, 200, 'User registered', {'token': token}));
-                            });
-                    });
             }
+
+            user = { username, password };
+            const salt = await bcrypt.genSalt(10);
+            user.password = await bcrypt.hash(password, salt);
+
+            await connection.query('INSERT INTO users(username,password) VALUES(?,?)',
+                [ user.username,user.password ],
+                (err, results, fields) => {
+                    if (err) {
+                        return res
+                            .status(err.statusCode)
+                            .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
+                    }
+                    console.log(results);
+                });
+
+            connection.query(`SELECT * FROM users WHERE username = '${username}';`,
+                (err, results) => {
+                    if (err) {
+                        return res
+                            .status(err.statusCode)
+                            .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
+                    }
+                    user = results[0];
+
+                    const payload = {
+                        user: {
+                            id: user.id
+                        }
+                    };
+
+                    jwt.sign(
+                        payload,
+                        config.get('jwtSecret'),
+                        { expiresIn: 3600000 },
+                        (err, token) => {
+                            if (err) throw err;
+                            return res
+                                .status(200)
+                                .json(helperFunction.responseHandler(true, 200, 'User registered', {'token': token}));
+                        });
+                });
         });
     } catch (err) {
         console.log(err);

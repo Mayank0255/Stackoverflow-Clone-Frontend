@@ -1,3 +1,5 @@
+const helperFunction = require('../helpers/helperFunction');
+
 const getTags = (req, res) => {
     try {
         const query =  `SELECT 

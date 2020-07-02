@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const helperFunction = require('../helpers/helperFunction')
+const helperFunction = require('../helpers/helperFunction');
 const { validationResult } = require('express-validator');
 
 const loadUser = (req,res) => {

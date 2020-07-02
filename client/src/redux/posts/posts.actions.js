@@ -17,9 +17,11 @@ export const getPosts = () => async dispatch => {
 
         dispatch({
             type: GET_POSTS,
-            payload: res.data
+            payload: res.data.data
         });
     } catch (err) {
+        dispatch(setAlert(err.response.data.message, 'danger'));
+
         dispatch({
             type: POST_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }
@@ -34,9 +36,11 @@ export const getPost = id => async dispatch => {
 
         dispatch({
             type: GET_POST,
-            payload: res.data
+            payload: res.data.data
         });
     } catch (err) {
+        dispatch(setAlert(err.response.data.message, 'danger'));
+
         dispatch({
             type: POST_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }
@@ -51,9 +55,11 @@ export const getTopPosts = () => async dispatch => {
 
         dispatch({
             type: GET_TOP_POSTS,
-            payload: res.data
+            payload: res.data.data
         });
     } catch (err) {
+        dispatch(setAlert(err.response.data.message, 'danger'));
+
         dispatch({
             type: POST_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }
@@ -62,15 +68,17 @@ export const getTopPosts = () => async dispatch => {
 };
 
 //GET TAG POSTS
-export const getTagPosts = tagname => async dispatch => {
+export const getTagPosts = tagName => async dispatch => {
     try {
-        const res = await axios.get(`/api/posts/tag/${tagname}`);
+        const res = await axios.get(`/api/posts/tag/${tagName}`);
 
         dispatch({
             type: GET_TAG_POSTS,
-            payload: res.data
+            payload: res.data.data
         });
     } catch (err) {
+        dispatch(setAlert(err.response.data.message, 'danger'));
+
         dispatch({
             type: POST_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }
@@ -91,11 +99,13 @@ export const addPost = formData => async dispatch => {
 
         dispatch({
             type: ADD_POST,
-            payload: res.data
+            payload: res.data.data
         });
 
-        dispatch(setAlert('Post Created', 'success'));
+        dispatch(setAlert(res.data.message, 'success'));
     } catch (err) {
+        dispatch(setAlert(err.response.data.message, 'danger'));
+
         dispatch({
             type: POST_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }
@@ -106,15 +116,17 @@ export const addPost = formData => async dispatch => {
 // Delete post
 export const deletePost = id => async dispatch => {
     try {
-        await axios.delete(`/api/posts/${id}`);
+        const res = await axios.delete(`/api/posts/${id}`);
 
         dispatch({
             type: DELETE_POST,
             payload: id
         });
 
-        dispatch(setAlert('Post Removed', 'success'));
+        dispatch(setAlert(res.data.message, 'success'));
     } catch (err) {
+        dispatch(setAlert(err.response.data.message, 'danger'));
+
         dispatch({
             type: POST_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }

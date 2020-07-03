@@ -8,19 +8,19 @@ const postsController = require('../controllers/posts');
  *  @desc       fetch all posts
  *  @access     Private
  */
-router.get('/', postsController.getAllPosts);
+router.get('/', postsController.getPosts);
 
 /** @route      GET /api/posts/top
  *  @desc       fetch all posts sorted by maximum interactivity
  *  @access     Private
  */
-router.get('/top', postsController.getTopPosts);
+router.get('/top', postsController.getPosts);
 
 /** @route      GET /api/posts/tag/:tagname
  *  @desc       fetch all posts of a specific tag
  *  @access     Private
  */
-router.get('/tag/:tagname', postsController.getTagPosts);
+router.get('/tag/:tagname', postsController.getPosts);
 
 /** @route      GET /api/posts/:id
  *  @desc       fetch a single post

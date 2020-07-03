@@ -1,9 +1,11 @@
 const { validationResult } = require('express-validator');
 const helperFunction = require('../helpers/helperFunction');
 const Answer = require('../models/answers.model');
+const User = require('../models/users.model');
 
 const getAnswers = (req, res) => {
     try {
+        console.log(req)
         Answer.retrieveAll(req.params.id, (err, data) => {
             if (err) {
                 console.log(err);
@@ -48,26 +50,8 @@ const addAnswer = (req, res) => {
     }
 };
 
-const deleteAnswer = (req, res) => {
+const deleteAnswer = async (req, res) => {
     try {
-        pool.query( ` SELECT user_id
-                                    FROM answers
-                                    WHERE id = ?;`,
-            req.params.id,
-            (err, results) => {
-                if (err) {
-                    console.log(err);
-                    return res
-                        .status(err.statusCode)
-                        .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                }
-                if (results[0].user_id !== req.user.id ){
-                    return res
-                        .status(401)
-                        .json(helperFunction.responseHandler(false, 401, 'User not authorized to delete', null));
-                }
-            });
-
         Answer.remove(req.params.id, (err, data) => {
             if (err) {
                 console.log(err);

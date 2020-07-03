@@ -49,24 +49,8 @@ const addComment = (req,res) => {
     }
 };
 
-const deleteComment =  (req,res) => {
+const deleteComment =  (req, res) => {
     try {
-        pool.query('SELECT user_id FROM comments WHERE id = ?;',
-            [req.params.id] ,
-            (err, results) => {
-                if (err) {
-                    console.log(err);
-                    return res
-                        .status(err.statusCode)
-                        .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                }
-                if (results[0].user_id !== req.user.id ){
-                    return res
-                        .status(401)
-                        .json(helperFunction.responseHandler(false, 401, 'User not authorized to delete', null));
-                }
-            });
-
         Comment.remove(req.params.id, (err, data) => {
             if (err) {
                 console.log(err);

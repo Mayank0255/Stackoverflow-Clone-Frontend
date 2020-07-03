@@ -1,4 +1,5 @@
 const auth = require('../middleware/auth');
+const checkOwnership = require('../middleware/checkOwnership');
 const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
@@ -29,7 +30,7 @@ router.post(
  *  @desc       delete a comment to a post
  *  @access     Private
  */
-router.delete('/:id', auth , commentsController.deleteComment);
+router.delete('/:id', [ auth, checkOwnership ], commentsController.deleteComment);
 
 
 

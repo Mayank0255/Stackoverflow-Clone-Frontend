@@ -1,4 +1,5 @@
 const auth = require('../middleware/auth');
+const checkOwnership = require('../middleware/checkOwnership');
 const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
@@ -46,6 +47,6 @@ router.post(
  *  @desc       delete a post
  *  @access     Private
  */
-router.delete('/:id', auth , postsController.deletePost);
+router.delete('/:id', [ auth, checkOwnership ], postsController.deletePost);
 
 module.exports = router;

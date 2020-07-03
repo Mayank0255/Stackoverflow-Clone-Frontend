@@ -19,7 +19,7 @@ Post.create = (newPost, result) => {
         [ newPost.title, newPost.body, newPost.userId, newPost.tagname, newPost.tagname ],
         (err, res) => {
         if (err) {
-            console.log("error: ", err);
+            console.log('error: ', err);
             result(
                 helperFunction.responseHandler(false, err.statusCode, err.message, null),
                 null
@@ -43,7 +43,7 @@ Post.remove = (id, result) => {
         [ id, id, id, id ] ,
         (err, res) => {
             if (err) {
-                console.log("error: ", err);
+                console.log('error: ', err);
                 result(
                     helperFunction.responseHandler(false, err.statusCode, err.message, null),
                     null
@@ -74,7 +74,7 @@ Post.retrieveOne = (postId, result) => {
         postId,
         (err, results) => {
             if (err || results.length === 0) {
-                console.log("error: ", err);
+                console.log('error: ', err);
                 result(
                     helperFunction.responseHandler(false, err ? err.statusCode : 404, err ? err.message : 'There isn\'t any post by this id', null),
                     null
@@ -118,7 +118,7 @@ Post.retrieveAll = ({ action, tagName }, result) => {
         tagName ? tagName : null,
         (err, results) => {
             if (err || results.length === 0) {
-                console.log("error: ", err);
+                console.log('error: ', err);
                 result(
                     helperFunction.responseHandler(false, err ? err.statusCode : 404, err ? err.message : 'There are no posts', null),
                     null

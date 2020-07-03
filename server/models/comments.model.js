@@ -15,7 +15,7 @@ Comment.create = (newComment, result) => {
         [newComment.body, newComment.user_id, newComment.post_id ],
         (err,res) => {
             if (err) {
-                console.log("error: ", err);
+                console.log('error: ', err);
                 result(
                     helperFunction.responseHandler(false, err.statusCode, err.message, null),
                     null
@@ -36,7 +36,7 @@ Comment.remove = (id, result) => {
         id,
         (err, res) => {
             if (err) {
-                console.log("error: ", err);
+                console.log('error: ', err);
                 result(
                     helperFunction.responseHandler(false, err.statusCode, err.message, null),
                     null
@@ -62,7 +62,7 @@ Comment.retrieveAll = (postId, result) => {
         postId,
         (err, results) => {
             if (err || results.length === 0) {
-                console.log("error: ", err);
+                console.log('error: ', err);
                 result(
                     helperFunction.responseHandler(false, err ? err.statusCode : 404, err ? err.message : 'There are no comments', null),
                     null

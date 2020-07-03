@@ -1,31 +1,16 @@
 const { validationResult } = require('express-validator');
 const helperFunction = require('../helpers/helperFunction');
+const Comment = require('../models/comments.model');
 
 const getComments = (req,res) => {
     try {
-        pool.query( ` SELECT
-                                    comments.id, post_id, comments.user_id, username, comments.body, comments.created_at 
-                                    FROM comments 
-                                    JOIN posts ON posts.id = comments.post_id 
-                                    JOIN users ON users.id = comments.user_id 
-                                    WHERE post_id = ${req.params.id};`,
-            (err, results) => {
-                if (err) {
-                    console.log(err);
-                    return res
-                        .status(err.statusCode)
-                        .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                }
-                if (results.length === 0){
-                    return res
-                        .status(400)
-                        .json(helperFunction.responseHandler(false, 400, 'There are no comments for this post', null));
-                }
-
-                return res
-                    .status(200)
-                    .json(helperFunction.responseHandler(true, 200, 'Success', results));
-            });
+        Comment.retrieveAll(req.params.id, (err, data) => {
+            if (err) {
+                console.log(err);
+                return res.status(err.code).json(err);
+            }
+            return res.status(data.code).json(data);
+        });
     } catch (err) {
         console.log(err);
         return res
@@ -43,20 +28,19 @@ const addComment = (req,res) => {
     }
 
     try {
-        pool.query(
-            'INSERT INTO comments(body,user_id,post_id) VALUES(?,?,?);'
-            , [req.body.body, req.user.id, req.params.id ] ,
-            (err,results) => {
-                if (err) {
-                    console.log(err);
-                    return res
-                        .status(err.statusCode)
-                        .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                }
-                return res
-                    .status(200)
-                    .json(helperFunction.responseHandler(true, 200, 'Comment Added Successfully', results.insertId));
-            });
+        const comment = new Comment({
+            body: req.body.body,
+            user_id: req.user.id,
+            post_id: req.params.id
+        });
+        // Save Comment in the database
+        Comment.create(comment, (err, data) => {
+            if (err) {
+                console.log(err);
+                return res.status(err.code).json(err);
+            }
+            return res.status(data.code).json(data);
+        });
     } catch (err) {
         console.log(err);
         return res
@@ -81,19 +65,15 @@ const deleteComment =  (req,res) => {
                         .status(401)
                         .json(helperFunction.responseHandler(false, 401, 'User not authorized to delete', null));
                 }
-
-                pool.query("DELETE FROM comments WHERE id = ?;", [req.params.id], (err, results) => {
-                    if (err) {
-                        console.log(err);
-                        return res
-                            .status(err.statusCode)
-                            .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                    }
-                    return res
-                        .status(200)
-                        .json(helperFunction.responseHandler(true, 200, 'Comment Deleted', null));
-                });
             });
+
+        Comment.remove(req.params.id, (err, data) => {
+            if (err) {
+                console.log(err);
+                return res.status(err.code).json(err);
+            }
+            return res.status(data.code).json(data);
+        });
     } catch (err) {
         console.log(err);
         return res

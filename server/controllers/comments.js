@@ -3,7 +3,7 @@ const helperFunction = require('../helpers/helperFunction');
 
 const getComments = (req,res) => {
     try {
-        connection.query( ` SELECT
+        pool.query( ` SELECT
                                     comments.id, post_id, comments.user_id, username, comments.body, comments.created_at 
                                     FROM comments 
                                     JOIN posts ON posts.id = comments.post_id 
@@ -43,7 +43,7 @@ const addComment = (req,res) => {
     }
 
     try {
-        connection.query(
+        pool.query(
             'INSERT INTO comments(body,user_id,post_id) VALUES(?,?,?);'
             , [req.body.body, req.user.id, req.params.id ] ,
             (err,results) => {
@@ -67,7 +67,7 @@ const addComment = (req,res) => {
 
 const deleteComment =  (req,res) => {
     try {
-        connection.query('SELECT user_id FROM comments WHERE id = ?;',
+        pool.query('SELECT user_id FROM comments WHERE id = ?;',
             [req.params.id] ,
             (err, results) => {
                 if (err) {
@@ -82,7 +82,7 @@ const deleteComment =  (req,res) => {
                         .json(helperFunction.responseHandler(false, 401, 'User not authorized to delete', null));
                 }
 
-                connection.query("DELETE FROM comments WHERE id = ?;", [req.params.id], (err, results) => {
+                pool.query("DELETE FROM comments WHERE id = ?;", [req.params.id], (err, results) => {
                     if (err) {
                         console.log(err);
                         return res

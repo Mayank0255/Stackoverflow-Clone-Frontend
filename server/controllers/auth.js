@@ -6,8 +6,7 @@ const { validationResult } = require('express-validator');
 
 const loadUser = (req,res) => {
     try{
-        let user;
-        connection.query(`Select id,username,created_at FROM users WHERE id = '${req.user.id}';`,
+        pool.query(`Select id,username,created_at FROM users WHERE id = '${req.user.id}';`,
             (err, results) => {
                 if (err) {
                     console.log(err);
@@ -38,7 +37,7 @@ const login = (req,res) => {
 
     try{
         let user;
-        connection.query(`SELECT * FROM users WHERE username = '${username}';`,async (err, results) => {
+        pool.query(`SELECT * FROM users WHERE username = '${username}';`,async (err, results) => {
             if (err) {
                 return res
                     .status(err.statusCode)

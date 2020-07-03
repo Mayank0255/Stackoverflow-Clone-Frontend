@@ -14,7 +14,7 @@ const getAllUsers = (req, res) => {
                         LEFT JOIN posttag ON posttag.post_id = posts.id 
                         LEFT JOIN tags ON posttag.tag_id = tags.id 
                         GROUP BY users.id ORDER BY posts_count DESC;`
-        connection.query(query,
+        pool.query(query,
             (err, results) => {
                 if (err) {
                     return res
@@ -41,7 +41,7 @@ const getAllUsers = (req, res) => {
 
 const getSingleUser = (req, res) => {
     try {
-        connection.query( ` SELECT 
+        pool.query( ` SELECT 
                                     users.id,username,users.created_at,COUNT(DISTINCT posts.id) 
                                     as post_count,COUNT(DISTINCT tagname) 
                                     as tag_count, COUNT(DISTINCT answers.id) 
@@ -90,7 +90,7 @@ const register = (req,res) => {
 
     try{
         let user;
-        connection.query(`SELECT * FROM users WHERE username = '${username}';`,async (err, results) => {
+        pool.query(`SELECT * FROM users WHERE username = '${username}';`,async (err, results) => {
             if (err) {
                 return res
                     .status(err.statusCode)
@@ -106,7 +106,7 @@ const register = (req,res) => {
             const salt = await bcrypt.genSalt(10);
             user.password = await bcrypt.hash(password, salt);
 
-            await connection.query('INSERT INTO users(username,password) VALUES(?,?)',
+            await pool.query('INSERT INTO users(username,password) VALUES(?,?)',
                 [ user.username,user.password ],
                 (err, results, fields) => {
                     if (err) {
@@ -117,7 +117,7 @@ const register = (req,res) => {
                     console.log(results);
                 });
 
-            connection.query(`SELECT * FROM users WHERE username = '${username}';`,
+            pool.query(`SELECT * FROM users WHERE username = '${username}';`,
                 (err, results) => {
                     if (err) {
                         return res

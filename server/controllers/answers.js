@@ -3,7 +3,7 @@ const helperFunction = require('../helpers/helperFunction');
 
 const getAnswers = (req, res) => {
     try {
-        connection.query( ` SELECT 
+        pool.query( ` SELECT 
                                     answers.id, post_id, answers.user_id, username, answers.text, answers.created_at 
                                     FROM answers 
                                     JOIN posts ON posts.id = post_id 
@@ -42,7 +42,7 @@ const addAnswer = (req, res) => {
     }
 
     try {
-        connection.query(
+        pool.query(
             'INSERT INTO answers(text,user_id,post_id) VALUES(?,?,?);'
             , [req.body.text, req.user.id, req.params.id ] ,
             (err,results) => {
@@ -66,7 +66,7 @@ const addAnswer = (req, res) => {
 
 const deleteAnswer = (req, res) => {
     try {
-        connection.query( ` SELECT user_id
+        pool.query( ` SELECT user_id
                                     FROM answers
                                     WHERE id = ${req.params.id};`,
             (err, results) => {
@@ -82,7 +82,7 @@ const deleteAnswer = (req, res) => {
                         .json(helperFunction.responseHandler(false, 401, 'User not authorized to delete', null));
                 }
 
-                connection.query("DELETE FROM answers WHERE id = " + req.params.id , (err, results) => {
+                pool.query("DELETE FROM answers WHERE id = " + req.params.id , (err, results) => {
                     if (err) {
                         console.log(err);
                         return res

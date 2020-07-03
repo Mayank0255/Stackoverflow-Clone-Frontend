@@ -1,123 +1,29 @@
 const { validationResult } = require('express-validator');
 const helperFunction = require('../helpers/helperFunction');
+const Post = require('../models/posts.model');
 
-const getAllPosts = (req,res) => {
+const getPosts = (req, res) => {
+    let action;
+    const { tagname } = req.params;
+
+    if (tagname) {
+        action = 'tag';
+    } else {
+        action = req.url.includes('top') ? 'top' : 'basic';
+    }
     try {
-        const q = ` SELECT 
-                    posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
-                    as answer_count,COUNT(DISTINCT comments.id) 
-                    as comment_count,tag_id,title,posts.body,tagname,posts.created_at 
-                    FROM posts 
-                    JOIN posttag ON posts.id = post_id 
-                    JOIN tags ON tag_id = tags.id 
-                    JOIN users ON user_id = users.id 
-                    LEFT JOIN answers ON answers.post_id = posts.id 
-                    LEFT JOIN comments ON posts.id = comments.post_id 
-                    GROUP BY posts.id 
-                    ORDER BY posts.created_at DESC;`;
-        pool.query(q,
-            (err, results) => {
-                if (err) {
-                    console.log(err);
-                    return res
-                        .status(err.statusCode)
-                        .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                }
-                if (results.length === 0){
-                    return res
-                        .status(400)
-                        .json(helperFunction.responseHandler(false, 400, 'There are no posts', null));
-                }
-
-                return res
-                    .status(200)
-                    .json(helperFunction.responseHandler(true, 200, 'success', results));
-            });
+        Post.retrieveAll({'action': action, 'tagName': tagname}, (err, data) => {
+            if (err) {
+                console.log(err);
+                return res.status(err.code).json(err);
+            }
+            return res.status(data.code).json(data);
+        });
     } catch (err) {
         console.log(err);
         return res
             .status(500)
             .json(helperFunction.responseHandler(true, 500, 'Server Error', null));
-    }
-};
-
-const getTopPosts = (req, res) => {
-    try {
-        const q = ` SELECT 
-                    posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
-                    as answer_count,COUNT(DISTINCT comments.id) 
-                    as comment_count,tag_id,title,posts.body,tagname,posts.created_at 
-                    FROM posts 
-                    JOIN posttag ON posts.id = post_id 
-                    JOIN tags ON tag_id = tags.id 
-                    JOIN users ON user_id = users.id 
-                    LEFT JOIN answers ON answers.post_id = posts.id 
-                    LEFT JOIN comments ON posts.id = comments.post_id 
-                    GROUP BY posts.id 
-                    ORDER BY answer_count DESC,comment_count DESC;`;
-        pool.query(q,
-            (err, results) => {
-                if (err) {
-                    console.log(err);
-                    return res
-                        .status(err.statusCode)
-                        .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                }
-                if (results.length === 0){
-                    return res
-                        .status(400)
-                        .json(helperFunction.responseHandler(false, 400, 'There are no posts', null));
-                }
-
-                return res
-                    .status(200)
-                    .json(helperFunction.responseHandler(true, 200, 'success', results));
-            });
-    } catch (err) {
-        console.log(err);
-        return res
-            .status(500)
-            .json(helperFunction.responseHandler(false, 500, 'Server Error', null));
-    }
-};
-
-const getTagPosts = (req,res) => {
-    try {
-        pool.query(`  SELECT
-                                    posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
-                                    as answer_count,COUNT(DISTINCT comments.id) 
-                                    as comment_count,tag_id,title,posts.body,tagname,posts.created_at 
-                                    FROM posts 
-                                    JOIN posttag ON posts.id = post_id 
-                                    JOIN tags ON tag_id = tags.id 
-                                    JOIN users ON user_id = users.id 
-                                    LEFT JOIN answers ON answers.post_id = posts.id 
-                                    LEFT JOIN comments ON posts.id = comments.post_id 
-                                    WHERE tags.tagname = '${req.params.tagname}' 
-                                    GROUP BY posts.id 
-                                    ORDER BY posts.created_at DESC;`,
-            (err, results) => {
-                if (err) {
-                    console.log(err);
-                    return res
-                        .status(err.statusCode)
-                        .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                }
-                if (results.length === 0){
-                    return res
-                        .status(400)
-                        .json(helperFunction.responseHandler(false, 400, 'There are no posts for this tag', null));
-                }
-
-                return res
-                    .status(200)
-                    .json(helperFunction.responseHandler(true, 200, 'success', results));
-            });
-    } catch (err) {
-        console.log(err);
-        return res
-            .status(500)
-            .json(helperFunction.responseHandler(false, 500, 'Server Error', null));
     }
 };
 
@@ -134,8 +40,9 @@ const getSinglePost = (req,res) => {
                     JOIN users ON user_id = users.id 
                     LEFT JOIN answers ON answers.post_id = posts.id 
                     LEFT JOIN comments ON posts.id = comments.post_id 
-                    WHERE posts.id = ${req.params.id};`;
+                    WHERE posts.id = ?;`;
         pool.query(q,
+            req.params.id,
             (err, results) => {
                 if (err) {
                     console.log(err);
@@ -167,37 +74,36 @@ const addPost = (req,res) => {
         return res
             .status(400)
             .json(helperFunction.responseHandler(false, 400, errors.array()[0].msg, null));
-    } else {
-        try {
-            pool.query(
-                'INSERT INTO posts(title,body,user_id) VALUES (?,?,?);SET @v1 := (SELECT LAST_INSERT_ID());INSERT IGNORE INTO tags(tagname) VALUES (?);SET @v2 := (SELECT id FROM tags WHERE tagname = ?);INSERT INTO posttag(post_id,tag_id) VALUES(@v1,@v2);'
-                , [ req.body.title, req.body.body, req.user.id, req.body.tagname, req.body.tagname ],
-                (err,results) => {
-                    if (err) {
-                        console.log(err);
-                        return res
-                            .status(err.statusCode)
-                            .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                    }
-                    return res
-                        .status(200)
-                        .json(helperFunction.responseHandler(true, 200, 'Post Created', results.insertId));
-                });
-        } catch (err) {
-            console.log(err);
-            return res
-                .status(500)
-                .json(helperFunction.responseHandler(false, 500, 'Server Error', null));
-        }
-
+    }
+    try {
+        const post = new Post({
+            title: req.body.title,
+            body: req.body.body,
+            userId: req.user.id,
+            tagname: req.body.tagname
+        });
+        // Save Post in the database
+        Post.create(post, (err, data) => {
+            if (err) {
+                console.log(err);
+                return res.status(err.code).json(err);
+            }
+            return res.status(data.code).json(data);
+        });
+    } catch (err) {
+        console.log(err);
+        return res
+            .status(500)
+            .json(helperFunction.responseHandler(false, 500, 'Server Error', null));
     }
 };
 
-const deletePost =  (req,res) => {
+const deletePost = (req,res) => {
+    const { id } = req.params;
+
     try {
-        pool.query( ` SELECT user_id 
-                                    FROM posts 
-                                    WHERE id = ${req.params.id};`,
+        pool.query( `SELECT user_id FROM posts WHERE id = ?;`,
+            id,
             (err,results) => {
                 if (err) {
                     console.log(err);
@@ -210,21 +116,14 @@ const deletePost =  (req,res) => {
                         .status(401)
                         .json(helperFunction.responseHandler(false, 401, 'User not authorized to delete', null));
                 }
-
-                pool.query('DELETE FROM posttag WHERE post_id = ?; DELETE FROM comments WHERE post_id = ?; DELETE FROM answers WHERE post_id = ?; DELETE FROM posts WHERE id = ? ;' ,
-                    [ req.params.id,req.params.id,req.params.id,req.params.id ] ,
-                    (err, results) => {
-                        if (err) {
-                            console.log(err);
-                            return res
-                                .status(err.statusCode)
-                                .json(helperFunction.responseHandler(false, err.statusCode, err.message, null));
-                        }
-                        return res
-                            .status(200)
-                            .json(helperFunction.responseHandler(true, 200, 'Post Removed', null));
-                    });
             });
+        Post.remove(id, (err, data) => {
+            if (err) {
+                console.log(err);
+                return res.status(err.code).json(err);
+            }
+            return res.status(data.code).json(data);
+        });
     } catch (err) {
         console.log(err);
         return res
@@ -235,9 +134,7 @@ const deletePost =  (req,res) => {
 
 
 module.exports = postsController = {
-    getAllPosts,
-    getTopPosts,
-    getTagPosts,
+    getPosts,
     getSinglePost,
     addPost,
     deletePost

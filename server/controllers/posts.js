@@ -15,7 +15,7 @@ const getAllPosts = (req,res) => {
                     LEFT JOIN comments ON posts.id = comments.post_id 
                     GROUP BY posts.id 
                     ORDER BY posts.created_at DESC;`;
-        connection.query(q,
+        pool.query(q,
             (err, results) => {
                 if (err) {
                     console.log(err);
@@ -55,7 +55,7 @@ const getTopPosts = (req, res) => {
                     LEFT JOIN comments ON posts.id = comments.post_id 
                     GROUP BY posts.id 
                     ORDER BY answer_count DESC,comment_count DESC;`;
-        connection.query(q,
+        pool.query(q,
             (err, results) => {
                 if (err) {
                     console.log(err);
@@ -83,7 +83,7 @@ const getTopPosts = (req, res) => {
 
 const getTagPosts = (req,res) => {
     try {
-        connection.query(`  SELECT
+        pool.query(`  SELECT
                                     posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
                                     as answer_count,COUNT(DISTINCT comments.id) 
                                     as comment_count,tag_id,title,posts.body,tagname,posts.created_at 
@@ -135,7 +135,7 @@ const getSinglePost = (req,res) => {
                     LEFT JOIN answers ON answers.post_id = posts.id 
                     LEFT JOIN comments ON posts.id = comments.post_id 
                     WHERE posts.id = ${req.params.id};`;
-        connection.query(q,
+        pool.query(q,
             (err, results) => {
                 if (err) {
                     console.log(err);
@@ -169,7 +169,7 @@ const addPost = (req,res) => {
             .json(helperFunction.responseHandler(false, 400, errors.array()[0].msg, null));
     } else {
         try {
-            connection.query(
+            pool.query(
                 'INSERT INTO posts(title,body,user_id) VALUES (?,?,?);SET @v1 := (SELECT LAST_INSERT_ID());INSERT IGNORE INTO tags(tagname) VALUES (?);SET @v2 := (SELECT id FROM tags WHERE tagname = ?);INSERT INTO posttag(post_id,tag_id) VALUES(@v1,@v2);'
                 , [ req.body.title, req.body.body, req.user.id, req.body.tagname, req.body.tagname ],
                 (err,results) => {
@@ -195,7 +195,7 @@ const addPost = (req,res) => {
 
 const deletePost =  (req,res) => {
     try {
-        connection.query( ` SELECT user_id 
+        pool.query( ` SELECT user_id 
                                     FROM posts 
                                     WHERE id = ${req.params.id};`,
             (err,results) => {
@@ -211,7 +211,7 @@ const deletePost =  (req,res) => {
                         .json(helperFunction.responseHandler(false, 401, 'User not authorized to delete', null));
                 }
 
-                connection.query('DELETE FROM posttag WHERE post_id = ?; DELETE FROM comments WHERE post_id = ?; DELETE FROM answers WHERE post_id = ?; DELETE FROM posts WHERE id = ? ;' ,
+                pool.query('DELETE FROM posttag WHERE post_id = ?; DELETE FROM comments WHERE post_id = ?; DELETE FROM answers WHERE post_id = ?; DELETE FROM posts WHERE id = ? ;' ,
                     [ req.params.id,req.params.id,req.params.id,req.params.id ] ,
                     (err, results) => {
                         if (err) {

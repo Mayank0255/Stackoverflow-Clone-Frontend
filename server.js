@@ -3,15 +3,11 @@ const morgan = require('morgan');
 const compression = require('compression');
 const path = require('path');
 const http = require('http');
-const mysql = require('mysql');
+const pool = require('./config/db.config');
 const index = require('./server/routes/index.route');
 
 const express = require('express');
 const app = express();
-
-// environment variable config
-const dotenv = require('dotenv');
-dotenv.config();
 
 // compressing api response
 app.use(compression());
@@ -24,16 +20,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // database connection
-const connection = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-    multipleStatements: true
-});
-
-connection.query('USE stackoverflow');
-global.connection = connection;
+pool.query('USE stackoverflow');
+global.pool = pool;
 
 // connection with client setup
 if (process.env.NODE_ENV === 'production') {

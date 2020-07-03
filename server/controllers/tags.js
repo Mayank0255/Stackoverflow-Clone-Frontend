@@ -10,7 +10,7 @@ const getTags = (req, res) => {
                         LEFT JOIN posts ON posts.id = posttag.post_id 
                         GROUP BY tags.id ORDER BY posts_count DESC;`
 
-        connection.query(query,
+        pool.query(query,
             (err, results) => {
                 if (err) {
                     console.log(err);

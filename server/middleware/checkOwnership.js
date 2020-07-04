@@ -1,6 +1,6 @@
 const helperFunction = require('../helpers/helperFunction')
 
-function checkOwnership(req ,res , next){
+module.exports = (req ,res , next) => {
     let action;
     if (req.originalUrl.includes('posts')) {
         if (req.originalUrl.includes('answers')) {
@@ -27,5 +27,3 @@ function checkOwnership(req ,res , next){
             next();
         });
 }
-
-module.exports = checkOwnership;

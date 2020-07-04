@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getUser } from '../../redux/users/users.actions';
 import { Link } from 'react-router-dom';
-import timeAgo from '../../utils/timeAgo.utils';
+import timeAgo from '../../services/timeAgo.service';
 
 import { ReactComponent as Logo } from '../../assets/stack-overflow.svg';
 
@@ -22,8 +22,8 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
     return loading || user === null ? <Fragment>Loading...</Fragment> : <Fragment>
         <div className='page'>
             <SideBar/>
-            <div className='userpage'>
-                <div className='user-mainbar'>
+            <div className='user-page'>
+                <div className='user-main-bar'>
                     <div className='user-card'>
                         <div className='grid'>
                             <div className='img-card'>
@@ -111,12 +111,12 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                         </div>
                     </div>
                     <div className='row-grid'>
-                        <div className='grid--cell1'>
+                        <div className='grid-cell1'>
                             <div className='cell-layout'>
                                 <div className='community'>
                                     <h3>
                                         <span className='icon'>
-                                            <svg aria-hidden='true' className='svg-icon native iconLogoSEXxs' width='18' height='18' viewBox='0 0 18 18'>
+                                            <svg aria-hidden='true' className='svg-icon native icon-logo-sex' width='18' height='18' viewBox='0 0 18 18'>
                                                 <path d='M3 4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2H3z' fill='#8FD8F7'/>
                                                 <path d='M15 11H3c0 1.1.9 2 2 2h5v3l3-3a2 2 0 0 0 2-2z' fill='#155397'/>
                                                 <path fill='#46A2D9' d='M3 5h12v2H3z'/><path fill='#2D6DB5' d='M3 8h12v2H3z'/>
@@ -141,7 +141,7 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className='grid--cell2'>
+                        <div className='grid-cell2'>
                             <div className='top-tags'>
                                 <h3>
                                     Top Tags

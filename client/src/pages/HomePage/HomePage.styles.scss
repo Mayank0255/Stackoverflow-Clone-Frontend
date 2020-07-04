@@ -1,49 +1,49 @@
-.page{
+.page {
   z-index:-1;
 }
 
-.homepage{
+.homepage {
   display: inline-block;
   width: 56%;
   margin-left: 20%;
   height: 100vh;
   padding: 24px 0px 24px 0px;
 
-  .mainbar{
-    .questions-grid{
+  .main-bar {
+    .questions-grid {
       display: flex;
       padding-left: 16px;
       padding-right: 16px;
 
-      .questions-headline{
+      .questions-headline {
         margin-bottom: 24px;
         flex: 1 auto;
         font-size: 28px;
         font-weight: 400;
       }
-      .questions-btn{
+      .questions-btn {
         margin-left: 12px;
 
-        button{
+        button {
           padding: 8px;
           margin: 0px;
         }
       }
     }
 
-    .questions-tabs{
+    .questions-tabs {
       margin-bottom: 12px;
       display: flex;
       padding-left: 16px;
       padding-right: 16px;
 
-      span{
+      span {
         font-size: 17px;
         margin-right: 12px;
       }
     }
 
-    .questions{
+    .questions {
       float: none;
       clear: both;
       width: auto;
@@ -53,8 +53,8 @@
   }
 }
 
-@media(max-width: 1100px) {
-  .homepage{
+@media(max-width: 1100px)  {
+  .homepage {
     width: 80%;
   }
 }

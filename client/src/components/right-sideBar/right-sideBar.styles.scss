@@ -1,8 +1,8 @@
-.sideBar{
+.side-bar {
   margin-left: 24px;
   width: 22%;
 
-  .sideBar-widget{
+  .side-bar-widget {
     margin-top: 24px;
     margin-bottom: 16px;
     margin-right: 16px;
@@ -27,7 +27,7 @@
     border-image-slice: initial;
     border-image-repeat: initial;
 
-    .widget-header{
+    .widget-header {
       border-color: #f1e5bc;
       background-color: #fbf2d4;
       font-size: 12px;
@@ -37,7 +37,7 @@
       border-top: 1px solid #e4e6e8;
     }
 
-    .widget-content{
+    .widget-content {
       border-color: #f1e5bc;
       display: block;
       padding: 0 16px 0 16px !important;
@@ -45,16 +45,16 @@
       border-top: 1px solid #e4e6e8;
       list-style-type: disc;
 
-      li{
+      li {
         display: flex;
         margin: 12px 0;
         padding: 0;
 
-        .cell{
+        .cell {
           //flex-basis: 8.33333333%;
           box-sizing: inherit;
 
-          .links{
+          .links {
             margin-left: 6px;
             color: #0c0d0e;
             text-decoration: none;
@@ -66,7 +66,7 @@
     }
   }
 
-  .showtags{
+  .show-tags {
     display: block;
     margin: 5px 0;
     color: #0077cc;
@@ -75,13 +75,13 @@
     font-size: 13px;
   }
 
-  .sideBar-tags{
+  .side-bar-tags {
     word-wrap: break-word;
     margin-bottom: 20px;
     color: #242729;
     margin-top: 24px;
 
-    .tag-headline{
+    .tag-headline {
       color: #3c4146;
       font-size: 18px;
       font-weight: 400;
@@ -89,10 +89,10 @@
       margin-top: 0;
     }
 
-    .tag-content{
+    .tag-content {
       box-sizing: inherit;
 
-      .tag-link{
+      .tag-link {
         font-size: 12px;
         color: #39739d;
         background-color: #e1ecf4;
@@ -108,18 +108,18 @@
         border-style: solid;
         border-radius: 3px;
 
-        &:hover{
+        &:hover {
           color: #2c5777;
           background-color: #d1e5f1;
           border-color: transparent;
         }
       }
 
-      .tag-mult{
+      .tag-mult {
         margin-right: 4px;
         color: #848d95;
 
-        span{
+        span {
           font-size: 11px;
           color: #6a737c;
 
@@ -130,7 +130,7 @@
 }
 
 @media(max-width: 1100px) {
-  .sideBar{
+  .side-bar {
     display: none;
   }
 }

@@ -1,4 +1,4 @@
-.register-content{
+.register-content {
   padding: 24px;
   width: 100%;
   background-color: #eff0f1;
@@ -9,40 +9,40 @@
   height: 92.5vh;
 }
 
-.register-grid {
+.register-grid  {
   display: flex;
   align-items: center;
   box-sizing: inherit;
 
-  .caption {
+  .caption  {
     margin-right: 48px;
     margin-bottom: 0px;
     width: 400px;
 
-    h3{
+    h3 {
       margin-bottom: 32px;
     }
 
-    .caption-item{
+    .caption-item {
       display: flex;
       margin-bottom: 24px;
 
-      .grid-icon{
+      .grid-icon {
         margin-right: 8px;
 
-        .svg-icon{
+        .svg-icon {
           color:#0095ff;
         }
       }
     }
-    .fs-light{
+    .fs-light {
       color:#6a737c;
       font-size: 13px;
       box-sizing: inherit;
     }
   }
 
-  .formContainer {
+  .form-container  {
     width: 320px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.05), 0 20px 48px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1);
     padding: 24px;
@@ -54,42 +54,41 @@
     box-sizing: inherit;
     display: block;
 
-    .grid{
+    .grid {
       margin: 6px 0;
 
-      button{
+      button {
         width: 100%;
       }
     }
 
-    .fs-caption{
+    .fs-caption {
       color:#6a737c;
       font-size: 12px;
     }
 
-    .license{
+    .license {
       margin-top: 32px;
     }
-    .form-label{
+    .form-label {
       font-weight: 600;
     }
   }
 
-  .IconHolder{
+  .icon-holder {
     text-align: center;
     margin-bottom: 15px;
 
-    .Icon{
+    .icon {
       width: 45px;
       height: 45px;
     }
   }
 
-  .redirects{
+  .redirects {
     padding: 16px 16px 0 16px;
     text-align: center;
     font-size: 13px;
     margin-bottom: 24px;
   }
-
 }

@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     if (!token) {
         return res
             .status(401)
-            .json(helperFunction.responseHandler(false, 401, 'No token, authorization denied', null));
+            .json(helperFunction.responseHandler(false, 401, 'Sign-in required', null));
     }
 
     // Verify token
@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
             if (error) {
                 return res
                     .status(400)
-                    .json(helperFunction.responseHandler(false, 400, 'Token is not valid', null));
+                    .json(helperFunction.responseHandler(false, 400, 'Try again', null));
             } else {
                 req.user = decoded.user;
                 next();

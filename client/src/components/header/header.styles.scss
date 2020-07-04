@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
   height: 50px;
   border-top: 3px solid #f48024;
   padding: 3px;
@@ -6,70 +6,70 @@
   z-index: 1000;
   background-color: #fff;
 }
-.navbar *{
+* {
   box-sizing: border-box;
 }
 
-.navbar-brand{
+.navbar-brand {
   padding-left: 130px ;
 }
 
-.btns{
+.btns {
   margin-right: 140px;
 }
 
-.btn-sm{
+.btn-sm {
   padding: 5px 10px;
 }
 
-.btn-outline-primary{
+.btn-outline-primary {
   background-color: #e1ecf4;
   color: #39739d;
   border-color: #7aa7c7;
 }
 
-.btn-outline-primary:hover{
+.btn-outline-primary:hover {
   color: #2c5777;
   background-color: #b3d3ea;
   border-color: #7aa7c7;
 }
 
-.searchbar {
+.search-bar  {
   -webkit-transform: translate3d(0, 0, 0);
   flex-shrink: 10000;
   margin-left: 20px;
 }
 
-.barItems{
+.bar-items {
   font-size: 14px;
   color:  rgba(0, 0, 0, 0.6);
   margin: 0 10px;
 }
 
-.px12 {
+.px12  {
   padding-left: 12px !important;
   padding-right: 12px !important;
 }
 
-.fl-grow1 {
+.fl-grow1  {
   flex-grow: 1;
 }
 
-.ps-relative {
+.ps-relative  {
   position: relative !important;
 }
 
-.searchbar .s-input {
+.search-bar .s-input  {
   border-color: #bbc0c4;
   background-color: var(--white);
   box-shadow: none;
   color: #3c4146;
 }
-.s-input.s-input__search, .s-input.s-input__creditcard {
+.s-input.s-input-search, .s-input.s-input-credit-card  {
   padding-left: 32px;
 }
 
-.s-input, .s-textarea {
+.s-input, .s-textarea  {
   width: 100%;
   margin: 0;
   padding: .6em .7em;
@@ -83,7 +83,7 @@
   scrollbar-color: var(--scrollbar) transparent;
 }
 
-.gg-search {
+.gg-search  {
   box-sizing: border-box;
   position: relative;
   display: block;
@@ -99,7 +99,7 @@
   top: 37%;
   left: .7em;
 }
-.gg-search::after {
+.gg-search::after  {
   content: "";
   display: block;
   box-sizing: border-box;
@@ -113,7 +113,7 @@
   left: 12px
 }
 
-.s-input-icon {
+.s-input-icon  {
   position: absolute;
   top: 50%;
   right: .7em;
@@ -121,27 +121,27 @@
   pointer-events: none;
 }
 
-.brandIcon{
+.brand-icon {
   width: 24px;
   height: 24px;
 }
 
-.HeaderIcon{
+.header-icon {
   color: #696969;
   width: 16px;
 }
 
 @media(max-width: 1200px) {
-  .btns{
+  .btns {
     margin-right: 30px;
   }
 }
 
 @media (max-width:986px) {
-  .navbar-brand{
+  .navbar-brand {
     padding-left: 20px ;
   }
-  .btns{
+  .btns {
     margin-right: 20px;
   }
 }

@@ -8,9 +8,6 @@ import SideBar from '../../components/SideBar/SideBar.component';
 import PostItem from '../../components/PostItem/PostItem.component';
 import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
 
-import './TagPage.styles.scss'
-
-
 const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
     useEffect(() => {
         getTagPosts(match.params.tagname);
@@ -21,8 +18,8 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
         <div className='page'>
             <SideBar/>
 
-            <div className='questionspage'>
-                <div className='mainbar'>
+            <div className='questions-page'>
+                <div className='main-bar'>
                     <div className='questions-grid'>
                         <h3 className='questions-headline'>Questions tagged [{match.params.tagname}]</h3>
                         <div className='questions-btn'>

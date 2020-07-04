@@ -1,8 +1,8 @@
-.page{
+.page {
   display: flex;
 }
 
-.userpage{
+.user-page {
   display: inline-block;
   width: 56%;
   //float: right;
@@ -10,30 +10,30 @@
   //height: 100vh;
   padding: 24px;
 
-  .user-mainbar{
+  .user-main-bar {
     box-sizing: border-box;
     width: 100%;
     padding: 0;
     color: #242729;
 
-    .user-card{
+    .user-card {
       box-sizing: border-box;
       display: block;
       color: #242729;
 
-      .grid{
+      .grid {
         box-sizing: border-box;
         margin: -12px;
         display: flex;
         color: #242729;
 
-        .img-card{
+        .img-card {
           box-sizing: border-box;
           margin: 12px;
           width: 210px;
           overflow: hidden;
 
-          .avatar-card{
+          .avatar-card {
             box-shadow: inset 0 10em 0 #eff0f1 !important;
             text-align: center;
             padding: 12px !important;
@@ -42,7 +42,7 @@
             border-radius: 3px;
             background-color: #fff;
 
-            .avatar{
+            .avatar {
               width: 164px;
               height: 164px;
               overflow: hidden !important;
@@ -51,15 +51,15 @@
               margin-top: 16px;
               color: #242729;
 
-              .avatar-link{
+              .avatar-link {
 
 
-                .logo-wrapper{
+                .logo-wrapper {
                   border-radius: 3px;
                   width: 164px;
                   height: 164px;
 
-                  img{
+                  img {
                     width: 164px;
                     height: 164px;
                     border-radius: 3px;
@@ -68,12 +68,12 @@
               }
             }
 
-            .title{
+            .title {
               font-weight: 400;
               margin-top: 12px !important;
               margin-bottom: 12px !important;
 
-              .grid{
+              .grid {
                 color: #0c0d0e;
                 font-size: 21px;
                 display: flex;
@@ -81,7 +81,7 @@
                 justify-content: center !important;
                 align-items: center !important;
 
-                span{
+                span {
                   color: #6a737c;
                   font-size: 11px;
                 }
@@ -90,33 +90,32 @@
           }
         }
 
-        .content-card{
+        .content-card {
           box-sizing: border-box;
           margin: 12px;
           flex: 1 auto !important;
-          //min-width: 0 !important;
 
-          .content-grid{
+          .content-grid {
             margin: -8px;
             display: flex;
             flex-direction: column;
 
-            .info-cell{
+            .info-cell {
               margin: 8px;
               //height: 278px;
               padding-right: 16px !important;
               flex: 1 auto;
               color: #242729;
 
-              .info{
+              .info {
                 display: flex;
                 flex-direction: column !important;
 
-                .details{
+                .details {
                   margin-top: 4px;
                   margin-bottom: 4px;
 
-                  h2{
+                  h2 {
                     word-break: break-all !important;
                     color: #0c0d0e !important;
                     font-size: 27px;
@@ -127,7 +126,7 @@
                   }
                 }
 
-                .date{
+                .date {
                   margin-top: 16px;
                   margin-bottom: 4px;
                   color: #6a737c !important;
@@ -136,33 +135,33 @@
               }
             }
 
-            .stats-cell{
+            .stats-cell {
               margin: 8px;
               padding-right: 24px !important;
 
-              .count-sec{
+              .count-sec {
                 color: #3c4146 !important;
                 margin-bottom: 16px !important;
 
-                .counts{
+                .counts {
                   margin: -6px;
                   display: flex;
 
-                  .cells{
+                  .cells {
                     margin: 6px;
 
-                    .column-grid{
+                    .column-grid {
                       display: flex;
                       flex-direction: column;
                       color: #3c4146 !important;
 
-                      .head{
+                      .head {
                         font-weight: 700 !important;
                         color: #0c0d0e !important;
                         font-size: 17px;
                         text-align: center;
                       }
-                      .foot{
+                      .foot {
                         font-size: 13px;
 
                       }
@@ -177,7 +176,7 @@
 
     }
 
-    .row-grid{
+    .row-grid {
       padding-bottom: 30px;
       box-sizing: border-box;
       width: 100%;
@@ -185,20 +184,20 @@
       display: flex;
 
 
-      .grid--cell1{
+      .grid-cell1 {
         margin: 12px;
         width: 100%;
         max-width: 210px;
 
 
-        .cell-layout{
+        .cell-layout {
           display: flex;
           flex-direction: column;
 
-          .community{
+          .community {
             margin: 16px 0 16px 0;
 
-            h3{
+            h3 {
               padding-bottom: 6px !important;
               border-bottom: 1px solid #d6d9dc;
               font-size: 15px;
@@ -206,26 +205,26 @@
               display: flex;
               align-items: center;
 
-              .icon{
+              .icon {
                 margin: 2px;
               }
 
-              .text{
+              .text {
                 margin: 2px;
               }
             }
 
-            ul{
+            ul {
               list-style: none;
               padding: 0;
               margin-top: 8px;
               display: flex;
               flex-direction: column;
 
-              .item{
+              .item {
                 margin: 8px 0 8px 0;
 
-                a{
+                a {
                   font-size: 13px;
                   margin-left: -2px;
                   margin-right: -2px;
@@ -235,16 +234,16 @@
                   text-decoration: none;
                   cursor: pointer;
 
-                  &:hover{
+                  &:hover {
                     color: #0095ff;
                     text-decoration: none;
                   }
 
-                  span{
+                  span {
                     margin: 0 2px 0 2px;
                   }
 
-                  .logo{
+                  .logo {
                     width: 18px;
                     height: 18px;
                   }
@@ -253,10 +252,10 @@
             }
           }
 
-          .user-posts{
+          .user-posts {
             margin: 16px 0 16px 0;
 
-            h3{
+            h3 {
               font-weight: 700;
               color: #0c0d0e;
               padding-bottom: 8px;
@@ -264,7 +263,7 @@
               font-size: 15px;
               margin-bottom: 15px;
             }
-            p{
+            p {
               color: #6a737c;
               font-size: 12px;
               padding-right: 16px;
@@ -276,16 +275,16 @@
 
       }
 
-      .grid--cell2{
+      .grid-cell2 {
         margin: 12px;
         flex: 1 auto !important;
         color: #242729;
 
-        .top-tags{
+        .top-tags {
           margin-top: 23px;
           margin-bottom: 48px !important;
 
-          h3{
+          h3 {
             font-weight: 700;
             color: #0c0d0e;
             padding-bottom: 8px !important;
@@ -294,19 +293,19 @@
             margin-bottom: 15px;
           }
 
-          .top-tags-sec{
+          .top-tags-sec {
             margin: -4px 0 -4px 0;
             display: flex;
             flex-direction: column;
 
-            .top-tags-cells{
+            .top-tags-cells {
               margin: 4px;
 
-              .top-cell{
+              .top-cell {
                 margin: -4px;
                 display: flex;
 
-                .tag-cell{
+                .tag-cell {
                   margin: 4px;
                   padding: 8px;
                   display: flex;
@@ -315,7 +314,7 @@
                   border-radius: 3px;
                   color: #242729;
 
-                  &>a{
+                  & > a {
                     font-size: 15px;
                     color: #39739d;
                     background-color: #e1ecf4;
@@ -331,7 +330,7 @@
                     border-style: solid;
                     border-radius: 3px;
 
-                    &:hover{
+                    &:hover {
                       color: #2c5777;
                       background-color: #d1e5f1;
                       border-color: transparent;
@@ -339,15 +338,15 @@
                   }
                 }
 
-                .score{
+                .score {
                   display: flex;
                   justify-content: flex-end;
                   flex: 1 auto;
 
-                  .score-txt{
+                  .score-txt {
                     display: flex;
 
-                    .score-tab{
+                    .score-tab {
                       margin: 0 8px 0 8px;
                       height: 100%;
                       font-size: 11px;
@@ -355,16 +354,15 @@
                       align-items: center;
                       color: #9199a1;
 
-                      .txt{
+                      .txt {
                         text-transform: uppercase;
                         font-weight: 700;
                         margin-right: 6px;
                       }
 
-                      .number{
+                      .number {
                         color: #3c4146;
                         font-size: 15px;
-
                       }
                     }
                   }

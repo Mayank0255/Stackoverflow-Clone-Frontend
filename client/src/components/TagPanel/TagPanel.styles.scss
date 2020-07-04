@@ -1,21 +1,19 @@
-.tag-card{
-  //display: flex;
-  //flex-direction: column;
+.tag-card {
   padding: 12px;
   border: 1px solid #d6d9dc;
   border-radius: 3px;
   background-color: #fff;
 
-  .grid{
+  .grid {
     display: flex;
     margin-bottom: 12px;
     align-items: center;
     justify-content: space-between;
 
-    .grid-cell{
+    .grid-cell {
       display: block;
 
-      a{
+      a {
         font-size: 12px;
         color: #39739d;
         background-color: #e1ecf4;
@@ -31,7 +29,7 @@
         border-style: solid;
         border-radius: 3px;
 
-        &:hover{
+        &:hover {
           color: #2c5777;
           background-color: #d1e5f1;
           border-color: transparent;
@@ -40,7 +38,7 @@
     }
   }
 
-  .caption{
+  .caption {
     font-size: 12px;
     margin: auto;
     display: flex;

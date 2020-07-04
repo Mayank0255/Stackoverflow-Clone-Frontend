@@ -8,18 +8,18 @@ import SideBar from '../../components/SideBar/SideBar.component';
 import PostItem from '../../components/PostItem/PostItem.component';
 import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
 
-import './HomePage.styles.scss'
+import './HomePage.styles.scss';
 
-const HomePage = ({ getTopPosts,auth, post: { posts, loading }  }) => {
+const HomePage = ({ getTopPosts, post: { posts, loading }  }) => {
     useEffect(() => {
         getTopPosts();
-    }, [getTopPosts]);
+    }, [ getTopPosts ]);
 
     return loading || posts === null ? <Fragment>Loading...</Fragment> : <Fragment>
         <div className='page'>
             <SideBar/>
             <div className='homepage'>
-                <div className='mainbar'>
+                <div className='main-bar'>
                     <div className='questions-grid'>
                         <h3 className='questions-headline'>Top Questions</h3>
                         <div className='questions-btn'>
@@ -44,13 +44,11 @@ const HomePage = ({ getTopPosts,auth, post: { posts, loading }  }) => {
 
 HomePage.propTypes = {
     getTopPosts: PropTypes.func.isRequired,
-    post: PropTypes.object.isRequired,
-    auth: PropTypes.object.isRequired
+    post: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    post: state.post,
-    auth: state.auth
+    post: state.post
 });
 
 export default connect(mapStateToProps, { getTopPosts })(HomePage);

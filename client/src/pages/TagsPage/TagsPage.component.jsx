@@ -16,8 +16,8 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
     return (
         <div className='page'>
             <SideBar/>
-            <div className='tagspage'>
-                <div className='mainbar'>
+            <div className='tags-page'>
+                <div className='main-bar'>
                     <h1 className='headline'>Tags</h1>
                     <p className='fs-body'>
                         A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.
@@ -47,4 +47,4 @@ const mapStateToProps = state => ({
     tag: state.tag
 });
 
-export default connect(mapStateToProps,{ getTags})(TagsPage);
+export default connect(mapStateToProps,{ getTags })(TagsPage);

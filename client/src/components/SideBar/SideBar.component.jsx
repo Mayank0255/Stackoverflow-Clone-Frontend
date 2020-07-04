@@ -5,8 +5,8 @@ import { ReactComponent as GlobalIcon} from '../../assets/globe-americas-solid.s
 import './SideBar.styles.scss';
 
 const SideBar = () => (
-    <div className='sidebar-container'>
-        <div className='sidebar-tabs'>
+    <div className='side-bar-container'>
+        <div className='side-bar-tabs'>
 
             <NavLink exact activeClassName='active' className='home-link nav_link' to='/' >
                 <p>Home</p>

@@ -1,4 +1,4 @@
-.sidebar-container{
+.side-bar-container {
   display: inline-block;
   width: 20%;
   height: 100vh;
@@ -7,84 +7,83 @@
   font-size: 14px;
   position: fixed;
 
-  .sidebar-tabs{
+  .side-bar-tabs {
     float: right;
     margin-top:25px;
 
 
 
-    .home-link{
+    .home-link {
       text-decoration: none;
       color: grey;
-      p{
+      p {
         padding: 5px 5px 5px 5px;
         border-right: 3px;
       }
-      &:hover{
+      &:hover {
         color: black;
       }
     }
 
 
-    .icon-link{
+    .icon-link {
       text-decoration: none;
       color: grey;
 
-      p{
+      p {
         padding: 5px 30px 5px 10px;
         margin-bottom: 5px;
         border-right: 3px solid transparent;
         width: 160px;
-        //max-width: 100%;
       }
-      .icon{
+      .icon {
         margin-right: 5px;
       }
-      &:hover{
+      &:hover {
         color: black;
 
-        .icon{
+        .icon {
           color: black;
         }
       }
     }
 
-    .link{
+    .link {
       text-decoration: none;
       color: grey;
 
-      p{
+      p {
         padding: 5px 45px 5px 20px;
         margin-bottom: 5px;
         width: 100%;
         display: flex;
         align-items: center;
       }
-      &:hover{
+      &:hover {
         color: black;
       }
     }
 
 
-    .title{
+    .title {
       font-size: 12px;
       margin-bottom: 5px;
     }
 
-    .icon{
+    .icon {
       width: 16px;
       color: grey;
     }
 
-    .active{
+    .active {
       color: black;
 
-      p{
+      p {
         background-color: #eff0f1;
         font-weight: 500;
         border-right: 3px solid #f48024;
       }
-      .icon{
+      .icon {
         color: black;
       }
 

@@ -12,8 +12,8 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
     }, [getTags]);
 
     return (
-        <div className='sideBar'>
-            <div className='sideBar-widget'>
+        <div className='side-bar'>
+            <div className='side-bar-widget'>
                 <div className='widget-header'>
                     The Overflow Blog
                 </div>
@@ -21,7 +21,7 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                     <li>
                         <div className='cell'>
                             <Link to='/'>
-                                <svg aria-hidden='true' className='svg-icon va-text-top iconPencilSm' width='14'
+                                <svg aria-hidden='true' className='svg-icon va-text-top' width='14'
                                      height='14' viewBox='0 0 14 14'>
                                     <path
                                         d='M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z'/>
@@ -37,7 +37,7 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                     <li>
                         <div className='cell'>
                             <Link to='/'>
-                                <svg aria-hidden='true' className='svg-icon va-text-top iconPencilSm' width='14'
+                                <svg aria-hidden='true' className='svg-icon va-text-top' width='14'
                                      height='14' viewBox='0 0 14 14'>
                                     <path
                                         d='M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z'/>
@@ -56,7 +56,7 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                     <li>
                         <div className='cell'>
                             <Link to='/'>
-                                <svg aria-hidden='true' className='svg-icon va-text-top iconPencilSm' width='14'
+                                <svg aria-hidden='true' className='svg-icon va-text-top' width='14'
                                      height='14' viewBox='0 0 14 14'>
                                     <path
                                         d='M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z'/>
@@ -72,7 +72,7 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                     <li>
                         <div className='cell'>
                             <Link to='/'>
-                                <svg aria-hidden='true' className='svg-icon va-text-top iconPencilSm' width='14'
+                                <svg aria-hidden='true' className='svg-icon va-text-top' width='14'
                                      height='14' viewBox='0 0 14 14'>
                                     <path
                                         d='M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z'/>
@@ -88,7 +88,7 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                     <li>
                         <div className='cell'>
                             <Link to='/'>
-                                <svg aria-hidden='true' className='svg-icon va-text-top iconPencilSm' width='14'
+                                <svg aria-hidden='true' className='svg-icon va-text-top' width='14'
                                      height='14' viewBox='0 0 14 14'>
                                     <path
                                         d='M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z'/>
@@ -104,7 +104,7 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                     <li>
                         <div className='cell'>
                             <Link to='/'>
-                                <svg aria-hidden='true' className='svg-icon va-text-top iconPencilSm' width='14'
+                                <svg aria-hidden='true' className='svg-icon va-text-top' width='14'
                                      height='14' viewBox='0 0 14 14'>
                                     <path
                                         d='M11.1 1.71l1.13 1.12c.2.2.2.51 0 .71L11.1 4.7 9.21 2.86l1.17-1.15c.2-.2.51-.2.71 0zM2 10.12l6.37-6.43 1.88 1.88L3.88 12H2v-1.88z'/>
@@ -117,7 +117,7 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                     </li>
                 </ul>
             </div>
-            <div className='sideBar-tags'>
+            <div className='side-bar-tags'>
                 <h4 className='tag-headline'>Top Ten Tags</h4>
                 {tags.slice(0, 10).map(tag => (
                     <div key={tag.tagname} className='tag-content'>
@@ -132,7 +132,7 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                         </span>
                     </div>
                 ))}
-                <Link className='showtags' to='/tags'>show more tags</Link>
+                <Link className='show-tags' to='/tags'>show more tags</Link>
             </div>
         </div>
     )

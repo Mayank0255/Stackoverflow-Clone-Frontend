@@ -2,10 +2,10 @@ import React, {useEffect, Fragment,useState} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { getPost,deletePost } from '../../redux/posts/posts.actions';
-import { getAnswers,deleteAnswer, addAnswer } from '../../redux/answers/answers.actions';
-import { getComments,deleteComment,addComment } from '../../redux/comments/comments.actions';
-import timeAgo from '../../utils/timeAgo.utils';
+import { getPost, deletePost } from '../../redux/posts/posts.actions';
+import { getAnswers, deleteAnswer, addAnswer } from '../../redux/answers/answers.actions';
+import { getComments, deleteComment, addComment } from '../../redux/comments/comments.actions';
+import timeAgo from '../../services/timeAgo.service';
 
 import { ReactComponent as UpVote } from '../../assets/sort-up-solid.svg';
 import { ReactComponent as DownVote } from '../../assets/sort-down-solid.svg';
@@ -15,14 +15,14 @@ import RightSideBar from '../../components/right-sideBar/right-sideBar.component
 
 import './Post.styles.scss'
 
-const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAnswers,getComments,auth,getPost,answer: { answers },comment: { comments } , post: { post, loading } , match }) => {
+const Post = ({ deletePost, deleteAnswer, addAnswer, deleteComment, addComment, getAnswers, getComments, auth, getPost, answer: { answers }, comment: { comments }, post: { post, loading }, match }) => {
 
     useEffect(() => {
         getPost(match.params.id);
         getAnswers(match.params.id);
         getComments(match.params.id);
         // eslint-disable-next-line
-    }, [getPost,getAnswers,getComments]);
+    }, [ getPost, getAnswers, getComments ]);
 
     const [ formData, setFormData ] = useState({
         body: ''
@@ -34,7 +34,7 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
 
     const onSubmit = async e => {
         e.preventDefault();
-        addComment(match.params.id,{body});
+        addComment(match.params.id, {body});
         setFormData({
             body: ''
         });
@@ -59,7 +59,7 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
     return loading || post === null ? <Fragment>Loading...</Fragment> : <Fragment>
         <div className='page'>
             <SideBar/>
-            <div className='Post'>
+            <div className='post'>
                 <div className='main-entity'>
                     <div className='inner-content'>
                         <div className='question-header'>
@@ -71,7 +71,7 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                             </div>
                         </div>
                         <div className='question-date'>
-                            <div className='grid--cell'>
+                            <div className='grid-cell'>
                                 <span>
                                     Asked
                                 </span>
@@ -194,9 +194,6 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                                                         placeholder='add comment'
                                                     />
                                                 </div>
-                                                {/*<a href={`/questions/${post.id}`} className='comment-button'>*/}
-                                                {/*    <a className='btn btn-primary' id='submit-button' name='submit-button'>Add your comment</a>*/}
-                                                {/*</a>*/}
                                             </form>
                                         </div>
                                     </div>
@@ -205,7 +202,7 @@ const Post = ({ deletePost,deleteAnswer,addAnswer,deleteComment,addComment,getAn
                             </div>
                             <div className='answer'>
                                 <div className='answer-header'>
-                                    <div className='answer-subheader'>
+                                    <div className='answer-sub-header'>
                                         <div className='answer-headline'>
                                             <h2>Answers</h2>
                                         </div>

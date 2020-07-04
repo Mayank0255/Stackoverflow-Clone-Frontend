@@ -1,9 +1,112 @@
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 const helperFunction = require('../helpers/helperFunction');
 
 // constructor
 const User = function(user) {
     this.username = user.username;
     this.password = user.password;
+};
+
+User.register = async (newUser, result) => {
+    const salt = await bcrypt.genSalt(10);
+    newUser.password = await bcrypt.hash(newUser.password, salt);
+
+    const query = `INSERT INTO users(username,password) VALUES(?,?);`;
+
+    await pool.query(query,
+        [ newUser.username, newUser.password ],
+        (err, res) => {
+            if (err) {
+                console.log('error: ', err);
+                result(
+                    helperFunction.responseHandler(false, err.statusCode, err.message, null),
+                    null
+                );
+                return;
+            }
+
+            const payload = {
+                user: {
+                    id: res.insertId
+                }
+            };
+
+            jwt.sign(
+                payload,
+                config.get('jwtSecret'),
+                { expiresIn: 3600 },
+                (err, token) => {
+                    if (err) {
+                        console.log('error: ', err);
+                        result(
+                            helperFunction.responseHandler(false, err.statusCode, err.message, null),
+                            null
+                        );
+                        return;
+                    }
+                    result(
+                        null,
+                        helperFunction.responseHandler(true, 200, 'User registered', {'token': token})
+                    );
+                });
+        });
+};
+
+User.login = (newUser, result) => {
+    const query = `SELECT * FROM users WHERE username = ?;`;
+
+
+    pool.query(query,
+        newUser.username,
+        async (err, results) => {
+            if (err || !results[0]) {
+                console.log('error: ', err);
+                const code = !results[0] ? 404 : err.statusCode;
+                result(
+                    helperFunction.responseHandler(false, code, !results[0] ? 'User does not exists' : err.message, null),
+                    null
+                );
+                return;
+            }
+
+            const user = results[0];
+
+            const isMatch = await bcrypt.compare(newUser.password, user.password);
+
+            if(!isMatch){
+                result(
+                    helperFunction.responseHandler(false, 400, 'Incorrect password', null),
+                    null
+                );
+            }
+
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            };
+
+            jwt.sign(
+                payload,
+                config.get('jwtSecret'),
+                { expiresIn: 3600 },
+                (err, token) => {
+                    if (err) {
+                        console.log('error: ', err);
+                        result(
+                            helperFunction.responseHandler(false, err.statusCode, err.message, null),
+                            null
+                        );
+                        return;
+                    }
+                    result(
+                        null,
+                        helperFunction.responseHandler(true, 200, 'User logged in', {'token': token})
+                    );
+                });
+    });
 };
 
 User.retrieve = ({ action, id }, result) => {
@@ -39,6 +142,27 @@ User.retrieve = ({ action, id }, result) => {
             result(
                 null,
                 helperFunction.responseHandler(true, 200, 'Success', action === 'one' ? results[0] : results)
+            );
+        });
+}
+
+User.loadUser = (user_id, result) => {
+    const query = `SELECT id,username,created_at FROM users WHERE id = ?;`;
+
+    pool.query(query,
+        user_id,
+        (err, results) => {
+            if (err) {
+                console.log('error: ', err);
+                result(
+                    helperFunction.responseHandler(false, err.statusCode, err.message, null),
+                    null
+                );
+                return;
+            }
+            result(
+                null,
+                helperFunction.responseHandler(true, 200, 'Success', results[0])
             );
         });
 }

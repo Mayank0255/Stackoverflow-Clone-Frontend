@@ -13,7 +13,7 @@ const app = express();
 app.use(compression());
 
 // logger
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 
 // body-parser
 app.use(bodyParser.urlencoded({extended: true}));

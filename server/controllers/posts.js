@@ -3,16 +3,13 @@ const helperFunction = require('../helpers/helperFunction');
 const Post = require('../models/posts.model');
 
 const getPosts = (req, res) => {
-    let action;
     const { tagname } = req.params;
 
-    if (tagname) {
-        action = 'tag';
-    } else {
-        action = req.url.includes('top') ? 'top' : 'basic';
-    }
     try {
-        Post.retrieveAll({'action': action, 'tagName': tagname}, (err, data) => {
+        Post.retrieveAll({
+            'action': tagname ? 'tag' : (req.url.includes('top') ? 'top' : 'basic'),
+            'tagName': tagname
+        }, (err, data) => {
             if (err) {
                 console.log(err);
                 return res.status(err.code).json(err);

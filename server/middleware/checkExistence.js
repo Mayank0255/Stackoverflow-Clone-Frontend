@@ -3,7 +3,7 @@ const helperFunction = require('../helpers/helperFunction')
 module.exports = (req ,res , next) => {
     const { username,password } = req.body;
 
-    pool.query(`SELECT * FROM users WHERE username = '${username}';`,(err, results) => {
+    pool.query(`SELECT * FROM users WHERE username = ?;`, username,(err, results) => {
         if (err) {
             return res
                 .status(err.statusCode)

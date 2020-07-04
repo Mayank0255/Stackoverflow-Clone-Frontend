@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getUser } from '../../redux/users/users.actions';
 import { Link } from 'react-router-dom';
-import timeAgo from "../../utils/timeAgo.utils";
+import timeAgo from '../../utils/timeAgo.utils';
 
 import { ReactComponent as Logo } from '../../assets/stack-overflow.svg';
 

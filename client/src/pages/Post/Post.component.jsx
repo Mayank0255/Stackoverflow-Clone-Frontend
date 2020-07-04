@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { getPost,deletePost } from '../../redux/posts/posts.actions';
 import { getAnswers,deleteAnswer, addAnswer } from '../../redux/answers/answers.actions';
 import { getComments,deleteComment,addComment } from '../../redux/comments/comments.actions';
-import timeAgo from "../../utils/timeAgo.utils";
+import timeAgo from '../../utils/timeAgo.utils';
 
 import { ReactComponent as UpVote } from '../../assets/sort-up-solid.svg';
 import { ReactComponent as DownVote } from '../../assets/sort-down-solid.svg';

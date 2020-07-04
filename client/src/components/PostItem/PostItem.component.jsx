@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import timeAgo from "../../utils/timeAgo.utils";
+import timeAgo from '../../utils/timeAgo.utils';
 
 import './PostItem.styles.scss';
 

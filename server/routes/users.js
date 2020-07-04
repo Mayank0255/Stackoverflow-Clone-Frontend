@@ -1,19 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
+const checkExistence = require('../middleware/checkExistence');
 const usersController = require('../controllers/users');
 
 /** @route      GET /api/users
  *  @desc       fetch all the users
  *  @access     Private
  */
-router.get('/', usersController.getAllUsers);
+router.get('/', usersController.getUsers);
 
 /** @route      GET /api/users/:id
  *  @desc       fetch single user
  *  @access     Private
  */
-router.get('/:id', usersController.getSingleUser);
+router.get('/:id', usersController.getUsers);
 
 /** @route      POST /api/users/:id
  *  @desc       register a new user
@@ -26,7 +27,7 @@ router.post(
         check(
             'password',
             'Please enter a password with 5 or more characters'
-        ).isLength({ min: 5 })
+        ).isLength({ min: 5 }), checkExistence
     ], usersController.register);
 
 module.exports = router;

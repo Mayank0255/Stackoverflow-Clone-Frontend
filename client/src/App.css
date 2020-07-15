@@ -1,3 +1,8 @@
+:root {
+    --yellow-200: #675c37;
+    --yellow-050: #464236;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -5,8 +10,16 @@
     font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
 }
 
+body {
+    background-color: #2d2d2d;
+}
+
 .App{
     margin-top: 51px;
+}
+
+a {
+    text-decoration: none;
 }
 
 button{

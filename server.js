@@ -1,5 +1,7 @@
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const helmet = require('helmet');
+const cors = require('cors');
 const compression = require('compression');
 const path = require('path');
 const http = require('http');
@@ -14,6 +16,13 @@ app.use(compression());
 
 // logger
 app.use(morgan('dev'));
+
+//cors enable
+app.options('*', cors());
+app.use(cors({ origin: 'http://localhost:5000' }));
+
+// security config
+app.use(helmet());
 
 // body-parser
 app.use(bodyParser.urlencoded({extended: true}));

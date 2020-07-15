@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../redux/auth/auth.actions'
 
-import { ReactComponent as Logo } from '../../assets/stack-overflow.svg';
+import { ReactComponent as Logo } from '../../assets/LogoMd.svg';
 
 import './header.styles.scss';
 
 const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
-
     const authLinks = (
         <div className='btns'>
             <Link onClick={ logout } to='/login'>
@@ -19,16 +18,16 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
     );
 
     const authTabs = (
-        <div>
-            <span className='bar-items'>Products</span>
+        <div className="s-navigation">
+            <a href='/' className="s-navigation--item">Products</a>
         </div>
     );
 
     const guestTabs = (
-        <div>
-            <span className='bar-items'>Products</span>
-            <span className='bar-items'>Customers</span>
-            <span className='bar-items'>Use cases</span>
+        <div className="s-navigation">
+            <a href='/' className="s-navigation--item is-selected">Products</a>
+            <a href='/' className="s-navigation--item">Customers</a>
+            <a href='/' className="s-navigation--item">Use cases</a>
         </div>
     );
 
@@ -47,8 +46,7 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
     return(
         <nav className='navbar fixed-top navbar-expand-lg navbar-light'>
             <a className='navbar-brand' href='/'>
-                <Logo className='brand-icon'/>
-                stack<strong>overflow</strong>
+                <Logo/>
             </a>
             {!loading && (
                 <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>

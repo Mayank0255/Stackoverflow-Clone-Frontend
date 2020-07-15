@@ -2,68 +2,24 @@
   margin-left: 24px;
   width: 22%;
 
-  .side-bar-widget {
+  .s-sidebarwidget__yellow {
+    border-color: #675c37;
+    background-color: #464236;
+    color: #f2f2f3 !important;
     margin-top: 24px;
-    margin-bottom: 16px;
-    margin-right: 16px;
-    border-color: #f1e5bc;
-    background-color: #fdf7e3;
-    color: #242729;
-    position: relative;
-    border-radius: 3px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05), 0 20px 48px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1);
-    font-size: 13px;
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-right-color: rgb(214, 217, 220);
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-bottom-color: rgb(214, 217, 220);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-image-source: initial;
-    border-image-slice: initial;
-    border-image-repeat: initial;
+  }
 
-    .widget-header {
-      border-color: #f1e5bc;
-      background-color: #fbf2d4;
-      font-size: 12px;
-      font-weight: bold;
-      color: #6a737c !important;
-      padding: 12px 15px;
-      border-top: 1px solid #e4e6e8;
-    }
+  .s-sidebarwidget__yellow .s-sidebarwidget--header, .s-sidebarwidget__yellow .s-sidebarwidget--content {
+    border-color: #675c37;
+  }
 
-    .widget-content {
-      border-color: #f1e5bc;
-      display: block;
-      padding: 0 16px 0 16px !important;
-      margin: 0;
-      border-top: 1px solid #e4e6e8;
-      list-style-type: disc;
+  .s-sidebarwidget__yellow .s-sidebarwidget--header {
+    background-color: #524b38;
+    color: #cfd2d6;
+  }
 
-      li {
-        display: flex;
-        margin: 12px 0;
-        padding: 0;
-
-        .cell {
-          //flex-basis: 8.33333333%;
-          box-sizing: inherit;
-
-          .links {
-            margin-left: 6px;
-            color: #0c0d0e;
-            text-decoration: none;
-            cursor: pointer;
-            font-size: 13px;
-          }
-        }
-      }
-    }
+  .s-anchors .s-anchors.s-anchors__grayscale a:not(.s-link), .s-anchors.s-anchors__grayscale a:not(.s-link) {
+    color: #f2f2f3 !important;
   }
 
   .show-tags {

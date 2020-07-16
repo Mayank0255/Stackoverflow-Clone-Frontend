@@ -140,7 +140,7 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                 <h4 className='tag-headline'>Top Ten Tags</h4>
                 {tags.slice(0, 10).map(tag => (
                     <div key={tag.tagname} className='tag-content'>
-                        <a className='tag-link' href={`/tags/${tag.tagname}`}>
+                        <a className='s-tag s-tag__md' href={`/tags/${tag.tagname}`}>
                             {tag.tagname}
                         </a>
                         &nbsp;

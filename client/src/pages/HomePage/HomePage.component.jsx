@@ -18,17 +18,17 @@ const HomePage = ({ getTopPosts, post: { posts, loading }  }) => {
     return loading || posts === null ? <Fragment>Loading...</Fragment> : <Fragment>
         <div className='page'>
             <SideBar/>
-            <div className='homepage'>
-                <div className='main-bar'>
+            <div id="content">
+                <div id='mainbar' className='homepage'>
                     <div className='questions-grid'>
-                        <h3 className='questions-headline'>Top Questions</h3>
+                        <h3 className='questions-headline fc-black-800'>Top Questions</h3>
                         <div className='questions-btn'>
                             <Link to='/add/question'>
-                                <button className = 'btn btn-sm btn-primary'>Ask Question</button>
+                                <button className = 's-btn s-btn__primary'>Ask Question</button>
                             </Link>
                         </div>
                     </div>
-                    <div className='questions-tabs'>
+                    <div className='questions-tabs fc-black-800'>
                         <span>19,204,360 questions</span>
                     </div>
                     <div className='questions'>
@@ -36,8 +36,8 @@ const HomePage = ({ getTopPosts, post: { posts, loading }  }) => {
                             <PostItem key={post.id} post={post}/>))}
                     </div>
                 </div>
+                <RightSideBar/>
             </div>
-            <RightSideBar/>
         </div>
     </Fragment>
 };

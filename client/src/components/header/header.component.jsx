@@ -35,10 +35,11 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
     const guestLinks = (
         <div className='btns'>
             <Link to='/login'>
-                <button type='button' className='btn btn-outline-primary btn-sm'>Log in</button>
+
+                <button type='button' className="s-btn s-btn__primary">Log in</button>
             </Link>
             <Link to='/register'>
-                <button type='button' className='btn btn-primary btn-sm'>Sign up</button>
+                <button type='button' className='s-btn s-btn__filled'>Sign up</button>
             </Link>
         </div>
 

@@ -13,7 +13,7 @@ const SideBar = () => (
             </NavLink>
 
             <div className='public-tabs'>
-                <p className='title'>PUBLIC</p>
+                <p className='title fc-light'>PUBLIC</p>
                 <NavLink activeClassName='active' className='icon-link nav_link' to='/questions' >
                     <p>
                         <GlobalIcon className='icon' />
@@ -31,7 +31,7 @@ const SideBar = () => (
                 </NavLink>
             </div>
             <div className='teams-tabs'>
-                <p className='title'>TEAMS</p>
+                <p className='title fc-light'>TEAMS</p>
             </div>
         </div>
     </div>

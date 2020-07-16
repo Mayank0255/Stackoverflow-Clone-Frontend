@@ -1,61 +1,66 @@
 .page {
-  z-index:-1;
-  margin-top: 63px;
+  max-width: 1264px;
+  width: 100%;
+  background: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 14px auto 0 auto;
+}
+
+#content {
+  padding: 24px 0 0 0;
 }
 
 .homepage {
-  display: inline-block;
-  width: 56%;
-  margin-left: 20%;
-  height: 100vh;
-  padding: 24px 0px 24px 0px;
+  width: calc(100% - 300px - 24px);
+  padding: 24px 0 24px 0;
+  float: left;
+  margin: 0;
 
-  .main-bar {
-    .questions-grid {
-      display: flex;
-      padding-left: 16px;
-      padding-right: 16px;
+  .questions-grid {
+    display: flex;
+    padding-left: 24px;
 
-      .questions-headline {
-        margin-bottom: 24px;
-        flex: 1 auto;
-        font-size: 28px;
-        font-weight: 400;
-      }
-      .questions-btn {
-        margin-left: 12px;
-
-        button {
-          padding: 8px;
-          margin: 0px;
-        }
-      }
+    .questions-headline {
+      margin-bottom: 24px;
+      flex: 1 auto;
+      font-size: 28px;
+      font-weight: 400;
     }
-
-    .questions-tabs {
-      margin-bottom: 12px;
-      display: flex;
-      padding-left: 16px;
-      padding-right: 16px;
-
-      span {
-        font-size: 17px;
-        margin-right: 12px;
-      }
+    .questions-btn {
+      margin-left: 12px;
     }
+  }
 
-    .questions {
-      float: none;
-      clear: both;
-      width: auto;
-      margin-bottom: 20px;
-      border-top: 1px solid #4a4e51;
+  .questions-tabs {
+    margin-bottom: 12px;
+    display: flex;
+    padding-left: 24px;
+    padding-right: 16px;
+
+    span {
+      font-size: 17px;
+      margin-right: 12px;
     }
+  }
+
+  .questions {
+    float: none;
+    clear: both;
+    width: auto;
+    margin-bottom: 20px;
+    border-top: 1px solid #4a4e51;
   }
 }
 
-@media(max-width: 1100px)  {
+@media (max-width: 1100px) {
+  #content {
+    margin-left: 0;
+  }
+
   .homepage {
-    width: 80%;
+    width: 82%;
+    float: none;
+    margin: 0;
   }
 }

@@ -7,7 +7,7 @@ import './UserPanel.styles.scss';
 
 const UserPanel = ({ user: { id, username, created_at, posts_count, tags_count } }) => {
     return (
-        <div className='user-panel-info'>
+        <div className='user-panel-info s-card bs-sm h:bs-md fc-black-500'>
             <div className='user-gravatar'>
                 <a href={`/users/${id}`}>
                     <div className='logo-wrapper'>

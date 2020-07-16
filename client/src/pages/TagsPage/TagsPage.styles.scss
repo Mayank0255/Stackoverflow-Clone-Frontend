@@ -16,7 +16,7 @@
   .fs-body {
     padding-left: 16px;
     padding-right: 24px;
-    width: 42rem;
+    width: 54rem;
     font-size: 15px;
     font-weight: 400;
   }
@@ -39,7 +39,8 @@
     width: auto;
     margin-bottom: 20px;
     border-top: 1px solid #4a4e51;
-    padding: 16px 16px 0 16px;
+    padding: 16px;
+    background-color: #393939;
 
     .grid-layout {
       display: grid;

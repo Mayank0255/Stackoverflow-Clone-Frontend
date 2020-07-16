@@ -79,7 +79,9 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                     </div>
                     <li className="s-sidebarwidget--item grid px16">
                         <div className="grid--cell1 fl-shrink0">
-                            <div className="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+                            <div className="favicon favicon-stackexchangemeta" title="Meta Stack Exchange">
+                                <img className="meta-image" src='https://meta.stackexchange.com/Content/Sites/stackexchangemeta/Img/apple-touch-icon@2.png?v=c34d758b103d' alt='meta'/>
+                            </div>
                         </div>
                         <div className="grid--cell">
                             <a href="https://meta.stackexchange.com/questions/350184/feedback-post-new-moderator-reinstatement-and-appeal-process-revisions"
@@ -91,7 +93,9 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                     </li>
                     <li className="s-sidebarwidget--item grid px16">
                         <div className="grid--cell1 fl-shrink0">
-                            <div className="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+                            <div className="favicon favicon-stackexchangemeta" title="Meta Stack Exchange">
+                                <img className="meta-image" src='https://meta.stackexchange.com/Content/Sites/stackexchangemeta/Img/apple-touch-icon@2.png?v=c34d758b103d' alt='meta'/>
+                            </div>
                         </div>
                         <div className="grid--cell">
                             <a href="https://meta.stackexchange.com/questions/350544/the-new-moderator-agreement-is-now-live-for-moderators-to-accept-across-the-netw"

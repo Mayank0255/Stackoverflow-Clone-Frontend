@@ -20,15 +20,15 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
 
     const authTabs = (
         <div className="s-navigation">
-            <a href='/' className="s-navigation--item is-selected">Products</a>
+            <Link to='/' className="s-navigation--item is-selected">Products</Link>
         </div>
     );
 
     const guestTabs = (
         <div className="s-navigation">
-            <a href='/' className="s-navigation--item is-selected">Products</a>
-            <a href='/' className="s-navigation--item">Customers</a>
-            <a href='/' className="s-navigation--item">Use cases</a>
+            <Link to='/' className="s-navigation--item is-selected">Products</Link>
+            <Link to='/' className="s-navigation--item not-selected">Customers</Link>
+            <Link to='/' className="s-navigation--item not-selected">Use cases</Link>
         </div>
     );
 
@@ -45,7 +45,7 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
     );
 
     return(
-        <nav className='navbar fixed-top navbar-expand-lg navbar-light'>
+        <nav className='navbar fixed-top navbar-expand-lg navbar-light bs-md'>
             <Link className='navbar-brand' to='/'>
                 <Logo/>
             </Link>

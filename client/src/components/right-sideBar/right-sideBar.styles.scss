@@ -19,7 +19,11 @@
   }
 
   .s-anchors .s-anchors.s-anchors__grayscale a:not(.s-link), .s-anchors.s-anchors__grayscale a:not(.s-link) {
-    color: #f2f2f3 !important;
+    color: #f2f2f3;
+  }
+
+  .fc-danger {
+    color: #c4524f;
   }
 
   .show-tags {

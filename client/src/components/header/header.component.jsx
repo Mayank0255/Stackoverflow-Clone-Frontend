@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { logout } from '../../redux/auth/auth.actions'
 
 import { ReactComponent as Logo } from '../../assets/LogoMd.svg';
+import { ReactComponent as Search } from '../../assets/Search.svg';
 
 import './header.styles.scss';
 
@@ -51,21 +52,20 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
             {!loading && (
                 <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>
             )}
-            <form id='search'
-                  className='fl-grow1 search-bar px12' autoComplete='off'>
-                <div className='ps-relative'>
-                    <input name='q'
-                           type='text'
-                           placeholder='Search…'
-                           maxLength='240'
-                           className='s-input s-input-search js-search-field '/>
-                    <i className='gg-search'/>
+            <form id="search" role="search" method="get"
+                  className="grid--cell fl-grow1 searchbar px12 js-searchbar " autoComplete="off">
+                <div className="ps-relative">
+                    <input name="q"
+                           type="text"
+                           placeholder="Search&#x2026;"
+                           maxLength="240"
+                           className="s-input s-input__search js-search-field "/>
+                           <Search/>
                 </div>
             </form>
             {!loading && (
                 <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
             )}
-
         </nav>
     )
 };

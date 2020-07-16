@@ -1,10 +1,21 @@
 .navbar {
   height: 63px;
   border-top: 3px solid #f48024;
-  padding: 3px;
+  padding: 3px 3px 0 3px;
   box-shadow: 5px 2px rgba(0,0,0,0.1);
   z-index: 1000;
   background-color: #3d3d3d;
+}
+
+.s-navigation .not-selected {
+  color: #c4c8cc;
+
+  &:hover {
+    background-color: #404345;
+    color: #f2f2f3;
+    text-decoration: none;
+    outline: none;
+  }
 }
 
 * {
@@ -12,7 +23,14 @@
 }
 
 .navbar-brand {
-  padding-left: 130px ;
+  margin-left: 114px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-right: 0;
+
+  &:hover {
+    background-color: #404345;
+  }
 }
 
 .btns {
@@ -80,7 +98,7 @@
 
 @media (max-width:986px) {
   .navbar-brand {
-    padding-left: 20px ;
+    margin-left: 20px ;
   }
   .btns {
     margin-right: 20px;

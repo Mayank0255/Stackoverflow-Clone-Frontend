@@ -16,8 +16,8 @@ const UsersPage = ({ getUsers, user: { users, loading }  }) => {
     return loading || users === null ? <Fragment>Loading...</Fragment> : <Fragment>
         <div className='page'>
             <SideBar/>
-            <div className='users-page'>
-                <div className='main-bar'>
+            <div id='content'>
+                <div id='mainbar' className='users-page fc-black-800'>
                     <h1 className='headline'>Users</h1>
                     <div className='headline-count'>
                         <span>1,025 users</span>
@@ -29,8 +29,8 @@ const UsersPage = ({ getUsers, user: { users, loading }  }) => {
                         </div>
                     </div>
                 </div>
+                <RightSideBar/>
             </div>
-            <RightSideBar/>
         </div>
     </Fragment>
 };

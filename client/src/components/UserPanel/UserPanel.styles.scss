@@ -1,11 +1,16 @@
 .user-panel-info {
-  box-sizing: border-box;
   padding: 6px 7px 8px 8px;
+  border: 1px solid #4a4e51;
+  border-radius: 3px;
+  background-color: #2d2d2d;
+  box-sizing: border-box;
   color: #6a737c;
   display: flex;
   align-items: center;
-  border: 1px solid #d6d9dc;
-  border-radius: 3px;
+
+  &:hover {
+    border-color: #697075;
+  }
 
   .user-gravatar {
     float: left;

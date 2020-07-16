@@ -20,7 +20,7 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
 
     const authTabs = (
         <div className="s-navigation">
-            <a href='/' className="s-navigation--item">Products</a>
+            <a href='/' className="s-navigation--item is-selected">Products</a>
         </div>
     );
 

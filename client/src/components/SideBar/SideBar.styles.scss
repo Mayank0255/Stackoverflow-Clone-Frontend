@@ -2,8 +2,8 @@
   display: inline-block;
   width: 20%;
   height: 100vh;
-  border-right: 1px solid #d6d9dc;
-  color: grey;
+  border-right: 1px solid #4a4e51;
+  color: #acb2b8;
   font-size: 14px;
   position: fixed;
 
@@ -11,14 +11,14 @@
     float: right;
     margin-top:25px;
 
-
-
     .home-link {
       text-decoration: none;
-      color: grey;
+      color: #c4c8cc;
+
       p {
         padding: 5px 5px 5px 5px;
         border-right: 3px;
+        font-size: 13px;
       }
       &:hover {
         color: black;
@@ -28,29 +28,31 @@
 
     .icon-link {
       text-decoration: none;
-      color: grey;
+      color: #c4c8cc;
 
       p {
+        display: flex;
         padding: 5px 30px 5px 10px;
         margin-bottom: 5px;
         border-right: 3px solid transparent;
         width: 160px;
+        font-size: 13px;
       }
       .icon {
         margin-right: 5px;
       }
       &:hover {
-        color: black;
+        color: #f2f2f3;
 
         .icon {
-          color: black;
+          color: #f2f2f3;
         }
       }
     }
 
     .link {
       text-decoration: none;
-      color: grey;
+      color: #c4c8cc;
 
       p {
         padding: 5px 45px 5px 20px;
@@ -58,9 +60,10 @@
         width: 100%;
         display: flex;
         align-items: center;
+        font-size: 13px;
       }
       &:hover {
-        color: black;
+        color: #f2f2f3;
       }
     }
 
@@ -79,8 +82,9 @@
       color: black;
 
       p {
-        background-color: #eff0f1;
-        font-weight: 500;
+        font-weight: bold;
+        background: #3d3d3d;
+        color: #f2f2f3;
         border-right: 3px solid #f48024;
       }
       .icon {

@@ -1,8 +1,21 @@
 .alert {
   position: absolute;
   padding: .75rem 1.25rem;
-  margin-bottom: -63px;
   border: 1px solid transparent;
   border-radius: .25rem;
-  margin-top: 70px;
+  width: 54%;
+  top: 79px;
+  left: 22.5%;
+  z-index: 1;
+  font-size: 15px;
+}
+
+.alert-success {
+  background-color: #48a868;
+  color: #2d2d2d;
+}
+
+.alert-danger {
+  background-color: #c4524f;
+  color: #2d2d2d;
 }

@@ -12,8 +12,6 @@
     margin-left: 8px;
     font-size: 11px;
 
-
-
       .vote  {
         padding: 0;
         margin-bottom: 8px;
@@ -122,9 +120,10 @@
         }
 
         .user-details {
-          margin-left: 8px;
-          float: left;
+          margin-left: 40px;
+          float: none;
           line-height: 17px;
+          width: 80%;
 
           a {
             color: #0077cc;

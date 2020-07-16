@@ -1,11 +1,10 @@
 .side-bar-container {
-  display: inline-block;
-  width: 20%;
-  height: 100vh;
-  border-right: 1px solid #4a4e51;
-  color: #acb2b8;
-  font-size: 14px;
-  position: fixed;
+  width: 164px;
+  flex-shrink: 0;
+  z-index: 1000;
+  box-shadow: 0 0 0 rgba(12,13,14,0.05);
+  transition: box-shadow ease-in-out .1s,transform ease-in-out .1s;
+  position: relative !important;
 
   .side-bar-tabs {
     float: right;
@@ -21,7 +20,7 @@
         font-size: 13px;
       }
       &:hover {
-        color: black;
+        color: #f2f2f3;
       }
     }
 
@@ -79,7 +78,7 @@
     }
 
     .active {
-      color: black;
+      color: #f2f2f3;
 
       p {
         font-weight: bold;
@@ -88,7 +87,7 @@
         border-right: 3px solid #f48024;
       }
       .icon {
-        color: black;
+        color: #f2f2f3;
       }
 
     }

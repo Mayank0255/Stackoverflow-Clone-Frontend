@@ -7,6 +7,10 @@
   background-color: #3d3d3d;
 }
 
+.s-navigation {
+  padding: 2px 2px;
+}
+
 .s-navigation .not-selected {
   color: #c4c8cc;
 
@@ -23,7 +27,7 @@
 }
 
 .navbar-brand {
-  margin-left: 114px;
+  margin-left: 90px;
   padding-left: 16px;
   padding-right: 16px;
   margin-right: 0;
@@ -88,6 +92,12 @@
   right: auto;
   left: .7em;
   color: #697075;
+}
+
+@media(max-width: 1280px) {
+  .navbar-brand {
+    margin-left: 60px;
+  }
 }
 
 @media(max-width: 1200px) {

@@ -15,7 +15,7 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
     }, [getTags]);
 
     return (
-        <div className='side-bar'>
+        <div id='sidebar' className='side-bar'>
             <div className="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16"
                  data-tracker="cb=1">
                 <ul className="d-block p0 m0">

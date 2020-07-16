@@ -1,6 +1,7 @@
 .side-bar {
-  margin-left: 24px;
-  width: 22%;
+  float: right;
+  width: 300px;
+  margin: 0 0 15px;
 
   .s-sidebarwidget__yellow {
     border-color: #675c37;
@@ -96,6 +97,8 @@
 
 @media(max-width: 1100px) {
   .side-bar {
+    float: none;
+    clear: both;
     display: none;
   }
 }

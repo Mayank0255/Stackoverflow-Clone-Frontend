@@ -18,13 +18,13 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
         <div className='page'>
             <SideBar/>
 
-            <div className='questions-page'>
-                <div className='main-bar'>
+            <div id="content">
+                <div id='mainbar' className='questions-page fc-black-800'>
                     <div className='questions-grid'>
                         <h3 className='questions-headline'>Questions tagged [{match.params.tagname}]</h3>
                         <div className='questions-btn'>
                             <Link to='/add/question'>
-                                <button className = 'btn btn-sm btn-primary'>Ask Question</button>
+                                <button className = 's-btn s-btn__primary'>Ask Question</button>
                             </Link>
                         </div>
                     </div>
@@ -39,8 +39,8 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
                         }
                     </div>
                 </div>
+                <RightSideBar/>
             </div>
-            <RightSideBar/>
         </div>
     </Fragment>
 

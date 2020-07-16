@@ -10,7 +10,7 @@ const TagPanel = ({ tag: {tagname, created_at, posts_count} }) => {
         <div className='tag-card'>
             <div className='grid'>
                 <div className='grid-cell'>
-                    <a href={`/tags/${ tagname }`}>{ tagname }</a>
+                    <a className='s-tag' href={`/tags/${ tagname }`}>{ tagname }</a>
                 </div>
             </div>
             <div className='caption'>

@@ -35,19 +35,19 @@ const PostForm = ({ auth:{ isAuthenticated, loading }, addPost }) => {
         <div className='post-form-container'>
             <div className='post-form-content'>
                 <div className='post-form-header'>
-                    <div className='post-form-headline'>
+                    <div className='post-form-headline fc-black-800'>
                         Ask a public question
                     </div>
                 </div>
                 <div className='post-form-section'>
-                    <div className='postform'>
+                    <div className='postform' style={{width: '100%'}}>
                         <form onSubmit={e => onSubmit(e)}>
-                            <div className='question-form'>
+                            <div className='question-form p16 s-card'>
                                 <div className='question-layout'>
                                     <div className='title-grid'>
                                         <label className='form-label s-label'>
                                             Title
-                                            <p className='title-desc'>
+                                            <p className='title-desc fw-normal fs-caption'>
                                                 Be specific and imagine you’re asking a question to another person
                                             </p>
                                         </label>
@@ -62,13 +62,13 @@ const PostForm = ({ auth:{ isAuthenticated, loading }, addPost }) => {
                                         />
                                     </div>
                                     <div className='body-grid'>
-                                        <label className='form-label s-label'>
+                                        <label className='form-label s-label fc-black-800'>
                                             Body
-                                            <p className='body-desc'>Include all the information someone would
+                                            <p className='body-desc fw-normal fs-caption fc-black-800'>Include all the information someone would
                                                 need to answer your question</p>
                                         </label>
                                         <textarea
-                                            className='body-input'
+                                            className='s-textarea'
                                             name='body'
                                             cols='30'
                                             rows='12'
@@ -82,7 +82,7 @@ const PostForm = ({ auth:{ isAuthenticated, loading }, addPost }) => {
                                     <div className='tag-grid'>
                                         <label className='form-label s-label'>
                                             Tag Name
-                                            <p className='tag-desc'>
+                                            <p className='tag-desc fw-normal fs-caption'>
                                                 Add up to 5 tags to describe what your question is about
                                             </p>
                                         </label>
@@ -97,19 +97,19 @@ const PostForm = ({ auth:{ isAuthenticated, loading }, addPost }) => {
                                         />
                                     </div>
                                 </div>
-                                <div className='post-button'>
-                                    <button className='btn btn-primary' id='submit-button' name='submit-button'>Post your question</button>
-                                </div>
+                            </div>
+                            <div className='post-button mt32'>
+                                <button className='s-btn s-btn__primary' id='submit-button' name='submit-button'>Post your question</button>
                             </div>
                         </form>
                     </div>
                     <aside>
                         <div className='right-panel'>
                             <div className='widget'>
-                                <div className='widget-header'>
+                                <div className='s-sidebarwidget--header'>
                                     Step 1: Draft your question
                                 </div>
-                                <div className='widget-content'>
+                                <div className='widget-content fc-black-800'>
                                     <div className='summary'>
                                         <p className='sec1'>
                                             The community is here to help you with specific coding, algorithm, or language problems.

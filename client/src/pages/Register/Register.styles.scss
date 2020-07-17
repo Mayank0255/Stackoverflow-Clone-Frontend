@@ -1,12 +1,20 @@
-.register-content {
-  padding: 24px;
+body {
+  background-color: #252525;
+}
+
+.auth-page {
   width: 100%;
-  background-color: #eff0f1;
+  background: none;
+}
+
+.register-content {
+  width: 100%;
+  background-color: transparent;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 92.5vh;
+  height: 90.7vh;
 }
 
 .register-grid  {
@@ -49,15 +57,16 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 24px;
-    background-color: #fff;
+    background-color: #2d2d2d;
     border-radius: 7px;
     box-sizing: inherit;
     display: block;
 
-    .grid {
+    div {
       margin: 6px 0;
 
       button {
+        margin: 5px 0 3px 0;
         width: 100%;
       }
     }

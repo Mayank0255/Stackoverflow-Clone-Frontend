@@ -13,7 +13,7 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
     const authLinks = (
         <div className='btns'>
             <Link onClick={ logout } to='/login'>
-                <button type='button' className='btn btn-outline-primary btn-sm'>Log out</button>
+                <button type='button' className='s-btn s-btn__filled'>Log out</button>
             </Link>
         </div>
     );
@@ -35,7 +35,6 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
     const guestLinks = (
         <div className='btns'>
             <Link to='/login'>
-
                 <button type='button' className="s-btn s-btn__primary">Log in</button>
             </Link>
             <Link to='/register'>

@@ -5,7 +5,7 @@ import { getUser } from '../../redux/users/users.actions';
 import { Link } from 'react-router-dom';
 import timeAgo from '../../services/timeAgo.service';
 
-import { ReactComponent as Logo } from '../../assets/stack-overflow.svg';
+import { ReactComponent as Logo } from '../../assets/LogoGlyphMd.svg';
 
 import SideBar from '../../components/SideBar/SideBar.component';
 import RightSideBar from '../../components/right-sideBar/right-sideBar.component';

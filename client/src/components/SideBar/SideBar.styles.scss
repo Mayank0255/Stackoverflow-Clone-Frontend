@@ -1,7 +1,7 @@
 .side-bar-container {
   width: 164px;
   flex-shrink: 0;
-  z-index: 1000;
+  z-index: 1;
   box-shadow: 0 0 0 rgba(12,13,14,0.05);
   transition: box-shadow ease-in-out .1s,transform ease-in-out .1s;
   position: relative !important;
@@ -82,7 +82,7 @@
 
       p {
         font-weight: bold;
-        background: #3d3d3d;
+        background: #2d2d2d;
         color: #f2f2f3;
         border-right: 3px solid #f48024;
       }

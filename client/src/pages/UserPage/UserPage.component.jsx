@@ -22,9 +22,15 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
     return loading || user === null ? <Fragment>Loading...</Fragment> : <Fragment>
         <div className='page'>
             <SideBar/>
-            <div className='user-page'>
-                <div className='user-main-bar'>
+            <div id="content">
+                <div id='mainbar' className='user-main-bar pl24 pt24'>
                     <div className='user-card'>
+                        <div className="grid--cell s-navigation mb16">
+                            <Link to="#" className="s-navigation--item is-selected"
+                               data-shortcut="P">Profile</Link>
+                            <Link to="#" className="s-navigation--item"
+                               data-shortcut="A">Activity</Link>
+                        </div>
                         <div className='grid'>
                             <div className='img-card'>
                                 <div className='avatar-card'>
@@ -36,10 +42,10 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                         </Link>
                                     </div>
                                     <div className='title'>
-                                        <div className='grid'>
+                                        <div className='grid fc-black-800'>
                                             319
                                             &nbsp;
-                                            <span>
+                                            <span className='fc-light'>
                                                 REPUTATION
                                             </span>
                                         </div>
@@ -65,40 +71,40 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                             <div className='counts'>
                                                 <div className='cells'>
                                                     <div className='column-grid'>
-                                                        <div className='head'>
+                                                        <div className='head fc-black-700'>
                                                             {user.answer_count}
                                                         </div>
-                                                        <div className='foot'>
+                                                        <div className='foot fc-black-500'>
                                                             answers
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className='cells'>
                                                     <div className='column-grid'>
-                                                        <div className='head'>
+                                                        <div className='head fc-black-700'>
                                                             {user.post_count}
                                                         </div>
-                                                        <div className='foot'>
+                                                        <div className='foot fc-black-500'>
                                                             questions
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className='cells'>
                                                     <div className='column-grid'>
-                                                        <div className='head'>
+                                                        <div className='head fc-black-700'>
                                                             {user.comment_count}
                                                         </div>
-                                                        <div className='foot'>
+                                                        <div className='foot fc-black-500'>
                                                             comments
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className='cells'>
                                                     <div className='column-grid'>
-                                                        <div className='head'>
+                                                        <div className='head fc-black-700'>
                                                             {user.tag_count}
                                                         </div>
-                                                        <div className='foot'>
+                                                        <div className='foot fc-black-500'>
                                                             tags
                                                         </div>
                                                     </div>
@@ -114,7 +120,7 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                         <div className='grid-cell1'>
                             <div className='cell-layout'>
                                 <div className='community'>
-                                    <h3>
+                                    <h3 className='bc-black-3'>
                                         <span className='icon'>
                                             <svg aria-hidden='true' className='svg-icon native icon-logo-sex' width='18' height='18' viewBox='0 0 18 18'>
                                                 <path d='M3 4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2H3z' fill='#8FD8F7'/>
@@ -122,20 +128,20 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                                 <path fill='#46A2D9' d='M3 5h12v2H3z'/><path fill='#2D6DB5' d='M3 8h12v2H3z'/>
                                             </svg>
                                         </span>
-                                        <span className='text'>Communities</span>
+                                        <span className='text fw-bold fc-dark bc-black-3'>Communities</span>
                                     </h3>
                                     <ul>
-                                        <li className='item'><a href='/'>
+                                        <li className='item'><Link to='/'>
                                             <span><Logo className='logo'/></span>
-                                            <span>StackOverflow</span>
-                                        </a></li>
+                                            <span className='fc-blue-600 fs-body2'>Stack Overflow</span>
+                                        </Link></li>
                                     </ul>
                                 </div>
                                 <div className='user-posts'>
-                                    <h3>
+                                    <h3 className='fw-bold fc-dark bc-black-3'>
                                         Top network posts
                                     </h3>
-                                    <p>
+                                    <p className='fc-light'>
                                         We respect a laser-like focus on one topic.
                                     </p>
                                 </div>
@@ -143,21 +149,21 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                         </div>
                         <div className='grid-cell2'>
                             <div className='top-tags'>
-                                <h3>
+                                <h3 className='fw-bold fc-dark bc-black-3'>
                                     Top Tags
                                 </h3>
                                 <div className='top-tags-sec'>
                                     <div className='top-tags-cells'>
                                         <div className='top-cell'>
-                                            <div className='tag-cell'>
-                                                <a href='/tags/java'>
+                                            <div className='tag-cell bg-black-025'>
+                                                <Link className='s-tag s-tag__lg' to='/tags/java'>
                                                     java
-                                                </a>
+                                                </Link>
                                                 <div className='score'>
                                                     <div className='score-txt'>
                                                         <div className='score-tab'>
-                                                            <span className='txt'>Posts</span>
-                                                            <span className='number'>2</span>
+                                                            <span className='txt fc-light'>Posts</span>
+                                                            <span className='number fc-black-800'>2</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -166,15 +172,15 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                     </div>
                                     <div className='top-tags-cells'>
                                         <div className='top-cell'>
-                                            <div className='tag-cell'>
-                                                <a href='/tags/node.js'>
+                                            <div className='tag-cell bg-black-025'>
+                                                <Link className='s-tag s-tag__md' to='/tags/node.js'>
                                                     node.js
-                                                </a>
+                                                </Link>
                                                 <div className='score'>
                                                     <div className='score-txt'>
                                                         <div className='score-tab'>
-                                                            <span className='txt'>Posts</span>
-                                                            <span className='number'>1</span>
+                                                            <span className='txt fc-light'>Posts</span>
+                                                            <span className='number fc-black-800'>1</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -183,30 +189,28 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                     </div>
                                     <div className='top-tags-cells'>
                                         <div className='top-cell'>
-                                            <div className='tag-cell'>
-                                                <a href='/tags/react'>
+                                            <div className='tag-cell bg-black-025'>
+                                                <Link className='s-tag s-tag__md' to='/tags/react'>
                                                     react
-                                                </a>
+                                                </Link>
                                                 <div className='score'>
                                                     <div className='score-txt'>
                                                         <div className='score-tab'>
-                                                            <span className='txt'>Posts</span>
-                                                            <span className='number'>0</span>
+                                                            <span className='txt fc-light'>Posts</span>
+                                                            <span className='number fc-black-800'>0</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
+                <RightSideBar/>
             </div>
-            <RightSideBar/>
         </div>
     </Fragment>
 

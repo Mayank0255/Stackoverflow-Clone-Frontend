@@ -1,13 +1,18 @@
+body {
+  background-color: #3d3d3d;
+}
+
 .post-form-container {
   width: 100%;
   max-width: 100%;
   display: flex;
   justify-content: center;
   margin: 0;
-  background-color: #eff0f1;
+  background-color: transparent;
   position: relative;
   flex: 1 0 auto;
   color: #242729;
+  margin-top: 14px;
 
   .post-form-content {
     min-height: 750px;
@@ -46,8 +51,8 @@
         min-width: 0 !important;
         flex: 1 auto !important;
         color: #242729;
-
-
+        width: 100%;
+        padding: 0 !important;
 
           .question-form {
             color: #242729;
@@ -117,53 +122,6 @@
                   }
                 }
                 .title-input {
-                  flex: 1 auto !important;
-                  font-size: 13px;
-                  -webkit-appearance: none;
-                  width: 100%;
-                  margin: 0;
-                  padding: .6em .7em;
-                  border: 1px solid #bbc0c4;
-                  border-radius: 3px;
-                  background-color: #fff;
-                  color: #0c0d0e;
-                  line-height: 1.15384615;
-
-                  &::placeholder {
-                    opacity: 0.6;
-                  }
-                }
-              }
-
-              .body-grid {
-                margin-bottom: 16px;
-                display: flex;
-                flex: 1 auto !important;
-                flex-direction: column;
-                color: #242729;
-
-                label {
-                  margin-bottom: 4px;
-                  display: block;
-                  padding: 0 2px;
-                  color: #0c0d0e;
-                  font-family: inherit;
-                  font-size: 15px;
-                  font-weight: 700;
-                  cursor: pointer;
-
-                  .body-desc {
-                    font-weight: normal;
-                    padding: 0;
-                    margin: 0;
-                    margin-top: 2px !important;
-                    color: #3c4146;
-                    font-size: 12px;
-                    clear: both;
-                  }
-                }
-
-                .body-input {
                   flex: 1 auto !important;
                   font-size: 13px;
                   -webkit-appearance: none;
@@ -261,9 +219,9 @@
 
             .widget-content {
               display: block !important;
-              background-color: #fff !important;
+              background-color: #2d2d2d !important;
               padding: 16px 15px 0 15px;
-              border-top: 1px solid #e4e6e8;
+              border-top: 1px solid #404345;
               color: #242729;
               border-bottom-right-radius: 3px;
               border-bottom-left-radius: 3px;
@@ -286,8 +244,7 @@
                 border-radius: 3px;
 
                 .step {
-                  border-color: #e4e6e8 !important;
-                  border-bottom: 1px solid;
+                  border-bottom: 1px solid #404345;
                   list-style: none;
 
                   button {
@@ -366,6 +323,53 @@
         }
       }
     }
+  }
+}
 
+.body-grid {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex: 1 auto !important;
+  flex-direction: column;
+  color: #242729;
+
+  label {
+    margin-bottom: 4px;
+    display: block;
+    padding: 0 2px;
+    color: #0c0d0e;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+
+    .body-desc {
+      font-weight: normal;
+      padding: 0;
+      margin: 0;
+      margin-top: 2px !important;
+      color: #3c4146;
+      font-size: 12px;
+      clear: both;
+    }
+  }
+
+  .body-input {
+    flex: 1 auto !important;
+    font-size: 13px;
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 0;
+    padding: .6em .7em;
+    border: 1px solid #bbc0c4;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #0c0d0e;
+    line-height: 1.15384615;
+
+    &::placeholder {
+      opacity: 0.6;
+    }
   }
 }

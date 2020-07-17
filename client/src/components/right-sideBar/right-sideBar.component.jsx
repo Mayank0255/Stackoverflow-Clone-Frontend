@@ -32,11 +32,11 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                             </svg>
                         </div>
                         <div className="grid--cell">
-                            <a href="https://stackoverflow.blog/2020/07/13/tales-from-documentation-write-for-your-dumbest-user/"
+                            <Link to="https://stackoverflow.blog/2020/07/13/tales-from-documentation-write-for-your-dumbest-user/"
                                className="js-gps-track"
                                data-ga="[&quot;community bulletin board&quot;,&quot;The Overflow Blog&quot;,&quot;https://stackoverflow.blog/2020/07/13/tales-from-documentation-write-for-your-dumbest-user/&quot;,null,null]"
                                data-gps-track="communitybulletin.click({ priority: 1, position: 0 })">Tales from
-                                documentation: Write for your clueless users</a>
+                                documentation: Write for your clueless users</Link>
                         </div>
                     </li>
                     <li className="s-sidebarwidget--item grid px16">
@@ -48,11 +48,11 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                             </svg>
                         </div>
                         <div className="grid--cell">
-                            <a href="https://stackoverflow.blog/2020/07/14/podcast-252-a-conversation-on-diversity-and-representation/"
+                            <Link to="https://stackoverflow.blog/2020/07/14/podcast-252-a-conversation-on-diversity-and-representation/"
                                className="js-gps-track"
                                data-ga="[&quot;community bulletin board&quot;,&quot;The Overflow Blog&quot;,&quot;https://stackoverflow.blog/2020/07/14/podcast-252-a-conversation-on-diversity-and-representation/&quot;,null,null]"
                                data-gps-track="communitybulletin.click({ priority: 1, position: 1 })">Podcast 252: a
-                                conversation on diversity and representation</a>
+                                conversation on diversity and representation</Link>
                         </div>
                     </li>
                     <div
@@ -66,10 +66,10 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                             </div>
                         </div>
                         <div className="grid--cell">
-                            <a href="https://stackoverflow.com/election" className="fc-danger js-gps-track"
+                            <Link to="https://stackoverflow.com/election" className="fc-danger js-gps-track"
                                data-ga="[&quot;community bulletin board&quot;,&quot;Upcoming Events&quot;,&quot;https://stackoverflow.com/election&quot;,null,null]"
                                data-gps-track="communitybulletin.click({ priority: 5, position: 2 })">2020 Community
-                                Moderator Election</a>
+                                Moderator Election</Link>
                             <div>ends <span title="2020-07-21 20:00:00Z" className="relativetime">in 6 days</span></div>
                         </div>
                     </li>
@@ -84,11 +84,11 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                             </div>
                         </div>
                         <div className="grid--cell">
-                            <a href="https://meta.stackexchange.com/questions/350184/feedback-post-new-moderator-reinstatement-and-appeal-process-revisions"
+                            <Link to="https://meta.stackexchange.com/questions/350184/feedback-post-new-moderator-reinstatement-and-appeal-process-revisions"
                                className="js-gps-track"
                                data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackexchange.com/questions/350184/feedback-post-new-moderator-reinstatement-and-appeal-process-revisions&quot;,null,null]"
                                data-gps-track="communitybulletin.click({ priority: 3, position: 3 })">Feedback post: New
-                                moderator reinstatement and appeal process revisions</a>
+                                moderator reinstatement and appeal process revisions</Link>
                         </div>
                     </li>
                     <li className="s-sidebarwidget--item grid px16">
@@ -98,12 +98,12 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                             </div>
                         </div>
                         <div className="grid--cell">
-                            <a href="https://meta.stackexchange.com/questions/350544/the-new-moderator-agreement-is-now-live-for-moderators-to-accept-across-the-netw"
+                            <Link to="https://meta.stackexchange.com/questions/350544/the-new-moderator-agreement-is-now-live-for-moderators-to-accept-across-the-netw"
                                className="js-gps-track"
                                title="The new moderator agreement is now live for moderators to accept across the network"
                                data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackexchange.com/questions/350544/the-new-moderator-agreement-is-now-live-for-moderators-to-accept-across-the-netw&quot;,null,null]"
                                data-gps-track="communitybulletin.click({ priority: 3, position: 4 })">The new moderator
-                                agreement is now live for moderators to accept across the&hellip;</a>
+                                agreement is now live for moderators to accept across the&hellip;</Link>
                         </div>
                     </li>
                     <li className="s-sidebarwidget--item grid px16">
@@ -113,11 +113,11 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                             </div>
                         </div>
                         <div className="grid--cell">
-                            <a href="https://meta.stackoverflow.com/questions/399013/allow-bountied-questions-to-be-closed-by-regular-users"
+                            <Link to="https://meta.stackoverflow.com/questions/399013/allow-bountied-questions-to-be-closed-by-regular-users"
                                className="js-gps-track"
                                data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackoverflow.com/questions/399013/allow-bountied-questions-to-be-closed-by-regular-users&quot;,null,null]"
                                data-gps-track="communitybulletin.click({ priority: 6, position: 5 })">Allow bountied
-                                questions to be closed by regular users</a>
+                                questions to be closed by regular users</Link>
                         </div>
                     </li>
                     <li className="s-sidebarwidget--item grid px16">
@@ -127,11 +127,11 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                             </div>
                         </div>
                         <div className="grid--cell">
-                            <a href="https://meta.stackoverflow.com/questions/399106/2020-community-moderator-election-questionnaire"
+                            <Link to="https://meta.stackoverflow.com/questions/399106/2020-community-moderator-election-questionnaire"
                                className="js-gps-track"
                                data-ga="[&quot;community bulletin board&quot;,&quot;Featured on Meta&quot;,&quot;https://meta.stackoverflow.com/questions/399106/2020-community-moderator-election-questionnaire&quot;,null,null]"
                                data-gps-track="communitybulletin.click({ priority: 6, position: 6 })">2020 Community
-                                Moderator Election - Questionnaire</a>
+                                Moderator Election - Questionnaire</Link>
                         </div>
                     </li>
                 </ul>

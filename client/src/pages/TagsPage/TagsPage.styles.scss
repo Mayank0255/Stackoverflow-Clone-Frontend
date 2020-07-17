@@ -1,3 +1,7 @@
+#mainbar {
+  height: 100%;
+}
+
 .tags-page {
   display: inline-block;
   width: 58%;
@@ -37,10 +41,10 @@
     float: none;
     clear: both;
     width: auto;
-    margin-bottom: 20px;
     border-top: 1px solid #4a4e51;
     padding: 16px;
     background-color: #393939;
+    height: 85.7%;
 
     .grid-layout {
       display: grid;

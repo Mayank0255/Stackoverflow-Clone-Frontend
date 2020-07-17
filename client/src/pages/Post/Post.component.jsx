@@ -59,8 +59,8 @@ const Post = ({ deletePost, deleteAnswer, addAnswer, deleteComment, addComment, 
     return loading || post === null ? <Fragment>Loading...</Fragment> : <Fragment>
         <div className='page'>
             <SideBar/>
-            <div className='post'>
-                <div className='main-entity'>
+            <div id="content">
+                <div id='mainbar' className='post'>
                     <div className='inner-content'>
                         <div className='question-header'>
                             <h1>{post.title}</h1>
@@ -317,8 +317,8 @@ const Post = ({ deletePost, deleteAnswer, addAnswer, deleteComment, addComment, 
                         </div>
                     </div>
                 </div>
+                <RightSideBar/>
             </div>
-            <RightSideBar/>
         </div>
     </Fragment>
 };

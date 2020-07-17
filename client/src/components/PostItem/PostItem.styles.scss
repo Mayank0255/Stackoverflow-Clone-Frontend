@@ -26,6 +26,12 @@
         }
       }
 
+    .answer {
+      color: #63b47c;
+      border: 1px solid #63b47c;
+      border-radius: 3px;
+    }
+
   }
 
   .summary {
@@ -63,28 +69,6 @@
       color: #242729;
       line-height: 18px;
       float: left;
-
-      a {
-        font-size: 12px;
-        color: #39739d;
-        background-color: #e1ecf4;
-        border-color: transparent;
-        display: inline-block;
-        padding: .4em .5em;
-        margin: 2px 2px 2px 0;
-        line-height: 1;
-        white-space: nowrap;
-        text-decoration: none;
-        text-align: center;
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 3px;
-
-        &:hover {
-          color: #2c5777;
-          background-color: #d1e5f1;
-        }
-      }
     }
 
     .question-user {

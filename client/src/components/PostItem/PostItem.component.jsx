@@ -7,17 +7,32 @@ import timeAgo from '../../services/timeAgo.service';
 import './PostItem.styles.scss';
 
 const PostItem = ({ post: { id, title, body, tagname, username, user_id, answer_count, comment_count, created_at } }) => {
+    const answerVoteUp = (
+        <div className='vote answer'>
+            <span className='vote-count fc-green-500'>{answer_count}</span>
+            <div className='count-text'>answers</div>
+        </div>
+    )
+
+    const answerVoteDown = (
+        <div className='vote'>
+            <span className='vote-count'>{answer_count}</span>
+            <div className='count-text'>answers</div>
+        </div>
+    )
+
     return (
         <div className='posts'>
-            <div className='stats-container'>
+            <div className='stats-container fc-black-500'>
                 <div className='stats'>
-                    <div className='vote'>
-                        <span className='vote-count'>{answer_count}</span>
-                        <div className='count-text'>answers</div>
-                    </div>
                     <div className='vote'>
                         <span className='vote-count'>{comment_count}</span>
                         <div className='count-text'>comments</div>
+                    </div>
+                    {answer_count > 0 ? answerVoteUp : answerVoteDown}
+                    <div className='vote'>
+                        <span className='vote-count'>{tagname ? 1 : 0}</span>
+                        <div className='count-text'>tags</div>
                     </div>
                 </div>
             </div>
@@ -29,7 +44,7 @@ const PostItem = ({ post: { id, title, body, tagname, username, user_id, answer_
                     {body.substring(0, 200)}...
                 </div>
                 <div className='question-tags'>
-                    <Link to={`/tags/${tagname}`}>
+                    <Link className='s-tag' to={`/tags/${tagname}`}>
                         {tagname}
                     </Link>
                 </div>

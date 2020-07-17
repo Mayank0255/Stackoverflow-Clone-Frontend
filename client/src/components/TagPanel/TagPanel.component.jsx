@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import timeAgo from "../../services/timeAgo.service";
 
@@ -10,7 +11,7 @@ const TagPanel = ({ tag: {tagname, created_at, posts_count} }) => {
         <div className='tag-card'>
             <div className='grid'>
                 <div className='grid-cell'>
-                    <a className='s-tag' href={`/tags/${ tagname }`}>{ tagname }</a>
+                    <Link className='s-tag' to={`/tags/${ tagname }`}>{ tagname }</Link>
                 </div>
             </div>
             <div className='caption'>

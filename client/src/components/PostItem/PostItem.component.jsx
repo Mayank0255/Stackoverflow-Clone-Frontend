@@ -37,9 +37,9 @@ const PostItem = ({ post: { id, title, body, tagname, username, user_id, answer_
                 </div>
             </div>
             <div className='summary'>
-                <h3><a href={`/questions/${id}`}>
+                <h3><Link to={`/questions/${id}`}>
                     {title}
-                </a></h3>
+                </Link></h3>
                 <div className='brief'>
                     {body.substring(0, 200)}...
                 </div>

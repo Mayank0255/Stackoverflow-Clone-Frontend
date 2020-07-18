@@ -1,8 +1,8 @@
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import timeAgo from '../../services/timeAgo.service';
 
 import './PostItem.styles.scss';
 
@@ -50,7 +50,7 @@ const PostItem = ({ post: { id, title, body, tagname, username, user_id, answer_
                 </div>
                 <div className='question-user'>
                     <div className='user-info'>
-                        <div className='user-action-time'>asked {timeAgo(created_at)}</div>
+                        <div className='user-action-time'>asked { moment(created_at).fromNow(true) } ago</div>
                         <div className='user-gravatar'>
                             <Link to={`/users/${user_id}`}>
                                 <div className='logo-wrapper'>

@@ -1,8 +1,8 @@
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import timeAgo from "../../services/timeAgo.service";
 
 import './UserPanel.styles.scss';
 
@@ -21,7 +21,7 @@ const UserPanel = ({ user: { id, username, created_at, posts_count, tags_count }
                 <Link className='fc-blue-600' to={`/users/${id}`}>{username}</Link>
                 <span className='post-count'>questions - {posts_count}</span>
                 <span className='tag-count'>tags - {tags_count}</span>
-                <span style={{fontSize:'11px', float:'right'}}>{timeAgo(created_at)}</span>
+                <span style={{fontSize:'11px', float:'right'}}>{ moment(created_at).fromNow(true) } ago</span>
             </div>
         </div>
     )

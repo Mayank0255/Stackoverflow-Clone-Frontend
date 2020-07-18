@@ -54,8 +54,7 @@ _NOTE: Might take sometime to start as there will be 2 servers running._
 
 ## DEMO
 
-#### VIDEO - [Watch the video](https://drive.google.com/file/d/1cHrg2RAwvrHHQ8LKGj0elstjhsV5DZYl/view?usp=sharing)
-![Watch the video](https://github.com/Mayank0255/Stack-Overflow-Clone/blob/master/demo/video/StackOverflow%20CLONE%20-%20Dem0%20Video.mp4)
+#### VIDEO - [Watch the video](https://drive.google.com/file/d/1A0B3JPUUY2snG8MLZpyz2LWhvThG2epn/view?usp=sharing)
   
 #### IMAGES
 <img src="/demo/images/1.png" width=340px /><img src="/demo/images/5.png" width=340px />

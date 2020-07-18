@@ -1,8 +1,8 @@
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import timeAgo from "../../services/timeAgo.service";
 
 import './TagPanel.styles.scss';
 
@@ -19,7 +19,7 @@ const TagPanel = ({ tag: {tagname, created_at, posts_count} }) => {
                     {posts_count} questions
                 </div>
                 <div>
-                    added { timeAgo(created_at) }
+                    added { moment(created_at).fromNow(true) } ago
                 </div>
             </div>
         </div>

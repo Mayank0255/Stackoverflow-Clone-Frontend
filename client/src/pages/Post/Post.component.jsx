@@ -1,12 +1,11 @@
 import React, {useEffect, Fragment,useState} from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getPost, deletePost } from '../../redux/posts/posts.actions';
 import { getAnswers, deleteAnswer, addAnswer } from '../../redux/answers/answers.actions';
 import { getComments, deleteComment, addComment } from '../../redux/comments/comments.actions';
-import moment from 'moment';
-import timeAgo from '../../services/timeAgo.service';
 
 import { ReactComponent as UpVote } from '../../assets/ArrowUpLg.svg';
 import { ReactComponent as DownVote } from '../../assets/ArrowDownLg.svg';
@@ -76,7 +75,7 @@ const Post = ({ deletePost, deleteAnswer, addAnswer, deleteComment, addComment, 
                                     Asked
                                 </span>
                             <time dateTime={ moment(post.created_at).fromNow(true) }>
-                                { moment(post.created_at).fromNow(true) }
+                                { moment(post.created_at).fromNow(true) } ago
                             </time>
                         </div>
                     </div>
@@ -133,7 +132,7 @@ const Post = ({ deletePost, deleteAnswer, addAnswer, deleteComment, addComment, 
                                             </div>
                                             <div className='post-owner'>
                                                 <div className='user-block fc-black-500'>
-                                                    <div className='action-time'>asked { moment(post.created_at).fromNow(true) }</div>
+                                                    <div className='action-time'>asked { moment(post.created_at).fromNow(true) } ago</div>
                                                     <div className='user-logo'>
                                                         <Link className='user-link' to={`/users/${post.user_id}`}>
                                                             <div className='logo-wrapper'>
@@ -165,8 +164,9 @@ const Post = ({ deletePost, deleteAnswer, addAnswer, deleteComment, addComment, 
                                                             </Link>
                                                             <span title={ moment(comment.created_at).fromNow(true) }
                                                                   style={{color: '#959ca3 !important'}}
-                                                                  className='date fs-body1'>{ moment(comment.created_at).fromNow(true) }
-                                                                </span>
+                                                                  className='date fs-body1'>
+                                                                { moment(comment.created_at).fromNow(true) } ago
+                                                            </span>
                                                         </div>
                                                         {!auth.loading && auth.isAuthenticated && parseInt(comment.user_id) === auth.user.id && (
                                                             <Link
@@ -292,7 +292,7 @@ const Post = ({ deletePost, deleteAnswer, addAnswer, deleteComment, addComment, 
                                                     <div className='answer-user'>
                                                         <div className='answer-user-time fc-black-500'>
                                                             answered&nbsp;
-                                                            <span>{ moment(answer.created_at).fromNow(true) }</span>
+                                                            <span>{ moment(answer.created_at).fromNow(true) } ago</span>
                                                         </div>
                                                         <div className='answer-logo'>
                                                             <Link className='answer-user-link' to={`/users/${answer.user_id}`}>

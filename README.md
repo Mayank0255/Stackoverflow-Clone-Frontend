@@ -7,6 +7,24 @@
 
 As the name suggests, this project is a clone of a famous Q/A website for professional and enthusiast programmers built solely by me using a completely different stack.
 
+## Table of Contents
+
+- [My Tech Stack](#my-tech-stack-mern)
+  - [Front-end](#front-end)
+  - [Back-end](#back-end)
+  - [Original Tech Stack](#original-tech-stack)
+- [Guidelines to setup](#guidelines-to-setup)
+- [API Endpoints](#api-endpoints)
+  - [Base Url](#base-url---httplocalhost5000api)
+  - [Users](#users)
+  - [Posts](#posts)
+  - [Answers](#answers)
+  - [Comments](#comments)
+  - [Tags](#tags)
+- [Demo](#demo)
+  - [Video](#video---watch-the-video)
+  - [Images](#images)
+
 ## My Tech Stack (MERN)
 
 #### Front-end

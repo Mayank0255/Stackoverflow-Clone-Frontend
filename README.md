@@ -61,3 +61,37 @@ _NOTE: Might take sometime to start as there will be 2 servers running._
 <img src="/demo/images/3.png" width=340px /><img src="/demo/images/10.png" width=340px />
 <img src="/demo/images/7.png" width=340px /><img src="/demo/images/9.png" width=340px />
 
+## API Endpoints
+
+#### Base Url - `http://localhost:5000/api`
+
+#### Users
+* `GET /auth`
+* `POST /auth`
+* `POST /users/:id`
+* `GET /users`
+* `GET /users/:id`
+
+#### Posts
+* `GET /posts`
+* `GET /posts/top`
+* `GET /posts/tag/:tagname`
+* `GET /posts/:id`
+* `POST /posts/`
+* `DELETE /posts/:id`
+
+#### Answers
+* `GET /posts/answers/:id`
+* `POST /posts/answers/:id`
+* `DELETE /posts/answers/:id`
+
+#### Comments
+* `GET /posts/comments/:id`
+* `POST /posts/comments/:id`
+* `DELETE /posts/comments/:id`
+
+#### Tags
+* `GET /tags`
+
+
+

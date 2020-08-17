@@ -1,4 +1,3 @@
-const util = require('util');
 const mysql = require('mysql');
 
 // environment variable config

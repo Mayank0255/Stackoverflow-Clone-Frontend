@@ -8,7 +8,7 @@ import {
     POST_ERROR,
     DELETE_POST,
     ADD_POST
-} from '../types';
+} from './posts.types';
 
 // Get posts
 export const getPosts = () => async dispatch => {

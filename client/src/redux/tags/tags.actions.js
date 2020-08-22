@@ -1,7 +1,7 @@
 import {
     GET_TAGS,
     TAG_ERROR
-} from '../types';
+} from './tags.types';
 import axios from 'axios';
 
 export const getTags = () => async dispatch => {

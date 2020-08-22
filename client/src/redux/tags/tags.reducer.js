@@ -1,7 +1,7 @@
 import {
     GET_TAGS,
     TAG_ERROR
-} from '../types';
+} from './tags.types';
 
 const initialState = {
     tags: [],

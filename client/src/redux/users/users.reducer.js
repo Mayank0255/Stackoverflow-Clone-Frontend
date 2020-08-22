@@ -2,7 +2,7 @@ import {
     GET_USERS,
     GET_USER,
     USER_ERROR
-} from '../types';
+} from './users.types';
 
 const initialState = {
     users: [],

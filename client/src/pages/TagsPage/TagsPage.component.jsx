@@ -5,7 +5,7 @@ import { getTags } from '../../redux/tags/tags.actions';
 
 import './TagsPage.styles.scss'
 import SideBar from '../../components/SideBar/SideBar.component';
-import TagPanel from '../../components/TagPanel/TagPanel.component';
+import TagPanel from './TagPanel.component';
 import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
 
 const TagsPage = ({ getTags , tag: { tags, loading }}) => {

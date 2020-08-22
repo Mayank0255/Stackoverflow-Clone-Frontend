@@ -5,7 +5,7 @@ import { getUsers } from '../../redux/users/users.actions';
 
 import './UsersPage.styles.scss'
 import SideBar from '../../components/SideBar/SideBar.component';
-import UserPanel from '../../components/UserPanel/UserPanel.component';
+import UserPanel from './UserPanel.component';
 import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
 
 const UsersPage = ({ getUsers, user: { users, loading }  }) => {

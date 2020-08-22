@@ -3,7 +3,7 @@ import {
     ANSWER_ERROR,
     ADD_ANSWER,
     DELETE_ANSWER
-} from '../types';
+} from './answers.types';
 
 import axios from 'axios';
 import {setAlert} from '../alert/alert.actions';

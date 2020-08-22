@@ -8,7 +8,7 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT
-} from '../types';
+} from './auth.types';
 
 import setAuthToken from './auth.utils';
 

@@ -3,7 +3,7 @@ import {
     COMMENT_ERROR,
     ADD_COMMENT,
     DELETE_COMMENT
-} from '../types';
+} from './comments.types';
 
 const initialState = {
     comments: [],

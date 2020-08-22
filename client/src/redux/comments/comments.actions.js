@@ -3,7 +3,7 @@ import {
     COMMENT_ERROR,
     ADD_COMMENT,
     DELETE_COMMENT
-} from '../types';
+} from './comments.types';
 
 import axios from 'axios';
 import {setAlert} from '../alert/alert.actions';

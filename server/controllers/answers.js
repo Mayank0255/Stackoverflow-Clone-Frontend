@@ -30,7 +30,7 @@ const addAnswer = (req, res) => {
     }
     try {
         const answer = new Answer({
-            text: req.body.text,
+            body: req.body.text,
             user_id: req.user.id,
             post_id: req.params.id
         });

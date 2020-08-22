@@ -263,7 +263,7 @@ const Post = ({ deletePost, deleteAnswer, addAnswer, deleteComment, addComment, 
                                         <div className='answer-item'>
                                             <div className='answer-content fc-black-800'>
                                                 <p>
-                                                    {answer.text}
+                                                    {answer.body}
                                                 </p>
                                             </div>
                                             <div className='answer-actions'>

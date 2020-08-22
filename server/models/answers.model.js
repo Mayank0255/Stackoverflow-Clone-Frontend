@@ -1,18 +1,34 @@
 const helperFunction = require('../helpers/helperFunction');
 
-// constructor
+/**
+ * @typedef {Object} IAnswerConf
+ * @property {string} body
+ * @property {number} user_id
+ * @property {number} post_id
+ */
+
+/**
+ * @param {IAnswerConf} answer
+ * @property {string} body
+ * @property {number} user_id
+ * @property {number} post_id 
+ */
 const Answer = function(answer) {
-    this.text = answer.text;
+    this.body = answer.body;
     this.user_id = answer.user_id;
     this.post_id = answer.post_id;
 };
 
+/**
+ * @param {Answer} newAnswer
+ * @param {(err: Error, data: string) => void} result
+ */
 Answer.create = (newAnswer, result) => {
-    const query = `INSERT INTO answers(text,user_id,post_id) VALUES(?,?,?);`;
+    const query = `INSERT INTO answers(body,user_id,post_id) VALUES(?,?,?);`;
 
     pool.query(
         query,
-        [newAnswer.text, newAnswer.user_id, newAnswer.post_id ],
+        [newAnswer.body, newAnswer.user_id, newAnswer.post_id ],
         (err,res) => {
             if (err) {
                 console.log('error: ', err);
@@ -52,7 +68,7 @@ Answer.remove = (id, result) => {
 
 Answer.retrieveAll = (postId, result) => {
     let query = ` SELECT
-                    answers.id, post_id, answers.user_id, username, answers.text, answers.created_at 
+                    answers.id, post_id, answers.user_id, username, answers.body, answers.created_at 
                     FROM answers 
                     JOIN posts ON posts.id = post_id 
                     JOIN users ON users.id = answers.user_id 

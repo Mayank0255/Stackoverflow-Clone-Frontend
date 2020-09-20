@@ -8,6 +8,7 @@ import SideBar from '../../components/sideBar/sideBar.component';
 import PostItem from '../../components/postItem/postItem.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 
+import Spinner from '../../components/spinner/spinner.component';
 import './HomePage.styles.scss';
 
 const HomePage = ({ getTopPosts, post: { posts, loading }  }) => {
@@ -15,7 +16,7 @@ const HomePage = ({ getTopPosts, post: { posts, loading }  }) => {
         getTopPosts();
     }, [ getTopPosts ]);
 
-    return loading || posts === null ? <Fragment>Loading...</Fragment> : <Fragment>
+    return loading || posts === null ? <Spinner type='page'/> : <Fragment>
         <div className='page'>
             <SideBar/>
             <div id="content">

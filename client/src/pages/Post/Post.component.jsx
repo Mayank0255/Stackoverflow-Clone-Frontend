@@ -10,8 +10,8 @@ import { getComments, deleteComment, addComment } from '../../redux/comments/com
 import { ReactComponent as UpVote } from '../../assets/ArrowUpLg.svg';
 import { ReactComponent as DownVote } from '../../assets/ArrowDownLg.svg';
 
-import SideBar from '../../components/SideBar/SideBar.component';
-import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
+import SideBar from '../../components/sideBar/sideBar.component';
+import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 
 import './Post.styles.scss'
 

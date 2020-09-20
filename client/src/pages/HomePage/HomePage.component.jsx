@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getTopPosts } from '../../redux/posts/posts.actions';
 
-import SideBar from '../../components/SideBar/SideBar.component';
-import PostItem from '../../components/PostItem/PostItem.component';
-import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
+import SideBar from '../../components/sideBar/sideBar.component';
+import PostItem from '../../components/postItem/postItem.component';
+import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 
 import './HomePage.styles.scss';
 

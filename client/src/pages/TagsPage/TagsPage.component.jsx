@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { getTags } from '../../redux/tags/tags.actions';
 
 import './TagsPage.styles.scss'
-import SideBar from '../../components/SideBar/SideBar.component';
+import SideBar from '../../components/sideBar/sideBar.component';
 import TagPanel from './TagPanel.component';
-import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
+import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 
 const TagsPage = ({ getTags , tag: { tags, loading }}) => {
     useEffect(() => {

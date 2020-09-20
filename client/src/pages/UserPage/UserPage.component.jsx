@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../../assets/LogoGlyphMd.svg';
 
-import SideBar from '../../components/SideBar/SideBar.component';
-import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
+import SideBar from '../../components/sideBar/sideBar.component';
+import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 
 import './UserPage.styles.scss'
 

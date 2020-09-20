@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { getUsers } from '../../redux/users/users.actions';
 
 import './UsersPage.styles.scss'
-import SideBar from '../../components/SideBar/SideBar.component';
+import SideBar from '../../components/sideBar/sideBar.component';
 import UserPanel from './UserPanel.component';
-import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
+import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 
 const UsersPage = ({ getUsers, user: { users, loading }  }) => {
     useEffect(() => {

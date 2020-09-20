@@ -16,7 +16,7 @@ const HomePage = ({ getTopPosts, post: { posts, loading }  }) => {
         getTopPosts();
     }, [ getTopPosts ]);
 
-    return loading || posts === null ? <Spinner type='page'/> : <Fragment>
+    return loading || posts === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <div className='page'>
             <SideBar/>
             <div id="content">

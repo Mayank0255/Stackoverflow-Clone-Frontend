@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import SideBar from '../../components/sideBar/sideBar.component';
 import PostItem from '../../components/postItem/postItem.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
+import Spinner from "../../components/spinner/spinner.component";
 
 const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
     useEffect(() => {
@@ -14,7 +15,7 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
         // eslint-disable-next-line
     }, [getTagPosts]);
 
-    return loading || posts === null ? <Fragment>Loading...</Fragment> : <Fragment>
+    return loading || posts === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <div className='page'>
             <SideBar/>
 

@@ -11,6 +11,7 @@ import SideBar from '../../components/sideBar/sideBar.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 
 import './UserPage.styles.scss'
+import Spinner from "../../components/spinner/spinner.component";
 
 
 const UserPage = ({ getUser, user: { user, loading }, match  }) => {
@@ -19,7 +20,7 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
         // eslint-disable-next-line
     }, [getUser]);
 
-    return loading || user === null ? <Fragment>Loading...</Fragment> : <Fragment>
+    return loading || user === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <div className='page'>
             <SideBar/>
             <div id="content">

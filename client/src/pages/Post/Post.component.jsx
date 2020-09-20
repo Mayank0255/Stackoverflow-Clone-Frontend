@@ -14,8 +14,27 @@ import SideBar from '../../components/sideBar/sideBar.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 
 import './Post.styles.scss'
+import Spinner from "../../components/spinner/spinner.component";
 
-const Post = ({ deletePost, deleteAnswer, addAnswer, deleteComment, addComment, getAnswers, getComments, auth, getPost, answer: { answers }, comment: { comments }, post: { post, loading }, match }) => {
+const Post = (
+    {
+        deletePost,
+        deleteAnswer,
+        addAnswer,
+        deleteComment,
+        addComment,
+        getAnswers,
+        getComments,
+        auth,
+        getPost,
+        answer,
+        comment,
+        post: {
+            post,
+            loading
+        },
+        match
+    }) => {
 
     useEffect(() => {
         getPost(match.params.id);
@@ -56,7 +75,7 @@ const Post = ({ deletePost, deleteAnswer, addAnswer, deleteComment, addComment, 
         });
     };
 
-    return loading || post === null ? <Fragment>Loading...</Fragment> : <Fragment>
+    return loading || post === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <div className='page'>
             <SideBar/>
             <div id="content">
@@ -151,7 +170,7 @@ const Post = ({ deletePost, deleteAnswer, addAnswer, deleteComment, addComment, 
                                 <div className='comments-cell'>
                                     <div className='comments'>
                                         <ul className='comments-list'>
-                                            {comments.map(comment => (
+                                            {comment.loading === null ? <Spinner width='25px' height='25px'/> : comment.comments.map(comment => (
                                                 <li className='comments-item' key={comment.id} >
                                                     <div className='comment-text fc-black-800'>
                                                         <div className='comment-body'>
@@ -240,7 +259,7 @@ const Post = ({ deletePost, deleteAnswer, addAnswer, deleteComment, addComment, 
                                     </div>
                                 </div>
                             </div>
-                            {answers.map(answer => (
+                            {answer.loading === null ? <Spinner width='25px' height='25px'/> : answer.answers.map(answer => (
                                 <div key={answer.id} className='answers'>
                                     <div className='answer-layout'>
                                         <div className='vote-cell'>

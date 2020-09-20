@@ -9,6 +9,7 @@ import PostItem from '../../components/postItem/postItem.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 
 import './QuestionsPage.styles.scss'
+import Spinner from "../../components/spinner/spinner.component";
 
 
 const QuestionsPage = ({ getPosts, post: { posts, loading }  }) => {
@@ -16,7 +17,7 @@ const QuestionsPage = ({ getPosts, post: { posts, loading }  }) => {
         getPosts();
     }, [ getPosts ]);
 
-    return loading || posts === null ? <Fragment>Loading...</Fragment> : <Fragment>
+    return loading || posts === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <div className='page'>
             <SideBar/>
             <div id="content">

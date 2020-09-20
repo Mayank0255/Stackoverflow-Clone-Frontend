@@ -25,7 +25,7 @@ const Login = ({ login, isAuthenticated }) => {
         return <Redirect to='/' />;
     }
 
-    return(
+    return (
         <div className='auth-page'>
             <div className='register-content'>
                 <div className='register-grid'>

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { getTopPosts } from '../../redux/posts/posts.actions';
 
 import SideBar from '../../components/sideBar/sideBar.component';
-import PostItem from '../../components/postItem/postItem.component';
+import PostItem from "../../components/postItem/postItem.component";
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 
 import Spinner from '../../components/spinner/spinner.component';

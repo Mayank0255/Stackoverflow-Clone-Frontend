@@ -1,19 +1,20 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTags } from '../../redux/tags/tags.actions';
 
 import './TagsPage.styles.scss'
-import SideBar from '../../components/SideBar/SideBar.component';
+import SideBar from '../../components/sideBar/sideBar.component';
 import TagPanel from './TagPanel.component';
-import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
+import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
+import Spinner from "../../components/spinner/spinner.component";
 
 const TagsPage = ({ getTags , tag: { tags, loading }}) => {
     useEffect(() => {
         getTags();
     }, [getTags]);
 
-    return (
+    return loading || tags === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <div className='page'>
             <SideBar/>
             <div id="content">
@@ -35,7 +36,7 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
                 <RightSideBar/>
             </div>
         </div>
-    )
+    </Fragment>
 };
 
 TagsPage.propTypes = {

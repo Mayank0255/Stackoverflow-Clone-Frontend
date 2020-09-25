@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getTopPosts } from '../../redux/posts/posts.actions';
 
-import SideBar from '../../components/SideBar/SideBar.component';
-import PostItem from '../../components/PostItem/PostItem.component';
-import RightSideBar from '../../components/right-sideBar/right-sideBar.component';
+import SideBar from '../../components/sideBar/sideBar.component';
+import PostItem from '../../components/postItem/postItem.component';
+import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 
+import Spinner from '../../components/spinner/spinner.component';
 import './HomePage.styles.scss';
 
 const HomePage = ({ getTopPosts, post: { posts, loading }  }) => {
@@ -15,7 +16,7 @@ const HomePage = ({ getTopPosts, post: { posts, loading }  }) => {
         getTopPosts();
     }, [ getTopPosts ]);
 
-    return loading || posts === null ? <Fragment>Loading...</Fragment> : <Fragment>
+    return loading || posts === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <div className='page'>
             <SideBar/>
             <div id="content">

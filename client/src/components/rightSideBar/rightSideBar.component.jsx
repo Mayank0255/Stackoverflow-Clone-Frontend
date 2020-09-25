@@ -7,7 +7,7 @@ import { getTags } from '../../redux/tags/tags.actions';
 import { ReactComponent as Stackoverflow } from '../../assets/LogoGlyphXxs.svg';
 import { ReactComponent as Stackoverflowhite } from '../../assets/LogoGlyphXxswhite.svg';
 
-import './right-sideBar.styles.scss';
+import './rightSideBar.styles.scss';
 
 const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
     useEffect(() => {

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { addPost } from '../../redux/posts/posts.actions';
 
 import './PostForm.styles.scss';
+import Spinner from "../../components/spinner/spinner.component";
 
 const PostForm = ({ auth:{ isAuthenticated, loading }, addPost }) => {
     const [ formData, setFormData ] = useState({
@@ -31,7 +32,7 @@ const PostForm = ({ auth:{ isAuthenticated, loading }, addPost }) => {
         return <Redirect to='/login' />;
     }
 
-    return loading === null ? <Fragment>Loading...</Fragment> : <Fragment>
+    return loading === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <div className='post-form-container'>
             <div className='post-form-content'>
                 <div className='post-form-header'>

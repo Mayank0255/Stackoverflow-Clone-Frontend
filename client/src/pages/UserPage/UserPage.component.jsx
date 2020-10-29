@@ -38,7 +38,7 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                     <div className='avatar'>
                                         <Link className='avatar-link' to={`/users/${user.id}`}>
                                             <div className='logo-wrapper'>
-                                                <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAANlBMVEXw8PDdy4Xx8vXcyX7s6Nzg0prr59jh05/cyHvt6t/f0JXbx3bx8/fdy4Pj16vv7uzezIro4cj87/UvAAACA0lEQVR4nO3cYU7CUBCFUYRWWrSo+9+sS+BOMg9e9HwLmM5p4BdkTidJkiRJkvRH+1r6+koeuPc9b4+Ey8elq4/34Hnndet63nY7R8LLW1eXSHg9up53rISE1QgJqxES1iMkrEZIWI+QsBohYT1CwmqEhPUICasREtYjJKxGSFiP8FXC7UiKhMvn+WGfmTBaKhPutzXoO1nrWK9B2ahoq3skPD1+7b0vvu/jcM6A2Vvo+/JkRV/pzggJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQn/jzD8lbtT2PcLdnQ1Yl+z3/GTSwjZpJ/kuETn1YhwrffHLX0v6xVXI4InNn7g/SeKsB4hYTVCwnqEhNUICesRElYjJKxHSFiNkLAeIWE1QsJ6hITVCAnrEc4tTE4JbJnw0nWWoFX4nRxxuC2J8B6Nyq5U9AmPte+IQ3SlYs+26hQ2nqB49laEhGMiJBw1qy9CwlGz+iIkHDWrL0LCUbP6IiQcNasvQsJRs/oiJBw1qy9CwlGz+iIkHDWrL0LCUbP6InyRMDpAkZ16mFQYHaDITj3MKpxy1KRrERLOvxYh4fxrERLOvxYh4fxrERLOvxYh4fxrERLOvxYh4fxrERLOvxYh4fxrERLOv1arcEuOOGRrTTnqtN+SKw73ZNaco7IrDo0HIZ4/SpIkSZKkP9gvDI+byX8+aAgAAAAASUVORK5CYII=' alt='user-logo'/>
+                                                <img src={`https://secure.gravatar.com/avatar/${user.id}?s=164&d=identicon`} alt='user-logo'/>
                                             </div>
                                         </Link>
                                     </div>

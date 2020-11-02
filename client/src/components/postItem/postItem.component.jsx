@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import './postItem.styles.scss';
 
-const PostItem = ({ post: { id, title, body, tagname, username, user_id, answer_count, comment_count, created_at } }) => {
+const PostItem = ({ post: { id, title, body, tagname, username, user_id, answer_count, comment_count, views, created_at } }) => {
     const answerVoteUp = (
         <div className='vote answer'>
             <span className='vote-count fc-green-500'>{answer_count}</span>
@@ -33,6 +33,9 @@ const PostItem = ({ post: { id, title, body, tagname, username, user_id, answer_
                     <div className='vote'>
                         <span className='vote-count'>{tagname ? 1 : 0}</span>
                         <div className='count-text'>tags</div>
+                    </div>
+                    <div className='vote'>
+                        <div className='count-text'>{views} views</div>
                     </div>
                 </div>
             </div>

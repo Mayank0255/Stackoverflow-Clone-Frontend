@@ -64,7 +64,7 @@ Post.retrieveOne = (postId, result) => {
                     posts.id,posts.user_id,tag_id,COUNT(DISTINCT answers.id) 
                     as answer_count,COUNT(DISTINCT comments.id) 
                     as comment_count,username,title,posts.body 
-                    as post_body,tagname,posts.created_at,posts.views 
+                    as post_body,tagname,posts.created_at,posts.views as views
                     FROM posts 
                     JOIN posttag ON posts.id = post_id 
                     JOIN tags ON tag_id = tags.id 
@@ -108,7 +108,7 @@ Post.retrieveAll = ({ action, tagName }, result) => {
     let base = `SELECT 
                 posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
                 as answer_count,COUNT(DISTINCT comments.id) 
-                as comment_count,tag_id,title,posts.body,tagname,posts.created_at 
+                as comment_count,tag_id,title,posts.body,tagname,posts.created_at,posts.views 
                 FROM posts 
                 JOIN posttag ON posts.id = post_id 
                 JOIN tags ON tag_id = tags.id 

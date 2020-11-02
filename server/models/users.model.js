@@ -111,7 +111,8 @@ User.login = (newUser, result) => {
 
 User.retrieve = ({ action, id }, result) => {
     action = action.toLowerCase();
-    const head = `  SELECT users.id,username,users.created_at,COUNT(DISTINCT posts.id)`;
+    const updateQuery = `UPDATE users SET views = views + 1 WHERE users.id = ?;`
+    const head = `  SELECT users.id,username,users.created_at, users.views, COUNT(DISTINCT posts.id) `;
     const middle = `FROM users 
                     LEFT JOIN posts ON posts.user_id = users.id 
                     LEFT JOIN posttag ON posttag.post_id = posts.id 
@@ -127,6 +128,20 @@ User.retrieve = ({ action, id }, result) => {
                  ${middle} LEFT JOIN answers ON answers.user_id = users.id 
                 LEFT JOIN comments ON comments.user_id = users.id 
                 WHERE users.id = ? GROUP BY users.id;`
+
+    if (action === 'one') {
+        pool.query(updateQuery,
+            id,
+            (err, results) => {
+                if (err) {
+                    console.log('error: ', err);
+                    result(
+                        helperFunction.responseHandler(false, err ? err.statusCode : 404, err ? err.message : 'There isn\'t any user by this id', null),
+                        null
+                    );
+                }
+        });
+    }
 
     pool.query(action === 'one' ? head + q2 : head + q1,
         action === 'one' ? id : null,

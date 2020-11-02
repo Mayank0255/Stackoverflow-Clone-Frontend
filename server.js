@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // database connection
-pool.query('USE stackoverflow');
+pool.query('USE stack_overflow_v2');
 global.pool = pool;
 
 // connection with client setup

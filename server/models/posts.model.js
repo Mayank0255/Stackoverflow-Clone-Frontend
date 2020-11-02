@@ -58,11 +58,13 @@ Post.remove = (id, result) => {
 }
 
 Post.retrieveOne = (postId, result) => {
+    const updateQuery = `UPDATE posts SET views = views + 1 WHERE posts.id = ?;`
+
     const query = ` SELECT 
                     posts.id,posts.user_id,tag_id,COUNT(DISTINCT answers.id) 
                     as answer_count,COUNT(DISTINCT comments.id) 
                     as comment_count,username,title,posts.body 
-                    as post_body,tagname,posts.created_at 
+                    as post_body,tagname,posts.created_at,posts.views 
                     FROM posts 
                     JOIN posttag ON posts.id = post_id 
                     JOIN tags ON tag_id = tags.id 
@@ -70,6 +72,19 @@ Post.retrieveOne = (postId, result) => {
                     LEFT JOIN answers ON answers.post_id = posts.id 
                     LEFT JOIN comments ON posts.id = comments.post_id 
                     WHERE posts.id = ?;`;
+
+    pool.query(updateQuery,
+        postId,
+        (err, results) => {
+            if (err) {
+                console.log('error: ', err);
+                result(
+                    helperFunction.responseHandler(false, err ? err.statusCode : 404, err ? err.message : 'There isn\'t any post by this id', null),
+                    null
+                );
+            }
+    });
+
     pool.query(query,
         postId,
         (err, results) => {
@@ -85,7 +100,7 @@ Post.retrieveOne = (postId, result) => {
                 null,
                 helperFunction.responseHandler(true, 200, 'Success', results[0])
             );
-        });
+    });
 }
 
 Post.retrieveAll = ({ action, tagName }, result) => {

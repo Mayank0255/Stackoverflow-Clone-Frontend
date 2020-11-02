@@ -44,10 +44,10 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                     </div>
                                     <div className='title'>
                                         <div className='grid fc-black-800'>
-                                            319
+                                            {user.views}
                                             &nbsp;
                                             <span className='fc-light'>
-                                                REPUTATION
+                                                PROFILE VIEWS
                                             </span>
                                         </div>
                                     </div>

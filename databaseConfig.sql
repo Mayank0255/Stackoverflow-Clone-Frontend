@@ -7,6 +7,7 @@ USE stack_overflow_v2;
       id INT AUTO_INCREMENT PRIMARY KEY,
       username VARCHAR(255) UNIQUE NOT NULL,
       password VARCHAR(100),
+      views INT DEFAULT 0,
       created_at TIMESTAMP DEFAULT NOW()
  );
 

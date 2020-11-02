@@ -1,6 +1,6 @@
-CREATE DATABASE stackoverflow;
+CREATE DATABASE stack_overflow_v2;
 
-USE stackoverflow;
+USE stack_overflow_v2;
 
 
  CREATE TABLE users(
@@ -14,6 +14,7 @@ USE stackoverflow;
      id INT AUTO_INCREMENT PRIMARY KEY,
      title VARCHAR(250),
      body MEDIUMTEXT,
+     views INT DEFAULT 0,
      created_at TIMESTAMP DEFAULT NOW(),
      user_id INT NOT NULL,
      FOREIGN KEY(user_id) REFERENCES users(id)

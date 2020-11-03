@@ -17,6 +17,7 @@ import TagPage from './pages/TagPage/TagPage.component';
 import UserPage from './pages/UserPage/UserPage.component';
 
 import Alert from './components/alert/alert.component';
+import PageTitle from "./components/pageTitle/pageTitle.component";
 import { loadUser } from "./redux/auth/auth.actions";
 
 import Header from "./components/header/header.component";
@@ -25,6 +26,19 @@ import setAuthToken from "./redux/auth/auth.utils";
 if (localStorage.token){
     setAuthToken(localStorage.token);
 }
+
+const withTitle = ({ component: Component, title }) => {
+    return class Title extends React.Component {
+        render() {
+            return (
+                <React.Fragment>
+                    <PageTitle title={title} />
+                    <Component {...this.props} />
+                </React.Fragment>
+            );
+        }
+    };
+};
 
 const App = () => {
     useEffect(() => {
@@ -37,17 +51,41 @@ const App = () => {
                 <Header />
                 <Alert />
                 <Switch>
-                    <Route exact path='/' component={HomePage} />
-                    <Route exact path='/questions' component={QuestionsPage} />
-                    <Route exact path='/tags' component={TagsPage} />
-                    <Route exact path='/users' component={UsersPage} />
-                    <Route exact path='/jobs' component={HomePage} />
-                    <Route exact path='/register' component={Register} />
-                    <Route exact path='/login' component={Login} />
+                    <Route exact path='/' component={withTitle({
+                        component: HomePage,
+                        title: 'CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers'
+                    })} />
+                    <Route exact path='/questions' component={withTitle({
+                        component: QuestionsPage,
+                        title: 'Questions - Stack Overflow'
+                    })} />
+                    <Route exact path='/tags' component={withTitle({
+                        component: TagsPage,
+                        title: 'Tags - Stack Overflow'
+                    })} />
+                    <Route exact path='/users' component={withTitle({
+                        component: UsersPage,
+                        title: 'Users - Stack Overflow'
+                    })} />
+                    <Route exact path='/jobs' component={withTitle({
+                        component: HomePage,
+                        title: 'CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers'
+                    })} />
+                    <Route exact path='/register' component={withTitle({
+                        component: Register,
+                        title: 'Sign Up - Stack Overflow'
+                    })} />
+                    <Route exact path='/login' component={withTitle({
+                        component: Login,
+                        title: 'Log In - Stack Overflow'
+                    })} />
                     <Route exact path='/questions/:id' component={Post} />
                     <Route exact path='/users/:id' component={UserPage} />
                     <Route exact path='/tags/:tagname' component={TagPage} />
-                    <Route exact path='/add/question' component={PostForm} />
+                    <Route exact path='/add/question' component={withTitle({
+                        component: PostForm,
+                        title: 'Ask a Question - Stack Overflow'
+                    })} />
                 </Switch>
             </div>
         </Provider>

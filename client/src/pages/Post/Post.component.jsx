@@ -12,6 +12,7 @@ import { ReactComponent as DownVote } from '../../assets/ArrowDownLg.svg';
 
 import SideBar from '../../components/sideBar/sideBar.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
+import PageTitle from "../../components/pageTitle/pageTitle.component";
 
 import './Post.styles.scss'
 import Spinner from "../../components/spinner/spinner.component";
@@ -76,6 +77,7 @@ const Post = (
     };
 
     return loading || post === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
+        <PageTitle title={`${post.title} - Stack Overflow`}/>
         <div className='page'>
             <SideBar/>
             <div id="content">

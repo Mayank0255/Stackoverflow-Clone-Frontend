@@ -8,6 +8,7 @@ import SideBar from '../../components/sideBar/sideBar.component';
 import PostItem from '../../components/postItem/postItem.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 import Spinner from "../../components/spinner/spinner.component";
+import PageTitle from "../../components/pageTitle/pageTitle.component";
 
 const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
     useEffect(() => {
@@ -16,6 +17,7 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
     }, [getTagPosts]);
 
     return loading || posts === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
+        <PageTitle title={`Questions tagged [${match.params.tagname}] - Stack Overflow`}/>
         <div className='page'>
             <SideBar/>
 

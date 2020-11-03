@@ -59,7 +59,7 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
                            type="text"
                            placeholder="Search&#x2026;"
                            maxLength="240"
-                           className="s-input s-input__search js-search-field "/>
+                           className="s-input s-input__search js-search-field search-box"/>
                            <Search/>
                 </div>
             </form>

@@ -8,6 +8,7 @@ import './PostForm.styles.scss';
 import Spinner from "../../components/spinner/spinner.component";
 
 const PostForm = ({ auth:{ isAuthenticated, loading }, addPost }) => {
+
     const [ formData, setFormData ] = useState({
         title: '',
         body: '',

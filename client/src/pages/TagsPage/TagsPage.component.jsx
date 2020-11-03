@@ -1,4 +1,4 @@
-import React, {useEffect, Fragment} from 'react';
+import React, {useEffect, Fragment, useState} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTags } from '../../redux/tags/tags.actions';
@@ -9,10 +9,23 @@ import TagPanel from './TagPanel.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 import Spinner from "../../components/spinner/spinner.component";
 
+import {ReactComponent as Search} from "../../assets/Search.svg";
+
 const TagsPage = ({ getTags , tag: { tags, loading }}) => {
     useEffect(() => {
         getTags();
     }, [getTags]);
+
+    const [ fetchSearch, setSearch] = useState({
+        searchTag: ''
+    });
+
+    const handleChange = e => {
+        e.preventDefault();
+        setSearch({
+            searchTag: e.target.value
+        });
+    };
 
     return loading || tags === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <div className='page'>
@@ -24,11 +37,23 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
                         A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.
                     </p>
                     <div className='headline-count'>
-                        <span>1,025 tags</span>
+                        <div>
+                            <span>1,025 tags</span>
+                            <form id="search"
+                                  className="grid--cell fl-grow1 searchbar pt12 js-searchbar " autoComplete="off">
+                                <div className="ps-relative search-frame">
+                                    <input className="s-input s-input__search h100 search-box" autoComplete="off"
+                                           type="text" maxLength="35" placeholder="Filter by tag name"
+                                           onChange= {handleChange}
+                                    />
+                                    <Search/>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div className='user-browser'>
                         <div className='grid-layout'>
-                            {tags.map(tag => (
+                            {tags.filter(tag => tag.tagname.toLowerCase().includes(fetchSearch.searchTag.toLowerCase())).map(tag => (
                                 <TagPanel key={tag.tagname} tag = {tag}/>))}
                         </div>
                     </div>

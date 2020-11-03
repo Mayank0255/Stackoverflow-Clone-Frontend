@@ -84,6 +84,13 @@
   color: #cfd2d6;
 }
 
+.search-box:focus {
+  border-color: #2b5f8a;
+  box-shadow: 0 0 0 4px #378ad326;
+  color: #fff;
+  outline: 0;
+}
+
 .s-input.s-input__creditcard, .s-input.s-input__search::placeholder {
   color: #697075;
 }

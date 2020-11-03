@@ -23,6 +23,18 @@
       font-size: 17px;
       margin-right: 12px;
     }
+
+    .search-frame {
+      width: 220px;
+      //float: right;
+    }
+
+    .search-box:focus {
+      border-color: #2b5f8a;
+      box-shadow: 0 0 0 4px #378ad326;
+      color: #fff;
+      outline: 0;
+    }
   }
 
   .user-browser {

@@ -57,7 +57,7 @@ const App = () => {
                     })} />
                     <Route exact path='/questions' component={withTitle({
                         component: QuestionsPage,
-                        title: 'Questions - Stack Overflow'
+                        title: 'All Questions - Stack Overflow'
                     })} />
                     <Route exact path='/tags' component={withTitle({
                         component: TagsPage,

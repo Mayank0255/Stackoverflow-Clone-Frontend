@@ -9,6 +9,7 @@ import { ReactComponent as Logo } from '../../assets/LogoGlyphMd.svg';
 
 import SideBar from '../../components/sideBar/sideBar.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
+import PageTitle from "../../components/pageTitle/pageTitle.component";
 
 import './UserPage.styles.scss'
 import Spinner from "../../components/spinner/spinner.component";
@@ -21,6 +22,7 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
     }, [getUser]);
 
     return loading || user === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
+        <PageTitle title={`User ${user.username} - Stack Overflow`}/>
         <div className='page'>
             <SideBar/>
             <div id="content">

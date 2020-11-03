@@ -16,15 +16,11 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
         getTags();
     }, [getTags]);
 
-    const [ fetchSearch, setSearch] = useState({
-        searchTag: ''
-    });
+    const [ fetchSearch, setSearch] = useState('');
 
     const handleChange = e => {
         e.preventDefault();
-        setSearch({
-            searchTag: e.target.value
-        });
+        setSearch(e.target.value);
     };
 
     return loading || tags === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
@@ -53,7 +49,7 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
                     </div>
                     <div className='user-browser'>
                         <div className='grid-layout'>
-                            {tags.filter(tag => tag.tagname.toLowerCase().includes(fetchSearch.searchTag.toLowerCase())).map(tag => (
+                            {tags.filter(tag => tag.tagname.toLowerCase().includes(fetchSearch.toLowerCase())).map(tag => (
                                 <TagPanel key={tag.tagname} tag = {tag}/>))}
                         </div>
                     </div>

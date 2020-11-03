@@ -68,39 +68,6 @@
   padding-right: 12px !important;
 }
 
-.fl-grow1  {
-  flex-grow: 1;
-}
-
-.ps-relative  {
-  position: relative !important;
-}
-
-.s-input.s-input__creditcard, .s-input.s-input__search {
-  padding-left: 32px;
-  border-color: #697075;
-  background-color: #2d2d2d;
-  box-shadow: none;
-  color: #cfd2d6;
-}
-
-.search-box:focus {
-  border-color: #2b5f8a;
-  box-shadow: 0 0 0 4px #378ad326;
-  color: #fff;
-  outline: 0;
-}
-
-.s-input.s-input__creditcard, .s-input.s-input__search::placeholder {
-  color: #697075;
-}
-
-.s-input-icon.s-input-icon__search, .s-input-icon.s-input-icon__creditcard {
-  right: auto;
-  left: .7em;
-  color: #697075;
-}
-
 @media(max-width: 1280px) {
   .navbar-brand {
     margin-left: 60px;

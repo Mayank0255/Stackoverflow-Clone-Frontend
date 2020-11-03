@@ -13,6 +13,7 @@ import { ReactComponent as DownVote } from '../../assets/ArrowDownLg.svg';
 import SideBar from '../../components/sideBar/sideBar.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 import PageTitle from "../../components/pageTitle/pageTitle.component";
+import UserCard from "../../components/UserCard/UserCard.component";
 
 import './Post.styles.scss'
 import Spinner from "../../components/spinner/spinner.component";
@@ -151,21 +152,11 @@ const Post = (
                                                     )}
                                                 </div>
                                             </div>
-                                            <div className='post-owner'>
-                                                <div className='user-block fc-black-500'>
-                                                    <div className='action-time'>asked { moment(post.created_at).fromNow(true) } ago</div>
-                                                    <div className='user-logo'>
-                                                        <Link className='user-link' to={`/users/${post.user_id}`}>
-                                                            <div className='logo-wrapper'>
-                                                                <img alt='user_logo' src={`https://secure.gravatar.com/avatar/${post.user_id}?s=164&d=identicon`}/>
-                                                            </div>
-                                                        </Link>
-                                                    </div>
-                                                    <div className='user-profile'>
-                                                        <Link className='user-profile-link fc-blue-600' to={`/users/${post.user_id}`}>{post.username}</Link>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <UserCard
+                                                created_at={post.created_at}
+                                                user_id={post.user_id}
+                                                username ={post.username}
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -309,24 +300,11 @@ const Post = (
                                                         )}
                                                     </div>
                                                 </div>
-                                                <div className='answer-owner'>
-                                                    <div className='answer-user'>
-                                                        <div className='answer-user-time fc-black-500'>
-                                                            answered&nbsp;
-                                                            <span>{ moment(answer.created_at).fromNow(true) } ago</span>
-                                                        </div>
-                                                        <div className='answer-logo'>
-                                                            <Link className='answer-user-link' to={`/users/${answer.user_id}`}>
-                                                                <div className='answer-logo-wrapper'>
-                                                                    <img alt='user_logo' src={`https://secure.gravatar.com/avatar/${answer.user_id}?s=164&d=identicon`}/>
-                                                                </div>
-                                                            </Link>
-                                                        </div>
-                                                        <div className='answer-details'>
-                                                            <Link className='answer-user-profile-link fc-blue-600' to={`/users/${answer.user_id}`}>{answer.username}</Link>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <UserCard
+                                                    created_at={answer.created_at}
+                                                    user_id={answer.user_id}
+                                                    username ={answer.username}
+                                                />
                                             </div>
                                         </div>
                                     </div>

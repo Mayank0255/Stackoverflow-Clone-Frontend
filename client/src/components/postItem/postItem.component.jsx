@@ -1,8 +1,9 @@
 import React from 'react';
-import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+import UserCard from "../UserCard/UserCard.component";
 
 import './postItem.styles.scss';
 
@@ -51,24 +52,12 @@ const PostItem = ({ post: { id, title, body, tagname, username, user_id, answer_
                         {tagname}
                     </Link>
                 </div>
-                <div className='question-user'>
-                    <div className='user-info'>
-                        <div className='user-action-time'>asked { moment(created_at).fromNow(true) } ago</div>
-                        <div className='user-gravatar'>
-                            <Link to={`/users/${user_id}`}>
-                                <div className='logo-wrapper'>
-                                    <img alt='userlogo'
-                                         src={`https://secure.gravatar.com/avatar/${user_id}?s=164&d=identicon`}/>
-                                </div>
-                            </Link>
-                        </div>
-                        <div className='user-details'>
-                            <Link to={`/users/${user_id}`}>
-                                {username}
-                            </Link>
-                        </div>
-                    </div>
-                </div>
+                <UserCard
+                    created_at={created_at}
+                    user_id={user_id}
+                    username ={username}
+                    float={'right'}
+                />
             </div>
         </div>
 

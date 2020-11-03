@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import './UserPanel.styles.scss';
 
-const UserPanel = ({ user: { id, username, created_at, posts_count, tags_count } }) => {
+const UserPanel = ({ user: { id, username, created_at, posts_count, tags_count, views } }) => {
     return (
         <div className='user-panel-info s-card bs-sm h:bs-md fc-black-500'>
             <div className='user-gravatar'>

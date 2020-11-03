@@ -10,6 +10,7 @@ import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 import Spinner from "../../components/spinner/spinner.component";
 
 import {ReactComponent as Search} from "../../assets/Search.svg";
+import SearchBox from "../../components/SearchBox/SearchBox.component";
 
 const TagsPage = ({ getTags , tag: { tags, loading }}) => {
     useEffect(() => {
@@ -35,16 +36,11 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
                     <div className='headline-count'>
                         <div>
                             <span>1,025 tags</span>
-                            <form id="search"
-                                  className="grid--cell fl-grow1 searchbar pt12 js-searchbar " autoComplete="off">
-                                <div className="ps-relative search-frame">
-                                    <input className="s-input s-input__search h100 search-box" autoComplete="off"
-                                           type="text" maxLength="35" placeholder="Filter by tag name"
-                                           onChange= {handleChange}
-                                    />
-                                    <Search/>
-                                </div>
-                            </form>
+                            <SearchBox
+                                placeholder={'filter by tag name'}
+                                handleChange={handleChange}
+                                pt={'pt12'}
+                            />
                         </div>
                     </div>
                     <div className='user-browser'>

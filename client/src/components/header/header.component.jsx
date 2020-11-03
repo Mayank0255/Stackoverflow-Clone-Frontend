@@ -8,6 +8,7 @@ import { ReactComponent as Logo } from '../../assets/LogoMd.svg';
 import { ReactComponent as Search } from '../../assets/Search.svg';
 
 import './header.styles.scss';
+import SearchBox from "../SearchBox/SearchBox.component";
 
 const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
     const authLinks = (
@@ -52,17 +53,10 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
             {!loading && (
                 <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>
             )}
-            <form id="search" role="search" method="get"
-                  className="grid--cell fl-grow1 searchbar px12 js-searchbar " autoComplete="off">
-                <div className="ps-relative">
-                    <input name="q"
-                           type="text"
-                           placeholder="Search&#x2026;"
-                           maxLength="240"
-                           className="s-input s-input__search js-search-field search-box"/>
-                           <Search/>
-                </div>
-            </form>
+            <SearchBox
+                placeholder={'Search...'}
+                px={'px12'}
+            />
             {!loading && (
                 <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
             )}

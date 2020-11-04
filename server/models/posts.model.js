@@ -1,4 +1,5 @@
 const helperFunction = require('../helpers/helperFunction');
+const investApi = require('../services/investApi')
 
 // constructor
 const Post = function(post) {
@@ -8,15 +9,17 @@ const Post = function(post) {
     this.tagname = post.tagname;
 };
 
-Post.create = (newPost, result) => {
+Post.create = async (newPost, result) => {
+    const tagDescription = await investApi.fetchTagDesc(newPost.tagname)
+
     const query = ` INSERT INTO posts(title,body,user_id) VALUES (?,?,?);
                     SET @v1 := (SELECT LAST_INSERT_ID());
-                    INSERT IGNORE INTO tags(tagname) VALUES (?);
+                    INSERT IGNORE INTO tags(tagname, description) VALUES (?, ?);
                     SET @v2 := (SELECT id FROM tags WHERE tagname = ?);
                     INSERT INTO posttag(post_id,tag_id) VALUES(@v1,@v2);`;
 
     pool.query(query,
-        [ newPost.title, newPost.body, newPost.userId, newPost.tagname, newPost.tagname ],
+        [ newPost.title, newPost.body, newPost.userId, newPost.tagname, tagDescription, newPost.tagname ],
         (err, res) => {
         if (err) {
             console.log('error: ', err);

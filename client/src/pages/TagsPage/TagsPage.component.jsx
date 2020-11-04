@@ -9,7 +9,6 @@ import TagPanel from './TagPanel.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 import Spinner from "../../components/spinner/spinner.component";
 
-import {ReactComponent as Search} from "../../assets/Search.svg";
 import SearchBox from "../../components/SearchBox/SearchBox.component";
 
 const TagsPage = ({ getTags , tag: { tags, loading }}) => {

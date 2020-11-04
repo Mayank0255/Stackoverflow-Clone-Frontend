@@ -17,6 +17,7 @@ import UserCard from "../../components/UserCard/UserCard.component";
 
 import './Post.styles.scss'
 import Spinner from "../../components/spinner/spinner.component";
+import TagBadge from "../../components/TagBadge/TagBadge.component";
 
 const Post = (
     {
@@ -125,9 +126,10 @@ const Post = (
                                         {post.post_body}
                                     </div>
                                     <div className='post-tags fc-black-800'>
-                                        <div className='tag-cell'>
-                                            <Link className='s-tag' to={`/tags/${post.tagname}`}>{post.tagname}</Link>
-                                        </div>
+                                        <TagBadge
+                                            tag_name={post.tagname}
+                                            size={'s-tag'}
+                                        />
                                     </div>
                                     <div className='post-actions fc-black-800'>
                                         <div className='post-actions-extended'>

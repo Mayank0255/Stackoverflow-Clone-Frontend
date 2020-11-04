@@ -10,10 +10,10 @@ import { ReactComponent as Logo } from '../../assets/LogoGlyphMd.svg';
 import SideBar from '../../components/sideBar/sideBar.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 import PageTitle from "../../components/pageTitle/pageTitle.component";
+import Spinner from "../../components/spinner/spinner.component";
+import TagBadge from "../../components/TagBadge/TagBadge.component";
 
 import './UserPage.styles.scss'
-import Spinner from "../../components/spinner/spinner.component";
-
 
 const UserPage = ({ getUser, user: { user, loading }, match  }) => {
     useEffect(() => {
@@ -159,9 +159,10 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                     <div className='top-tags-cells'>
                                         <div className='top-cell'>
                                             <div className='tag-cell bg-black-025'>
-                                                <Link className='s-tag s-tag__lg' to='/tags/java'>
-                                                    java
-                                                </Link>
+                                                <TagBadge
+                                                    tag_name={'java'}
+                                                    size={'s-tag s-tag__lg'}
+                                                />
                                                 <div className='score'>
                                                     <div className='score-txt'>
                                                         <div className='score-tab'>
@@ -176,9 +177,10 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                     <div className='top-tags-cells'>
                                         <div className='top-cell'>
                                             <div className='tag-cell bg-black-025'>
-                                                <Link className='s-tag s-tag__md' to='/tags/node.js'>
-                                                    node.js
-                                                </Link>
+                                                <TagBadge
+                                                    tag_name={'node.js'}
+                                                    size={'s-tag s-tag__md'}
+                                                />
                                                 <div className='score'>
                                                     <div className='score-txt'>
                                                         <div className='score-tab'>
@@ -193,9 +195,10 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                     <div className='top-tags-cells'>
                                         <div className='top-cell'>
                                             <div className='tag-cell bg-black-025'>
-                                                <Link className='s-tag s-tag__md' to='/tags/react'>
-                                                    react
-                                                </Link>
+                                                <TagBadge
+                                                    tag_name={'react'}
+                                                    size={'s-tag s-tag__md'}
+                                                />
                                                 <div className='score'>
                                                     <div className='score-txt'>
                                                         <div className='score-tab'>

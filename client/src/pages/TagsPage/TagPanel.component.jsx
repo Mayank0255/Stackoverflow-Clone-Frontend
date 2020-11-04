@@ -1,23 +1,20 @@
 import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import TagBadge from "../../components/TagBadge/TagBadge.component";
 
 import './TagPanel.styles.scss';
+
 
 const TagPanel = ({ tag: {tagname, description, created_at, posts_count} }) => {
     return (
         <div className='tag-card'>
             <div className='grid'>
-                <div className='grid-cell'>
-                    <Link
-                        className='s-tag'
-                        to={{ pathname: `/tags/${tagname}` }}
-                    >
-                        {tagname}
-                    </Link>
-                </div>
+                <TagBadge
+                    tag_name={tagname}
+                    size={'s-tag'}
+                />
             </div>
             <div className="description">{description}</div>
             <div className='tag-caption'>

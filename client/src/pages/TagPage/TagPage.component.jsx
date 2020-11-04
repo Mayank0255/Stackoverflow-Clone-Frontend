@@ -1,4 +1,4 @@
-import React, {useEffect,Fragment} from 'react';
+import React, {useEffect, Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTagPosts } from '../../redux/posts/posts.actions';
@@ -10,6 +10,8 @@ import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 import Spinner from "../../components/spinner/spinner.component";
 import PageTitle from "../../components/pageTitle/pageTitle.component";
 
+import './TagPage.styles.scss';
+
 const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
     useEffect(() => {
         getTagPosts(match.params.tagname);
@@ -20,7 +22,6 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
         <PageTitle title={`Questions tagged [${match.params.tagname}] - Stack Overflow`}/>
         <div className='page'>
             <SideBar/>
-
             <div id="content">
                 <div id='mainbar' className='questions-page fc-black-800'>
                     <div className='questions-grid'>
@@ -31,6 +32,7 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
                             </Link>
                         </div>
                     </div>
+                    <p className='fs-body'>{posts[0].description}</p>
                     <div className='questions-tabs'>
                         <span>19,204,360 questions</span>
                     </div>

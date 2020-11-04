@@ -7,12 +7,16 @@ import PropTypes from 'prop-types';
 import './TagPanel.styles.scss';
 
 const TagPanel = ({ tag: {tagname, description, created_at, posts_count} }) => {
-    console.log(description)
     return (
         <div className='tag-card'>
             <div className='grid'>
                 <div className='grid-cell'>
-                    <Link className='s-tag' to={`/tags/${ tagname }`}>{ tagname }</Link>
+                    <Link
+                        className='s-tag'
+                        to={{ pathname: `/tags/${tagname}` }}
+                    >
+                        {tagname}
+                    </Link>
                 </div>
             </div>
             <div className="description">{description}</div>

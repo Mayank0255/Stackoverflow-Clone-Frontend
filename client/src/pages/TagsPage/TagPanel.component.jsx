@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 
 import './TagPanel.styles.scss';
 
-const TagPanel = ({ tag: {tagname, created_at, posts_count} }) => {
+const TagPanel = ({ tag: {tagname, description, created_at, posts_count} }) => {
+    console.log(description)
     return (
         <div className='tag-card'>
             <div className='grid'>
@@ -14,11 +15,12 @@ const TagPanel = ({ tag: {tagname, created_at, posts_count} }) => {
                     <Link className='s-tag' to={`/tags/${ tagname }`}>{ tagname }</Link>
                 </div>
             </div>
-            <div className='caption'>
-                <div>
+            <div className="description">{description}</div>
+            <div className='tag-caption'>
+                <div className='tag-cell'>
                     {posts_count} questions
                 </div>
-                <div>
+                <div className='tag-cell'>
                     added { moment(created_at).fromNow(true) } ago
                 </div>
             </div>

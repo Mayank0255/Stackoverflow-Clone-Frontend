@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { logout } from '../../redux/auth/auth.actions'
 
 import { ReactComponent as Logo } from '../../assets/LogoMd.svg';
-import { ReactComponent as Search } from '../../assets/Search.svg';
 
 import './header.styles.scss';
 import SearchBox from "../SearchBox/SearchBox.component";

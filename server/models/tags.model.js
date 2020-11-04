@@ -5,7 +5,7 @@ const Tag = function() {};
 
 Tag.retrieveAll = (result) => {
     const query =  `SELECT 
-                        tags.id,posts.id,tagname,COUNT(DISTINCT posts.id) 
+                        tags.id,posts.id,tagname, description,COUNT(DISTINCT posts.id) 
                         as posts_count,tags.created_at 
                         FROM tags 
                         LEFT JOIN posttag ON posttag.tag_id = tags.id 

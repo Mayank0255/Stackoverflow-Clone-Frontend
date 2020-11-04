@@ -44,6 +44,7 @@ USE stack_overflow_v2;
  CREATE TABLE tags(
     id INT AUTO_INCREMENT PRIMARY KEY,
     tagname VARCHAR(255) UNIQUE,
+    description MEDIUMTEXT,
     created_at TIMESTAMP DEFAULT NOW()
 );
 

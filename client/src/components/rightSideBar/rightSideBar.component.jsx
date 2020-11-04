@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getTags } from '../../redux/tags/tags.actions';
 
+import TagBadge from "../TagBadge/TagBadge.component";
 import { ReactComponent as Stackoverflow } from '../../assets/LogoGlyphXxs.svg';
 import { ReactComponent as Stackoverflowhite } from '../../assets/LogoGlyphXxswhite.svg';
 
@@ -140,9 +141,11 @@ const RightSideBar = ({ getTags , tag: { tags, loading }}) => {
                 <h4 className='tag-headline'>Top Ten Tags</h4>
                 {tags.slice(0, 10).map(tag => (
                     <div key={tag.tagname} className='tag-content'>
-                        <a className='s-tag s-tag__md' href={`/tags/${tag.tagname}`}>
-                            {tag.tagname}
-                        </a>
+                        <TagBadge
+                            tag_name={tag.tagname}
+                            size={'s-tag s-tag__md'}
+                            display={'inline'}
+                        />
                         &nbsp;
                         <span className='tag-mult'>
                             <span>&times;</span>

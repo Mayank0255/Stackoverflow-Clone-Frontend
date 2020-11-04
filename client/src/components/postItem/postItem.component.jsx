@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import UserCard from "../UserCard/UserCard.component";
+import TagBadge from "../TagBadge/TagBadge.component";
 
 import './postItem.styles.scss';
 
@@ -47,11 +48,10 @@ const PostItem = ({ post: { id, title, body, tagname, username, user_id, answer_
                 <div className='brief'>
                     {body.substring(0, 200)}...
                 </div>
-                <div className='question-tags'>
-                    <Link className='s-tag' to={`/tags/${tagname}`}>
-                        {tagname}
-                    </Link>
-                </div>
+                <TagBadge
+                    tag_name={tagname}
+                    size={'s-tag'}
+                />
                 <UserCard
                     created_at={created_at}
                     user_id={user_id}

@@ -57,6 +57,7 @@ const PostItem = ({ post: { id, title, body, tagname, username, user_id, answer_
                     user_id={user_id}
                     username ={username}
                     float={'right'}
+                    backgroundColor={'transparent'}
                 />
             </div>
         </div>

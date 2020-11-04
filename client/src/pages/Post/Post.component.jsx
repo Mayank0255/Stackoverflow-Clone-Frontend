@@ -306,6 +306,7 @@ const Post = (
                                                     created_at={answer.created_at}
                                                     user_id={answer.user_id}
                                                     username ={answer.username}
+                                                    backgroundColor={'transparent'}
                                                 />
                                             </div>
                                         </div>

@@ -9,10 +9,15 @@ import Button from "../Button/Button.component";
 
 import { ReactComponent as Logo } from '../../assets/LogoMd.svg';
 import './header.styles.scss';
+import Spinner from "../spinner/spinner.component";
 
-const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     const authLinks = (
         <div className='btns'>
+            {loading || user === null ? 'Loading...' : <Link to={`/users/${user.id}`} title={user.username}>
+                <img alt='user-logo' className='logo'
+                     src={`https://secure.gravatar.com/avatar/${user.id}?s=164&d=identicon`}/>
+            </Link>}
             <Button
                 text={'Log out'}
                 link={'/login'}
@@ -52,7 +57,7 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
 
     );
 
-    return(
+    return loading ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <nav className='navbar fixed-top navbar-expand-lg navbar-light bs-md'>
             <Link className='navbar-brand' to='/'>
                 <Logo/>
@@ -68,7 +73,7 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
                 <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
             )}
         </nav>
-    )
+    </Fragment>
 };
 
 Header.propTypes = {

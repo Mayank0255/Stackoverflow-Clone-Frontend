@@ -1,6 +1,7 @@
 import React, {useEffect, Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { getTagPosts } from '../../redux/posts/posts.actions';
 
 import Button from "../../components/Button/Button.component";
@@ -18,7 +19,11 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
         // eslint-disable-next-line
     }, [getTagPosts]);
 
-    return loading || posts === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
+    if (posts.length === 0) {
+        return <Redirect to='/tags'/>;
+    }
+
+    return loading ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <PageTitle title={`Questions tagged [${match.params.tagname}] - Stack Overflow`}/>
         <div className='page'>
             <SideBar/>
@@ -34,7 +39,7 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
                             />
                         </div>
                     </div>
-                    <p className='fs-body'>{posts[0].description}</p>
+                    <p className='fs-body'>{posts[0].description ? posts[0].description : ''}</p>
                     <div className='questions-tabs'>
                         <span>19,204,360 questions</span>
                     </div>

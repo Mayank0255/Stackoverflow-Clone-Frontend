@@ -7,12 +7,11 @@ body {
   max-width: 100%;
   display: flex;
   justify-content: center;
-  margin: 0;
-  background-color: transparent;
+  margin: 64px 0 0 0;
+  background-color: #3d3d3d;
   position: relative;
   flex: 1 0 auto;
   color: #242729;
-  margin-top: 14px;
 
   .post-form-content {
     min-height: 750px;
@@ -32,6 +31,7 @@ body {
       background-position: right bottom !important;
       padding-top: 24px !important;
       padding-bottom: 24px !important;
+      padding-left: 4px;
       display: flex;
       align-items: center;
 

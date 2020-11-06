@@ -1,9 +1,9 @@
 import React, {Fragment, useEffect} from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getTopPosts } from '../../redux/posts/posts.actions';
 
+import Button from '../../components/Button/Button.component';
 import SideBar from '../../components/sideBar/sideBar.component';
 import PostItem from '../../components/postItem/postItem.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
@@ -23,10 +23,12 @@ const HomePage = ({ getTopPosts, post: { posts, loading }  }) => {
                 <div id='mainbar' className='homepage fc-black-800'>
                     <div className='questions-grid'>
                         <h3 className='questions-headline'>Top Questions</h3>
-                        <div className='questions-btn'>
-                            <Link to='/add/question'>
-                                <button className = 's-btn s-btn__primary'>Ask Question</button>
-                            </Link>
+                        <div className="questions-btn">
+                            <Button
+                                text={'Ask Question'}
+                                link={'/add/question'}
+                                type={'s-btn__primary'}
+                            />
                         </div>
                     </div>
                     <div className='questions-tabs'>

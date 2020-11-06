@@ -4,17 +4,21 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../redux/auth/auth.actions'
 
-import { ReactComponent as Logo } from '../../assets/LogoMd.svg';
-
-import './header.styles.scss';
 import SearchBox from "../SearchBox/SearchBox.component";
+import Button from "../Button/Button.component";
+
+import { ReactComponent as Logo } from '../../assets/LogoMd.svg';
+import './header.styles.scss';
 
 const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
     const authLinks = (
         <div className='btns'>
-            <Link onClick={ logout } to='/login'>
-                <button type='button' className='s-btn s-btn__filled'>Log out</button>
-            </Link>
+            <Button
+                text={'Log out'}
+                link={'/login'}
+                type={'s-btn__filled'}
+                handleClick={logout}
+            />
         </div>
     );
 
@@ -34,12 +38,16 @@ const Header = ({ auth: { isAuthenticated, loading }, logout }) => {
 
     const guestLinks = (
         <div className='btns'>
-            <Link to='/login'>
-                <button type='button' className="s-btn s-btn__primary">Log in</button>
-            </Link>
-            <Link to='/register'>
-                <button type='button' className='s-btn s-btn__filled'>Sign up</button>
-            </Link>
+            <Button
+                text={'Log in'}
+                link={'/login'}
+                type={'s-btn__primary'}
+            />
+            <Button
+                text={'Sign up'}
+                link={'/register'}
+                type={'s-btn__filled'}
+            />
         </div>
 
     );

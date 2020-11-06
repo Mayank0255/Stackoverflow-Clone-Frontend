@@ -2,8 +2,8 @@ import React, {useEffect,Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getPosts } from '../../redux/posts/posts.actions';
-import { Link } from 'react-router-dom';
 
+import Button from "../../components/Button/Button.component";
 import SideBar from '../../components/sideBar/sideBar.component';
 import PostItem from '../../components/postItem/postItem.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
@@ -24,10 +24,12 @@ const QuestionsPage = ({ getPosts, post: { posts, loading }  }) => {
                 <div id='mainbar' className='questions-page fc-black-800'>
                     <div className='questions-grid'>
                         <h3 className='questions-headline'>All Questions</h3>
-                        <div className='questions-btn'>
-                            <Link to='/add/question'>
-                                <button className = 's-btn s-btn__primary'>Ask Question</button>
-                            </Link>
+                        <div className="questions-btn">
+                            <Button
+                                text={'Ask Question'}
+                                link={'/add/question'}
+                                type={'s-btn__primary'}
+                            />
                         </div>
                     </div>
                     <div className='questions-tabs'>

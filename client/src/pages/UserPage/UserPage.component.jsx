@@ -162,6 +162,7 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                                 <TagBadge
                                                     tag_name={'java'}
                                                     size={'s-tag s-tag__lg'}
+                                                    float={'left'}
                                                 />
                                                 <div className='score'>
                                                     <div className='score-txt'>
@@ -180,6 +181,7 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                                 <TagBadge
                                                     tag_name={'node.js'}
                                                     size={'s-tag s-tag__md'}
+                                                    float={'left'}
                                                 />
                                                 <div className='score'>
                                                     <div className='score-txt'>
@@ -198,6 +200,7 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                                 <TagBadge
                                                     tag_name={'react'}
                                                     size={'s-tag s-tag__md'}
+                                                    float={'left'}
                                                 />
                                                 <div className='score'>
                                                     <div className='score-txt'>

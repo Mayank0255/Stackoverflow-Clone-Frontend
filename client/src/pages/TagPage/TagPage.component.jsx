@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getTagPosts } from '../../redux/posts/posts.actions';
 import { Link } from 'react-router-dom';
 
+import Button from "../../components/Button/Button.component";
 import SideBar from '../../components/sideBar/sideBar.component';
 import PostItem from '../../components/postItem/postItem.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
@@ -27,9 +28,11 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
                     <div className='questions-grid'>
                         <h3 className='questions-headline'>Questions tagged [{match.params.tagname}]</h3>
                         <div className='questions-btn'>
-                            <Link to='/add/question'>
-                                <button className = 's-btn s-btn__primary'>Ask Question</button>
-                            </Link>
+                            <Button
+                                text={'Ask Question'}
+                                link={'/add/question'}
+                                type={'s-btn__primary'}
+                            />
                         </div>
                     </div>
                     <p className='fs-body'>{posts[0].description}</p>

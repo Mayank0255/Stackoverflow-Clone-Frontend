@@ -14,6 +14,7 @@ const TagPanel = ({ tag: {tagname, description, created_at, posts_count} }) => {
                 <TagBadge
                     tag_name={tagname}
                     size={'s-tag'}
+                    float={'left'}
                 />
             </div>
             <div className="description">{description}</div>

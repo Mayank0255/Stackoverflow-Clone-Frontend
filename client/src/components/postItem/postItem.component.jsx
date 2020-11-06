@@ -51,6 +51,7 @@ const PostItem = ({ post: { id, title, body, tagname, username, user_id, answer_
                 <TagBadge
                     tag_name={tagname}
                     size={'s-tag'}
+                    float={'left'}
                 />
                 <UserCard
                     created_at={created_at}

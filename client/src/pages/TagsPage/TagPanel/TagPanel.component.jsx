@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import TagBadge from "../../components/TagBadge/TagBadge.component";
+import TagBadge from "../../../components/TagBadge/TagBadge.component";
 
 import './TagPanel.styles.scss';
 

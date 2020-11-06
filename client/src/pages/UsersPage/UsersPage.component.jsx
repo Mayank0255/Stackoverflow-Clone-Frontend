@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { getUsers } from '../../redux/users/users.actions';
 
 import SideBar from '../../components/sideBar/sideBar.component';
-import UserPanel from './UserPanel.component';
+import UserPanel from './UserPanel/UserPanel.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 import Spinner from "../../components/spinner/spinner.component";
 import SearchBox from "../../components/SearchBox/SearchBox.component";

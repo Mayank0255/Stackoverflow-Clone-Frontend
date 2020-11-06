@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { getTags } from '../../redux/tags/tags.actions';
-import TagBadge from "../TagBadge/TagBadge.component";
+import { getTags } from '../../../redux/tags/tags.actions';
+import TagBadge from "../../TagBadge/TagBadge.component";
 
 import './TagsWidget.styles.scss';
 

@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { setAlert } from '../../redux/alert/alert.actions';
 
-import Caption from './Caption.component';
+import Caption from './Caption/Caption.component';
 import AuthForm from '../../components/AuthForm/AuthForm.component';
 
 import './Register.styles.scss'

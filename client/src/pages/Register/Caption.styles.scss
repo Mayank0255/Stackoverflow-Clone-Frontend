@@ -1,0 +1,27 @@
+.caption  {
+  margin-right: 48px;
+  margin-bottom: 0px;
+  width: 400px;
+
+  h3 {
+    margin-bottom: 32px;
+  }
+
+  .caption-item {
+    display: flex;
+    margin-bottom: 24px;
+
+    .grid-icon {
+      margin-right: 8px;
+
+      .svg-icon {
+        color:#0095ff;
+      }
+    }
+  }
+  .fs-light {
+    color:#6a737c;
+    font-size: 13px;
+    box-sizing: inherit;
+  }
+}

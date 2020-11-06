@@ -39,6 +39,15 @@
 
 .btns {
   margin-right: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .logo {
+    width: 32px;
+    border-radius: 3px;
+    margin-right: 9px;
+  }
 }
 
 .btn-sm {

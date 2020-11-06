@@ -222,8 +222,6 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
             </div>
         </div>
     </Fragment>
-
-
 };
 
 UserPage.propTypes = {

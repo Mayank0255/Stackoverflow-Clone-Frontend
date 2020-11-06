@@ -5,30 +5,6 @@
   padding-left: 5px;
   height: 100%;
 
-  .s-sidebarwidget__yellow {
-    border-color: #675c37;
-    background-color: #464236;
-    color: #f2f2f3 !important;
-    margin-top: 24px;
-  }
-
-  .s-sidebarwidget__yellow .s-sidebarwidget--header, .s-sidebarwidget__yellow .s-sidebarwidget--content {
-    border-color: #675c37;
-  }
-
-  .s-sidebarwidget__yellow .s-sidebarwidget--header {
-    background-color: #524b38;
-    color: #cfd2d6;
-  }
-
-  .s-anchors .s-anchors.s-anchors__grayscale a:not(.s-link), .s-anchors.s-anchors__grayscale a:not(.s-link) {
-    color: #f2f2f3;
-  }
-
-  .fc-danger {
-    color: #c4524f;
-  }
-
   .show-tags {
     display: block;
     margin: 5px 0;
@@ -68,11 +44,6 @@
       }
     }
   }
-}
-
-.meta-image {
-    width: 14px;
-    height: 14px;
 }
 
 @media(max-width: 1100px) {

@@ -2,7 +2,6 @@ import React, {useEffect, Fragment} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTagPosts } from '../../redux/posts/posts.actions';
-import { Link } from 'react-router-dom';
 
 import Button from "../../components/Button/Button.component";
 import SideBar from '../../components/sideBar/sideBar.component';

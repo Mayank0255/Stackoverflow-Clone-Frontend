@@ -4,46 +4,6 @@
   margin: 0 0 15px;
   padding-left: 5px;
   height: 100%;
-
-  .show-tags {
-    display: block;
-    margin: 5px 0;
-    color: #0077cc;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 13px;
-  }
-
-  .side-bar-tags {
-    word-wrap: break-word;
-    margin-bottom: 20px;
-    color: #242729;
-    margin-top: 24px;
-
-    .tag-headline {
-      color: #3c4146;
-      font-size: 18px;
-      font-weight: 400;
-      margin-bottom: 18px;
-      margin-top: 0;
-    }
-
-    .tag-content {
-      box-sizing: inherit;
-      margin-bottom: 8px;
-
-      .tag-mult {
-        margin-right: 4px;
-        color: #848d95;
-
-        span {
-          font-size: 11px;
-          color: #6a737c;
-
-        }
-      }
-    }
-  }
 }
 
 @media(max-width: 1100px) {

@@ -5,7 +5,7 @@ import { getTags } from '../../redux/tags/tags.actions';
 
 import './TagsPage.styles.scss'
 import SideBar from '../../components/sideBar/sideBar.component';
-import TagPanel from './TagPanel.component';
+import TagPanel from './TagPanel/TagPanel.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 import Spinner from "../../components/spinner/spinner.component";
 

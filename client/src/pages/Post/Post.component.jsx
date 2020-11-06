@@ -18,6 +18,7 @@ import UserCard from "../../components/UserCard/UserCard.component";
 import './Post.styles.scss'
 import Spinner from "../../components/spinner/spinner.component";
 import TagBadge from "../../components/TagBadge/TagBadge.component";
+import Button from "../../components/Button/Button.component";
 
 const Post = (
     {
@@ -87,9 +88,11 @@ const Post = (
                     <div className='question-header fc-black-800 pl24'>
                         <h1>{post.title}</h1>
                         <div>
-                            <Link className='s-btn s-btn__primary' to='/add/question'>
-                                Ask Question
-                            </Link>
+                            <Button
+                                text={'Ask Question'}
+                                link={'/add/question'}
+                                type={'s-btn__primary'}
+                            />
                         </div>
                     </div>
                     <div className='question-date fc-black-800 pl24'>
@@ -129,6 +132,7 @@ const Post = (
                                         <TagBadge
                                             tag_name={post.tagname}
                                             size={'s-tag'}
+                                            float={'left'}
                                         />
                                     </div>
                                     <div className='post-actions fc-black-800'>
@@ -173,9 +177,12 @@ const Post = (
                                                                     {comment.body}
                                                                 </span>
                                                             &nbsp;&ndash;&nbsp;
-                                                            <Link className='s-tag' to={`/users/${comment.user_id}`}>
-                                                                {comment.username}
-                                                            </Link>
+                                                            <TagBadge
+                                                                tag_name={comment.username}
+                                                                size={'s-tag'}
+                                                                link={`/users/${comment.user_id}`}
+                                                                display={'inline'}
+                                                            />
                                                             <span title={ moment(comment.created_at).fromNow(true) }
                                                                   style={{color: '#959ca3 !important'}}
                                                                   className='date fs-body1'>
@@ -214,9 +221,10 @@ const Post = (
                                                 </div>
                                             </form>
                                         </Fragment> : <Fragment>
-                                            <Link to='/login'>
-                                                <button type='button' className="s-btn">You need to login to add a comment</button>
-                                            </Link>
+                                            <Button
+                                                text={'You need to login to add a comment'}
+                                                link={'/login'}
+                                            />
                                         </Fragment>}
 
                                     </div>
@@ -336,9 +344,12 @@ const Post = (
                                         </div>
                                     </form>
                                 </Fragment> : <Fragment>
-                                    <Link to='/login'>
-                                        <button type='button' style={{marginTop: '12px'}} className="s-btn s-btn__outlined">You need to login to add an answer</button>
-                                    </Link>
+                                    <Button
+                                        text={'You need to login to add an answer'}
+                                        link={'/login'}
+                                        type={'s-btn__outlined'}
+                                        marginTop={'12px'}
+                                    />
                                 </Fragment>}
                             </div>
                         </div>

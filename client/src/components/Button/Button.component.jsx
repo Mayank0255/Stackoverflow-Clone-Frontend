@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
-const Button = (
-    {
-        text,
-        link,
-        type,
-        handleClick
+const Button = ({
+            text,
+            link,
+            type,
+            handleClick,
+            marginTop
     }) => {
 
     return <Fragment>
@@ -14,7 +14,10 @@ const Button = (
             onClick={handleClick}
             to={link}
         >
-            <button className = {`s-btn ${type}`}>
+            <button
+                className = {`s-btn ${type}`}
+                style={{marginTop}}
+            >
                 {text}
             </button>
         </Link>

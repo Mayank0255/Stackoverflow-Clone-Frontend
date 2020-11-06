@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
+import './SideBarWidget.styles.scss';
+
 const SideBarWidget = () => {
     return <Fragment>
         <div
-            className="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16 mt24"
+            className="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16"
             data-tracker="cb=1"
         >
             <ul className="d-block p0 m0">

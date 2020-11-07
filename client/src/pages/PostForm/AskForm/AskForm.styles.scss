@@ -1,0 +1,189 @@
+.post-form {
+  min-width: 0 !important;
+  flex: 1 auto !important;
+  color: #242729;
+  width: 100%;
+  padding: 0 !important;
+
+  .question-form {
+    color: #242729;
+
+    .post-button {
+      margin-top: 32px !important;
+
+      button {
+        margin: 0 2px 0 2px;
+        color: #fff;
+        background-color: #0095ff;
+        box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.4);
+        padding: .8em;
+        border: 1px solid transparent;
+        border-radius: 3px;
+        outline: none;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: normal;
+        line-height: 1.15384615;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+          color: #fff;
+          background-color: #0077cc;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .question-layout {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05), 0 20px 48px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1);
+      padding: 16px !important;
+      background-color: #fff !important;
+      border-color: #d6d9dc !important;
+      border-radius: 3px !important;
+      border-style: solid !important;
+      border-width: 1px !important;
+
+      .title-grid {
+        margin-bottom: 16px;
+        display: flex;
+        flex: 1 auto !important;
+        flex-direction: column;
+        color: #242729;
+
+        label {
+          margin-bottom: 4px;
+          display: block;
+          padding: 0 2px;
+          color: #0c0d0e;
+          font-family: inherit;
+          font-size: 15px;
+          font-weight: 700;
+          cursor: pointer;
+
+          .title-desc {
+            font-weight: normal;
+            padding: 0;
+            margin: 0;
+            margin-top: 2px !important;
+            color: #3c4146;
+            font-size: 12px;
+            clear: both;
+          }
+        }
+        .title-input {
+          flex: 1 auto !important;
+          font-size: 13px;
+          -webkit-appearance: none;
+          width: 100%;
+          margin: 0;
+          padding: .6em .7em;
+          border: 1px solid #bbc0c4;
+          border-radius: 3px;
+          background-color: #fff;
+          color: #0c0d0e;
+          line-height: 1.15384615;
+
+          &::placeholder {
+            opacity: 0.6;
+          }
+        }
+      }
+
+      .tag-grid {
+        margin-bottom: 16px;
+        display: flex;
+        flex: 1 auto !important;
+        flex-direction: column;
+        color: #242729;
+
+        label {
+          margin-bottom: 4px;
+          display: block;
+          padding: 0 2px;
+          color: #0c0d0e;
+          font-family: inherit;
+          font-size: 15px;
+          font-weight: 700;
+          cursor: pointer;
+
+          .tag-desc {
+            font-weight: normal;
+            padding: 0;
+            margin: 0;
+            margin-top: 2px !important;
+            color: #3c4146;
+            font-size: 12px;
+            clear: both;
+          }
+        }
+        .tag-input {
+          flex: 1 auto !important;
+          font-size: 13px;
+          -webkit-appearance: none;
+          width: 100%;
+          margin: 0;
+          padding: .6em .7em;
+          border: 1px solid #bbc0c4;
+          border-radius: 3px;
+          background-color: #fff;
+          color: #0c0d0e;
+          line-height: 1.15384615;
+
+          &::placeholder {
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+}
+
+.body-grid {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex: 1 auto !important;
+  flex-direction: column;
+  color: #242729;
+
+  label {
+    margin-bottom: 4px;
+    display: block;
+    padding: 0 2px;
+    color: #0c0d0e;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+
+    .body-desc {
+      font-weight: normal;
+      padding: 0;
+      margin: 0;
+      margin-top: 2px !important;
+      color: #3c4146;
+      font-size: 12px;
+      clear: both;
+    }
+  }
+
+  .body-input {
+    flex: 1 auto !important;
+    font-size: 13px;
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 0;
+    padding: .6em .7em;
+    border: 1px solid #bbc0c4;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #0c0d0e;
+    line-height: 1.15384615;
+
+    &::placeholder {
+      opacity: 0.6;
+    }
+  }
+}

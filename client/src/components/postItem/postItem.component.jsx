@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import UserCard from "../UserCard/UserCard.component";
-import TagBadge from "../TagBadge/TagBadge.component";
+import UserCard from '../UserCard/UserCard.component';
+import TagBadge from '../TagBadge/TagBadge.component';
 
 import './postItem.styles.scss';
 

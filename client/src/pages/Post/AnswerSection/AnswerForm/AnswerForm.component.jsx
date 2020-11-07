@@ -7,7 +7,7 @@ import Button from '../../../../components/Button/Button.component';
 
 import './AnswerForm.styles.scss';
 
-const AnswerForm = ({ addAnswer, auth, paramId }) => {
+const AnswerForm = ({ addAnswer, auth, postId }) => {
     const [ formData, setFormData ] = useState({
         text: ''
     });
@@ -18,7 +18,7 @@ const AnswerForm = ({ addAnswer, auth, paramId }) => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        addAnswer(paramId,{text});
+        addAnswer(postId, {text});
         setFormData({
             text: ''
         });

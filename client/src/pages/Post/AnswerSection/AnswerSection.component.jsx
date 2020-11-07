@@ -10,9 +10,9 @@ import AnswerForm from './AnswerForm/AnswerForm.component';
 
 import './AnswerSection.styles.scss';
 
-const AnswerSection = ({ getAnswers, auth, answer, postId, paramId}) => {
+const AnswerSection = ({ getAnswers, auth, answer, postId}) => {
     useEffect(() => {
-        getAnswers(paramId);
+        getAnswers(postId);
         // eslint-disable-next-line
     }, [ getAnswers ]);
 
@@ -59,7 +59,7 @@ const AnswerSection = ({ getAnswers, auth, answer, postId, paramId}) => {
             <div className='add-answer'>
                 <AnswerForm
                     auth={auth}
-                    paramId={paramId}
+                    postId={postId}
                 />
             </div>
         </div>

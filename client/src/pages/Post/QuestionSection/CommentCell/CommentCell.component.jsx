@@ -1,4 +1,4 @@
-import React, {useEffect, Fragment, useState} from 'react';
+import React, { useEffect, Fragment, useState } from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,16 +12,15 @@ import Button from "../../../../components/Button/Button.component";
 import './CommentCell.styles.scss';
 
 const CommentCell = ({
-                         deleteComment,
-                         addComment,
-                         getComments,
-                         auth,
-                         comment,
-                         postId,
-                         paramId
-                     }) => {
+        deleteComment,
+        addComment,
+        getComments,
+        auth,
+        comment,
+        postId
+    }) => {
     useEffect(() => {
-        getComments(paramId);
+        getComments(postId);
         // eslint-disable-next-line
     }, [ getComments ]);
 
@@ -35,7 +34,7 @@ const CommentCell = ({
 
     const handleSubmit = async e => {
         e.preventDefault();
-        addComment(paramId, {body});
+        addComment(postId, {body});
         setFormData({
             body: ''
         });
@@ -49,9 +48,9 @@ const CommentCell = ({
                         <li className='comments-item' key={comment.id} >
                             <div className='comment-text fc-black-800'>
                                 <div className='comment-body'>
-                                                                <span className='body'>
-                                                                    {comment.body}
-                                                                </span>
+                                    <span className='body'>
+                                        {comment.body}
+                                    </span>
                                     &nbsp;&ndash;&nbsp;
                                     <TagBadge
                                         tag_name={comment.username}
@@ -59,11 +58,13 @@ const CommentCell = ({
                                         link={`/users/${comment.user_id}`}
                                         display={'inline'}
                                     />
-                                    <span title={ moment(comment.created_at).fromNow(true) }
-                                          style={{color: '#959ca3 !important'}}
-                                          className='date fs-body1'>
-                                                { moment(comment.created_at).fromNow(true) } ago
-                                            </span>
+                                    <span
+                                        title={ moment(comment.created_at).fromNow(true) }
+                                        style={{color: '#959ca3 !important'}}
+                                        className='date fs-body1'
+                                    >
+                                        { moment(comment.created_at).fromNow(true) } ago
+                                    </span>
                                 </div>
                                 {!auth.loading && auth.isAuthenticated && parseInt(comment.user_id) === auth.user.id && (
                                     <Link
@@ -92,7 +93,7 @@ const CommentCell = ({
                                 value={body}
                                 onChange={e => handleChange(e)}
                                 id='title'
-                                placeholder='add comment'
+                                placeholder='Leave a comment'
                             />
                         </div>
                     </form>

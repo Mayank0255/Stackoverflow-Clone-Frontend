@@ -1,0 +1,122 @@
+.widget {
+  margin-bottom: 24px;
+  position: relative;
+  border-radius: 3px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05), 0 20px 48px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1);
+  font-size: 13px;
+  background-color: #fff;
+  color: #242729;
+
+  .widget-header {
+    padding: 12px 15px;
+    background: #fafafb;
+    color: #6a737c;
+    border-top: 1px solid #e4e6e8;
+    font-size: 15px;
+    font-weight: normal;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+  }
+
+  .widget-content {
+    display: block !important;
+    background-color: #2d2d2d !important;
+    padding: 16px 15px 0 15px;
+    border-top: 1px solid #404345;
+    color: #242729;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+
+    .summary {
+      margin-bottom: 16px;
+
+      .sec1 {
+        margin-bottom: 13px;
+      }
+      .sec2 {
+        margin-bottom: 13px;
+      }
+    }
+
+    .step-section {
+      margin-left: -16px;
+      margin-right: -16px;
+      margin-bottom: 0;
+      border-radius: 3px;
+
+      .step {
+        border-bottom: 1px solid #404345;
+        list-style: none;
+
+        button {
+          display: flex;
+          width: 100% !important;
+          cursor: pointer;
+          padding: 12px 16px 12px 16px;
+          border: none;
+          outline: none;
+          font: unset;
+          border-radius: 0;
+          color: unset;
+          background: none;
+          box-shadow: none;
+
+          .step-cell {
+            display: flex;
+            flex: 1 auto;
+            align-items: center;
+
+            div {
+              word-spacing: normal;
+
+              img {
+                width: 16px;
+                height: 16px;
+              }
+            }
+
+            span {
+              font-weight: 700 !important;
+              margin-left: 12px !important;
+              cursor: pointer;
+            }
+          }
+        }
+
+        .inst {
+          margin-left: 16px !important;
+          margin-right: 16px !important;
+          display: flex;
+          align-items: flex-start;
+
+          .inst-content {
+            padding-left: 4px !important;
+            padding-bottom: 12px !important;
+            margin-left: 16px;
+            margin-bottom: 0;
+
+            .step2, .step3 {
+              margin-left: 12px !important;
+            }
+
+            ul {
+              margin-left: 24px !important;
+              margin-bottom: 0;
+              list-style-type: disc;
+
+              p {
+                clear: both;
+                margin-bottom: 13px;
+                margin-top: 0;
+              }
+
+              .except {
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

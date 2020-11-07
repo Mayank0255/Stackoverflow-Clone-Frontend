@@ -20,7 +20,7 @@ router.post(
     [
         auth,
         [
-            check('body','body is required')
+            check('body','Comment is required')
                 .not()
                 .isEmpty()
         ]

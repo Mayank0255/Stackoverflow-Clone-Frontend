@@ -20,7 +20,7 @@ router.post(
     [
         auth,
         [
-            check('text','text is required')
+            check('text','Answer is required')
                 .not()
                 .isEmpty()
         ]

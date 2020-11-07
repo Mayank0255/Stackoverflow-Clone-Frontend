@@ -14,7 +14,7 @@ import Spinner from "../spinner/spinner.component";
 const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     const authLinks = (
         <div className='btns'>
-            {loading || user === null ? 'Loading...' : <Link to={`/users/${user.id}`} title={user.username}>
+            {loading ? <Spinner width='50px' height='50px'/> : <Link to={`/users/${user.id}`} title={user.username}>
                 <img alt='user-logo' className='logo'
                      src={`https://secure.gravatar.com/avatar/${user.id}?s=164&d=identicon`}/>
             </Link>}
@@ -57,7 +57,7 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
     );
 
-    return loading ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
+    return loading ? '' : <Fragment>
         <nav className='navbar fixed-top navbar-expand-lg navbar-light bs-md'>
             <Link className='navbar-brand' to='/'>
                 <Logo/>

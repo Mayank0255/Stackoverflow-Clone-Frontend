@@ -56,7 +56,7 @@ const AuthForm = ({ register, login, action }) => {
                             value={username}
                             onChange={e => onChange(e)}
                             id='username'
-
+                            required
                         />
                     </div>
                     <div>
@@ -68,7 +68,7 @@ const AuthForm = ({ register, login, action }) => {
                             value={password}
                             onChange={e => onChange(e)}
                             id='password'
-
+                            required
                         />
                     </div>
                     <div className='grid gs4 gsy fd-column js-auth-item '>

@@ -1,36 +1,20 @@
-import React, {useEffect, Fragment,useState} from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { getAnswers, addAnswer } from '../../../redux/answers/answers.actions';
+import { getAnswers } from '../../../redux/answers/answers.actions';
 
 import AnswerItem from './AnswerItem/AnswerItem.component';
 import Spinner from '../../../components/spinner/spinner.component';
-import Button from '../../../components/Button/Button.component';
+import AnswerForm from './AnswerForm/AnswerForm.component';
 
 import './AnswerSection.styles.scss';
 
-const AnswerSection = ({ addAnswer, getAnswers, auth, answer, postId, paramId}) => {
+const AnswerSection = ({ getAnswers, auth, answer, postId, paramId}) => {
     useEffect(() => {
         getAnswers(paramId);
         // eslint-disable-next-line
     }, [ getAnswers ]);
-
-    const [ formData, setFormData ] = useState({
-        text: ''
-    });
-
-    const { text } = formData;
-
-    const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-    const handleSubmit = async e => {
-        e.preventDefault();
-        addAnswer(paramId,{text});
-        setFormData({
-            text: ''
-        });
-    };
 
     return <Fragment>
         <div className='answer'>
@@ -73,35 +57,10 @@ const AnswerSection = ({ addAnswer, getAnswers, auth, answer, postId, paramId}) 
                 </div>
             ))}
             <div className='add-answer'>
-                {!auth.loading && auth.isAuthenticated ? <Fragment>
-                    <form
-                        className='answer-form'
-                        onSubmit={e => handleSubmit(e)}
-                    >
-                        <div className='answer-grid'>
-                            <label className=' fc-black-800'>Your Answer</label>
-                            <textarea
-                                className='s-textarea'
-                                name='text'
-                                cols='30'
-                                rows='12'
-                                value={text}
-                                onChange={e => handleChange(e)}
-                                placeholder='Enter body with minimum 30 characters'
-                                id='text'
-                            >
-                            </textarea>
-                            <button className='s-btn s-btn__primary'>Post Your Answer</button>
-                        </div>
-                    </form>
-                </Fragment> : <Fragment>
-                    <Button
-                        text={'You need to login to add an answer'}
-                        link={'/login'}
-                        type={'s-btn__outlined'}
-                        marginTop={'12px'}
-                    />
-                </Fragment>}
+                <AnswerForm
+                    auth={auth}
+                    paramId={paramId}
+                />
             </div>
         </div>
     </Fragment>
@@ -109,7 +68,6 @@ const AnswerSection = ({ addAnswer, getAnswers, auth, answer, postId, paramId}) 
 
 AnswerSection.propTypes = {
     auth: PropTypes.object.isRequired,
-    addAnswer: PropTypes.func.isRequired,
     getAnswers: PropTypes.func.isRequired,
     answer: PropTypes.object.isRequired
 };
@@ -119,4 +77,4 @@ const mapStateToProps = state => ({
     answer: state.answer
 });
 
-export default connect(mapStateToProps, { getAnswers,addAnswer })(AnswerSection);
+export default connect(mapStateToProps, { getAnswers })(AnswerSection);

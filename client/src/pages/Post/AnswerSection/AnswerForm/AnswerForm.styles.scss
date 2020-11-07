@@ -1,0 +1,25 @@
+.answer-grid {
+  margin-bottom: 16px;
+  display: flex;
+  flex: 1 auto !important;
+  flex-direction: column;
+  color: #242729;
+
+  label {
+    margin-bottom: 16px;
+    margin-top: 16px;
+    display: block;
+    padding: 0 2px;
+    color: #0c0d0e;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  button {
+    margin: 12px 0 8px 0;
+    width: 150px;
+    font-size: 14px;
+  }
+}

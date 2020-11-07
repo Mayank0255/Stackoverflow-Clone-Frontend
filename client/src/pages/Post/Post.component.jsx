@@ -4,34 +4,28 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getPost, deletePost } from '../../redux/posts/posts.actions';
-import { getAnswers, deleteAnswer, addAnswer } from '../../redux/answers/answers.actions';
 import { getComments, deleteComment, addComment } from '../../redux/comments/comments.actions';
 
-import { ReactComponent as UpVote } from '../../assets/ArrowUpLg.svg';
-import { ReactComponent as DownVote } from '../../assets/ArrowDownLg.svg';
-
+import PageTitle from '../../components/pageTitle/pageTitle.component';
+import UserCard from '../../components/UserCard/UserCard.component';
+import TagBadge from '../../components/TagBadge/TagBadge.component';
+import Button from '../../components/Button/Button.component';
+import Spinner from '../../components/spinner/spinner.component';
 import SideBar from '../../components/sideBar/sideBar.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
-import PageTitle from "../../components/pageTitle/pageTitle.component";
-import UserCard from "../../components/UserCard/UserCard.component";
+import AnswerSection from './AnswerSection.component.jsx/AnswerSection.component';
 
 import './Post.styles.scss'
-import Spinner from "../../components/spinner/spinner.component";
-import TagBadge from "../../components/TagBadge/TagBadge.component";
-import Button from "../../components/Button/Button.component";
 
 const Post = (
     {
         deletePost,
-        deleteAnswer,
-        addAnswer,
         deleteComment,
         addComment,
         getAnswers,
         getComments,
         auth,
         getPost,
-        answer,
         comment,
         post: {
             post,
@@ -42,7 +36,6 @@ const Post = (
 
     useEffect(() => {
         getPost(match.params.id);
-        getAnswers(match.params.id);
         getComments(match.params.id);
         // eslint-disable-next-line
     }, [ getPost, getAnswers, getComments ]);
@@ -60,22 +53,6 @@ const Post = (
         addComment(match.params.id, {body});
         setFormData({
             body: ''
-        });
-    };
-
-    const [ formDataAnswer, setFormDataAnswer ] = useState({
-        text: ''
-    });
-
-    const { text } = formDataAnswer;
-
-    const onChangeAnswer = e => setFormDataAnswer({ ...formData, [e.target.name]: e.target.value });
-
-    const onSubmitAnswer = async e => {
-        e.preventDefault();
-        addAnswer(match.params.id,{text});
-        setFormDataAnswer({
-            text: ''
         });
     };
 
@@ -232,127 +209,10 @@ const Post = (
 
                             </div>
                         </div>
-                        <div className='answer'>
-                            <div className='answer-header fc-black-800'>
-                                <div className='answer-sub-header'>
-                                    <div className='answer-headline'>
-                                        <h2>Answers</h2>
-                                    </div>
-                                    <div className="grid--cell">
-                                        <div className=" grid s-btn-group js-filter-btn">
-                                            <Link className="s-btn s-btn__filled is-selected"
-                                               to="#"
-                                               data-nav-xhref="" title="Answers with the latest activity first"
-                                               data-value="active" data-shortcut="A">
-                                                Active
-                                            </Link>
-                                            <Link className="s-btn s-btn__filled"
-                                               to="#"
-                                               data-nav-xhref="" title="Answers in the order they were provided"
-                                               data-value="oldest" data-shortcut="O">
-                                                Oldest
-                                            </Link>
-                                            <Link className="s-btn s-btn__filled"
-                                               to="#"
-                                               data-nav-xhref="" title="Answers with the highest score first"
-                                               data-value="votes" data-shortcut="V">
-                                                Votes
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {answer.loading === null ? <Spinner width='25px' height='25px'/> : answer.answers.map(answer => (
-                                <div key={answer.id} className='answers'>
-                                    <div className='answer-layout'>
-                                        <div className='vote-cell'>
-                                            <div className='vote-container'>
-                                                <button
-                                                    className='vote-up'
-                                                    title='This answer is useful (click again to undo)'
-                                                >
-                                                    <UpVote className='icon'/>
-                                                </button>
-                                                <div className='vote-count fc-black-500'>0</div>
-                                                <button
-                                                    className='vote-down'
-                                                    title='This answer is not useful (click again to undo)'
-                                                >
-                                                    <DownVote className='icon'/>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div className='answer-item'>
-                                            <div className='answer-content fc-black-800'>
-                                                <p>
-                                                    {answer.body}
-                                                </p>
-                                            </div>
-                                            <div className='answer-actions'>
-                                                <div className='action-btns'>
-                                                    <div className='answer-menu'>
-                                                        <Link className='answer-links' title='short permalink to this question' to='/'>
-                                                            share
-                                                        </Link>
-                                                        <Link className='answer-links' title='Follow this question to receive notifications' to='/'>
-                                                            follow
-                                                        </Link>
-                                                        {!auth.loading && auth.isAuthenticated && parseInt(answer.user_id) === auth.user.id && (
-                                                            <Link
-                                                                className='s-link s-link__danger'
-                                                                style={{paddingLeft: '4px'}}
-                                                                title='Delete the answer'
-                                                                onClick={e => deleteAnswer(answer.id)}
-                                                                to={`/questions/${post.id}`}
-                                                            >
-                                                                delete
-                                                            </Link>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                                <UserCard
-                                                    created_at={answer.created_at}
-                                                    user_id={answer.user_id}
-                                                    username ={answer.username}
-                                                    backgroundColor={'transparent'}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                            <div className='add-answer'>
-                                {!auth.loading && auth.isAuthenticated ? <Fragment>
-                                    <form
-                                        className='answer-form'
-                                        onSubmit={e => onSubmitAnswer(e)}
-                                    >
-                                        <div className='answer-grid'>
-                                            <label className=' fc-black-800'>Your Answer</label>
-                                            <textarea
-                                                className='s-textarea'
-                                                name='text'
-                                                cols='30'
-                                                rows='12'
-                                                value={text}
-                                                onChange={e => onChangeAnswer(e)}
-                                                placeholder='Enter body with minimum 30 characters'
-                                                id='text'
-                                            >
-                                            </textarea>
-                                            <button className='s-btn s-btn__primary'>Post Your Answer</button>
-                                        </div>
-                                    </form>
-                                </Fragment> : <Fragment>
-                                    <Button
-                                        text={'You need to login to add an answer'}
-                                        link={'/login'}
-                                        type={'s-btn__outlined'}
-                                        marginTop={'12px'}
-                                    />
-                                </Fragment>}
-                            </div>
-                        </div>
+                        <AnswerSection
+                            paramId = {match.params.id}
+                            postId={post.id}
+                        />
                     </div>
                 </div>
                 <RightSideBar/>
@@ -366,12 +226,8 @@ Post.propTypes = {
     post: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
     deletePost: PropTypes.func.isRequired,
-    addAnswer: PropTypes.func.isRequired,
-    deleteAnswer: PropTypes.func.isRequired,
     addComment: PropTypes.func.isRequired,
     deleteComment: PropTypes.func.isRequired,
-    getAnswers: PropTypes.func.isRequired,
-    answer: PropTypes.object.isRequired,
     getComments: PropTypes.func.isRequired,
     comment: PropTypes.object.isRequired
 };
@@ -379,8 +235,7 @@ Post.propTypes = {
 const mapStateToProps = state => ({
     post: state.post,
     auth: state.auth,
-    answer: state.answer,
     comment: state.comment
 });
 
-export default connect(mapStateToProps, { getPost, deletePost, deleteAnswer, deleteComment, getAnswers,addAnswer, getComments, addComment })(Post);
+export default connect(mapStateToProps, { getPost, deletePost, deleteComment, getComments, addComment })(Post);

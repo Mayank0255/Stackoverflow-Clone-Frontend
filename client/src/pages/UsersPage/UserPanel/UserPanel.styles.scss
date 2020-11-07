@@ -60,18 +60,24 @@
       }
     }
 
-    .post-count {
-      font-size: 12px;
+    .item {
       margin-right: 2px;
       display: block;
-      font-weight: 600;
     }
 
-    .tag-count {
-      font-size: 12px;
-      margin-bottom: 2px;
-      display: block;
-      font-weight: 600;
+    .user-time {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .count {
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .count-info {
+      font-size: 10px;
+      font-weight: 500;
     }
   }
 }

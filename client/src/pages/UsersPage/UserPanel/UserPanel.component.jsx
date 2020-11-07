@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import './UserPanel.styles.scss';
 
 const UserPanel = ({ user: { id, username, created_at, posts_count, tags_count, views } }) => {
+    console.log(moment(created_at).fromNow(false))
     return (
         <div className='user-panel-info s-card bs-sm h:bs-md fc-black-500'>
             <div className='user-gravatar'>
@@ -19,9 +20,20 @@ const UserPanel = ({ user: { id, username, created_at, posts_count, tags_count, 
             </div>
             <div className='user-details'>
                 <Link className='fc-blue-600' to={`/users/${id}`}>{username}</Link>
-                <span className='post-count'>questions - {posts_count}</span>
-                <span className='tag-count'>tags - {tags_count}</span>
-                <span style={{fontSize:'11px', float:'right'}}>{ moment(created_at).fromNow(true) } ago</span>
+                <span className='item'>
+                    <span className='count'>{posts_count} <span className='count-info'>
+                        {posts_count === 1 ? 'QUESTION' : 'QUESTIONS'}
+                    </span></span>
+                </span>
+                <span className='item'>
+                    <span className='count'>{tags_count} <span className='count-info'>
+                        {posts_count === 1 ? 'TAG' : 'TAGS'}
+                    </span></span>
+                </span>
+                <span className='item user-time' style={{paddingTop: '1px'}}>
+                    <span className='count'>{views} <span className='count-info'>{views === 1 ? 'PROFILE VIEW' : 'PROFILE VIEWS'}</span></span>
+                    <span className='count' style={{fontWeight: '500'}}>{moment(created_at).fromNow(false)}</span>
+                </span>
             </div>
         </div>
     )

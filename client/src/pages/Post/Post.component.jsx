@@ -21,7 +21,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
     }, [ getPost ]);
 
     return loading || post === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
-        <PageTitle title={`${post.title} - Stack Overflow`}/>
+        <PageTitle title={`${post.title} - CLONE Stack Overflow`}/>
         <div className='page'>
             <SideBar/>
             <div id="content">

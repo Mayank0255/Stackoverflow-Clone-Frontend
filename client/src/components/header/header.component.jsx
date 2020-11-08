@@ -1,17 +1,19 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../redux/auth/auth.actions'
 
-import SearchBox from "../SearchBox/SearchBox.component";
-import LinkButton from "../LinkButton/LinkButton.component";
-
+import {ReactComponent as Search} from '../../assets/Search.svg';
 import { ReactComponent as Logo } from '../../assets/LogoMd.svg';
+import Spinner from '../spinner/spinner.component';
+import LinkButton from '../LinkButton/LinkButton.component';
+
 import './header.styles.scss';
-import Spinner from "../spinner/spinner.component";
 
 const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
+    let history = useHistory();
+
     const authLinks = (
         <div className='btns'>
             {loading || user === null ? <Spinner width='50px' height='50px'/> : <Link to={`/users/${user.id}`} title={user.username}>
@@ -54,7 +56,6 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
                 type={'s-btn__filled'}
             />
         </div>
-
     );
 
     return loading ? '' : <Fragment>
@@ -65,13 +66,21 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             {!loading && (
                 <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>
             )}
-            <SearchBox
-                placeholder={'Search...'}
-                px={'px12'}
-            />
-            {!loading && (
-                <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
-            )}
+            <form id="search" onSubmit={() => history.push('/questions')}
+                  className={`grid--cell fl-grow1 searchbar px12 js-searchbar`} autoComplete="off">
+                <div className="ps-relative search-frame">
+                    <input
+                        className="s-input s-input__search h100 search-box"
+                        autoComplete="off"
+                        type="text"
+                        name='search'
+                        maxLength="35"
+                        placeholder='Search...'
+                    />
+                    <Search/>
+                </div>
+            </form>
+            {!loading && <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>}
         </nav>
     </Fragment>
 };

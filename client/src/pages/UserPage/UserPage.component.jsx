@@ -22,7 +22,7 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
     }, [getUser]);
 
     return loading || user === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
-        <PageTitle title={`User ${user.username} - Stack Overflow`}/>
+        <PageTitle title={`User ${user.username} - CLONE Stack Overflow`}/>
         <div className='page'>
             <SideBar/>
             <div id="content">

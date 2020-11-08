@@ -17,7 +17,7 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
         getTags();
     }, [getTags]);
 
-    const [ fetchSearch, setSearch] = useState('');
+    const [fetchSearch, setSearch] = useState('');
     const [sortType, setSortType] = useState('Popular');
 
     const handleChange = e => {

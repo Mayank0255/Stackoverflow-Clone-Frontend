@@ -1,20 +1,33 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { getAnswers } from '../../../redux/answers/answers.actions';
 
 import AnswerItem from './AnswerItem/AnswerItem.component';
 import Spinner from '../../../components/spinner/spinner.component';
 import AnswerForm from './AnswerForm/AnswerForm.component';
+import ButtonGroup from '../../../components/ButtonGroup/ButtonGroup.component';
 
 import './AnswerSection.styles.scss';
 
-const AnswerSection = ({ getAnswers, auth, answer, postId}) => {
+const AnswerSection = ({ getAnswers, auth, answer, postId }) => {
     useEffect(() => {
         getAnswers(postId);
         // eslint-disable-next-line
     }, [ getAnswers ]);
+
+    const [sortType, setSortType] = useState('Newest');
+
+    const handleSorting = () => {
+        switch (sortType) {
+            case 'Newest':
+                return (a, b) => new Date(b.created_at) - new Date(a.created_at)
+            case 'Oldest':
+                return (a, b) => new Date(a.created_at) - new Date(b.created_at)
+            default:
+                break
+        }
+    };
 
     return <Fragment>
         <div className='answer'>
@@ -23,31 +36,16 @@ const AnswerSection = ({ getAnswers, auth, answer, postId}) => {
                     <div className='answer-headline'>
                         <h2>Answers</h2>
                     </div>
-                    <div className="grid--cell">
-                        <div className=" grid s-btn-group js-filter-btn">
-                            <Link className="s-btn s-btn__filled is-selected"
-                                  to="#"
-                                  data-nav-xhref="" title="Answers with the latest activity first"
-                                  data-value="active" data-shortcut="A">
-                                Active
-                            </Link>
-                            <Link className="s-btn s-btn__filled"
-                                  to="#"
-                                  data-nav-xhref="" title="Answers in the order they were provided"
-                                  data-value="oldest" data-shortcut="O">
-                                Oldest
-                            </Link>
-                            <Link className="s-btn s-btn__filled"
-                                  to="#"
-                                  data-nav-xhref="" title="Answers with the highest score first"
-                                  data-value="votes" data-shortcut="V">
-                                Votes
-                            </Link>
-                        </div>
-                    </div>
+                    <ButtonGroup
+                        buttons={['Newest', 'Oldest']}
+                        selected={sortType}
+                        setSelected={setSortType}
+                    />
                 </div>
             </div>
-            {answer.loading === null ? <Spinner width='25px' height='25px'/> : answer.answers.map(answer => (
+            {answer.loading === null ? <Spinner width='25px' height='25px'/> : answer.answers
+                ?.sort(handleSorting())
+                .map(answer => (
                 <div key={answer.id} className='answers'>
                     <AnswerItem
                         answer={answer}

@@ -8,13 +8,14 @@ const UserCard = ({
         created_at,
         user_id,
         username,
+        dateType,
         float,
         backgroundColor
     }) => {
     return <Fragment>
         <div className='owner' style={{float: float, backgroundColor: backgroundColor}}>
             <div className='user-block fc-black-500'>
-                <div className='action-time'>asked { moment(created_at).fromNow(true) } ago</div>
+                <div className='action-time'>{dateType ? dateType : 'asked'} { moment(created_at).fromNow(true) } ago</div>
                 <div className='user-logo'>
                     <Link className='user-link' to={`/users/${user_id}`}>
                         <div className='logo-wrapper'>

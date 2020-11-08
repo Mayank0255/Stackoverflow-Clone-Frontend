@@ -25,11 +25,16 @@
     }
   }
 
+  .users-box {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .user-browser {
     float: none;
     clear: both;
     width: auto;
-    padding: 8px 16px 16px 16px;
+    padding: 0 16px 16px 16px;
 
     .grid-layout {
       display: grid;

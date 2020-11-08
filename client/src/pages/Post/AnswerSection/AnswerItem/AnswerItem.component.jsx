@@ -60,6 +60,7 @@ const AnswerItem = ({ deleteAnswer, answer: {body, user_id, id, created_at, user
                         created_at={created_at}
                         user_id={user_id}
                         username ={username}
+                        dateType={'answered'}
                         backgroundColor={'transparent'}
                     />
                 </div>

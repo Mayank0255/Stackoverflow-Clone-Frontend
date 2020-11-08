@@ -31,7 +31,7 @@ const UserPanel = ({ user: { id, username, created_at, posts_count, tags_count, 
                 </span>
                 <span className='item user-time' style={{paddingTop: '1px'}}>
                     <span className='count'>{views} <span className='count-info'>{views === 1 ? 'PROFILE VIEW' : 'PROFILE VIEWS'}</span></span>
-                    <span className='count' style={{fontWeight: '500'}}>{moment(created_at).fromNow(false)}</span>
+                    <span className='count' style={{fontWeight: '400'}}>created {moment(created_at).fromNow(false)}</span>
                 </span>
             </div>
         </div>

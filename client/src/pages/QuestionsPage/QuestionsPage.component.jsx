@@ -54,16 +54,14 @@ const QuestionsPage = ({ getPosts, post: { posts, loading } }) => {
                             />
                         </div>
                     </div>
-                    <div className="search-questions">
+                    {searchQuery ? <div className="search-questions">
                         <span style={{color: '#acb2b8', fontSize: '12px'}}>Results for {searchQuery}</span>
-                        {searchQuery ?
-                            <SearchBox
-                                placeholder={'Search...'}
-                                name={'search'}
-                                pt={'mt8'}
-                            /> : ''
-                        }
-                    </div>
+                        <SearchBox
+                            placeholder={'Search...'}
+                            name={'search'}
+                            pt={'mt8'}
+                        />
+                    </div> : ''}
                     <div className='questions-tabs'>
                         <span>19,204,360 questions</span>
                         <ButtonGroup

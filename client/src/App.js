@@ -57,15 +57,15 @@ const App = () => {
                     })} />
                     <Route exact path='/questions' component={withTitle({
                         component: QuestionsPage,
-                        title: 'All Questions - Stack Overflow'
+                        title: 'All Questions - CLONE Stack Overflow'
                     })} />
                     <Route exact path='/tags' component={withTitle({
                         component: TagsPage,
-                        title: 'Tags - Stack Overflow'
+                        title: 'Tags - CLONE Stack Overflow'
                     })} />
                     <Route exact path='/users' component={withTitle({
                         component: UsersPage,
-                        title: 'Users - Stack Overflow'
+                        title: 'Users - CLONE Stack Overflow'
                     })} />
                     <Route exact path='/jobs' component={withTitle({
                         component: HomePage,
@@ -73,18 +73,18 @@ const App = () => {
                     })} />
                     <Route exact path='/register' component={withTitle({
                         component: Register,
-                        title: 'Sign Up - Stack Overflow'
+                        title: 'Sign Up - CLONE Stack Overflow'
                     })} />
                     <Route exact path='/login' component={withTitle({
                         component: Login,
-                        title: 'Log In - Stack Overflow'
+                        title: 'Log In - CLONE Stack Overflow'
                     })} />
                     <Route exact path='/questions/:id' component={Post} />
                     <Route exact path='/users/:id' component={UserPage} />
                     <Route exact path='/tags/:tagname' component={TagPage} />
                     <Route exact path='/add/question' component={withTitle({
                         component: PostForm,
-                        title: 'Ask a Question - Stack Overflow'
+                        title: 'Ask a Question - CLONE Stack Overflow'
                     })} />
                 </Switch>
             </div>

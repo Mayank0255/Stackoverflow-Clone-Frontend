@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -7,8 +7,7 @@ import PropTypes from 'prop-types';
 import './UserPanel.styles.scss';
 
 const UserPanel = ({ user: { id, username, created_at, posts_count, tags_count, views } }) => {
-    console.log(moment(created_at).fromNow(false))
-    return (
+    return <Fragment>
         <div className='user-panel-info s-card bs-sm h:bs-md fc-black-500'>
             <div className='user-gravatar'>
                 <Link to={`/users/${id}`}>
@@ -36,7 +35,7 @@ const UserPanel = ({ user: { id, username, created_at, posts_count, tags_count, 
                 </span>
             </div>
         </div>
-    )
+    </Fragment>
 };
 
 UserPanel.propTypes = {

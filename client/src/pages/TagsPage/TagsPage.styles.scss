@@ -37,6 +37,11 @@
     }
   }
 
+  .tags-box {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .user-browser {
     float: none;
     clear: both;

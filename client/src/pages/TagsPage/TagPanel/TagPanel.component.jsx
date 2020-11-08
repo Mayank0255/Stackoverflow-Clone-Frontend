@@ -20,10 +20,10 @@ const TagPanel = ({ tag: {tagname, description, created_at, posts_count} }) => {
             <div className="description">{description}</div>
             <div className='tag-caption'>
                 <div className='tag-cell'>
-                    {posts_count} questions
+                    {posts_count} {posts_count === 1 ? 'question' : 'questions'}
                 </div>
                 <div className='tag-cell'>
-                    added { moment(created_at).fromNow(true) } ago
+                    added { moment(created_at).fromNow(false) }
                 </div>
             </div>
         </div>

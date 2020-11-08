@@ -1,21 +1,38 @@
-import React, {useEffect,Fragment} from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getPosts } from '../../redux/posts/posts.actions';
 
-import Button from "../../components/Button/Button.component";
+import LinkButton from '../../components/LinkButton/LinkButton.component';
 import SideBar from '../../components/sideBar/sideBar.component';
 import PostItem from '../../components/postItem/postItem.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
+import Spinner from '../../components/spinner/spinner.component';
 
 import './QuestionsPage.styles.scss'
-import Spinner from "../../components/spinner/spinner.component";
-
+import ButtonGroup from "../../components/ButtonGroup/ButtonGroup.component";
 
 const QuestionsPage = ({ getPosts, post: { posts, loading }  }) => {
     useEffect(() => {
         getPosts();
     }, [ getPosts ]);
+
+    const [sortType, setSortType] = useState('Newest');
+
+    const handleSorting = () => {
+        switch (sortType) {
+            case 'Newest':
+                return (a, b) => new Date(b.created_at) - new Date(a.created_at)
+            case 'Top':
+                return (a, b) => (b.answer_count + b.comment_count) - (a.answer_count + a.comment_count)
+            case 'Views':
+                return (a, b) => b.views - a.views
+            case 'Oldest':
+                return (a, b) => new Date(a.created_at) - new Date(b.created_at)
+            default:
+                break
+        }
+    }
 
     return loading || posts === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <div className='page'>
@@ -25,7 +42,7 @@ const QuestionsPage = ({ getPosts, post: { posts, loading }  }) => {
                     <div className='questions-grid'>
                         <h3 className='questions-headline'>All Questions</h3>
                         <div className="questions-btn">
-                            <Button
+                            <LinkButton
                                 text={'Ask Question'}
                                 link={'/add/question'}
                                 type={'s-btn__primary'}
@@ -34,9 +51,15 @@ const QuestionsPage = ({ getPosts, post: { posts, loading }  }) => {
                     </div>
                     <div className='questions-tabs'>
                         <span>19,204,360 questions</span>
+                        <ButtonGroup
+                            buttons={['Newest', 'Top', 'Views', 'Oldest']}
+                            selected={sortType}
+                            setSelected={setSortType}
+                        />
                     </div>
                     <div className='questions'>
-                        {posts.map(post => (
+                        {posts
+                            ?.sort(handleSorting()).map(post => (
                             <PostItem key={post.id} post={post} />))}
                     </div>
                 </div>

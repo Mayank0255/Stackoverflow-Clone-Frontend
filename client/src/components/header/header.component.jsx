@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { logout } from '../../redux/auth/auth.actions'
 
 import SearchBox from "../SearchBox/SearchBox.component";
-import Button from "../Button/Button.component";
+import LinkButton from "../LinkButton/LinkButton.component";
 
 import { ReactComponent as Logo } from '../../assets/LogoMd.svg';
 import './header.styles.scss';
@@ -18,7 +18,7 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
                 <img alt='user-logo' className='logo'
                      src={`https://secure.gravatar.com/avatar/${user.id}?s=164&d=identicon`}/>
             </Link>}
-            <Button
+            <LinkButton
                 text={'Log out'}
                 link={'/login'}
                 type={'s-btn__filled'}
@@ -43,12 +43,12 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
     const guestLinks = (
         <div className='btns'>
-            <Button
+            <LinkButton
                 text={'Log in'}
                 link={'/login'}
                 type={'s-btn__primary'}
             />
-            <Button
+            <LinkButton
                 text={'Sign up'}
                 link={'/register'}
                 type={'s-btn__filled'}

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addAnswer } from '../../../../redux/answers/answers.actions';
 
-import Button from '../../../../components/Button/Button.component';
+import LinkButton from '../../../../components/LinkButton/LinkButton.component';
 
 import './AnswerForm.styles.scss';
 
@@ -47,7 +47,7 @@ const AnswerForm = ({ addAnswer, auth, postId }) => {
                 </div>
             </form>
         </Fragment> : <Fragment>
-            <Button
+            <LinkButton
                 text={'You need to login to add an answer'}
                 link={'/login'}
                 type={'s-btn__outlined'}

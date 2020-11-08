@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
-const Button = ({
+const LinkButton = ({
             text,
             link,
             type,
             handleClick,
             marginTop
-    }) => {
+}) => {
 
     return <Fragment>
         <Link
@@ -24,4 +24,4 @@ const Button = ({
     </Fragment>
 }
 
-export default Button;
+export default LinkButton;

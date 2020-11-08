@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTopPosts } from '../../redux/posts/posts.actions';
 
-import Button from '../../components/Button/Button.component';
+import LinkButton from '../../components/LinkButton/LinkButton.component';
 import SideBar from '../../components/sideBar/sideBar.component';
 import PostItem from '../../components/postItem/postItem.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
@@ -24,7 +24,7 @@ const HomePage = ({ getTopPosts, post: { posts, loading }  }) => {
                     <div className='questions-grid'>
                         <h3 className='questions-headline'>Top Questions</h3>
                         <div className="questions-btn">
-                            <Button
+                            <LinkButton
                                 text={'Ask Question'}
                                 link={'/add/question'}
                                 type={'s-btn__primary'}

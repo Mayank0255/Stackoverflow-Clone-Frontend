@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { getPost } from '../../redux/posts/posts.actions';
 
 import PageTitle from '../../components/pageTitle/pageTitle.component';
-import Button from '../../components/Button/Button.component';
+import LinkButton from '../../components/LinkButton/LinkButton.component';
 import Spinner from '../../components/spinner/spinner.component';
 import SideBar from '../../components/sideBar/sideBar.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
@@ -29,7 +29,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
                     <div className='question-header fc-black-800 pl24'>
                         <h1>{post.title}</h1>
                         <div>
-                            <Button
+                            <LinkButton
                                 text={'Ask Question'}
                                 link={'/add/question'}
                                 type={'s-btn__primary'}

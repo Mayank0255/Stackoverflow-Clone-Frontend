@@ -7,7 +7,7 @@ import { getComments, deleteComment, addComment } from '../../../../redux/commen
 
 import Spinner from "../../../../components/spinner/spinner.component";
 import TagBadge from "../../../../components/TagBadge/TagBadge.component";
-import Button from "../../../../components/Button/Button.component";
+import LinkButton from "../../../../components/LinkButton/LinkButton.component";
 
 import './CommentCell.styles.scss';
 
@@ -98,7 +98,7 @@ const CommentCell = ({
                         </div>
                     </form>
                 </Fragment> : <Fragment>
-                    <Button
+                    <LinkButton
                         text={'You need to login to add a comment'}
                         link={'/login'}
                     />

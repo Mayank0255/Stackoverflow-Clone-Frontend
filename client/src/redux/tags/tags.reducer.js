@@ -1,4 +1,5 @@
 import {
+    GET_TAG,
     GET_TAGS,
     TAG_ERROR
 } from './tags.types';
@@ -12,6 +13,12 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch (action.type) {
+        case GET_TAG:
+            return {
+                ...state,
+                tag: action.payload,
+                loading: false
+            };
         case GET_TAGS:
             return{
                 ...state,

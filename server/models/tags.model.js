@@ -29,4 +29,31 @@ Tag.retrieveAll = (result) => {
         });
 }
 
+Tag.retrieveOne = (tagName, result) => {
+    const query =  `SELECT 
+                        tags.id,posts.id,description,tagname,COUNT(DISTINCT posts.id) 
+                        as posts_count,tags.created_at 
+                        FROM tags 
+                        LEFT JOIN posttag ON posttag.tag_id = tags.id 
+                        LEFT JOIN posts ON posts.id = posttag.post_id 
+                        WHERE tagname = ? GROUP BY tags.id;`
+
+    pool.query(query,
+        tagName,
+        (err, results) => {
+            if (err || results.length === 0) {
+                console.log('error: ', err);
+                result(
+                    helperFunction.responseHandler(false, err ? err.statusCode : 404, err ? err.message : 'This tag doesn\'t exists', null),
+                    null
+                );
+                return;
+            }
+            result(
+                null,
+                helperFunction.responseHandler(true, 200, 'Success', results[0])
+            );
+        });
+}
+
 module.exports = Tag;

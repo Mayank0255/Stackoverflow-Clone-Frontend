@@ -86,6 +86,10 @@ const App = () => {
                         component: PostForm,
                         title: 'Ask a Question - CLONE Stack Overflow'
                     })} />
+                    <Route path="*" component={withTitle({
+                        component: HomePage,
+                        title: 'CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers'
+                    })} />
                 </Switch>
             </div>
         </Provider>

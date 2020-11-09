@@ -10,12 +10,12 @@ export const getTag = tagName => async dispatch => {
     try {
         const res = await axios.get(`/api/tags/${tagName}`);
 
-        console.log(res.data);
         dispatch({
             type: GET_TAG,
             payload: res.data.data
         });
     } catch (err) {
+        // dispatch(() => history.push('/questions'))
         dispatch(setAlert(err.response.data.message, 'danger'));
 
         dispatch({

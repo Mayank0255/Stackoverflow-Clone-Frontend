@@ -11,9 +11,9 @@ import PostItem from '../../components/postItem/postItem.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
 import Spinner from "../../components/spinner/spinner.component";
 import PageTitle from "../../components/pageTitle/pageTitle.component";
+import ButtonGroup from "../../components/ButtonGroup/ButtonGroup.component";
 
 import './TagPage.styles.scss';
-import ButtonGroup from "../../components/ButtonGroup/ButtonGroup.component";
 
 const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
     useEffect(() => {
@@ -43,7 +43,10 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
                             />
                         </div>
                     </div>
-                    <p className='fs-body'>{posts[0].description ? posts[0].description : ''}</p>
+                    <p
+                        className='fs-body'
+                        dangerouslySetInnerHTML={{ __html: posts.length === 0 ? '' : posts[0].description}}
+                    />
                     <div className='questions-tabs'>
                         <span>19,204,360 questions</span>
                         <ButtonGroup

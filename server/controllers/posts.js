@@ -24,7 +24,7 @@ const getPosts = (req, res) => {
     }
 };
 
-const getSinglePost = (req,res) => {
+const getSinglePost = (req, res) => {
     try {
         Post.retrieveOne(req.params.id, (err, data) => {
             if (err) {
@@ -41,7 +41,7 @@ const getSinglePost = (req,res) => {
     }
 };
 
-const addPost = (req,res) => {
+const addPost = (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res
@@ -71,7 +71,7 @@ const addPost = (req,res) => {
     }
 };
 
-const deletePost = (req,res) => {
+const deletePost = (req, res) => {
     try {
         Post.remove(req.params.id, (err, data) => {
             if (err) {

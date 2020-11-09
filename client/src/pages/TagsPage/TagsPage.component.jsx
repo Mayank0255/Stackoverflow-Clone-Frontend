@@ -36,7 +36,7 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
                         A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.
                     </p>
                     <div className='headline-count'>
-                        <span>1,025 tags</span>
+                        <span>{new Intl.NumberFormat('en-IN').format(tags.length)} tags</span>
                     </div>
                     <div className='tags-box pl16 pr16 pb16'>
                         <SearchBox

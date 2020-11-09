@@ -25,6 +25,7 @@ const UsersPage = ({ getUsers, user: { users, loading }  }) => {
         e.preventDefault();
         setSearch(e.target.value);
     };
+    console.log(users)
 
     return loading || users === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <div className='page'>
@@ -33,7 +34,7 @@ const UsersPage = ({ getUsers, user: { users, loading }  }) => {
                 <div id='mainbar' className='users-page fc-black-800'>
                     <h1 className='headline'>Users</h1>
                     <div className='headline-count'>
-                        <span>1,025 users</span>
+                        <span>{new Intl.NumberFormat('en-IN').format(users.length)} users</span>
                     </div>
                     <div className='users-box pl16 pr16 pb16'>
                         <SearchBox

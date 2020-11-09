@@ -24,6 +24,7 @@ const TagsWidget = ({ getTags , tag: { tags, loading }}) => {
                         tag_name={tag.tagname}
                         size={'s-tag s-tag__md'}
                         display={'inline'}
+                        href={true}
                     />
                     &nbsp;
                     <span className='tag-mult'>

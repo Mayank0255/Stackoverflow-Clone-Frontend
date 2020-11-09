@@ -50,7 +50,7 @@ const TagPage = ({ getTag, getTagPosts, tag, post: { posts, loading }, match  })
                         dangerouslySetInnerHTML={{ __html: tag.tag.description }}
                     />
                     <div className='questions-tabs'>
-                        <span>{tag.tag.posts_count} {tag.tag.posts_count === 1 ? 'question' : 'questions'}</span>
+                        <span>{new Intl.NumberFormat('en-IN').format(tag.tag.posts_count)} {tag.tag.posts_count === 1 ? 'question' : 'questions'}</span>
                         <ButtonGroup
                             buttons={['Newest', 'Top', 'Views', 'Oldest']}
                             selected={sortType}

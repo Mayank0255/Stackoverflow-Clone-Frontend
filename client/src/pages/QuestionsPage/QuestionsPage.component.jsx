@@ -49,7 +49,7 @@ const QuestionsPage = ({ getPosts, post: { posts, loading } }) => {
                         />
                     </div> : ''}
                     <div className='questions-tabs'>
-                        <span>19,204,360 questions</span>
+                        <span>{new Intl.NumberFormat('en-IN').format(posts.length)} questions</span>
                         <ButtonGroup
                             buttons={['Newest', 'Top', 'Views', 'Oldest']}
                             selected={sortType}

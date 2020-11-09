@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store'
-
-import './App.css';
+import setAuthToken from "./redux/auth/auth.utils";
+import { loadUser } from "./redux/auth/auth.actions";
 
 import HomePage from './pages/HomePage/HomePage.component';
 import QuestionsPage from './pages/QuestionsPage/QuestionsPage.component';
@@ -15,13 +15,11 @@ import Post from "./pages/Post/Post.component";
 import PostForm from "./pages/PostForm/PostForm.component";
 import TagPage from './pages/TagPage/TagPage.component';
 import UserPage from './pages/UserPage/UserPage.component';
-
 import Alert from './components/alert/alert.component';
 import PageTitle from "./components/pageTitle/pageTitle.component";
-import { loadUser } from "./redux/auth/auth.actions";
-
 import Header from "./components/header/header.component";
-import setAuthToken from "./redux/auth/auth.utils";
+
+import './App.css';
 
 if (localStorage.token){
     setAuthToken(localStorage.token);

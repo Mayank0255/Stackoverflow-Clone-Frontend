@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { getTagPosts } from '../../redux/posts/posts.actions';
+import handleSorting from "../../services/handleSorting";
 
 import LinkButton from "../../components/LinkButton/LinkButton.component";
 import SideBar from '../../components/sideBar/sideBar.component';
@@ -21,21 +22,6 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
     }, [getTagPosts]);
 
     const [sortType, setSortType] = useState('Newest');
-
-    const handleSorting = () => {
-        switch (sortType) {
-            case 'Newest':
-                return (a, b) => new Date(b.created_at) - new Date(a.created_at)
-            case 'Top':
-                return (a, b) => (b.answer_count + b.comment_count) - (a.answer_count + a.comment_count)
-            case 'Views':
-                return (a, b) => b.views - a.views
-            case 'Oldest':
-                return (a, b) => new Date(a.created_at) - new Date(b.created_at)
-            default:
-                break
-        }
-    }
 
     if (posts.length === 0) {
         return <Redirect to='/tags'/>;
@@ -69,7 +55,7 @@ const TagPage = ({ getTagPosts, post: { posts, loading }, match  }) => {
                     <div className='questions'>
                         {posts.length === 0 ? ( <h4 style={{margin: '30px 30px'}}>There are no questions from this tag</h4> ) :
                             posts
-                                ?.sort(handleSorting())
+                                ?.sort(handleSorting(sortType))
                                 .map(post => (
                                 <PostItem key={post.id} post={post} />
                             ))

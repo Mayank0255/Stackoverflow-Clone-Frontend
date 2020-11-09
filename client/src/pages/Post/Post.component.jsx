@@ -47,8 +47,8 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
                         </div>
                     </div>
                     <div className='question-main pl24 pt16'>
-                        <QuestionSection/>
-                        <AnswerSection postId={post.id}/>
+                        <QuestionSection postId={match.params.id}/>
+                        <AnswerSection postId={match.params.id}/>
                     </div>
                 </div>
                 <RightSideBar/>

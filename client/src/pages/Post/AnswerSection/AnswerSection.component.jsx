@@ -19,6 +19,8 @@ const AnswerSection = ({ getAnswers, auth, answer, postId }) => {
 
     const [sortType, setSortType] = useState('Newest');
 
+    // console.log(answer)
+
     return <Fragment>
         <div className='answer'>
             <div className='answer-header fc-black-800'>

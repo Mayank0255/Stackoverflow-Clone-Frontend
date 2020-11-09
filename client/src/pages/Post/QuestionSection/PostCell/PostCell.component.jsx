@@ -21,10 +21,11 @@ const PostCell = ({
             username,
             created_at
         }
-    }
+    },
+    postId
     }) => {
     useEffect(() => {
-        getPost(id);
+        getPost(postId);
         // eslint-disable-next-line
     }, [ getPost ]);
 

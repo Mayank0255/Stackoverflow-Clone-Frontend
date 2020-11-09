@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getPosts } from '../../redux/posts/posts.actions';
+import handleSorting from "../../services/handleSorting";
 
 import LinkButton from '../../components/LinkButton/LinkButton.component';
 import SideBar from '../../components/sideBar/sideBar.component';
@@ -22,21 +23,6 @@ const QuestionsPage = ({ getPosts, post: { posts, loading } }) => {
 
     const [sortType, setSortType] = useState('Newest');
     let searchQuery = new URLSearchParams(useLocation().search).get('search');
-
-    const handleSorting = () => {
-        switch (sortType) {
-            case 'Newest':
-                return (a, b) => new Date(b.created_at) - new Date(a.created_at)
-            case 'Top':
-                return (a, b) => (b.answer_count + b.comment_count) - (a.answer_count + a.comment_count)
-            case 'Views':
-                return (a, b) => b.views - a.views
-            case 'Oldest':
-                return (a, b) => new Date(a.created_at) - new Date(b.created_at)
-            default:
-                break
-        }
-    }
 
     return loading || posts === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         {searchQuery ? <PageTitle title={`Search Results for ${searchQuery} - CLONE Stack Overflow`}/> : ''}
@@ -73,7 +59,7 @@ const QuestionsPage = ({ getPosts, post: { posts, loading } }) => {
                     <div className='questions'>
                         {posts
                             .filter(post => post.title.toLowerCase().includes(searchQuery ? searchQuery : ''))
-                            ?.sort(handleSorting())
+                            ?.sort(handleSorting(sortType))
                             .map(post => (
                             <PostItem key={post.id} post={post} />))}
                     </div>

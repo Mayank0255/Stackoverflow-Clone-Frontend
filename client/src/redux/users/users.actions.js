@@ -27,6 +27,7 @@ export const getUser = id => async dispatch => {
     try {
         const res = await axios.get(`/api/users/${id}`);
 
+        console.log(res.data)
         dispatch({
             type: GET_USER,
             payload: res.data.data

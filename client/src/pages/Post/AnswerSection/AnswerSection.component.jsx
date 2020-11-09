@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getAnswers } from '../../../redux/answers/answers.actions';
+import handleSorting from '../../../services/handleSorting';
 
 import AnswerItem from './AnswerItem/AnswerItem.component';
 import Spinner from '../../../components/spinner/spinner.component';
@@ -18,17 +19,6 @@ const AnswerSection = ({ getAnswers, auth, answer, postId }) => {
 
     const [sortType, setSortType] = useState('Newest');
 
-    const handleSorting = () => {
-        switch (sortType) {
-            case 'Newest':
-                return (a, b) => new Date(b.created_at) - new Date(a.created_at)
-            case 'Oldest':
-                return (a, b) => new Date(a.created_at) - new Date(b.created_at)
-            default:
-                break
-        }
-    };
-
     return <Fragment>
         <div className='answer'>
             <div className='answer-header fc-black-800'>
@@ -44,7 +34,7 @@ const AnswerSection = ({ getAnswers, auth, answer, postId }) => {
                 </div>
             </div>
             {answer.loading === null ? <Spinner width='25px' height='25px'/> : answer.answers
-                ?.sort(handleSorting())
+                ?.sort(handleSorting(sortType))
                 .map(answer => (
                 <div key={answer.id} className='answers'>
                     <AnswerItem

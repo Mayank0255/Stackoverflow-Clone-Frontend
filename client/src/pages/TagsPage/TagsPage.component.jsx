@@ -1,7 +1,8 @@
-import React, {useEffect, Fragment, useState} from 'react';
+import React, { useEffect, Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTags } from '../../redux/tags/tags.actions';
+import handleSorting from '../../services/handleSorting';
 
 import TagPanel from './TagPanel/TagPanel.component';
 import SideBar from '../../components/sideBar/sideBar.component';
@@ -24,19 +25,6 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
         e.preventDefault();
         setSearch(e.target.value);
     };
-
-    const handleSorting = () => {
-        switch (sortType) {
-            case 'Popular':
-                return (a, b) => b.posts_count - a.posts_count
-            case 'Name':
-                return (a, b) => a.tagname.localeCompare(b.tagname)
-            case 'Newest':
-                return (a, b) => new Date(b.created_at) - new Date(a.created_at)
-            default:
-                break
-        }
-    }
 
     return loading || tags === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
         <div className='page'>
@@ -66,7 +54,7 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
                         <div className='grid-layout'>
                             {tags
                                 .filter(tag => tag.tagname.toLowerCase().includes(fetchSearch.toLowerCase()))
-                                ?.sort(handleSorting())
+                                ?.sort(handleSorting(sortType))
                                 .map(tag => (
                                 <TagPanel key={tag.tagname} tag = {tag}/>))}
                         </div>

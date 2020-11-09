@@ -1,4 +1,4 @@
-import React, {useEffect,Fragment} from 'react';
+import React, {useEffect, Fragment} from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,9 +9,9 @@ import { ReactComponent as Logo } from '../../assets/LogoGlyphMd.svg';
 
 import SideBar from '../../components/sideBar/sideBar.component';
 import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
-import PageTitle from "../../components/pageTitle/pageTitle.component";
-import Spinner from "../../components/spinner/spinner.component";
-import TagBadge from "../../components/TagBadge/TagBadge.component";
+import PageTitle from '../../components/pageTitle/pageTitle.component';
+import Spinner from '../../components/spinner/spinner.component';
+import TagBadge from '../../components/TagBadge/TagBadge.component';
 
 import './UserPage.styles.scss'
 
@@ -64,7 +64,7 @@ const UserPage = ({ getUser, user: { user, loading }, match  }) => {
                                             </div>
                                             <div className='date'>
                                                 <p>
-                                                    user created &nbsp;-&nbsp;{ moment(user.created_at).fromNow(true) } ago
+                                                    user created &nbsp;-&nbsp;{moment(user.created_at).fromNow(false)}
                                                 </p>
                                             </div>
                                         </div>

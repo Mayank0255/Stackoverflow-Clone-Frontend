@@ -1,6 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
 import moment from 'moment';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getPost } from '../../redux/posts/posts.actions';

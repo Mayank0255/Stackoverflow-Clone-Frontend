@@ -2,7 +2,6 @@ CREATE DATABASE stack_overflow_v2;
 
 USE stack_overflow_v2;
 
-
  CREATE TABLE users(
       id INT AUTO_INCREMENT PRIMARY KEY,
       username VARCHAR(255) UNIQUE NOT NULL,

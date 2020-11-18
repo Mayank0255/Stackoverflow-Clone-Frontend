@@ -1,18 +1,5 @@
 const helperFunction = require('../helpers/helperFunction');
 
-/**
- * @typedef {Object} IAnswerConf
- * @property {string} body
- * @property {number} user_id
- * @property {number} post_id
- */
-
-/**
- * @param {IAnswerConf} answer
- * @property {string} body
- * @property {number} user_id
- * @property {number} post_id 
- */
 const Answer = function(answer) {
     this.body = answer.body;
     this.user_id = answer.user_id;

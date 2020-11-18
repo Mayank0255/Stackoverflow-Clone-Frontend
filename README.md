@@ -57,7 +57,12 @@ __:new: New Update:__ _newly added features are mentined in issue([#15](https://
     ```
     source <file path>/databaseConfig.sql
     ```
-4. Start the servers
+4. _(Optional)_ Run `seed.sql` file in the mysql client for seed data
+    ```
+    source <file path>/seed.sql
+    ```
+    _Note: Change the database name in `databaseConfig.sql` & `seed.sql` under `USE` command_
+5. Start the servers
     ```
     Option 1 (for running both the servers simultaneously):
     

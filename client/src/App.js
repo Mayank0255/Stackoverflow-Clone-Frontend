@@ -18,6 +18,7 @@ import UserPage from './pages/UserPage/UserPage.component';
 import Alert from './components/Alert/Alert.component';
 import PageTitle from "./components/PageTitle/PageTitle.component";
 import Header from "./components/Header/Header.component";
+import PageContainer from "./components/PageContainer/PageContainer.component";
 
 import './App.css';
 
@@ -50,23 +51,23 @@ const App = () => {
                 <Alert />
                 <Switch>
                     <Route exact path='/' component={withTitle({
-                        component: HomePage,
+                        component: PageContainer({ component: HomePage }),
                         title: 'CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers'
                     })} />
                     <Route exact path='/questions' component={withTitle({
-                        component: QuestionsPage,
+                        component: PageContainer({ component: QuestionsPage }),
                         title: 'All Questions - CLONE Stack Overflow'
                     })} />
                     <Route exact path='/tags' component={withTitle({
-                        component: TagsPage,
+                        component: PageContainer({ component: TagsPage }),
                         title: 'Tags - CLONE Stack Overflow'
                     })} />
                     <Route exact path='/users' component={withTitle({
-                        component: UsersPage,
+                        component: PageContainer({ component: UsersPage }),
                         title: 'Users - CLONE Stack Overflow'
                     })} />
                     <Route exact path='/jobs' component={withTitle({
-                        component: HomePage,
+                        component: PageContainer({ component: HomePage }),
                         title: 'CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers'
                     })} />
                     <Route exact path='/register' component={withTitle({
@@ -77,15 +78,15 @@ const App = () => {
                         component: Login,
                         title: 'Log In - CLONE Stack Overflow'
                     })} />
-                    <Route exact path='/questions/:id' component={Post} />
-                    <Route exact path='/users/:id' component={UserPage} />
-                    <Route exact path='/tags/:tagname' component={TagPage} />
+                    <Route exact path='/questions/:id' component={PageContainer({ component: Post })} />
+                    <Route exact path='/users/:id' component={PageContainer({ component: UserPage })} />
+                    <Route exact path='/tags/:tagname' component={PageContainer({ component: TagPage })} />
                     <Route exact path='/add/question' component={withTitle({
                         component: PostForm,
                         title: 'Ask a Question - CLONE Stack Overflow'
                     })} />
-                    <Route path="*" component={withTitle({
-                        component: HomePage,
+                    <Route path='*' component={withTitle({
+                        component: PageContainer({ component: HomePage }),
                         title: 'CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers'
                     })} />
                 </Switch>

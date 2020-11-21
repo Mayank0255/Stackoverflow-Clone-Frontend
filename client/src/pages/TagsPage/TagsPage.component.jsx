@@ -5,8 +5,6 @@ import { getTags } from '../../redux/tags/tags.actions';
 import handleSorting from '../../services/handleSorting';
 
 import TagPanel from './TagPanel/TagPanel.component';
-import SideBar from '../../components/SideBar/SideBar.component';
-import RightSideBar from '../../components/RightSideBar/RightSideBar.component';
 import Spinner from '../../components/Spinner/Spinner.component';
 import SearchBox from '../../components/SearchBox/SearchBox.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
@@ -27,40 +25,34 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
     };
 
     return loading || tags === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
-        <div className='page'>
-            <SideBar/>
-            <div id="content">
-                <div id='mainbar' className='tags-page fc-black-800'>
-                    <h1 className='headline'>Tags</h1>
-                    <p className='fs-body'>
-                        A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.
-                    </p>
-                    <div className='headline-count'>
-                        <span>{new Intl.NumberFormat('en-IN').format(tags.length)} tags</span>
-                    </div>
-                    <div className='tags-box pl16 pr16 pb16'>
-                        <SearchBox
-                            placeholder={'filter by tag name'}
-                            handleChange={handleChange}
-                            width={'200px'}
-                        />
-                        <ButtonGroup
-                            buttons={['Popular', 'Name', 'New']}
-                            selected={sortType}
-                            setSelected={setSortType}
-                        />
-                    </div>
-                    <div className='user-browser'>
-                        <div className='grid-layout'>
-                            {tags
-                                .filter(tag => tag.tagname.toLowerCase().includes(fetchSearch.toLowerCase()))
-                                ?.sort(handleSorting(sortType))
-                                .map(tag => (
-                                <TagPanel key={tag.tagname} tag = {tag}/>))}
-                        </div>
-                    </div>
+        <div id='mainbar' className='tags-page fc-black-800'>
+            <h1 className='headline'>Tags</h1>
+            <p className='fs-body'>
+                A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.
+            </p>
+            <div className='headline-count'>
+                <span>{new Intl.NumberFormat('en-IN').format(tags.length)} tags</span>
+            </div>
+            <div className='tags-box pl16 pr16 pb16'>
+                <SearchBox
+                    placeholder={'filter by tag name'}
+                    handleChange={handleChange}
+                    width={'200px'}
+                />
+                <ButtonGroup
+                    buttons={['Popular', 'Name', 'New']}
+                    selected={sortType}
+                    setSelected={setSortType}
+                />
+            </div>
+            <div className='user-browser'>
+                <div className='grid-layout'>
+                    {tags
+                        .filter(tag => tag.tagname.toLowerCase().includes(fetchSearch.toLowerCase()))
+                        ?.sort(handleSorting(sortType))
+                        .map(tag => (
+                            <TagPanel key={tag.tagname} tag = {tag}/>))}
                 </div>
-                <RightSideBar/>
             </div>
         </div>
     </Fragment>

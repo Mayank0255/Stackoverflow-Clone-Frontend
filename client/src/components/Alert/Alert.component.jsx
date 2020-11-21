@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import './alert.styles.scss';
+import './Alert.styles.scss';
 
 const Alert = ({ alerts }) =>
     alerts !== null &&

@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getPost } from '../../redux/posts/posts.actions';
 
-import PageTitle from '../../components/pageTitle/pageTitle.component';
+import PageTitle from '../../components/PageTitle/PageTitle.component';
 import LinkButton from '../../components/LinkButton/LinkButton.component';
-import Spinner from '../../components/spinner/spinner.component';
-import SideBar from '../../components/sideBar/sideBar.component';
-import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
+import Spinner from '../../components/Spinner/Spinner.component';
+import SideBar from '../../components/SideBar/SideBar.component';
+import RightSideBar from '../../components/RightSideBar/RightSideBar.component';
 import AnswerSection from './AnswerSection/AnswerSection.component';
 import QuestionSection from './QuestionSection/QuestionSection.component';
 

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getComments, deleteComment, addComment } from '../../../../redux/comments/comments.actions';
 
-import Spinner from "../../../../components/spinner/spinner.component";
+import Spinner from "../../../../components/Spinner/Spinner.component";
 import TagBadge from "../../../../components/TagBadge/TagBadge.component";
 import LinkButton from "../../../../components/LinkButton/LinkButton.component";
 

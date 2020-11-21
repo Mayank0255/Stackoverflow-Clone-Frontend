@@ -6,10 +6,10 @@ import { logout } from '../../redux/auth/auth.actions'
 
 import {ReactComponent as Search} from '../../assets/Search.svg';
 import { ReactComponent as Logo } from '../../assets/LogoMd.svg';
-import Spinner from '../spinner/spinner.component';
+import Spinner from '../Spinner/Spinner.component';
 import LinkButton from '../LinkButton/LinkButton.component';
 
-import './header.styles.scss';
+import './Header.styles.scss';
 
 const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     let history = useHistory();

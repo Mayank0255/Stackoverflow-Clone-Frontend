@@ -15,9 +15,9 @@ import Post from "./pages/Post/Post.component";
 import PostForm from "./pages/PostForm/PostForm.component";
 import TagPage from './pages/TagPage/TagPage.component';
 import UserPage from './pages/UserPage/UserPage.component';
-import Alert from './components/alert/alert.component';
-import PageTitle from "./components/pageTitle/pageTitle.component";
-import Header from "./components/header/header.component";
+import Alert from './components/Alert/Alert.component';
+import PageTitle from "./components/PageTitle/PageTitle.component";
+import Header from "./components/Header/Header.component";
 
 import './App.css';
 

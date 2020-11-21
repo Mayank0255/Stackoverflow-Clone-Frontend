@@ -7,10 +7,10 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../../assets/LogoGlyphMd.svg';
 
-import SideBar from '../../components/sideBar/sideBar.component';
-import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
-import PageTitle from '../../components/pageTitle/pageTitle.component';
-import Spinner from '../../components/spinner/spinner.component';
+import SideBar from '../../components/SideBar/SideBar.component';
+import RightSideBar from '../../components/RightSideBar/RightSideBar.component';
+import PageTitle from '../../components/PageTitle/PageTitle.component';
+import Spinner from '../../components/Spinner/Spinner.component';
 import TagBadge from '../../components/TagBadge/TagBadge.component';
 
 import './UserPage.styles.scss'

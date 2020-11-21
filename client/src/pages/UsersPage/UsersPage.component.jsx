@@ -5,9 +5,9 @@ import { getUsers } from '../../redux/users/users.actions';
 import handleSorting from "../../services/handleSorting";
 
 import UserPanel from './UserPanel/UserPanel.component';
-import SideBar from '../../components/sideBar/sideBar.component';
-import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
-import Spinner from '../../components/spinner/spinner.component';
+import SideBar from '../../components/SideBar/SideBar.component';
+import RightSideBar from '../../components/RightSideBar/RightSideBar.component';
+import Spinner from '../../components/Spinner/Spinner.component';
 import SearchBox from '../../components/SearchBox/SearchBox.component';
 import ButtonGroup from "../../components/ButtonGroup/ButtonGroup.component";
 

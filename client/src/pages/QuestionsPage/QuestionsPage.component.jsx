@@ -6,13 +6,13 @@ import { getPosts } from '../../redux/posts/posts.actions';
 import handleSorting from "../../services/handleSorting";
 
 import LinkButton from '../../components/LinkButton/LinkButton.component';
-import SideBar from '../../components/sideBar/sideBar.component';
-import PostItem from '../../components/postItem/postItem.component';
-import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
-import Spinner from '../../components/spinner/spinner.component';
+import SideBar from '../../components/SideBar/SideBar.component';
+import PostItem from '../../components/PostItem/PostItem.component';
+import RightSideBar from '../../components/RightSideBar/RightSideBar.component';
+import Spinner from '../../components/Spinner/Spinner.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 import SearchBox from "../../components/SearchBox/SearchBox.component";
-import PageTitle from "../../components/pageTitle/pageTitle.component";
+import PageTitle from "../../components/PageTitle/PageTitle.component";
 
 import './QuestionsPage.styles.scss'
 

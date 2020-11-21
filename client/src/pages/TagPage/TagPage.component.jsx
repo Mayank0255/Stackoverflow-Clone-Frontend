@@ -7,11 +7,11 @@ import { getTag } from '../../redux/tags/tags.actions';
 import handleSorting from '../../services/handleSorting';
 
 import LinkButton from '../../components/LinkButton/LinkButton.component';
-import SideBar from '../../components/sideBar/sideBar.component';
-import PostItem from '../../components/postItem/postItem.component';
-import RightSideBar from '../../components/rightSideBar/rightSideBar.component';
-import Spinner from '../../components/spinner/spinner.component';
-import PageTitle from '../../components/pageTitle/pageTitle.component';
+import SideBar from '../../components/SideBar/SideBar.component';
+import PostItem from '../../components/PostItem/PostItem.component';
+import RightSideBar from '../../components/RightSideBar/RightSideBar.component';
+import Spinner from '../../components/Spinner/Spinner.component';
+import PageTitle from '../../components/PageTitle/PageTitle.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 
 import './TagPage.styles.scss';

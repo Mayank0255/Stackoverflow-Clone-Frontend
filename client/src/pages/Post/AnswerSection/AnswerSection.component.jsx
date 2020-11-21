@@ -5,7 +5,7 @@ import { getAnswers } from '../../../redux/answers/answers.actions';
 import handleSorting from '../../../services/handleSorting';
 
 import AnswerItem from './AnswerItem/AnswerItem.component';
-import Spinner from '../../../components/spinner/spinner.component';
+import Spinner from '../../../components/Spinner/Spinner.component';
 import AnswerForm from './AnswerForm/AnswerForm.component';
 import ButtonGroup from '../../../components/ButtonGroup/ButtonGroup.component';
 

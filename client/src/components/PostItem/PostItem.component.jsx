@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import UserCard from '../UserCard/UserCard.component';
 import TagBadge from '../TagBadge/TagBadge.component';
 
-import './postItem.styles.scss';
+import './PostItem.styles.scss';
 
 const PostItem = ({ post: { id, title, body, tagname, username, user_id, answer_count, comment_count, views, created_at } }) => {
     const answerVoteUp = (

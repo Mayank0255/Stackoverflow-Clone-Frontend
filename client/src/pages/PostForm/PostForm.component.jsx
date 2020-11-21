@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Spinner from '../../components/spinner/spinner.component';
+import Spinner from '../../components/Spinner/Spinner.component';
 import AskWidget from './AskWidget/AskWidget.component';
 
 import './PostForm.styles.scss';

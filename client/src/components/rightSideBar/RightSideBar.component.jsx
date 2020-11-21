@@ -3,7 +3,7 @@ import React, {Fragment} from 'react';
 import SideBarWidget from './SideBarWidget/SideBarWidget.component';
 import TagsWidget from './TagsWidget/TagsWidget.component';
 
-import './rightSideBar.styles.scss';
+import './RightSideBar.styles.scss';
 
 const RightSideBar = () => {
     return <Fragment>

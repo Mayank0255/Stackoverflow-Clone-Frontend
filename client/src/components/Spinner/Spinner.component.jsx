@@ -1,5 +1,5 @@
 import React from 'react';
-import './spinner.styles.scss';
+import './Spinner.styles.scss';
 
 import { ReactComponent as PageSpinner } from '../../assets/PageSpinner.svg';
 import { ReactComponent as ComponentSpinner } from '../../assets/three-dots.svg';

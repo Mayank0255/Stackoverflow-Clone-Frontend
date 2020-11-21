@@ -1,6 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import withPageTitle from './services/withPageTitle';
 
+import PageContainer from './components/PageContainer/PageContainer.component';
 import HomePage from './pages/HomePage/HomePage.component';
 import QuestionsPage from './pages/QuestionsPage/QuestionsPage.component';
 import TagsPage from './pages/TagsPage/TagsPage.component';
@@ -11,8 +13,6 @@ import Post from './pages/Post/Post.component';
 import PostForm from './pages/PostForm/PostForm.component';
 import TagPage from './pages/TagPage/TagPage.component';
 import UserPage from './pages/UserPage/UserPage.component';
-import withPageTitle from './services/withPageTitle';
-import PageContainer from './components/PageContainer/PageContainer.component';
 
 const HomePageComponent = withPageTitle({
     component: PageContainer({ component: HomePage }),

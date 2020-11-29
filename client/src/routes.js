@@ -13,6 +13,7 @@ import Post from './pages/Post/Post.component';
 import PostForm from './pages/PostForm/PostForm.component';
 import TagPage from './pages/TagPage/TagPage.component';
 import UserPage from './pages/UserPage/UserPage.component';
+import NotFound from './pages/NotFound/NotFound.component';
 
 const HomePageComponent = withPageTitle({
     component: PageContainer({ component: HomePage }),
@@ -47,7 +48,12 @@ const LoginComponent = withPageTitle({
 const PostFormComponent = withPageTitle({
     component: PostForm,
     title: 'Ask a Question - CLONE Stack Overflow'
-})
+});
+
+const NotFoundComponent = withPageTitle({
+    component: NotFound,
+    title: 'Error 404'
+});
 
 const PostComponent = PageContainer({ component: Post });
 const UserPageComponent = PageContainer({ component: UserPage });
@@ -65,7 +71,7 @@ const Routes = () => {
         <Route exact path='/users/:id' component={UserPageComponent} />
         <Route exact path='/tags/:tagname' component={TagPageComponent} />
         <Route exact path='/add/question' component={PostFormComponent} />
-        <Route path='*' component={HomePageComponent} />
+        <Route path='*' component={NotFoundComponent} />
     </Switch>
 }
 

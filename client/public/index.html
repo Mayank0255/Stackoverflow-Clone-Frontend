@@ -23,5 +23,25 @@
     <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous'></script>
+    <script>
+      var pageX = $(document).width();
+      var pageY = $(document).height();
+      var mouseY=0;
+      var mouseX=0;
+
+      $(document).mousemove(function( event ) {
+        //verticalAxis
+        mouseY = event.pageY;
+        yAxis = (pageY/2-mouseY)/pageY*300;
+        //horizontalAxis
+        mouseX = event.pageX / -pageX;
+        xAxis = -mouseX * 100 - 100;
+
+        $('.box__ghost-eyes').css({ 'transform': 'translate('+ xAxis +'%,-'+ yAxis +'%)' });
+
+        //console.log('X: ' + xAxis);
+
+      });
+    </script>
   </body>
 </html>

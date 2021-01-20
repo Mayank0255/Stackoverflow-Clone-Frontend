@@ -7,8 +7,7 @@
 }
 
 #content {
-  max-width: 100%;
-  width: 83%;
+  width: 100%;
   padding: 0;
   margin-right: 60px;
 }
@@ -18,7 +17,7 @@
 }
 
 .homepage {
-  width: calc(100% - 300px - 24px);
+  width: 100%;
   padding: 24px 0 24px 0;
   float: left;
   margin: 0;
@@ -58,12 +57,12 @@
 
 @media (max-width: 1100px) {
   #content {
-    margin-left: 0;
+    margin-right: 15px;
   }
 
-  .homepage {
-    width: 82%;
-    float: none;
-    margin: 0;
+  #mainbar {
+    width: 100%;
+    color: red;
+    flex-grow: 4;
   }
 }

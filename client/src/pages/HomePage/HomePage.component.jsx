@@ -15,7 +15,7 @@ const HomePage = ({ getTopPosts, post: { posts, loading }  }) => {
     }, [ getTopPosts ]);
 
     return loading || posts === null ? <Spinner type='page' width='75px' height='200px'/> : <Fragment>
-        <div id='mainbar' className='homepage fc-black-800'>
+        <div id='mainbar' className='homepage fc-black-800 homepageres'>
             <div className='questions-grid'>
                 <h3 className='questions-headline'>Top Questions</h3>
                 <div className="questions-btn">

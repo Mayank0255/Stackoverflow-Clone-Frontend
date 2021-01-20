@@ -19,8 +19,8 @@
 
   .fs-body {
     padding-left: 16px;
-    padding-right: 24px;
-    width: 54rem;
+    padding-right: 0;
+    width: auto;
     font-size: 15px;
     font-weight: 400;
   }
@@ -64,6 +64,6 @@
     display: none;
   }
   .tags-page {
-    width: 80%;
+    width: 100%;
   }
 }

@@ -33,7 +33,7 @@ const TagsPage = ({ getTags , tag: { tags, loading }}) => {
             <div className='headline-count'>
                 <span>{new Intl.NumberFormat('en-IN').format(tags.length)} tags</span>
             </div>
-            <div className='tags-box pl16 pr16 pb16'>
+            <div className='tags-box pl16 pb16'>
                 <SearchBox
                     placeholder={'filter by tag name'}
                     handleChange={handleChange}

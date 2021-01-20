@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { logout } from '../../redux/auth/auth.actions'
 
 import {ReactComponent as Search} from '../../assets/Search.svg';
-import { ReactComponent as Logo } from '../../assets/LogoMd.svg';
 import Spinner from '../Spinner/Spinner.component';
 import LinkButton from '../LinkButton/LinkButton.component';
 
@@ -60,14 +59,15 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
     return loading ? '' : <Fragment>
         <nav className='navbar fixed-top navbar-expand-lg navbar-light bs-md'>
+        <span className='menu-btn px12' onClick={() => { document.querySelector(".side-bar-container").classList.toggle('side-bar_open') }}></span>
             <Link className='navbar-brand' to='/'>
-                <Logo/>
+                <span>Stack Overflow</span>              
             </Link>
             {!loading && (
                 <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>
             )}
             <form id="search" onSubmit={() => history.push('/questions')}
-                  className={`grid--cell fl-grow1 searchbar px12 js-searchbar`} autoComplete="off">
+                  className={`grid--cell fl-grow1 searchbar px12 rsearchbar`} autoComplete="off">
                 <div className="ps-relative search-frame">
                     <input
                         className="s-input s-input__search h100 search-box"
@@ -80,6 +80,7 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
                     <Search/>
                 </div>
             </form>
+            <span className='search-btn px12' onClick={() => { document.querySelector(".searchbar").classList.toggle('searchbar__open') }}></span>
             {!loading && <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>}
         </nav>
     </Fragment>

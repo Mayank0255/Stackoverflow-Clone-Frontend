@@ -35,7 +35,11 @@
 
   .summary {
     flex: 1 auto;
-    width: 630px;
+    width: 100%;
+
+    .owner{
+      width: auto;
+    }
 
     h3 {
       font-weight: 400;

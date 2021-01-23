@@ -1,7 +1,30 @@
 .fs-body {
   padding-left: 24px;
   padding-right: 24px;
-  width: 54rem;
+  width: 100%;
   font-size: 13px;
   font-weight: 400;
 }
+
+@media (max-width: 1100px) {
+  #mainbar {
+    width: 100%;
+    margin-right: 15px;
+  }
+  .fs-body {
+    padding-right: 0;
+    padding-left: 15px;
+  }
+  .questions-page .questions-grid {
+    padding-left: 15px;
+  }
+  .questions-page .questions-tabs {
+    padding-right: 0;
+    padding-left: 15px;
+  }
+  .posts {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+

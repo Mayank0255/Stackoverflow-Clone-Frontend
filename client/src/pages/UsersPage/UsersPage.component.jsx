@@ -31,7 +31,7 @@ const UsersPage = ({ getUsers, user: { users, loading }  }) => {
             <div className='headline-count'>
                 <span>{new Intl.NumberFormat('en-IN').format(users.length)} users</span>
             </div>
-            <div className='users-box pl16 pr16 pb16'>
+            <div className='users-box pl16 pb16'>
                 <SearchBox
                     placeholder={'filter by user'}
                     handleChange={handleChange}

@@ -94,14 +94,13 @@
   }
 }
 @media(max-width:580px){
-  .side-bar-container {
-    transform-origin: 0 0;
-    transform: translateX(-999px);
-    position: absolute !important;
-    
+  .page {
+    flex-wrap: wrap;
   }
-  .side-bar_open {
-    display: block;
-    transform: translateX(0);
+  .side-bar-container {
+    order: 2;
+    width: 100%;
+    margin-top: 24px;
+    
   }
 }

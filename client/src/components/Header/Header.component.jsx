@@ -59,7 +59,6 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
     return loading ? '' : <Fragment>
         <nav className='navbar fixed-top navbar-expand-lg navbar-light bs-md'>
-        <span className='menu-btn px12' onClick={() => { document.querySelector(".side-bar-container").classList.toggle('side-bar_open') }}></span>
             <Link className='navbar-brand' to='/'>
                 <span>Stack Overflow</span>              
             </Link>

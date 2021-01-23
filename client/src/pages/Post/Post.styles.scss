@@ -106,3 +106,9 @@
     width: 80%;
   }
 }
+
+@media(max-width: 400px) {
+  .pl24 {
+    padding: 15px !important;
+  }
+}

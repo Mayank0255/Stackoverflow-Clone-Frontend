@@ -7,6 +7,7 @@
   background-color: #3d3d3d;
   position: relative;
   flex: 1 0 auto;
+  flex-wrap: wrap;
   color: #242729;
 
   .post-form-content {
@@ -42,8 +43,10 @@
       justify-content: space-between;
       color: #242729;
 
+     
+
       aside {
-        flex-shrink: 0;
+        
         color: #242729;
 
         .right-panel {
@@ -52,5 +55,14 @@
         }
       }
     }
+  }
+}
+@media (max-width:700px){
+  .post-form-section {
+    flex-wrap: wrap;
+  }
+  .post-form-container .post-form-content .post-form-section aside .right-panel {
+    width: 100%;
+    margin: 24px 0;
   }
 }

@@ -5,3 +5,32 @@
     color: #242729;
   }
 }
+
+@media (max-width:400px){
+  .question {
+    .post-layout {
+      display: flex;
+      flex-wrap: wrap;
+
+      .vote-cell {
+        width: 100%;
+      }
+
+      .stats {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        border-bottom: #4a4e51 solid 1px;
+        margin-bottom: 24px;
+
+        .vote {
+          
+          width: 100px;
+          
+        }
+      }
+    }
+
+  }
+}

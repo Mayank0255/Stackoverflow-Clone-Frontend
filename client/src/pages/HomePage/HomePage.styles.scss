@@ -25,6 +25,7 @@
   .questions-grid {
     display: flex;
     padding-left: 24px;
+    width: 100%;
 
     .questions-headline {
       margin-bottom: 24px;
@@ -39,6 +40,7 @@
     display: flex;
     padding-left: 24px;
     padding-right: 16px;
+    width: 100%;
 
     span {
       font-size: 17px;
@@ -49,7 +51,7 @@
   .questions {
     float: none;
     clear: both;
-    width: auto;
+    width: 100%;
     margin-bottom: 20px;
     border-top: 1px solid #4a4e51;
   }
@@ -62,7 +64,6 @@
 
   #mainbar {
     width: 100%;
-    color: red;
-    flex-grow: 4;
+    margin-right: 15px;
   }
 }

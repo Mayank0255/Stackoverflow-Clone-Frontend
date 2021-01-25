@@ -8,7 +8,7 @@
 
 As the name suggests, this project is a clone of a famous Q/A website for professional and enthusiast programmers built solely by me using a completely different stack.
 
-__:new: New Update:__ _newly added features are mentined in issue([#15](https://github.com/Mayank0255/Stack-Overflow-Clone/issues/15))_
+__:new: New Update:__ _newly added features are mentioned in issue([#15](https://github.com/Mayank0255/Stack-Overflow-Clone/issues/15))_
 
 ## Table of Contents
 
@@ -16,6 +16,7 @@ __:new: New Update:__ _newly added features are mentined in issue([#15](https://
   - [Front-end](#front-end)
   - [Back-end](#back-end)
   - [Original Tech Stack](#original-tech-stack)
+- [Contributing](#contributing)
 - [Guidelines to setup](#guidelines-to-setup)
 - [API Endpoints](#api-endpoints)
   - [Base Url](#base-url---httplocalhost5000api)
@@ -44,6 +45,9 @@ __:new: New Update:__ _newly added features are mentined in issue([#15](https://
 * For handling server requests: `C#`
 * As Database: `Microsoft SQL Server`
 * `.NET` as well
+
+## Contributing
+* Go to `Contributing.md`
 
 ## Guidelines to setup
 1. Create a `.env` file and the format should be as given in `.env.example`.

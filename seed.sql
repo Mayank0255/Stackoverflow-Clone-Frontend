@@ -10,7 +10,6 @@ VALUES
 ("hritik", "$2a$10$u9xQmmo6ejTv/ex021wq9eKZVpIpfwdpE6RrRqp5M6P/qOzDBXh22"),
 ("shadowsaver", "$2a$10$.qGwjVv/39t.nLEg5DFpkO3oz72MCNsOF6a6ijuMKBmluaH5qAfIq");
 
-
 INSERT INTO posts(title, body, user_id) VALUES ("LocalDate and LocalDateTime in a server which runs in EST vs UTC", "I am trying to understand LocalDate and LocalDateTime. Since they do not carry zone info, how does it work for now() on two different time zone.", 1);
 SET @v1 := (SELECT LAST_INSERT_ID());
 INSERT IGNORE INTO tags(tagname, description) VALUES ("java", "Java is a popular high-level programming language. Use this tag when you&#39;re having problems using or understanding the language itself. This tag is rarely used alone and is most often used in conjunction with [spring], [spring-boot], [jakarta-ee], [android], [javafx], [gradle] and [maven].");

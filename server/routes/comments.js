@@ -2,7 +2,7 @@ const auth = require('../middleware/auth');
 const checkOwnership = require('../middleware/checkOwnership');
 const express = require('express');
 const router = express.Router();
-const { check } = require('express-validator');
+const {check} = require('express-validator');
 const commentsController = require('../controllers/comments');
 
 /** @route      GET /api/posts/comments/:id
@@ -16,22 +16,15 @@ router.get('/:id', commentsController.getComments);
  *  @access     Private
  */
 router.post(
-    '/:id',
-    [
-        auth,
-        [
-            check('body','Comment is required')
-                .not()
-                .isEmpty()
-        ]
-    ], commentsController.addComment);
+  '/:id',
+  [auth, [check('body', 'Comment is required').not().isEmpty()]],
+  commentsController.addComment
+);
 
 /** @route      DELETE /api/posts/comments/:id
  *  @desc       delete a comment to a post
  *  @access     Private
  */
-router.delete('/:id', [ auth, checkOwnership ], commentsController.deleteComment);
-
-
+router.delete('/:id', [auth, checkOwnership], commentsController.deleteComment);
 
 module.exports = router;

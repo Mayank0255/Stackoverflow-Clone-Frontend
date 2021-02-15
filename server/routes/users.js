@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { check } = require('express-validator');
+const {check} = require('express-validator');
 const checkExistence = require('../middleware/checkExistence');
 const usersController = require('../controllers/users');
 
@@ -21,13 +21,16 @@ router.get('/:id', usersController.getUsers);
  *  @access     Private
  */
 router.post(
-    '/',
-    [
-        check('username', 'Please include a valid username').isLength({ min: 5 }),
-        check(
-            'password',
-            'Please enter a password with 5 or more characters'
-        ).isLength({ min: 5 }), checkExistence
-    ], usersController.register);
+  '/',
+  [
+    check('username', 'Please include a valid username').isLength({min: 5}),
+    check(
+      'password',
+      'Please enter a password with 5 or more characters'
+    ).isLength({min: 5}),
+    checkExistence,
+  ],
+  usersController.register
+);
 
 module.exports = router;

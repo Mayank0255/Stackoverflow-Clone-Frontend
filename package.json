@@ -14,23 +14,33 @@
   "author": "Mayank Aggarwal",
   "license": "MIT",
   "dependencies": {
-    "axios": "0.21.1",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
-    "compression": "1.7.4",
+    "compression": "^1.7.4",
     "config": "^3.3.1",
-    "cors": "2.8.5",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "express-validator": "^6.4.0",
-    "helmet": "3.23.3",
+    "helmet": "^3.23.3",
     "jsonwebtoken": "^8.5.1",
-    "morgan": "1.10.0",
+    "morgan": "^1.10.0",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
-    "nodemon": "^2.0.2"
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-node": "4.1.0",
+    "eslint-config-prettier": "7.2.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "3.3.1",
+    "eslint-plugin-react": "7.21.5",
+    "eslint-plugin-react-hooks": "1.7.0",
+    "nodemon": "^2.0.2",
+    "prettier": "2.2.1"
   }
 }

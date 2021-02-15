@@ -2,7 +2,7 @@ const auth = require('../middleware/auth');
 const checkOwnership = require('../middleware/checkOwnership');
 const express = require('express');
 const router = express.Router();
-const { check } = require('express-validator');
+const {check} = require('express-validator');
 const postsController = require('../controllers/posts');
 
 /** @route      GET /api/posts
@@ -27,26 +27,32 @@ router.get('/tag/:tagname', postsController.getPosts);
  *  @desc       fetch a single post
  *  @access     Private
  */
-router.get('/:id',postsController.getSinglePost);
+router.get('/:id', postsController.getSinglePost);
 
 /** @route      POST /api/posts/
  *  @desc       add a post
  *  @access     Private
  */
 router.post(
-    '/',
+  '/',
+  [
+    auth,
     [
-        auth,
-        [
-            check('title', 'Enter a title with minimum 15 characters').isLength({min:15}),
-            check('body','Enter a body with minimum 30 characters').isLength({min:30})
-        ],
-    ], postsController.addPost);
+      check('title', 'Enter a title with minimum 15 characters').isLength({
+        min: 15,
+      }),
+      check('body', 'Enter a body with minimum 30 characters').isLength({
+        min: 30,
+      }),
+    ],
+  ],
+  postsController.addPost
+);
 
 /** @route      DELETE /api/posts/:id
  *  @desc       delete a post
  *  @access     Private
  */
-router.delete('/:id', [ auth, checkOwnership ], postsController.deletePost);
+router.delete('/:id', [auth, checkOwnership], postsController.deletePost);
 
 module.exports = router;

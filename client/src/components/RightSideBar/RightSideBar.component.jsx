@@ -6,15 +6,14 @@ import TagsWidget from './TagsWidget/TagsWidget.component';
 import './RightSideBar.styles.scss';
 
 const RightSideBar = () => {
-    return <Fragment>
-        <div
-            id='sidebar'
-            className='side-bar'
-        >
-            <SideBarWidget/>
-            <TagsWidget/>
-        </div>
+  return (
+    <Fragment>
+      <div id='sidebar' className='side-bar'>
+        <SideBarWidget />
+        <TagsWidget />
+      </div>
     </Fragment>
+  );
 };
 
 export default RightSideBar;

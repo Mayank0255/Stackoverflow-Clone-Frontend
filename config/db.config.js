@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 // environment variable config
 const dotenv = require('dotenv');
@@ -18,18 +18,19 @@ pool.getConnection((err, connection) => {
   if (err) {
     if (err.code === 'PROTOCOL_CONNECTION_LOST') {
       console.error('Database connection was closed.');
-    }
-    if (err.code === 'ER_CON_COUNT_ERROR') {
+    } else if (err.code === 'ER_CON_COUNT_ERROR') {
       console.error('Database has too many connections.');
-    }
-    if (err.code === 'ECONNREFUSED') {
+    } else if (err.code === 'ECONNREFUSED') {
       console.error('Database connection was refused.');
+    } else {
+      console.error(err.message)
     }
   }
 
-  if (connection) connection.release();
-
-  return;
+  if (connection){
+    console.log('Connected to the MySQL server.');
+    connection.release();
+  }
 });
 
 module.exports = pool;

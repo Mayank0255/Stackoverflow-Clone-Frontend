@@ -6,6 +6,8 @@
 [![MYSQL](https://img.shields.io/static/v1?label=mysql&message=8.0.10&color=blueviolet)](https://shields.io/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://shields.io/)
 
+__[Demo Video](https://www.youtube.com/watch?v=3jDIEf5vNp8)__
+
 As the name suggests, this project is a clone of a famous Q/A website for professional and enthusiast programmers built solely by me using a completely different stack.
 
 __:new: New Update:__ _newly added features are mentioned in issue([#15](https://github.com/Mayank0255/Stack-Overflow-Clone/issues/15))_
@@ -119,8 +121,8 @@ _NOTE: Might take sometime to start as there will be 2 servers running._
 
 ## DEMO
 
-#### VIDEO - [Watch the video](https://drive.google.com/file/d/1A0B3JPUUY2snG8MLZpyz2LWhvThG2epn/view?usp=sharing)
- _Video Last Updated on 18th July, 2020_
+#### VIDEO - [Watch the video](https://www.youtube.com/watch?v=3jDIEf5vNp8)
+ _Video Last Updated on 22nd March, 2020_
   
 #### IMAGES
 <img src="/demo/images/1.png" width=340px /><img src="/demo/images/2.png" width=340px />

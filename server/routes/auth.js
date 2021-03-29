@@ -1,8 +1,9 @@
-const auth = require('../middleware/auth');
 const express = require('express');
-const router = express.Router();
 const {check} = require('express-validator');
+const auth = require('../middleware/auth');
 const authController = require('../controllers/auth');
+
+const router = express.Router();
 
 /** @route      GET /api/auth
  *  @desc       fetch logged in user details

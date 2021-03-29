@@ -93,7 +93,7 @@ Post.retrieveOne = (postId, result) => {
                     LEFT JOIN comments ON posts.id = comments.post_id 
                     WHERE posts.id = ?;`;
 
-  pool.query(updateQuery, postId, (err, results) => {
+  pool.query(updateQuery, postId, (err) => {
     if (err) {
       console.log('error: ', err);
       result(
@@ -131,7 +131,7 @@ Post.retrieveOne = (postId, result) => {
 
 Post.retrieveAll = ({action, tagName}, result) => {
   let query = '';
-  let base = `SELECT 
+  const base = `SELECT 
                 posts.id,posts.user_id,username,COUNT(DISTINCT answers.id) 
                 as answer_count,COUNT(DISTINCT comments.id) 
                 as comment_count,tag_id,title,posts.body,tagname,description,posts.created_at,posts.views 
@@ -156,7 +156,7 @@ Post.retrieveAll = ({action, tagName}, result) => {
     );
     return;
   }
-  pool.query(base + query, tagName ? tagName : null, (err, results) => {
+  pool.query(base + query, tagName || null, (err, results) => {
     if (err || results.length === 0) {
       console.log('error: ', err);
       result(

@@ -1,6 +1,7 @@
 const express = require('express');
-const router = express.Router();
 const tagsController = require('../controllers/tags');
+
+const router = express.Router();
 
 /** @route      GET /api/tags
  *  @desc       fetch all tags

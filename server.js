@@ -8,6 +8,7 @@ const http = require('http');
 const express = require('express');
 const pool = require('./config/db.config');
 const index = require('./server/routes/index.route');
+
 const app = express();
 
 // compressing api response
@@ -18,13 +19,13 @@ app.use(morgan('dev'));
 
 // cors enable
 app.options('*', cors());
-app.use(cors({ origin: 'http://localhost:5000' }));
+app.use(cors({origin: 'http://localhost:5000'}));
 
 // security config
 app.use(helmet());
 
 // body-parser
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // database connection

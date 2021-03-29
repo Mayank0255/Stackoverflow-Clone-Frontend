@@ -8,6 +8,7 @@ const getPosts = (req, res) => {
   try {
     Post.retrieveAll(
       {
+        // eslint-disable-next-line no-nested-ternary
         action: tagname ? 'tag' : req.url.includes('top') ? 'top' : 'basic',
         tagName: tagname,
       },

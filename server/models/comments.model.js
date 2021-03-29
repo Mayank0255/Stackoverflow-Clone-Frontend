@@ -38,7 +38,7 @@ Comment.create = (newComment, result) => {
 Comment.remove = (id, result) => {
   const query = ` DELETE FROM comments WHERE id = ?;`;
 
-  pool.query(query, id, (err, res) => {
+  pool.query(query, id, (err) => {
     if (err) {
       console.log('error: ', err);
       result(
@@ -60,7 +60,7 @@ Comment.remove = (id, result) => {
 };
 
 Comment.retrieveAll = (postId, result) => {
-  let query = `   SELECT
+  const query = `   SELECT
                     comments.id, post_id, comments.user_id, username, comments.body, comments.created_at 
                     FROM comments 
                     JOIN posts ON posts.id = comments.post_id 

@@ -21,13 +21,12 @@ module.exports = (req, res, next) => {
         return res
           .status(400)
           .json(helperFunction.responseHandler(false, 400, 'Try again', null));
-      } else {
-        req.user = decoded.user;
-        next();
       }
+      req.user = decoded.user;
+      next();
     });
   } catch (err) {
-    console.error('error: ' + err);
+    console.error(`error: ${err}`);
     return res
       .status(500)
       .json(helperFunction.responseHandler(false, 500, 'Server Error', null));

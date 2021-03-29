@@ -1,5 +1,5 @@
-const bodyParser = require("body-parser");
-const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const morgan = require("morgan");
 const helmet = require('helmet');
 const cors = require('cors');
 const compression = require('compression');

@@ -56,7 +56,7 @@ Post.remove = (id, result) => {
                     DELETE FROM answers WHERE post_id = ?; 
                     DELETE FROM posts WHERE id = ? ;`;
 
-  pool.query(query, [id, id, id, id], (err, res) => {
+  pool.query(query, [id, id, id, id], (err) => {
     if (err) {
       console.log('error: ', err);
       result(

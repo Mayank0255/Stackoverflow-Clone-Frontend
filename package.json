@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
+    "eslint": "^7.23.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-node": "4.1.0",
     "eslint-config-prettier": "^8.1.0",

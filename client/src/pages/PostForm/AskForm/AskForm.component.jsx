@@ -2,6 +2,7 @@ import React, {Fragment, useState} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {addPost} from '../../../redux/posts/posts.actions';
+import RichTexteditor from '../../../components/RichTextEditor/RichTextEditor.component';
 
 import './AskForm.styles.scss';
 
@@ -59,7 +60,10 @@ const AskForm = ({addPost}) => {
                   question
                 </p>
               </label>
-              <textarea
+              <div className='s-textarea'>
+                <RichTexteditor />
+              </div>
+              {/* <textarea
                 className='s-textarea'
                 name='body'
                 cols='30'
@@ -69,7 +73,7 @@ const AskForm = ({addPost}) => {
                 placeholder='Enter body with minimum 30 characters'
                 id='body'
                 required
-              />
+              /> */}
             </div>
             <div className='tag-grid'>
               <label className='form-label s-label'>

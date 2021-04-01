@@ -2,6 +2,7 @@ const mysql = require('mysql2');
 
 // environment variable config
 const dotenv = require('dotenv');
+
 dotenv.config();
 
 const pool = mysql.createPool({
@@ -23,11 +24,11 @@ pool.getConnection((err, connection) => {
     } else if (err.code === 'ECONNREFUSED') {
       console.error('Database connection was refused.');
     } else {
-      console.error(err.message)
+      console.error(err.message);
     }
   }
 
-  if (connection){
+  if (connection) {
     console.log('Connected to the MySQL server.');
     connection.release();
   }

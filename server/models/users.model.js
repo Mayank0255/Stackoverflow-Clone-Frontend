@@ -56,9 +56,7 @@ User.register = async (newUser, result) => {
         }
         result(
           null,
-          helperFunction.responseHandler(true, 200, 'User registered', {
-            token: token,
-          })
+          helperFunction.responseHandler(true, 200, 'User registered', {token})
         );
       }
     );
@@ -121,9 +119,7 @@ User.login = (newUser, result) => {
         }
         result(
           null,
-          helperFunction.responseHandler(true, 200, 'User logged in', {
-            token: token,
-          })
+          helperFunction.responseHandler(true, 200, 'User logged in', {token})
         );
       }
     );
@@ -151,7 +147,7 @@ User.retrieve = ({action, id}, result) => {
                 WHERE users.id = ? GROUP BY users.id;`;
 
   if (action === 'one') {
-    pool.query(updateQuery, id, (err, results) => {
+    pool.query(updateQuery, id, (err) => {
       if (err) {
         console.log('error: ', err);
         result(
@@ -197,10 +193,10 @@ User.retrieve = ({action, id}, result) => {
   );
 };
 
-User.loadUser = (user_id, result) => {
+User.loadUser = (userId, result) => {
   const query = `SELECT id,username,created_at FROM users WHERE id = ?;`;
 
-  pool.query(query, user_id, (err, results) => {
+  pool.query(query, userId, (err, results) => {
     if (err) {
       console.log('error: ', err);
       result(

@@ -1,6 +1,6 @@
+const {validationResult} = require('express-validator');
 const helperFunction = require('../helpers/helperFunction');
 const User = require('../models/users.model');
-const {validationResult} = require('express-validator');
 
 const getUsers = (req, res) => {
   try {
@@ -9,7 +9,7 @@ const getUsers = (req, res) => {
     User.retrieve(
       {
         action: id ? 'one' : 'all',
-        id: id ? id : null,
+        id: id || null,
       },
       (err, data) => {
         if (err) {

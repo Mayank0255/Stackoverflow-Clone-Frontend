@@ -1,8 +1,9 @@
 const express = require('express');
-const router = express.Router();
 const {check} = require('express-validator');
 const checkExistence = require('../middleware/checkExistence');
 const usersController = require('../controllers/users');
+
+const router = express.Router();
 
 /** @route      GET /api/users
  *  @desc       fetch all the users

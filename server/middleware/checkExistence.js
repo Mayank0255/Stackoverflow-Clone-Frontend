@@ -1,7 +1,7 @@
 const helperFunction = require('../helpers/helperFunction');
 
 module.exports = (req, res, next) => {
-  const {username, password} = req.body;
+  const {username} = req.body;
 
   pool.query(
     `SELECT * FROM users WHERE username = ?;`,

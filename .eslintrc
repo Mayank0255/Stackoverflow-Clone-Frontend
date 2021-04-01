@@ -6,6 +6,11 @@
     "no-unused-vars": "warn",
     "no-multi-assign": "off",
     "no-return-await": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "no-console": "off",
+    "consistent-return": "off",
+    "func-names": "off",
+    "no-param-reassign": "off",
+    "no-shadow": "off"
   }
 }

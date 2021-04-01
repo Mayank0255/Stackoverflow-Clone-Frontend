@@ -1,6 +1,6 @@
+const {validationResult} = require('express-validator');
 const helperFunction = require('../helpers/helperFunction');
 const User = require('../models/users.model');
-const {validationResult} = require('express-validator');
 
 const loadUser = (req, res) => {
   try {

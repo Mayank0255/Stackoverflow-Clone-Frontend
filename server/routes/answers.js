@@ -1,9 +1,10 @@
+const express = require('express');
+const {check} = require('express-validator');
 const auth = require('../middleware/auth');
 const checkOwnership = require('../middleware/checkOwnership');
-const express = require('express');
-const router = express.Router();
-const {check} = require('express-validator');
 const answersController = require('../controllers/answers');
+
+const router = express.Router();
 
 /** @route      GET /api/posts/answers/:id
  *  @desc       fetch all answers of a post

@@ -1,86 +1,49 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, {useState} from 'react';
 import {Editor, EditorState, RichUtils, getDefaultKeyBinding} from 'draft-js';
 import './draft.css';
-// import './rich-editor.css';
 import './RichTextEditor.styles.scss';
-// const RichTextEditor = () => {
-//   const [editorState, setEditorState] = React.useState(() =>
-//     EditorState.createEmpty()
-//   );
 
-//   const editor = React.useRef(null);
-//   function focusEditor() {
-//     editor.current.focus();
-//   }
-//   return (
-//     <div
-//       style={{border: '1px  solid black', minHeight: '6em', cursor: 'text'}}
-//       onClick={focusEditor}
-//     >
-//       <Editor
-//         ref={editor}
-//         editorState={editorState}
-//         onChange={setEditorState}
-//         placeholder='Write something!'
-//       />
-//     </div>
-//   );
-// };
+const RichTextEditor = () => {
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const editor = React.useRef(null);
 
-// export default RichTextEditor;
+  const focus = () => {
+    editor.current.focus();
+  };
 
-class RichTextEditor extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {editorState: EditorState.createEmpty()};
+  const onChange = (editorState) => {
+    setEditorState(editorState);
+  };
 
-    this.focus = () => this.refs.editor.focus();
-    this.onChange = (editorState) => this.setState({editorState});
-
-    this.handleKeyCommand = this._handleKeyCommand.bind(this);
-    this.mapKeyToEditorCommand = this._mapKeyToEditorCommand.bind(this);
-    this.toggleBlockType = this._toggleBlockType.bind(this);
-    this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
-  }
-
-  _handleKeyCommand(command, editorState) {
+  const handleKeyCommand = (command, editorState) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
-      this.onChange(newState);
+      onChange(newState);
       return true;
     }
     return false;
-  }
+  };
 
-  _mapKeyToEditorCommand(e) {
+  const mapKeyToEditorCommand = (e) => {
     if (e.keyCode === 9 /* TAB */) {
-      const newEditorState = RichUtils.onTab(
-        e,
-        this.state.editorState,
-        4 /* maxDepth */
-      );
-      if (newEditorState !== this.state.editorState) {
-        this.onChange(newEditorState);
+      const newEditorState = RichUtils.onTab(e, editorState, 4 /* maxDepth */);
+      if (newEditorState !== editorState) {
+        onChange(newEditorState);
       }
       return;
     }
     return getDefaultKeyBinding(e);
-  }
+  };
 
-  _toggleBlockType(blockType) {
-    this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
-  }
+  const toggleBlockType = (blockType) => {
+    onChange(RichUtils.toggleBlockType(editorState, blockType));
+  };
 
-  _toggleInlineStyle(inlineStyle) {
-    this.onChange(
-      RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle)
-    );
-  }
+  const toggleInlineStyle = (inlineStyle) => {
+    onChange(RichUtils.toggleInlineStyle(editorState, inlineStyle));
+  };
 
-  render() {
-    const {editorState} = this.state;
-
+  const getClassname = () => {
     // If the user changes block type before entering any text, we can
     // either style the placeholder or hide it. Let's just hide it now.
     let className = 'RichEditor-editor';
@@ -90,34 +53,37 @@ class RichTextEditor extends React.Component {
         className += ' RichEditor-hidePlaceholder';
       }
     }
+    return className;
+  };
 
-    return (
-      <div className='RichEditor-root'>
+  return (
+    <div className='RichEditor-root'>
+      <div className='RichEditor-controls-container'>
         <InlineStyleControls
           editorState={editorState}
-          onToggle={this.toggleInlineStyle}
+          onToggle={toggleInlineStyle}
         />
         <BlockStyleControls
           editorState={editorState}
-          onToggle={this.toggleBlockType}
+          onToggle={toggleBlockType}
         />
-        <div className={className} onClick={this.focus}>
-          <Editor
-            blockStyleFn={getBlockStyle}
-            customStyleMap={styleMap}
-            editorState={editorState}
-            handleKeyCommand={this.handleKeyCommand}
-            keyBindingFn={this.mapKeyToEditorCommand}
-            onChange={this.onChange}
-            placeholder='Tell a story...'
-            ref='editor'
-            spellCheck={true}
-          />
-        </div>
       </div>
-    );
-  }
-}
+      <div className={getClassname()} onClick={focus}>
+        <Editor
+          blockStyleFn={getBlockStyle}
+          customStyleMap={styleMap}
+          editorState={editorState}
+          handleKeyCommand={handleKeyCommand}
+          keyBindingFn={mapKeyToEditorCommand}
+          onChange={onChange}
+          placeholder='Tell a story...'
+          ref={editor}
+          spellCheck={true}
+        />
+      </div>
+    </div>
+  );
+};
 
 // Custom overrides for "code" style.
 const styleMap = {
@@ -138,28 +104,27 @@ function getBlockStyle(block) {
   }
 }
 
-class StyleButton extends React.Component {
-  constructor() {
-    super();
-    this.onToggle = (e) => {
-      e.preventDefault();
-      this.props.onToggle(this.props.style);
-    };
-  }
+const StyleButton = (props) => {
+  const onToggle = (e) => {
+    e.preventDefault();
+    props.onToggle(props.style);
+  };
 
-  render() {
+  const getClassname = () => {
     let className = 'RichEditor-styleButton';
-    if (this.props.active) {
+    if (props.active) {
       className += ' RichEditor-activeButton';
     }
 
-    return (
-      <span className={className} onMouseDown={this.onToggle}>
-        {this.props.label}
-      </span>
-    );
-  }
-}
+    return className;
+  };
+
+  return (
+    <span className={getClassname()} onMouseDown={onToggle}>
+      {props.label}
+    </span>
+  );
+};
 
 const BLOCK_TYPES = [
   /**

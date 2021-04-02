@@ -2,7 +2,7 @@ import React, {Fragment, useState, useRef } from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {addPost} from '../../../redux/posts/posts.actions';
-import RichTexteditor from '../../../components/RichTextEditor/RichTextEditor.component';
+import RichTextEditor from '../../../components/RichTextEditor/RichTextEditor.component';
 
 import './AskForm.styles.scss';
 
@@ -68,7 +68,7 @@ const AskForm = ({addPost}) => {
                 </p>
               </label>
               <div className='s-textarea'>
-                <RichTexteditor
+                <RichTextEditor
                   ref={richTextEditorRef}
                   updateConvertedContent={updateConvertedContent}
                   convertedContent={formData.body}

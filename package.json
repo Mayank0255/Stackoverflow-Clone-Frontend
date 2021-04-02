@@ -22,6 +22,7 @@
     "config": "^3.3.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "draft-convert": "^2.1.10",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "express-validator": "^6.4.0",

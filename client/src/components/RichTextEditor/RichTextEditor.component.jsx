@@ -1,11 +1,32 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, forwardRef, useImperativeHandle} from 'react';
 import {Editor, EditorState, RichUtils, getDefaultKeyBinding} from 'draft-js';
+import { convertToHTML, convertFromHTML } from 'draft-convert';
+
 import './draft.css';
 import './RichTextEditor.styles.scss';
 
-const RichTextEditor = () => {
+const RichTextEditor = forwardRef((props, ref) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const [convertedContent, setConvertedContent] = useState("")
   const editor = React.useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    cleanEditorState() {
+      setEditorState(EditorState.createEmpty())
+    }
+  }));
+
+  useEffect(() => {
+    setConvertedContent(props.convertedContent);
+  }, [props.convertedContent]); 
+
+  useEffect(() => {
+    const htmlConvertedContent = convertToHTML(editorState.getCurrentContent())
+    setConvertedContent(htmlConvertedContent);
+
+    if(props.updateConvertedContent) props.updateConvertedContent(htmlConvertedContent)
+
+  }, [editorState]);
 
   const focus = () => {
     editor.current.focus();
@@ -58,7 +79,7 @@ const RichTextEditor = () => {
 
   return (
     <div className='RichEditor-root'>
-      <div className='RichEditor-controls-container'>
+      <div className='RichEditor-controlsContainer'>
         <InlineStyleControls
           editorState={editorState}
           onToggle={toggleInlineStyle}
@@ -83,7 +104,7 @@ const RichTextEditor = () => {
       </div>
     </div>
   );
-};
+});
 
 // Custom overrides for "code" style.
 const styleMap = {
@@ -139,7 +160,7 @@ const BLOCK_TYPES = [
   {label: 'Blockquote', style: 'blockquote'},
   {label: 'UL', style: 'unordered-list-item'},
   {label: 'OL', style: 'ordered-list-item'},
-  {label: 'Code Block', style: 'code-block'},
+  // {label: 'Code Block', style: 'code-block'},
 ];
 
 const BlockStyleControls = (props) => {

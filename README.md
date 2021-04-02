@@ -12,26 +12,6 @@ As the name suggests, this project is a clone of a famous Q/A website for profes
 
 __:new: New Update:__ _newly added features are mentioned in issue([#15](https://github.com/Mayank0255/Stack-Overflow-Clone/issues/15))_
 
-## Table of Contents
-
-- [My Tech Stack](#my-tech-stack-mern)
-  - [Front-end](#front-end)
-  - [Back-end](#back-end)
-  - [Original Tech Stack](#original-tech-stack)
-- [Contributing](#contributing)
-- [Guidelines to setup](#guidelines-to-setup)
-- [API Endpoints](#api-endpoints)
-  - [Base Url](#base-url---httplocalhost5000api)
-  - [Users](#users)
-  - [Posts](#posts)
-  - [Answers](#answers)
-  - [Comments](#comments)
-  - [Tags](#tags)
-- [Demo](#demo)
-  - [Video](#video---watch-the-video)
-  - [Images](#images)
-- [Future Scope](#future-scope)
-
 ## My Tech Stack (MERN)
 
 #### Front-end

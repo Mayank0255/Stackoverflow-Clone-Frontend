@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 import htmlSubstring from '../../services/htmlSubstring'
-import injectElipsis from '../../services/injectElipsis'
+import injectEllipsis from '../../services/injectEllipsis'
 
 import UserCard from '../UserCard/UserCard.component';
 import TagBadge from '../TagBadge/TagBadge.component';
@@ -61,7 +61,7 @@ const PostItem = ({
         <h3>
           <Link to={`/questions/${id}`}>{title}</Link>
         </h3>
-        <div className='brief' dangerouslySetInnerHTML={{__html: injectElipsis(htmlSubstring(body, 200))}}></div>
+        <div className='brief' dangerouslySetInnerHTML={{__html: injectEllipsis(htmlSubstring(body, 200))}}></div>
         <TagBadge tag_name={tagname} size={'s-tag'} float={'left'} />
         <UserCard
           created_at={created_at}

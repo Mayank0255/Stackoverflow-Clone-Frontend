@@ -1,4 +1,4 @@
-const injectElipsis = (html) => {
+const injectEllipsis = (html) => {
     const re = /<\/p>/g
     const str = html;
     let lastMatchIndex;
@@ -10,4 +10,4 @@ const injectElipsis = (html) => {
     return html.substring(0, lastMatchIndex) + "..." + html.substring(lastMatchIndex)
 }
 
-export default injectElipsis;
+export default injectEllipsis;

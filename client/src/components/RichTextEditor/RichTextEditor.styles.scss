@@ -1,0 +1,61 @@
+.rich-text-editor-root {
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+
+  .rich-text-editor-toolbar {
+    border-bottom: 1px solid var(--black-200);
+    button {
+      width: 32px;
+    }
+    button.button-format {
+      background: var(--white);
+      span {
+        filter: invert(100%);
+        -webkit-filter: invert(100%);
+      }
+    }
+    button.button-format.code-block {
+      // code-block has not default icon in react-rte, so we gotta implement it on our own
+      span {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 18px;
+        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9Ijk0LjUwNHB4IiBoZWlnaHQ9Ijk0LjUwNHB4IiB2aWV3Qm94PSIwIDAgOTQuNTA0IDk0LjUwNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgOTQuNTA0IDk0LjUwNDsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik05My45MTgsNDUuODMzTDY5Ljc5OSwyMS43MTRjLTAuNzUtMC43NS0yLjA3Ny0wLjc1LTIuODI3LDBsLTUuMjI5LDUuMjI5Yy0wLjc4MSwwLjc4MS0wLjc4MSwyLjA0NywwLDIuODI4DQoJCQlsMTcuNDc3LDE3LjQ3NUw2MS43NDQsNjQuNzI0Yy0wLjc4MSwwLjc4MS0wLjc4MSwyLjA0NywwLDIuODI4bDUuMjI5LDUuMjI5YzAuMzc1LDAuMzc1LDAuODg0LDAuNTg3LDEuNDE0LDAuNTg3DQoJCQljMC41MjksMCwxLjAzOS0wLjIxMiwxLjQxNC0wLjU4N2wyNC4xMTctMjQuMTE4Qzk0LjY5OSw0Ny44ODEsOTQuNjk5LDQ2LjYxNCw5My45MTgsNDUuODMzeiIvPg0KCQk8cGF0aCBkPSJNMzIuNzU5LDY0LjcyNEwxNS4yODUsNDcuMjQ4bDE3LjQ3Ny0xNy40NzVjMC4zNzUtMC4zNzUsMC41ODYtMC44ODMsMC41ODYtMS40MTRjMC0wLjUzLTAuMjEtMS4wMzktMC41ODYtMS40MTQNCgkJCWwtNS4yMjktNS4yMjljLTAuMzc1LTAuMzc1LTAuODg0LTAuNTg2LTEuNDE0LTAuNTg2Yy0wLjUzLDAtMS4wMzksMC4yMTEtMS40MTQsMC41ODZMMC41ODUsNDUuODMzDQoJCQljLTAuNzgxLDAuNzgxLTAuNzgxLDIuMDQ3LDAsMi44MjlMMjQuNzA0LDcyLjc4YzAuMzc1LDAuMzc1LDAuODg0LDAuNTg3LDEuNDE0LDAuNTg3YzAuNTMsMCwxLjAzOS0wLjIxMiwxLjQxNC0wLjU4N2w1LjIyOS01LjIyOQ0KCQkJQzMzLjU0Miw2Ni43NzEsMzMuNTQyLDY1LjUwNSwzMi43NTksNjQuNzI0eiIvPg0KCQk8cGF0aCBkPSJNNjAuOTY3LDEzLjZjLTAuMjU0LTAuNDY2LTAuNjgyLTAuODEyLTEuMTktMC45NjJsLTQuMjM5LTEuMjUxYy0xLjA1OC0wLjMxNC0yLjE3MiwwLjI5My0yLjQ4NCwxLjM1MkwzMy4zNzUsNzkuMzgyDQoJCQljLTAuMTUsMC41MDktMC4wOTIsMS4wNTYsMC4xNjEsMS41MjFjMC4yNTMsMC40NjcsMC42ODIsMC44MTIsMS4xOSwwLjk2M2w0LjIzOSwxLjI1MWMwLjE4OSwwLjA1NiwwLjM4LDAuMDgzLDAuNTY3LDAuMDgzDQoJCQljMC44NjMsMCwxLjY2LTAuNTY0LDEuOTE3LTEuNDM1bDE5LjY3OS02Ni42NDRDNjEuMjc4LDE0LjYxMiw2MS4yMjEsMTQuMDY1LDYwLjk2NywxMy42eiIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K');
+      }
+    }
+    button[title='Link'],
+    button[title='Remove Link'] {
+      span {
+        filter: invert(0%);
+        -webkit-filter: invert(0%);
+      }
+    }
+    button[title='Link']:disabled,
+    button[title='Remove Link']:disabled {
+      span {
+        filter: invert(100%);
+        -webkit-filter: invert(100%);
+      }
+    }
+  }
+
+  .rich-text-editor-editor {
+    height: 300px;
+    .DraftEditor-root {
+      pre {
+        padding: 5px;
+        background-color: var(--black-100);
+        color: var(--black-800);
+      }
+
+      blockquote {
+        color: var(--black-800);
+      }
+    }
+  }
+}

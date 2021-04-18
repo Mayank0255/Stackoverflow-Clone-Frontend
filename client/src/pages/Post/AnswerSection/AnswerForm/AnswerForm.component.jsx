@@ -1,9 +1,10 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useRef} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {addAnswer} from '../../../../redux/answers/answers.actions';
 
 import LinkButton from '../../../../components/LinkButton/LinkButton.component';
+import RichTextEditor from '../../../../components/RichTextEditor/RichTextEditor.component';
 
 import './AnswerForm.styles.scss';
 
@@ -12,10 +13,9 @@ const AnswerForm = ({addAnswer, auth, postId}) => {
     text: '',
   });
 
-  const {text} = formData;
+  const richTextEditorRef = useRef(null);
 
-  const handleChange = (e) =>
-    setFormData({...formData, [e.target.name]: e.target.value});
+  const {text} = formData;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +23,11 @@ const AnswerForm = ({addAnswer, auth, postId}) => {
     setFormData({
       text: '',
     });
+    richTextEditorRef.current.cleanEditorState();
+  };
+
+  const updateConvertedContent = (htmlConvertedContent) => {
+    setFormData({...formData, text: htmlConvertedContent});
   };
 
   return (
@@ -32,7 +37,13 @@ const AnswerForm = ({addAnswer, auth, postId}) => {
           <form className='answer-form' onSubmit={(e) => handleSubmit(e)}>
             <div className='answer-grid'>
               <label className=' fc-black-800'>Your Answer</label>
-              <textarea
+              <div className='s-textarea rich-text-editor-container'>
+                <RichTextEditor
+                  ref={richTextEditorRef}
+                  onChange={updateConvertedContent}
+                />
+              </div>
+              {/* <textarea
                 className='s-textarea'
                 name='text'
                 cols='30'
@@ -41,7 +52,7 @@ const AnswerForm = ({addAnswer, auth, postId}) => {
                 onChange={(e) => handleChange(e)}
                 placeholder='Enter body with minimum 30 characters'
                 id='text'
-              />
+              /> */}
               <button className='s-btn s-btn__primary'>Post Your Answer</button>
             </div>
           </form>

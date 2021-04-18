@@ -22,4 +22,11 @@
     width: 150px;
     font-size: 14px;
   }
+
+  .s-textarea.rich-text-editor-container {
+    padding: 0;
+    .rich-text-editor-toolbar {
+      padding: 0;
+    }
+  }
 }

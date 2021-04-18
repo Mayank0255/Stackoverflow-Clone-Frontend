@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useRef } from 'react';
+import React, {Fragment, useState, useRef} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {addPost} from '../../../redux/posts/posts.actions';
@@ -13,7 +13,7 @@ const AskForm = ({addPost}) => {
     tagname: '',
   });
 
-  const richTextEditorRef = useRef(null)
+  const richTextEditorRef = useRef(null);
 
   const {title, body, tagname} = formData;
 
@@ -28,7 +28,7 @@ const AskForm = ({addPost}) => {
       body: '',
       tagname: '',
     });
-    richTextEditorRef.current.cleanEditorState()
+    richTextEditorRef.current.cleanEditorState();
   };
 
   const updateConvertedContent = (htmlConvertedContent) => {
@@ -67,11 +67,10 @@ const AskForm = ({addPost}) => {
                   question
                 </p>
               </label>
-              <div className='s-textarea'>
+              <div className='s-textarea rich-text-editor-container'>
                 <RichTextEditor
                   ref={richTextEditorRef}
-                  updateConvertedContent={updateConvertedContent}
-                  convertedContent={formData.body}
+                  onChange={updateConvertedContent}
                 />
               </div>
               {/* <textarea

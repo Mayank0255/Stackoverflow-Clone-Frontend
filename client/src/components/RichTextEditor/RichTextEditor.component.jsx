@@ -1,214 +1,73 @@
-import React, {useState, useEffect, forwardRef, useImperativeHandle} from 'react';
-import {Editor, EditorState, RichUtils, getDefaultKeyBinding} from 'draft-js';
-import { convertToHTML, convertFromHTML } from 'draft-convert';
-
-import './draft.css';
+import React, {Component} from 'react';
+import RichTextEditor from 'react-rte';
 import './RichTextEditor.styles.scss';
 
-const RichTextEditor = forwardRef((props, ref) => {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [convertedContent, setConvertedContent] = useState("")
-  const editor = React.useRef(null);
+class MyStatefulEditor extends Component {
+  state = {
+    value: RichTextEditor.createEmptyValue(),
+  };
 
-  useImperativeHandle(ref, () => ({
-    cleanEditorState() {
-      setEditorState(EditorState.createEmpty())
+  cleanEditorState = () => {
+    this.setState({value: RichTextEditor.createEmptyValue()});
+  };
+
+  onChange = (value) => {
+    this.setState({value});
+    if (this.props.onChange) {
+      // Send the changes up to the parent component as an HTML string.
+      // This is here to demonstrate using `.toString()` but in a real app it
+      // would be better to avoid generating a string on each change.
+      this.props.onChange(value.toString('html'));
     }
-  }));
-
-  useEffect(() => {
-    setConvertedContent(props.convertedContent);
-  }, [props.convertedContent]); 
-
-  useEffect(() => {
-    const htmlConvertedContent = convertToHTML(editorState.getCurrentContent())
-    setConvertedContent(htmlConvertedContent);
-
-    if(props.updateConvertedContent) props.updateConvertedContent(htmlConvertedContent)
-
-  }, [editorState]);
-
-  const focus = () => {
-    editor.current.focus();
   };
 
-  const onChange = (editorState) => {
-    setEditorState(editorState);
-  };
-
-  const handleKeyCommand = (command, editorState) => {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      onChange(newState);
-      return true;
-    }
-    return false;
-  };
-
-  const mapKeyToEditorCommand = (e) => {
-    if (e.keyCode === 9 /* TAB */) {
-      const newEditorState = RichUtils.onTab(e, editorState, 4 /* maxDepth */);
-      if (newEditorState !== editorState) {
-        onChange(newEditorState);
-      }
-      return;
-    }
-    return getDefaultKeyBinding(e);
-  };
-
-  const toggleBlockType = (blockType) => {
-    onChange(RichUtils.toggleBlockType(editorState, blockType));
-  };
-
-  const toggleInlineStyle = (inlineStyle) => {
-    onChange(RichUtils.toggleInlineStyle(editorState, inlineStyle));
-  };
-
-  const getClassname = () => {
-    // If the user changes block type before entering any text, we can
-    // either style the placeholder or hide it. Let's just hide it now.
-    let className = 'RichEditor-editor';
-    var contentState = editorState.getCurrentContent();
-    if (!contentState.hasText()) {
-      if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-        className += ' RichEditor-hidePlaceholder';
-      }
-    }
-    return className;
-  };
-
-  return (
-    <div className='RichEditor-root'>
-      <div className='RichEditor-controlsContainer'>
-        <InlineStyleControls
-          editorState={editorState}
-          onToggle={toggleInlineStyle}
-        />
-        <BlockStyleControls
-          editorState={editorState}
-          onToggle={toggleBlockType}
-        />
-      </div>
-      <div className={getClassname()} onClick={focus}>
-        <Editor
-          blockStyleFn={getBlockStyle}
-          customStyleMap={styleMap}
-          editorState={editorState}
-          handleKeyCommand={handleKeyCommand}
-          keyBindingFn={mapKeyToEditorCommand}
-          onChange={onChange}
-          placeholder='Tell a story...'
-          ref={editor}
-          spellCheck={true}
-        />
-      </div>
-    </div>
-  );
-});
-
-// Custom overrides for "code" style.
-const styleMap = {
-  CODE: {
-    backgroundColor: 'rgba(0, 0, 0, 0.05)',
-    fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-    fontSize: 16,
-    padding: 2,
-  },
-};
-
-function getBlockStyle(block) {
-  switch (block.getType()) {
-    case 'blockquote':
-      return 'RichEditor-blockquote';
-    default:
-      return null;
+  render() {
+    // The toolbarConfig object allows you to specify custom buttons, reorder buttons and to add custom css classes.
+    // Supported inline styles: https://github.com/facebook/draft-js/blob/master/docs/Advanced-Topics-Inline-Styles.md
+    // Supported block types: https://github.com/facebook/draft-js/blob/master/docs/Advanced-Topics-Custom-Block-Render.md#draft-default-block-render-map
+    const toolbarConfig = {
+      // Optionally specify the groups to display (displayed in the order listed).
+      display: [
+        'INLINE_STYLE_BUTTONS',
+        'BLOCK_TYPE_BUTTONS',
+        'LINK_BUTTONS',
+        // 'BLOCK_TYPE_DROPDOWN',
+        // 'HISTORY_BUTTONS',
+      ],
+      INLINE_STYLE_BUTTONS: [
+        {label: 'Bold', style: 'BOLD', className: 'button-format'},
+        {label: 'Italic', style: 'ITALIC', className: 'button-format'},
+        {label: 'Underline', style: 'UNDERLINE', className: 'button-format'},
+        // {label: 'Monospace', style: 'CODE', className: 'button-format'},
+      ],
+      // BLOCK_TYPE_DROPDOWN: [
+      //   {label: 'Normal', style: 'unstyled'},
+      //   {label: 'Heading Large', style: 'header-one'},
+      //   {label: 'Heading Medium', style: 'header-two'},
+      //   {label: 'Heading Small', style: 'header-three'},
+      // ],
+      BLOCK_TYPE_BUTTONS: [
+        {label: 'UL', style: 'unordered-list-item', className: 'button-format'},
+        {label: 'OL', style: 'ordered-list-item', className: 'button-format'},
+        {label: 'Blockquote', style: 'blockquote', className: 'button-format'},
+        {
+          label: 'Code Block',
+          style: 'code-block',
+          className: 'button-format code-block',
+        },
+      ],
+    };
+    return (
+      <RichTextEditor
+        className='rich-text-editor-root'
+        toolbarClassName='rich-text-editor-toolbar'
+        editorClassName='rich-text-editor-editor'
+        toolbarConfig={toolbarConfig}
+        value={this.state.value}
+        onChange={this.onChange}
+      />
+    );
   }
 }
 
-const StyleButton = (props) => {
-  const onToggle = (e) => {
-    e.preventDefault();
-    props.onToggle(props.style);
-  };
-
-  const getClassname = () => {
-    let className = 'RichEditor-styleButton';
-    if (props.active) {
-      className += ' RichEditor-activeButton';
-    }
-
-    return className;
-  };
-
-  return (
-    <span className={getClassname()} onMouseDown={onToggle}>
-      {props.label}
-    </span>
-  );
-};
-
-const BLOCK_TYPES = [
-  /**
-   * In case the heading is needed, comment these out
-   */
-  //   {label: 'H1', style: 'header-one'},
-  //   {label: 'H2', style: 'header-two'},
-  //   {label: 'H3', style: 'header-three'},
-  //   {label: 'H4', style: 'header-four'},
-  //   {label: 'H5', style: 'header-five'},
-  //   {label: 'H6', style: 'header-six'},
-  {label: 'Blockquote', style: 'blockquote'},
-  {label: 'UL', style: 'unordered-list-item'},
-  {label: 'OL', style: 'ordered-list-item'},
-  // {label: 'Code Block', style: 'code-block'},
-];
-
-const BlockStyleControls = (props) => {
-  const {editorState} = props;
-  const selection = editorState.getSelection();
-  const blockType = editorState
-    .getCurrentContent()
-    .getBlockForKey(selection.getStartKey())
-    .getType();
-
-  return (
-    <div className='RichEditor-controls'>
-      {BLOCK_TYPES.map((type) => (
-        <StyleButton
-          key={type.label}
-          active={type.style === blockType}
-          label={type.label}
-          onToggle={props.onToggle}
-          style={type.style}
-        />
-      ))}
-    </div>
-  );
-};
-
-var INLINE_STYLES = [
-  {label: 'Bold', style: 'BOLD'},
-  {label: 'Italic', style: 'ITALIC'},
-  {label: 'Underline', style: 'UNDERLINE'},
-  {label: 'Monospace', style: 'CODE'},
-];
-
-const InlineStyleControls = (props) => {
-  const currentStyle = props.editorState.getCurrentInlineStyle();
-
-  return (
-    <div className='RichEditor-controls'>
-      {INLINE_STYLES.map((type) => (
-        <StyleButton
-          key={type.label}
-          active={currentStyle.has(type.style)}
-          label={type.label}
-          onToggle={props.onToggle}
-          style={type.style}
-        />
-      ))}
-    </div>
-  );
-};
-
-export default RichTextEditor;
+export default MyStatefulEditor;

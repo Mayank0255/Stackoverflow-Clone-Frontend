@@ -1,10 +1,11 @@
-const express = require('express');
-const {check} = require('express-validator');
-const auth = require('../middleware/auth');
-const checkOwnership = require('../middleware/checkOwnership');
-const postsController = require('../controllers/posts');
+import express from 'express';
+import validator from 'express-validator';
+import auth from '../middleware/auth.js';
+import checkOwnership from '../middleware/checkOwnership.js';
+import postsController from '../controllers/posts.js';
 
 const router = express.Router();
+const {check} = validator;
 
 /** @route      GET /api/posts
  *  @desc       fetch all posts
@@ -56,4 +57,4 @@ router.post(
  */
 router.delete('/:id', [auth, checkOwnership], postsController.deletePost);
 
-module.exports = router;
+export default router;

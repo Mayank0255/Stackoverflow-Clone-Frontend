@@ -1,5 +1,5 @@
-const helperFunction = require('../helpers/helperFunction');
-const investApi = require('../services/investApi');
+import helperFunction from '../helpers/helperFunction.js';
+import investApi from '../services/investApi.js';
 
 // constructor
 const Post = function (post) {
@@ -174,4 +174,4 @@ Post.retrieveAll = ({action, tagName}, result) => {
   });
 };
 
-module.exports = Post;
+export default Post;

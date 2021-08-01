@@ -1,6 +1,6 @@
-const {validationResult} = require('express-validator');
-const helperFunction = require('../helpers/helperFunction');
-const Comment = require('../models/comments.model');
+import validator from 'express-validator';
+import helperFunction from '../helpers/helperFunction.js';
+import Comment from '../models/comments.model.js';
 
 const getComments = (req, res) => {
   try {
@@ -20,7 +20,7 @@ const getComments = (req, res) => {
 };
 
 const addComment = (req, res) => {
-  const errors = validationResult(req);
+  const errors = validator.validationResult(req);
   if (!errors.isEmpty()) {
     return res
       .status(400)
@@ -68,7 +68,7 @@ const deleteComment = (req, res) => {
   }
 };
 
-module.exports = commentsController = {
+export default {
   getComments,
   addComment,
   deleteComment,

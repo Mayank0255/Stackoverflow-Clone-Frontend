@@ -1,8 +1,8 @@
-const express = require('express');
-const {check} = require('express-validator');
-const auth = require('../middleware/auth');
-const checkOwnership = require('../middleware/checkOwnership');
-const commentsController = require('../controllers/comments');
+import express from 'express';
+import validator from 'express-validator';
+import auth from '../middleware/auth.js';
+import checkOwnership from '../middleware/checkOwnership.js';
+import commentsController from '../controllers/comments.js';
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ router.get('/:id', commentsController.getComments);
  */
 router.post(
   '/:id',
-  [auth, [check('body', 'Comment is required').not().isEmpty()]],
+  [auth, [validator.check('body', 'Comment is required').not().isEmpty()]],
   commentsController.addComment
 );
 
@@ -28,4 +28,4 @@ router.post(
  */
 router.delete('/:id', [auth, checkOwnership], commentsController.deleteComment);
 
-module.exports = router;
+export default router;

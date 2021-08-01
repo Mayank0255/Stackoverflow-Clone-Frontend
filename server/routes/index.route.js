@@ -1,10 +1,10 @@
-const express = require('express');
-const auth = require('./auth');
-const users = require('./users');
-const posts = require('./posts');
-const tags = require('./tags');
-const answers = require('./answers');
-const comments = require('./comments');
+import express from 'express';
+import auth from './auth.js';
+import users from './users.js';
+import posts from './posts.js';
+import tags from './tags.js';
+import answers from './answers.js';
+import comments from './comments.js';
 
 const router = express.Router();
 
@@ -15,4 +15,4 @@ router.use('/tags', tags);
 router.use('/posts/answers', answers);
 router.use('/posts/comments', comments);
 
-module.exports = router;
+export default router;

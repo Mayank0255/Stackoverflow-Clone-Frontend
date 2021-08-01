@@ -1,5 +1,5 @@
-const helperFunction = require('../helpers/helperFunction');
-const Tag = require('../models/tags.model');
+import helperFunction from '../helpers/helperFunction.js';
+import Tag from '../models/tags.model.js';
 
 const getTags = (req, res) => {
   try {
@@ -35,7 +35,7 @@ const getSingleTag = (req, res) => {
   }
 };
 
-module.exports = tagsController = {
+export default {
   getTags,
   getSingleTag,
 };

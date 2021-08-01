@@ -1,6 +1,6 @@
-const {validationResult} = require('express-validator');
-const helperFunction = require('../helpers/helperFunction');
-const User = require('../models/users.model');
+import validator from 'express-validator';
+import helperFunction from '../helpers/helperFunction.js';
+import User from '../models/users.model.js';
 
 const loadUser = (req, res) => {
   try {
@@ -20,7 +20,7 @@ const loadUser = (req, res) => {
 };
 
 const login = (req, res) => {
-  const errors = validationResult(req);
+  const errors = validator.validationResult(req);
   if (!errors.isEmpty()) {
     return res
       .status(400)
@@ -45,7 +45,7 @@ const login = (req, res) => {
   }
 };
 
-module.exports = authController = {
+export default {
   loadUser,
   login,
 };

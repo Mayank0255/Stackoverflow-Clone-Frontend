@@ -1,7 +1,7 @@
-const mysql = require('mysql2');
+import mysql from 'mysql2';
 
 // environment variable config
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -12,6 +12,7 @@ const pool = mysql.createPool({
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
   multipleStatements: true,
+  port: process.env.PORTDB,
 });
 
 // Ping database to check for common exception errors.
@@ -34,4 +35,4 @@ pool.getConnection((err, connection) => {
   }
 });
 
-module.exports = pool;
+export default pool;

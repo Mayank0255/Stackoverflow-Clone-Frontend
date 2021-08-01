@@ -1,8 +1,8 @@
-const express = require('express');
-const {check} = require('express-validator');
-const auth = require('../middleware/auth');
-const checkOwnership = require('../middleware/checkOwnership');
-const answersController = require('../controllers/answers');
+import express from 'express';
+import validator from 'express-validator';
+import auth from '../middleware/auth.js';
+import checkOwnership from '../middleware/checkOwnership.js';
+import answersController from '../controllers/answers.js';
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ router.get('/:id', answersController.getAnswers);
  */
 router.post(
   '/:id',
-  [auth, [check('text', 'Answer is required').not().isEmpty()]],
+  [auth, [validator.check('text', 'Answer is required').not().isEmpty()]],
   answersController.addAnswer
 );
 
@@ -28,4 +28,4 @@ router.post(
  */
 router.delete('/:id', [auth, checkOwnership], answersController.deleteAnswer);
 
-module.exports = router;
+export default router;

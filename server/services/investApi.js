@@ -1,5 +1,5 @@
-const axios = require('axios');
-const constantsHolder = require('../constants');
+import axios from 'axios';
+import constantsHolder from '../constants.js';
 
 const fetchTagDesc = async (tag) => {
   const url = `${constantsHolder.API_BASE_URL}/tags/${tag}/wikis?site=stackoverflow`;
@@ -21,6 +21,6 @@ const fetchTagDesc = async (tag) => {
     });
 };
 
-module.exports = investApi = {
+export default {
   fetchTagDesc,
 };

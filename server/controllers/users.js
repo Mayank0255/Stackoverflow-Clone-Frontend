@@ -1,6 +1,6 @@
-const {validationResult} = require('express-validator');
-const helperFunction = require('../helpers/helperFunction');
-const User = require('../models/users.model');
+import validator from 'express-validator';
+import helperFunction from '../helpers/helperFunction.js';
+import User from '../models/users.model.js';
 
 const getUsers = (req, res) => {
   try {
@@ -28,7 +28,7 @@ const getUsers = (req, res) => {
 };
 
 const register = async (req, res) => {
-  const errors = validationResult(req);
+  const errors = validator.validationResult(req);
   if (!errors.isEmpty()) {
     return res
       .status(400)
@@ -53,7 +53,7 @@ const register = async (req, res) => {
   }
 };
 
-module.exports = usersController = {
+export default {
   getUsers,
   register,
 };

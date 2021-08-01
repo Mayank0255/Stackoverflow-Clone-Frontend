@@ -1,5 +1,5 @@
-const express = require('express');
-const tagsController = require('../controllers/tags');
+import express from 'express';
+import tagsController from '../controllers/tags.js';
 
 const router = express.Router();
 
@@ -15,4 +15,4 @@ router.get('/', tagsController.getTags);
  */
 router.get('/:tagname', tagsController.getSingleTag);
 
-module.exports = router;
+export default router;

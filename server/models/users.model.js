@@ -1,7 +1,7 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const config = require('config');
-const helperFunction = require('../helpers/helperFunction');
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import config from 'config';
+import helperFunction from '../helpers/helperFunction.js';
 
 // constructor
 const User = function (user) {
@@ -217,4 +217,4 @@ User.loadUser = (userId, result) => {
   });
 };
 
-module.exports = User;
+export default User;

@@ -1,4 +1,4 @@
-const helperFunction = require('../helpers/helperFunction');
+import helperFunction from '../helpers/helperFunction.js';
 
 const Answer = function (answer) {
   this.body = answer.body;
@@ -84,4 +84,4 @@ Answer.retrieveAll = (postId, result) => {
   });
 };
 
-module.exports = Answer;
+export default Answer;

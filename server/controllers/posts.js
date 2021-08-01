@@ -1,6 +1,6 @@
-const {validationResult} = require('express-validator');
-const helperFunction = require('../helpers/helperFunction');
-const Post = require('../models/posts.model');
+import validator from 'express-validator';
+import helperFunction from '../helpers/helperFunction.js';
+import Post from '../models/posts.model.js';
 
 const getPosts = (req, res) => {
   const {tagname} = req.params;
@@ -46,7 +46,7 @@ const getSinglePost = (req, res) => {
 };
 
 const addPost = (req, res) => {
-  const errors = validationResult(req);
+  const errors = validator.validationResult(req);
   if (!errors.isEmpty()) {
     return res
       .status(400)
@@ -94,7 +94,7 @@ const deletePost = (req, res) => {
   }
 };
 
-module.exports = postsController = {
+export default {
   getPosts,
   getSinglePost,
   addPost,

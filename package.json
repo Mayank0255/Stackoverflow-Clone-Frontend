@@ -24,7 +24,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
-    "express-validator": "^6.4.0",
+    "express-validator": "^6.12.1",
     "helmet": "^3.23.3",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",

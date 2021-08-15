@@ -2,6 +2,8 @@ import validator from 'express-validator';
 import helperFunction from '../helpers/helperFunction.js';
 import Post from '../models/posts.model.js';
 
+const {validationResult} = validator;
+
 const getPosts = (req, res) => {
   const {tagname} = req.params;
 
@@ -46,7 +48,7 @@ const getSinglePost = (req, res) => {
 };
 
 const addPost = (req, res) => {
-  const errors = validator.validationResult(req);
+  const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res
       .status(400)

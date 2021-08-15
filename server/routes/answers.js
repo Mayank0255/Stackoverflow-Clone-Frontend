@@ -4,6 +4,8 @@ import auth from '../middleware/auth.js';
 import checkOwnership from '../middleware/checkOwnership.js';
 import answersController from '../controllers/answers.js';
 
+const {check} = validator;
+
 const router = express.Router();
 
 /** @route      GET /api/posts/answers/:id
@@ -18,7 +20,7 @@ router.get('/:id', answersController.getAnswers);
  */
 router.post(
   '/:id',
-  [auth, [validator.check('text', 'Answer is required').not().isEmpty()]],
+  [auth, [check('text', 'Answer is required').not().isEmpty()]],
   answersController.addAnswer
 );
 

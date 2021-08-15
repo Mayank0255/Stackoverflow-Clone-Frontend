@@ -2,6 +2,8 @@ import validator from 'express-validator';
 import helperFunction from '../helpers/helperFunction.js';
 import User from '../models/users.model.js';
 
+const {validationResult} = validator;
+
 const getUsers = (req, res) => {
   try {
     const {id} = req.params;
@@ -28,7 +30,7 @@ const getUsers = (req, res) => {
 };
 
 const register = async (req, res) => {
-  const errors = validator.validationResult(req);
+  const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res
       .status(400)

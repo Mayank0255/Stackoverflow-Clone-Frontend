@@ -2,6 +2,8 @@ import validator from 'express-validator';
 import helperFunction from '../helpers/helperFunction.js';
 import Answer from '../models/answers.model.js';
 
+const {validationResult} = validator;
+
 const getAnswers = (req, res) => {
   try {
     console.log(req);
@@ -21,7 +23,7 @@ const getAnswers = (req, res) => {
 };
 
 const addAnswer = (req, res) => {
-  const errors = validator.validationResult(req);
+  const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res
       .status(400)

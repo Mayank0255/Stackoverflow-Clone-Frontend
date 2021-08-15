@@ -4,6 +4,7 @@ import auth from '../middleware/auth.js';
 import checkOwnership from '../middleware/checkOwnership.js';
 import commentsController from '../controllers/comments.js';
 
+const {check} = validator;
 const router = express.Router();
 
 /** @route      GET /api/posts/comments/:id
@@ -18,7 +19,7 @@ router.get('/:id', commentsController.getComments);
  */
 router.post(
   '/:id',
-  [auth, [validator.check('body', 'Comment is required').not().isEmpty()]],
+  [auth, [check('body', 'Comment is required').not().isEmpty()]],
   commentsController.addComment
 );
 

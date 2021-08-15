@@ -12,7 +12,7 @@ const pool = mysql.createPool({
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
   multipleStatements: true,
-  port: process.env.PORTDB,
+  port: process.env.PORTDB || 3306,
 });
 
 // Ping database to check for common exception errors.

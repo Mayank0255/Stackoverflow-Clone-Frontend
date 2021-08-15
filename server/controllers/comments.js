@@ -2,6 +2,8 @@ import validator from 'express-validator';
 import helperFunction from '../helpers/helperFunction.js';
 import Comment from '../models/comments.model.js';
 
+const {validationResult} = validator;
+
 const getComments = (req, res) => {
   try {
     Comment.retrieveAll(req.params.id, (err, data) => {
@@ -20,7 +22,7 @@ const getComments = (req, res) => {
 };
 
 const addComment = (req, res) => {
-  const errors = validator.validationResult(req);
+  const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res
       .status(400)

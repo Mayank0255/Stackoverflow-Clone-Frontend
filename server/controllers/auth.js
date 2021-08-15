@@ -2,6 +2,8 @@ import validator from 'express-validator';
 import helperFunction from '../helpers/helperFunction.js';
 import User from '../models/users.model.js';
 
+const {validationResult} = validator;
+
 const loadUser = (req, res) => {
   try {
     User.loadUser(req.user.id, (err, data) => {
@@ -20,7 +22,7 @@ const loadUser = (req, res) => {
 };
 
 const login = (req, res) => {
-  const errors = validator.validationResult(req);
+  const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res
       .status(400)

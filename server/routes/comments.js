@@ -1,9 +1,10 @@
-const express = require('express');
-const {check} = require('express-validator');
-const auth = require('../middleware/auth');
-const checkOwnership = require('../middleware/checkOwnership');
-const commentsController = require('../controllers/comments');
+import express from 'express';
+import validator from 'express-validator';
+import auth from '../middleware/auth.js';
+import checkOwnership from '../middleware/checkOwnership.js';
+import commentsController from '../controllers/comments.js';
 
+const {check} = validator;
 const router = express.Router();
 
 /** @route      GET /api/posts/comments/:id
@@ -28,4 +29,4 @@ router.post(
  */
 router.delete('/:id', [auth, checkOwnership], commentsController.deleteComment);
 
-module.exports = router;
+export default router;

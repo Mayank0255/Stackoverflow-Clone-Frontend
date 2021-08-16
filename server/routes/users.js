@@ -1,9 +1,10 @@
-const express = require('express');
-const {check} = require('express-validator');
-const checkExistence = require('../middleware/checkExistence');
-const usersController = require('../controllers/users');
+import express from 'express';
+import validator from 'express-validator';
+import checkExistence from '../middleware/checkExistence.js';
+import usersController from '../controllers/users.js';
 
 const router = express.Router();
+const {check} = validator;
 
 /** @route      GET /api/users
  *  @desc       fetch all the users
@@ -34,4 +35,4 @@ router.post(
   usersController.register
 );
 
-module.exports = router;
+export default router;

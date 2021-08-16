@@ -1,6 +1,8 @@
-const {validationResult} = require('express-validator');
-const helperFunction = require('../helpers/helperFunction');
-const Post = require('../models/posts.model');
+import validator from 'express-validator';
+import helperFunction from '../helpers/helperFunction.js';
+import Post from '../models/posts.model.js';
+
+const {validationResult} = validator;
 
 const getPosts = (req, res) => {
   const {tagname} = req.params;
@@ -94,7 +96,7 @@ const deletePost = (req, res) => {
   }
 };
 
-module.exports = postsController = {
+export default {
   getPosts,
   getSinglePost,
   addPost,

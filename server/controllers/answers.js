@@ -1,6 +1,8 @@
-const {validationResult} = require('express-validator');
-const helperFunction = require('../helpers/helperFunction');
-const Answer = require('../models/answers.model');
+import validator from 'express-validator';
+import helperFunction from '../helpers/helperFunction.js';
+import Answer from '../models/answers.model.js';
+
+const {validationResult} = validator;
 
 const getAnswers = (req, res) => {
   try {
@@ -68,7 +70,7 @@ const deleteAnswer = async (req, res) => {
   }
 };
 
-module.exports = answersController = {
+export default {
   getAnswers,
   addAnswer,
   deleteAnswer,

@@ -1,9 +1,10 @@
-const express = require('express');
-const {check} = require('express-validator');
-const auth = require('../middleware/auth');
-const authController = require('../controllers/auth');
+import express from 'express';
+import validator from 'express-validator';
+import auth from '../middleware/auth.js';
+import authController from '../controllers/auth.js';
 
 const router = express.Router();
+const {check} = validator;
 
 /** @route      GET /api/auth
  *  @desc       fetch logged in user details
@@ -24,4 +25,4 @@ router.post(
   authController.login
 );
 
-module.exports = router;
+export default router;

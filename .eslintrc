@@ -11,6 +11,12 @@
     "consistent-return": "off",
     "func-names": "off",
     "no-param-reassign": "off",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "import/extensions": [
+      "error",
+      {
+        "js": "ignorePackages"
+      }
+    ]
   }
 }

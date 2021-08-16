@@ -1,13 +1,13 @@
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const helmet = require('helmet');
-const cors = require('cors');
-const compression = require('compression');
-const path = require('path');
-const http = require('http');
-const express = require('express');
-const pool = require('./config/db.config');
-const index = require('./server/routes/index.route');
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
+import helmet from 'helmet';
+import cors from 'cors';
+import compression from 'compression';
+import path from 'path';
+import http from 'http';
+import express from 'express';
+import pool from './config/db.config.js';
+import index from './server/routes/index.route.js';
 
 const app = express();
 

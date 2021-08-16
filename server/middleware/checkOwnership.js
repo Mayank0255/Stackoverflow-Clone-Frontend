@@ -1,6 +1,6 @@
-const helperFunction = require('../helpers/helperFunction');
+import helperFunction from '../helpers/helperFunction.js';
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
   let action;
   if (req.originalUrl.includes('posts')) {
     if (req.originalUrl.includes('answers')) {

@@ -1,4 +1,4 @@
-const helperFunction = require('../helpers/helperFunction');
+import helperFunction from '../helpers/helperFunction.js';
 
 // constructor
 const Tag = function () {};
@@ -60,4 +60,4 @@ Tag.retrieveOne = (tagName, result) => {
   });
 };
 
-module.exports = Tag;
+export default Tag;

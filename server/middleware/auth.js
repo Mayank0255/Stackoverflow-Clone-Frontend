@@ -1,8 +1,8 @@
-const jwt = require('jsonwebtoken');
-const config = require('config');
-const helperFunction = require('../helpers/helperFunction');
+import jwt from 'jsonwebtoken';
+import config from 'config';
+import helperFunction from '../helpers/helperFunction.js';
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
   const token = req.header('x-auth-token');
 
   // Check if no token

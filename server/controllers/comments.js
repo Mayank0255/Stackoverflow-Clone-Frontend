@@ -1,6 +1,8 @@
-const {validationResult} = require('express-validator');
-const helperFunction = require('../helpers/helperFunction');
-const Comment = require('../models/comments.model');
+import validator from 'express-validator';
+import helperFunction from '../helpers/helperFunction.js';
+import Comment from '../models/comments.model.js';
+
+const {validationResult} = validator;
 
 const getComments = (req, res) => {
   try {
@@ -68,7 +70,7 @@ const deleteComment = (req, res) => {
   }
 };
 
-module.exports = commentsController = {
+export default {
   getComments,
   addComment,
   deleteComment,

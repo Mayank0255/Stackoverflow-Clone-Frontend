@@ -1,4 +1,4 @@
-const helperFunction = require('../helpers/helperFunction');
+import helperFunction from '../helpers/helperFunction.js';
 
 // constructor
 const Comment = function (answer) {
@@ -85,4 +85,4 @@ Comment.retrieveAll = (postId, result) => {
   });
 };
 
-module.exports = Comment;
+export default Comment;

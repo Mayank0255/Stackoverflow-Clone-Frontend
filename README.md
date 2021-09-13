@@ -10,7 +10,7 @@ __[Demo Video](https://www.youtube.com/watch?v=3jDIEf5vNp8)__
 
 As the name suggests, this project is a clone of a famous Q/A website for professional and enthusiast programmers built solely by me using a completely different stack.
 
-__:new: New Update:__ _newly added features are mentioned in issue([#15](https://github.com/Mayank0255/Stack-Overflow-Clone/issues/15))_
+This repo consists of the Frontend code of the project, the backend code is in [Stackoverflow-Clone-Backend](https://github.com/Mayank0255/Stackoverflow-Clone-Backend)
 
 ## My Tech Stack (MERN)
 
@@ -32,72 +32,44 @@ __:new: New Update:__ _newly added features are mentioned in issue([#15](https:/
 * Go to `Contributing.md`
 
 ## Guidelines to setup
-1. Create a `.env` file and the format should be as given in `.env.example`.
-2. Run these commands then - 
+1. Open your local CLI -
+
     ```
-    npm run installDep (To install all the dependencies)
+    mkdir Stackoverflow-Clone
+    cd Stackoverflow-Clone
+    ```
+2. Setup the backend code -
+
+    - Create a `.env` file and the format should be as given in `.env.example`.
+    - Clone the code & install the modules-
+   
+        ```
+        git clone https://github.com/Mayank0255/Stackoverflow-Clone-Backend.git
+        cd Stackoverflow-Clone-Backend
+
+        npm install
+        ```
+    - Open your MySQL Client -
     
-    npm run auditDep (Run this to audit fix all the vulnerabilities)
-    ```
-3. Run `databaseConfig.sql` file in the mysql client
-    ```
-    source <file path>/data/databaseConfig.sql
-    ```
-4. _(Optional)_ Run `seed.sql` file in the mysql client for seed data
-    ```
-    source <file path>/data/seed.sql
-    ```
-    _Note: Change the database name in `databaseConfig.sql` & `seed.sql` under `USE` command_
-5. Start the servers
-    ```
-    Option 1 (for running both the servers simultaneously):
+        ```
+        source ./data/databaseConfig.sql
+        source ./data/seed.sql
+        ```
+    - Run the server `npm run server`.
+3. Open a new CLI terminal and goto the root `Stackoverflow-Clone` folder you created in the first step.
+4. Setup the Frontend code -
+
+    - Clone the code & install the modules-
     
-    npm run dev
-    
-    Option 2 (for running both the servers individually):
-    
-    npm run server (for backend server only)
-    
-    npm run client (for frontend server only)
-    ```
-_NOTE: Might take sometime to start as there will be 2 servers running._
+        ```
+        git clone https://github.com/Mayank0255/Stackoverflow-Clone.git
+        cd Stackoverflow-Clone
+        
+        npm install
+        ```
+    - Run the client server `npm start`.
 
-## API Endpoints
-
-#### Base Url - `http://localhost:5000/api`
-
-#### Users
-* `GET /auth`
-* `POST /auth`
-* `POST /users/:id`
-* `GET /users`
-* `GET /users/:id`
-
-#### Posts
-* `GET /posts`
-* `GET /posts/top`
-* `GET /posts/tag/:tagname`
-* `GET /posts/:id`
-* `POST /posts/`
-* `DELETE /posts/:id`
-
-#### Answers
-* `GET /posts/answers/:id`
-* `POST /posts/answers/:id`
-* `DELETE /posts/answers/:id`
-
-#### Comments
-* `GET /posts/comments/:id`
-* `POST /posts/comments/:id`
-* `DELETE /posts/comments/:id`
-
-#### Tags
-* `GET /tags`
-* `GET /tags/:tag_name`
-
-## Future Scope
-* Setup `Sequelize` with `MySQL` in the `API`.
-* Deploy the database to cloud, API, and client-side.
+_Follow the steps properly and you are good to go._
 
 ## DEMO
 

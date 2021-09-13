@@ -3,6 +3,10 @@
   background-color: #464236;
   color: #f2f2f3 !important;
   margin-top: 24px;
+
+  ul {
+    list-style: none;
+  }
 }
 
 .s-sidebarwidget__yellow .s-sidebarwidget--header, .s-sidebarwidget__yellow .s-sidebarwidget--content {

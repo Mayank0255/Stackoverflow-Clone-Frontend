@@ -24,6 +24,8 @@ const TagsPage = ({getTags, tag: {tags, loading}}) => {
     setSearch(e.target.value);
   };
 
+  // let tags = ["HOT", "NEW", "Python", "bankai"].map(tag =>({tagname: tag}));
+
   return loading || tags === null ? (
     <Spinner type='page' width='75px' height='200px' />
   ) : (

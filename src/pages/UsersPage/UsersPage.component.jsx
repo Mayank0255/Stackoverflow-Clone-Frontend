@@ -11,7 +11,7 @@ import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 
 import './UsersPage.styles.scss';
 
-const UsersPage = ({getUsers, user: {users, loading}}) => {
+const UsersPage = ({getUsers, user: {users0, loading}}) => {
   useEffect(() => {
     getUsers();
   }, [getUsers]);
@@ -23,6 +23,9 @@ const UsersPage = ({getUsers, user: {users, loading}}) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
+
+  let users = ["Bankai","Chika","Pucci","Kenpachi"].map(user => ({username: user}))
+
   console.log(users);
 
   return loading || users === null ? (

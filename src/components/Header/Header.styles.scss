@@ -1,10 +1,12 @@
 .navbar {
   height: 63px;
   border-top: 3px solid #f48024;
-  padding: 3px 3px 0 3px;
+  padding: 3px 3px 0 0;
   box-shadow: 5px 2px rgba(0,0,0,0.1);
   z-index: 1000;
   background-color: #3d3d3d;
+  display: flex;
+  justify-content: space-between;
 }
 
 .s-navigation {
@@ -77,6 +79,57 @@
   padding-right: 12px !important;
 }
 
+.header-brand-div {
+  display: flex;
+  align-items: center;
+}
+
+.header-search-div {
+  display: flex;
+  //margin-left: 10%;
+  justify-content: flex-end;
+  align-items: center
+}
+
+.glyph-logo {
+  display: none;
+}
+
+.search-icon {
+  display: none;
+  filter: invert(1);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.small-search {
+  width: 98vw;
+  position: fixed;
+  top: 69px;
+  left: 5px;
+  border-radius: 8px;
+}
+
+.small-search-form {
+  position: fixed;
+  display: flex;
+  z-index: 1000;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  background-color: #00000042;
+  box-shadow: 2px 2px 8px 3px gray;
+}
+
+.small-search-icon {
+  position: fixed;
+  top: 80px;
+  right: 5%;
+}
+
 @media(max-width: 1280px) {
   .navbar-brand {
     margin-left: 60px;
@@ -95,5 +148,75 @@
   }
   .btns {
     margin-right: 20px;
+  }
+}
+
+@media (max-width: 869px){
+  .navbar-brand {
+    margin-left: 0;
+  }
+  .header-brand-div {
+    justify-content: flex-start;
+    padding: 0 1.5rem;
+  }
+  .header-search-div {
+    justify-content: space-around;
+    form {
+      &:first-of-type {
+        display: none;
+      }
+    }
+    .search-icon {
+      display: block;
+      margin-right: 1rem;
+    }
+  }
+  .btns {
+    margin-right: 20px;
+  }
+  .s-input__search {
+    max-width: 250px;
+  }
+}
+
+
+@media (max-width: 715px) {
+  .glyph-logo {
+    display: block;
+  }
+  .full-logo {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .glyph-logo {
+    display: block;
+  }
+  .full-logo {
+    display: none;
+  }
+  .s-navigation .s-navigation--item {
+    display: none;
+
+    &:first-of-type {
+      display: block;
+    }
+  }
+  .search-icon {
+    display: block;
+  }
+}
+
+@media (max-width: 390px) {
+  .navbar {
+    padding: 0;
+    margin-left: -2rem;
+  }
+}
+
+@media (max-width: 345px) {
+  .glyph-logo {
+    display: none;
   }
 }

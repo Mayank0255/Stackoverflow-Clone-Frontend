@@ -39,7 +39,9 @@
 
   .tags-box {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: space-between;
   }
 
   .user-browser {
@@ -73,11 +75,10 @@
   #mainbar.tags-page {
     .tags-box {
       display: flex;
-      flex-direction: column !important;
       align-items: space-between;
     }
-    .s-btn-group {
-      margin-top: 1rem;
+    .s-input {
+      margin-bottom: 1rem;
     }
   }
 }

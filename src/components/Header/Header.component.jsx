@@ -11,6 +11,7 @@ import Spinner from '../Spinner/Spinner.component';
 import LinkButton from '../LinkButton/LinkButton.component';
 
 import './Header.styles.scss';
+import SideNavBar from '../SideNavBar/SideNavBar.component';
 
 const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
   let history = useHistory();
@@ -93,6 +94,9 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
   ) : (
     <Fragment>
       <nav className='navbar fixed-top navbar-expand-lg navbar-light bs-md'>
+        <div class="hamburger">
+          <SideNavBar hasOverlay />
+        </div>
         <div className='header-brand-div'>
           <Link className='navbar-brand' to='/'>
             <Logo className='full-logo' />

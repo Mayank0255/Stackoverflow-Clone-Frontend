@@ -130,6 +130,14 @@
   right: 5%;
 }
 
+// Side Navbar
+
+.hamburger {
+  display: none;
+}
+
+///////////////
+
 @media(max-width: 1280px) {
   .navbar-brand {
     margin-left: 60px;
@@ -199,11 +207,14 @@
   .s-navigation .s-navigation--item {
     display: none;
 
-    &:first-of-type {
+    /* &:first-of-type {
       display: block;
-    }
+    } */
   }
   .search-icon {
+    display: block;
+  }
+  .hamburger {
     display: block;
   }
 }
@@ -211,7 +222,6 @@
 @media (max-width: 390px) {
   .navbar {
     padding: 0;
-    margin-left: -2rem;
   }
 }
 

@@ -1,0 +1,50 @@
+.Sidebar {
+    z-index: 9999;
+	.SidebarOverlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		width: 0;
+		height: 0;
+		z-index: 99;
+		background-color: black;
+		transition: opacity 300ms ease-in-out, width 0ms 300ms, height 0ms 300ms;
+	}
+
+	.SidebarContent {
+		position: fixed;
+		z-index: 100;
+		background-color: white;
+		transition: 300ms ease-in-out;
+		transition-property: left, right, top, bottom;
+		overflow-x: hidden;
+		overflow-y: auto;
+		scroll-behavior: smooth;
+	}
+
+	&.is-open {
+		.SidebarOverlay {
+			width: 100%;
+			height: 100%;
+			opacity: 0.25;
+			transition: opacity 300ms ease-in-out, width 0ms, height 0ms;
+		}
+
+		.SidebarContent {
+			left: 0 !important;
+
+			&.is-right {
+				left: auto !important;
+				right: 0 !important;
+			}
+		}
+	}
+    .ham {
+        margin-left: 1rem;
+        filter: invert(1);
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

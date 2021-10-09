@@ -14,27 +14,13 @@ import PageTitle from '../../components/PageTitle/PageTitle.component';
 
 import './QuestionsPage.styles.scss';
 
-const QuestionsPage = ({getPosts, post: {posts0, loading}}) => {
+const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
 
   const [sortType, setSortType] = useState('Newest');
   let searchQuery = new URLSearchParams(useLocation().search).get('search');
-
-  let po = {
-    id: 1,
-    title: "Waka",
-    body: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum ipsa aspernatur accusamus aperiam culpa optio esse. Excepturi non libero nulla assumenda, dolore nam consequuntur nihil accusamus sapiente! Fugit, esse neque!",
-    tagname: "Shikai",
-    username: "Bankai",
-    user_id: "Tatara",
-    answer_count: 3,
-    comment_count: 6,
-    views: 6942,
-    created_at: "2021-12-05",
-  }
-  const posts =  [po,po,po]
 
   return loading || posts === null ? (
     <Spinner type='page' width='75px' height='200px' />

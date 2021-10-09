@@ -11,7 +11,7 @@ import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 
 import './TagsPage.styles.scss';
 
-const TagsPage = ({getTags, tag: {tags0, loading}}) => {
+const TagsPage = ({getTags, tag: {tags, loading}}) => {
   useEffect(() => {
     getTags();
   }, [getTags]);
@@ -23,8 +23,6 @@ const TagsPage = ({getTags, tag: {tags0, loading}}) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
-
-  let tags = ["HOT", "NEW", "Python", "bankai"].map(tag =>({tagname: tag}));
 
   return loading || tags === null ? (
     <Spinner type='page' width='75px' height='200px' />

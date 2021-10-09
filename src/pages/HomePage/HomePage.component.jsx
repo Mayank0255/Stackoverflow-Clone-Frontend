@@ -9,25 +9,10 @@ import Spinner from '../../components/Spinner/Spinner.component';
 
 import './HomePage.styles.scss';
 
-const HomePage = ({getTopPosts, post: {posts0, loading}}) => {
+const HomePage = ({getTopPosts, post: {posts, loading}}) => {
   useEffect(() => {
     getTopPosts();
   }, [getTopPosts]);
-
-  // Example posts
-  let po = {
-    id: 1,
-    title: "Waka",
-    body: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum ipsa aspernatur accusamus aperiam culpa optio esse. Excepturi non libero nulla assumenda, dolore nam consequuntur nihil accusamus sapiente! Fugit, esse neque!",
-    tagname: "Shikai",
-    username: "Bankai",
-    user_id: "Tatara",
-    answer_count: 3,
-    comment_count: 6,
-    views: 6942,
-    created_at: "2021-12-05",
-  }
-  const posts =  [po,po,po]
 
   return loading || posts === null ? (
     <Spinner type='page' width='75px' height='200px' />

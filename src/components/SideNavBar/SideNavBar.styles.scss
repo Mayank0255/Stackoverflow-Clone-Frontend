@@ -1,5 +1,5 @@
 .Sidebar {
-    z-index: 9999;
+	z-index: 9999;
 	.SidebarOverlay {
 		position: fixed;
 		top: 0;
@@ -21,6 +21,7 @@
 		overflow-x: hidden;
 		overflow-y: auto;
 		scroll-behavior: smooth;
+		background-color: gray;
 	}
 
 	&.is-open {
@@ -40,11 +41,49 @@
 			}
 		}
 	}
-    .ham {
-        margin-left: 1rem;
-        filter: invert(1);
-        &:hover {
-            cursor: pointer;
+	.ham {
+		margin-left: 1rem;
+		filter: invert(1);
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.content-logo {
+		padding: 1rem 2rem;
+		background-color: #5a5959;
+        box-shadow: 2px -2px 8px 3px black;
+	}
+
+	.content-inner {
+		padding: 2rem;
+	}
+
+	.side-s-navigation {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+        align-items: center;
+        .side-s-navigation--item {
+            padding: 0.8rem;
+            border-radius: 1.3rem;
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
         }
-    }
+        .is-selected {
+            background-color: #F48225;
+            color: #0c0c0c;
+        }
+	}
+
+    .side-s-navigation .not-selected {
+        color: #c4c8cc;
+      
+        &:hover {
+          background-color: #404345;
+          color: #f2f2f3;
+          text-decoration: none;
+          outline: none;
+        }
+      }
 }

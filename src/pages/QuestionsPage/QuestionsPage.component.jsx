@@ -13,6 +13,10 @@ import SearchBox from '../../components/SearchBox/SearchBox.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 
 import './QuestionsPage.styles.scss';
+import Pagination from '../../components/Pagination/Pagination';
+
+const itemsPerPage = 12;
+const showInline = 5;
 
 const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
   useEffect(() => {
@@ -21,6 +25,12 @@ const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
 
   const [sortType, setSortType] = useState('Newest');
   let searchQuery = new URLSearchParams(useLocation().search).get('search');
+
+  const [currentPosts, setCurrentPosts] = useState([]);
+
+  const handlePaginationChange = (currentPage) => {
+    setCurrentPosts(posts.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage));
+  };
 
   return loading || posts === null ? (
     <Spinner type='page' width='75px' height='200px' />
@@ -67,7 +77,7 @@ const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
           />
         </div>
         <div className='questions'>
-          {posts
+          {currentPosts
             .filter((post) =>
               post.title.toLowerCase().includes(searchQuery ? searchQuery : '')
             )
@@ -76,6 +86,15 @@ const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
               <PostItem key={post.id} post={post} />
             ))}
         </div>
+        <Pagination
+          total={posts.length}
+          elementsPerPage={itemsPerPage}
+          showInline={showInline}
+          handlePaginationChange={(currentPage) =>
+            handlePaginationChange(currentPage)
+          }
+          hideOnSinglePage={true}
+        />
       </div>
     </Fragment>
   );

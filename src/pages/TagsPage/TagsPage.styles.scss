@@ -4,9 +4,9 @@
 
 .tags-page {
   display: inline-block;
-  width: 58%;
+  width: 60%;
   margin-left: 20%;
-  padding: 24px 0 24px 0;
+  padding: 24px 0;
 
   .headline {
     font-size: 28px;
@@ -19,8 +19,8 @@
 
   .fs-body {
     padding-left: 16px;
-    padding-right: 24px;
-    width: 54rem;
+    padding-right: 1rem;
+    width: auto;
     font-size: 15px;
     font-weight: 400;
   }
@@ -29,17 +29,19 @@
     margin-bottom: 12px;
     display: flex;
     padding-left: 16px;
-    padding-right: 16px;
+    padding-right: 1rem;
 
     span {
       font-size: 17px;
-      margin-right: 12px;
+      margin-right: 1rem;
     }
   }
 
   .tags-box {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: space-between;
   }
 
   .user-browser {
@@ -57,13 +59,26 @@
 }
 
 
-
-
 @media(max-width: 1100px) {
   .side-bar {
     display: none;
   }
   .tags-page {
     width: 80%;
+  }
+  #content {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  #mainbar.tags-page {
+    .tags-box {
+      display: flex;
+      align-items: space-between;
+    }
+    .s-input {
+      margin-bottom: 1rem;
+    }
   }
 }

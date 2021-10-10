@@ -27,7 +27,9 @@
 
   .users-box {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: space-around;
   }
 
   .user-browser {
@@ -40,6 +42,14 @@
       display: grid;
       grid-gap: 12px;
       grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .users-box {
+    .s-input {
+      margin-bottom: 1rem;
     }
   }
 }

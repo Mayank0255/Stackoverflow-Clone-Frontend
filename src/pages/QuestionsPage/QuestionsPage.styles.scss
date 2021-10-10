@@ -28,6 +28,7 @@
   .questions-tabs {
     margin-bottom: 12px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-left: 24px;
     padding-right: 3px;
@@ -35,6 +36,7 @@
     span {
       font-size: 17px;
       margin-right: 12px;
+      margin-bottom: 1rem;
     }
   }
 

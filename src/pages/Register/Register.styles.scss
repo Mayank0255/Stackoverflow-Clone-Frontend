@@ -1,11 +1,10 @@
 .auth-page {
   width: 100%;
   background-color: #3d3d3d;
-  height: 100vh;
 }
 
 .register-content {
-  width: 100%;
+  width: 100vw;
   background-color: transparent;
   box-sizing: border-box;
   display: flex;
@@ -18,4 +17,15 @@
   display: flex;
   align-items: center;
   box-sizing: inherit;
+}
+
+@media (max-width: 799px) {
+  .register-grid {
+    flex-direction: column;
+    padding: 7rem 0;
+  }
+  .register-content {
+    height: auto;
+    margin: auto 0;
+  }
 }

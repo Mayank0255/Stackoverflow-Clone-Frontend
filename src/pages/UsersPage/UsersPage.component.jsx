@@ -23,6 +23,7 @@ const UsersPage = ({getUsers, user: {users, loading}}) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
+
   console.log(users);
 
   return loading || users === null ? (

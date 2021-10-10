@@ -8,6 +8,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    transition: all 300ms ease-in-out;
 }
 
 body {

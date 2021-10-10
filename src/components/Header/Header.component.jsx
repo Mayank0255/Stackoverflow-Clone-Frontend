@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -6,13 +6,16 @@ import {logout} from '../../redux/auth/auth.actions';
 
 import {ReactComponent as Search} from '../../assets/Search.svg';
 import {ReactComponent as Logo} from '../../assets/LogoMd.svg';
+import {ReactComponent as SmallLogo} from '../../assets/LogoGlyphMd.svg';
 import Spinner from '../Spinner/Spinner.component';
 import LinkButton from '../LinkButton/LinkButton.component';
 
 import './Header.styles.scss';
+import SideNavBar from '../SideNavBar/SideNavBar.component';
 
 const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
   let history = useHistory();
+  const [searchState, setSearchState] = useState(false);
 
   const authLinks = (
     <div className='btns'>
@@ -65,39 +68,70 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
     </div>
   );
 
+  const SearchBar = () => {
+    return (
+      <form
+        onSubmit={() => history.push('/questions')}
+        className='small-search-form'
+        autoComplete='off'
+      >
+          <input
+            className='small-search'
+            autoComplete='off'
+            type='text'
+            name='search'
+            maxLength='35'
+            placeholder='Search...'
+          />
+          <Search className="small-search-icon" />
+      </form>
+    );
+  }
+
+
   return loading ? (
     ''
   ) : (
     <Fragment>
       <nav className='navbar fixed-top navbar-expand-lg navbar-light bs-md'>
-        <Link className='navbar-brand' to='/'>
-          <Logo />
-        </Link>
-        {!loading && (
-          <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>
-        )}
-        <form
-          id='search'
-          onSubmit={() => history.push('/questions')}
-          className={`grid--cell fl-grow1 searchbar px12 js-searchbar`}
-          autoComplete='off'
-        >
-          <div className='ps-relative search-frame'>
-            <input
-              className='s-input s-input__search h100 search-box'
-              autoComplete='off'
-              type='text'
-              name='search'
-              maxLength='35'
-              placeholder='Search...'
-            />
-            <Search />
-          </div>
-        </form>
-        {!loading && (
-          <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
-        )}
+        <div class="hamburger">
+          <SideNavBar hasOverlay />
+        </div>
+        <div className='header-brand-div'>
+          <Link className='navbar-brand' to='/'>
+            <Logo className='full-logo' />
+            <SmallLogo className='glyph-logo' />
+          </Link>
+          {!loading && (
+            <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>
+          )}
+        </div>
+        <div className="header-search-div">
+          <form
+            id='search'
+            onSubmit={() => history.push('/questions')}
+            className={`grid--cell fl-grow1 searchbar px12 js-searchbar`}
+            autoComplete='off'
+          >
+            <div className='ps-relative search-frame'>
+              <input
+                className='s-input s-input__search h100 search-box'
+                autoComplete='off'
+                type='text'
+                name='search'
+                maxLength='35'
+                placeholder='Search...'
+              />
+              <Search />
+            </div>
+          </form>
+          <Search className="search-icon" onClick={() => setSearchState(!searchState)} />
+          {!loading && (
+            <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+          )}
+        </div>
       </nav>
+      {searchState && <SearchBar />}
     </Fragment>
   );
 };

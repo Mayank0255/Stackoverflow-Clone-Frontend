@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import {Link} from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 import { ReactComponent as Hamburger } from "../../assets/Hamburger.svg";
 import { ReactComponent as Stack } from "../../assets/LogoMd.svg";
+
+import { ReactComponent as GlobalIcon } from "../../assets/Globe.svg";
 import "./SideNavBar.styles.scss";
 
 const SidebarUI = ({ isOpen, ...rest }) => {
@@ -37,30 +39,66 @@ const SideNavBar = (props) => {
 
 	const { hasOverlay, isRight } = props;
 
-	const guestTabs = (
-		<div className='side-s-navigation'>
-		  <Link to='/' className='side-s-navigation--item is-selected'>
-			Products
-		  </Link>
-		  <Link to='/' className='side-s-navigation--item not-selected'>
-			Customers
-		  </Link>
-		  <Link to='/' className='side-s-navigation--item not-selected'>
-			Use cases
-		  </Link>
-		</div>
-	  );
-
 	return (
 		<SidebarUI isOpen={isOpen}>
 			<Hamburger onClick={openSidebar} className="ham" />
 
-			<SidebarUI.Content isRight={isRight} onClick={() => openSidebar(false)}>
+			<SidebarUI.Content
+				isRight={isRight}
+				onClick={() => openSidebar(false)}
+			>
 				<div className="content-logo">
 					<Stack />
 				</div>
 				<div className="content-inner">
-					{guestTabs}
+					<div className="side-bar-tabs">
+						<NavLink
+							exact
+							activeClassName="active"
+							className="home-link nav_link"
+							to="/"
+						>
+							<p>Home</p>
+						</NavLink>
+
+						<div className="public-tabs">
+							<p className="title fc-light">PUBLIC</p>
+							<NavLink
+								activeClassName="active"
+								className="icon-link nav_link"
+								to="/questions"
+							>
+								<p>
+									<GlobalIcon className="icon" />
+									Stack Overflow
+								</p>
+							</NavLink>
+							<NavLink
+								activeClassName="active"
+								className="link nav_link"
+								to="/tags"
+							>
+								<p>Tags</p>
+							</NavLink>
+							<NavLink
+								activeClassName="active"
+								className="link nav_link"
+								to="/users"
+							>
+								<p>Users</p>
+							</NavLink>
+							<NavLink
+								activeClassName="active"
+								className="link nav_link"
+								to="/jobs"
+							>
+								<p>Jobs</p>
+							</NavLink>
+						</div>
+						<div className="teams-tabs">
+							<p className="title fc-light">TEAMS</p>
+						</div>
+					</div>
 				</div>
 			</SidebarUI.Content>
 			{hasOverlay ? (

@@ -207,15 +207,29 @@
   .s-navigation .s-navigation--item {
     display: none;
 
-    /* &:first-of-type {
-      display: block;
-    } */
+    &:first-of-type {
+      display: inline;
+    }
   }
   .search-icon {
     display: block;
   }
   .hamburger {
     display: block;
+  }
+  .header-search-div, .header-brand-div {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 420px) {
+  .glyph-logo{
+    display: none;
+  }
+  .s-navigation .s-navigation--item {
+    &:first-of-type {
+      margin-left: -4.7rem;
+    }
   }
 }
 

@@ -26,6 +26,28 @@ const Pagination = ({
     [handlePaginationChange]
   );
 
+  /**
+   * According to docs of Stacks documentation active element needs to be <span/>,
+   * inactive elements should be <a/>
+   * @param {*} currentIdx
+   * @param {*} activeIdx
+   * @returns
+   */
+  const getPaginationItem = useCallback(
+    (currentIdx, activeIdx) =>
+      activeIdx === currentIdx + 1 ? (
+        <span class="s-pagination--item is-selected">{currentIdx + 1}</span>
+      ) : (
+        <span
+          class="s-pagination--item"
+          onClick={() => handleChange(currentIdx + 1)}
+        >
+          {currentIdx + 1}
+        </span>
+      ),
+    [handleChange]
+  );
+
   useEffect(() => {
     const li = [];
     const half = Math.floor(showInline / 2);
@@ -34,65 +56,52 @@ const Pagination = ({
 
     for (
       let i = 1;
-      i <= showInline && i + currentPage - half - 1 < pages;
+      i <= showInline && i + currentPage - half - 1 < pages - 1;
       i++
     ) {
       const idx = i + currentPage - half - 1;
 
       if (i + currentPage - half >= 1) {
-        li.push(
-          <li
-            key={idx + 1}
-            className={`pagination-item ${
-              currentPage === idx + 1 ? "pagination-item-active" : ""
-            }`}
-            onClick={() => handleChange(idx + 1)}
-          >
-            {idx + 1}
-          </li>
-        );
+        li.push(getPaginationItem(idx, currentPage));
       }
     }
 
     // Add menu items with dots and last item.
     if (pages > showInline) {
       li.push([
-        <li
+        <span
           key="dots"
-          className="pagination-item pagination-no-border pagination-item-no-hover"
+          className="s-pagination--item s-pagination--item__clear"
         >
           ...
-        </li>,
-        <li
-          key={pages}
-          className={`pagination-item ${
-            currentPage === pages ? "pagination-item-active" : ""
-          }`}
-          onClick={() => handleChange(pages)}
-        >
-          {pages}
-        </li>,
+        </span>,
+        getPaginationItem(pages - 1, currentPage),
       ]);
     }
 
     // Add next button
     li.push([
-      <li
+      <span
         key="next-btn"
-        className={`pagination-item ${
-          enableNextBtn ? "" : "pagination-disabled"
-        }`}
-        // Don't allow click if on last page.
+        className={`s-pagination--item`}
         onClick={
           enableNextBtn ? () => handleChange(currentPage + 1) : undefined
         }
       >
         Next
-      </li>,
+      </span>,
     ]);
 
     setItems(li);
-  }, [total, elementsPerPage, currentPage, showInline, handleChange, pages]);
+  }, [
+    total,
+    elementsPerPage,
+    currentPage,
+    showInline,
+    handleChange,
+    pages,
+    getPaginationItem,
+  ]);
 
   useEffect(() => {
     handleChange(1);
@@ -102,8 +111,8 @@ const Pagination = ({
   // Only show if single page.
   if (!(hideOnSinglePage && pages === 1)) {
     return (
-      <div style={{ float: "right" }}>
-        <ul style={{ display: "flex" }}>{items}</ul>
+      <div className="s-pagination" style={{ float: "right" }}>
+        {items}
       </div>
     );
   }

@@ -10,6 +10,10 @@ import SearchBox from '../../components/SearchBox/SearchBox.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 
 import './UsersPage.styles.scss';
+import Pagination from "../../components/Pagination/Pagination";
+
+const itemsPerPage = 12;
+const showInline = 5;
 
 const UsersPage = ({getUsers, user: {users, loading}}) => {
   useEffect(() => {
@@ -19,12 +23,16 @@ const UsersPage = ({getUsers, user: {users, loading}}) => {
   const [fetchSearch, setSearch] = useState('');
   const [sortType, setSortType] = useState('Popular');
 
+  const [currentUsers, setCurrentUsers] = useState([]);
+
+  const handlePaginationChange = (currentPage) => {
+    setCurrentUsers(users.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage));
+  };
+
   const handleChange = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
-
-  console.log(users);
 
   return loading || users === null ? (
     <Spinner type='page' width='75px' height='200px' />
@@ -51,7 +59,7 @@ const UsersPage = ({getUsers, user: {users, loading}}) => {
         </div>
         <div className='user-browser'>
           <div className='grid-layout'>
-            {users
+            {currentUsers
               .filter((user) =>
                 user.username.toLowerCase().includes(fetchSearch.toLowerCase())
               )
@@ -61,6 +69,15 @@ const UsersPage = ({getUsers, user: {users, loading}}) => {
               ))}
           </div>
         </div>
+        <Pagination
+          total={users.length}
+          elementsPerPage={itemsPerPage}
+          showInline={showInline}
+          handlePaginationChange={(currentPage) =>
+            handlePaginationChange(currentPage)
+          }
+          hideOnSinglePage={true}
+        />
       </div>
     </Fragment>
   );
@@ -75,4 +92,4 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, {getUsers})(UsersPage);
+export default connect(mapStateToProps, { getUsers })(UsersPage);

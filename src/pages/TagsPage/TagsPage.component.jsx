@@ -10,6 +10,10 @@ import SearchBox from '../../components/SearchBox/SearchBox.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 
 import './TagsPage.styles.scss';
+import Pagination from '../../components/Pagination/Pagination';
+
+const itemsPerPage = 12;
+const showInline = 5;
 
 const TagsPage = ({getTags, tag: {tags, loading}}) => {
   useEffect(() => {
@@ -23,6 +27,13 @@ const TagsPage = ({getTags, tag: {tags, loading}}) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
+
+  const [currentTags, setCurrentTags] = useState([]);
+
+  const handlePaginationChange = (currentPage) => {
+    setCurrentTags(tags.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage));
+  };
+
 
   return loading || tags === null ? (
     <Spinner type='page' width='75px' height='200px' />
@@ -52,7 +63,7 @@ const TagsPage = ({getTags, tag: {tags, loading}}) => {
         </div>
         <div className='user-browser'>
           <div className='grid-layout'>
-            {tags
+            {currentTags
               .filter((tag) =>
                 tag.tagname.toLowerCase().includes(fetchSearch.toLowerCase())
               )
@@ -62,6 +73,15 @@ const TagsPage = ({getTags, tag: {tags, loading}}) => {
               ))}
           </div>
         </div>
+        <Pagination
+          total={tags.length}
+          elementsPerPage={itemsPerPage}
+          showInline={showInline}
+          handlePaginationChange={(currentPage) =>
+            handlePaginationChange(currentPage)
+          }
+          hideOnSinglePage={true}
+        />
       </div>
     </Fragment>
   );

@@ -37,11 +37,10 @@
     "format": "prettier --write ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc",
     "precommit": "lint-staged"
   },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,css,md,json,scss}": [
-      "prettier --write",
-      "git add"
-    ]
+  "husky": {
+    "hooks": {
+      "precommit": "npm run precommit"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"

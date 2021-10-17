@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
+console.log("                     This is some messy code I am adding on purpose       ")
 // import "./Pagination.styles.scss";
-console.log('         This is some messy code i am adding on purpose!          ');
 const Pagination = ({
   total,
   elementsPerPage,

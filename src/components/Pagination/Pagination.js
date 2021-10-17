@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 console.log("                     This is some messy code I am adding on purpose       ")
 // import "./Pagination.styles.scss";
-const Pagination = ({
+		const Pagination = ({
   total,
   elementsPerPage,
   showInline,

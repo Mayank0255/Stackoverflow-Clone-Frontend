@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 console.log("                     This is some messy code I am adding on purpose       ");
 // import "./Pagination.styles.scss";
-const Pagination = ({
+				const Pagination = ({
   total,
   elementsPerPage,
   showInline,
   handlePaginationChange,
   hideOnSinglePage
 }) => {
-  const [items, setItems] = useState([]);
+				  const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const pages =

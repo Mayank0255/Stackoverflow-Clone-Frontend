@@ -1,12 +1,7 @@
-import {
-  GET_ANSWERS,
-  ANSWER_ERROR,
-  ADD_ANSWER,
-  DELETE_ANSWER,
-} from './answers.types';
+import { GET_ANSWERS, ANSWER_ERROR, ADD_ANSWER, DELETE_ANSWER } from './answers.types';
 
 import axios from 'axios';
-import {setAlert} from '../alert/alert.actions';
+import { setAlert } from '../alert/alert.actions';
 
 export const getAnswers = (id) => async (dispatch) => {
   try {
@@ -14,12 +9,12 @@ export const getAnswers = (id) => async (dispatch) => {
 
     dispatch({
       type: GET_ANSWERS,
-      payload: res.data.data,
+      payload: res.data.data
     });
   } catch (err) {
     dispatch({
       type: ANSWER_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };
@@ -28,20 +23,16 @@ export const getAnswers = (id) => async (dispatch) => {
 export const addAnswer = (postId, formData) => async (dispatch) => {
   const config = {
     headers: {
-      'Content-Type': 'application/json',
-    },
+      'Content-Type': 'application/json'
+    }
   };
 
   try {
-    const res = await axios.post(
-      `/api/posts/answers/${postId}`,
-      formData,
-      config
-    );
+    const res = await axios.post(`/api/posts/answers/${postId}`, formData, config);
 
     dispatch({
       type: ADD_ANSWER,
-      payload: res.data.data,
+      payload: res.data.data
     });
 
     dispatch(setAlert(res.data.message, 'success'));
@@ -52,7 +43,7 @@ export const addAnswer = (postId, formData) => async (dispatch) => {
 
     dispatch({
       type: ANSWER_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };
@@ -64,7 +55,7 @@ export const deleteAnswer = (AnswerId) => async (dispatch) => {
 
     dispatch({
       type: DELETE_ANSWER,
-      payload: AnswerId,
+      payload: AnswerId
     });
 
     dispatch(setAlert(res.data.message, 'success'));
@@ -73,7 +64,7 @@ export const deleteAnswer = (AnswerId) => async (dispatch) => {
 
     dispatch({
       type: ANSWER_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };

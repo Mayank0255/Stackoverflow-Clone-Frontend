@@ -1,4 +1,4 @@
-import {GET_USERS, GET_USER, USER_ERROR} from './users.types';
+import { GET_USERS, GET_USER, USER_ERROR } from './users.types';
 
 import axios from 'axios';
 
@@ -8,12 +8,12 @@ export const getUsers = () => async (dispatch) => {
     const res = await axios.get('/api/users');
     dispatch({
       type: GET_USERS,
-      payload: res.data.data,
+      payload: res.data.data
     });
   } catch (err) {
     dispatch({
       type: USER_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };
@@ -26,12 +26,12 @@ export const getUser = (id) => async (dispatch) => {
     console.log(res.data);
     dispatch({
       type: GET_USER,
-      payload: res.data.data,
+      payload: res.data.data
     });
   } catch (err) {
     dispatch({
       type: USER_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };

@@ -1,10 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import htmlSubstring from '../../services/htmlSubstring'
-import injectEllipsis from '../../services/injectEllipsis'
+import htmlSubstring from '../../services/htmlSubstring';
+import injectEllipsis from '../../services/injectEllipsis';
 
 import UserCard from '../UserCard/UserCard.component';
 import TagBadge from '../TagBadge/TagBadge.component';
@@ -22,46 +22,49 @@ const PostItem = ({
     answer_count,
     comment_count,
     views,
-    created_at,
-  },
+    created_at
+  }
 }) => {
   const answerVoteUp = (
-    <div className='vote answer'>
-      <span className='vote-count fc-green-500'>{answer_count}</span>
-      <div className='count-text'>answers</div>
+    <div className="vote answer">
+      <span className="vote-count fc-green-500">{answer_count}</span>
+      <div className="count-text">answers</div>
     </div>
   );
 
   const answerVoteDown = (
-    <div className='vote'>
-      <span className='vote-count'>{answer_count}</span>
-      <div className='count-text'>answers</div>
+    <div className="vote">
+      <span className="vote-count">{answer_count}</span>
+      <div className="count-text">answers</div>
     </div>
   );
 
   return (
-    <div className='posts'>
-      <div className='stats-container fc-black-500'>
-        <div className='stats'>
-          <div className='vote'>
-            <span className='vote-count'>{comment_count}</span>
-            <div className='count-text'>comments</div>
+    <div className="posts">
+      <div className="stats-container fc-black-500">
+        <div className="stats">
+          <div className="vote">
+            <span className="vote-count">{comment_count}</span>
+            <div className="count-text">comments</div>
           </div>
           {answer_count > 0 ? answerVoteUp : answerVoteDown}
-          <div className='vote'>
-            <span className='vote-count'>{tagname ? 1 : 0}</span>
-            <div className='count-text'>tags</div>
+          <div className="vote">
+            <span className="vote-count">{tagname ? 1 : 0}</span>
+            <div className="count-text">tags</div>
           </div>
-          <div className='vote'>
-            <div className='count-text'>{views} views</div>
+          <div className="vote">
+            <div className="count-text">{views} views</div>
           </div>
         </div>
       </div>
-      <div className='summary'>
+      <div className="summary">
         <h3>
           <Link to={`/questions/${id}`}>{title}</Link>
         </h3>
-        <div className='brief' dangerouslySetInnerHTML={{__html: injectEllipsis(htmlSubstring(body, 200))}}></div>
+        <div
+          className="brief"
+          dangerouslySetInnerHTML={{ __html: injectEllipsis(htmlSubstring(body, 200)) }}
+        ></div>
         <TagBadge tag_name={tagname} size={'s-tag'} float={'left'} />
         <UserCard
           created_at={created_at}
@@ -76,7 +79,7 @@ const PostItem = ({
 };
 
 PostItem.propTypes = {
-  post: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired
 };
 
 export default connect(null)(PostItem);

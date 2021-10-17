@@ -1,12 +1,12 @@
-import React, {useEffect, Fragment, useState} from 'react';
+import React, { useEffect, Fragment, useState } from 'react';
 import moment from 'moment';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   getComments,
   deleteComment,
-  addComment,
+  addComment
 } from '../../../../redux/comments/comments.actions';
 
 import Spinner from '../../../../components/Spinner/Spinner.component';
@@ -15,49 +15,41 @@ import LinkButton from '../../../../components/LinkButton/LinkButton.component';
 
 import './CommentCell.styles.scss';
 
-const CommentCell = ({
-  deleteComment,
-  addComment,
-  getComments,
-  auth,
-  comment,
-  postId,
-}) => {
+const CommentCell = ({ deleteComment, addComment, getComments, auth, comment, postId }) => {
   useEffect(() => {
     getComments(postId);
     // eslint-disable-next-line
   }, [getComments]);
 
   const [formData, setFormData] = useState({
-    body: '',
+    body: ''
   });
 
-  const {body} = formData;
+  const { body } = formData;
 
-  const handleChange = (e) =>
-    setFormData({...formData, [e.target.name]: e.target.value});
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addComment(postId, {body});
+    addComment(postId, { body });
     setFormData({
-      body: '',
+      body: ''
     });
   };
 
   return (
     <Fragment>
-      <div className='comments-cell'>
-        <div className='comments'>
-          <ul className='comments-list'>
+      <div className="comments-cell">
+        <div className="comments">
+          <ul className="comments-list">
             {comment.loading === null ? (
-              <Spinner width='25px' height='25px' />
+              <Spinner width="25px" height="25px" />
             ) : (
               comment.comments.map((comment) => (
-                <li className='comments-item' key={comment.id}>
-                  <div className='comment-text fc-black-800'>
-                    <div className='comment-body'>
-                      <span className='body'>{comment.body}</span>
+                <li className="comments-item" key={comment.id}>
+                  <div className="comment-text fc-black-800">
+                    <div className="comment-body">
+                      <span className="body">{comment.body}</span>
                       &nbsp;&ndash;&nbsp;
                       <TagBadge
                         tag_name={comment.username}
@@ -67,8 +59,8 @@ const CommentCell = ({
                       />
                       <span
                         title={moment(comment.created_at).fromNow(true)}
-                        style={{color: '#959ca3 !important'}}
-                        className='date fs-body1'
+                        style={{ color: '#959ca3 !important' }}
+                        className="date fs-body1"
                       >
                         {moment(comment.created_at).fromNow(true)} ago
                       </span>
@@ -77,9 +69,9 @@ const CommentCell = ({
                       auth.isAuthenticated &&
                       parseInt(comment.user_id) === auth.user.id && (
                         <Link
-                          className='s-tag s-tag__moderator'
-                          style={{marginTop: '4px'}}
-                          title='Delete the comment'
+                          className="s-tag s-tag__moderator"
+                          style={{ marginTop: '4px' }}
+                          title="Delete the comment"
                           onClick={(e) => deleteComment(comment.id)}
                           to={`/questions/${postId}`}
                         >
@@ -92,29 +84,26 @@ const CommentCell = ({
             )}
           </ul>
         </div>
-        <div className='add-comment'>
+        <div className="add-comment">
           {!auth.loading && auth.isAuthenticated ? (
             <Fragment>
-              <form className='comment-form' onSubmit={(e) => handleSubmit(e)}>
+              <form className="comment-form" onSubmit={(e) => handleSubmit(e)}>
                 <div>
                   <input
-                    className='title-input s-input'
-                    type='text'
-                    name='body'
+                    className="title-input s-input"
+                    type="text"
+                    name="body"
                     value={body}
                     onChange={(e) => handleChange(e)}
-                    id='title'
-                    placeholder='Leave a comment'
+                    id="title"
+                    placeholder="Leave a comment"
                   />
                 </div>
               </form>
             </Fragment>
           ) : (
             <Fragment>
-              <LinkButton
-                text={'You need to login to add a comment'}
-                link={'/login'}
-              />
+              <LinkButton text={'You need to login to add a comment'} link={'/login'} />
             </Fragment>
           )}
         </div>
@@ -128,16 +117,16 @@ CommentCell.propTypes = {
   addComment: PropTypes.func.isRequired,
   deleteComment: PropTypes.func.isRequired,
   getComments: PropTypes.func.isRequired,
-  comment: PropTypes.object.isRequired,
+  comment: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  comment: state.comment,
+  comment: state.comment
 });
 
 export default connect(mapStateToProps, {
   deleteComment,
   getComments,
-  addComment,
+  addComment
 })(CommentCell);

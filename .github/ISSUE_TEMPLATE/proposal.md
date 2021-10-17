@@ -1,10 +1,9 @@
 ---
 name: Proposal
 about: Propose a non-trivial change
-title: "[Proposal]: Write a descriptive title here"
+title: '[Proposal]: Write a descriptive title here'
 labels: ''
 assignees: ''
-
 ---
 
 ## Proposal

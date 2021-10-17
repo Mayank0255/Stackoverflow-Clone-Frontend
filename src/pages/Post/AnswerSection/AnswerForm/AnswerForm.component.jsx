@@ -1,47 +1,44 @@
-import React, {Fragment, useState, useRef} from 'react';
-import {connect} from 'react-redux';
+import React, { Fragment, useState, useRef } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {addAnswer} from '../../../../redux/answers/answers.actions';
+import { addAnswer } from '../../../../redux/answers/answers.actions';
 
 import LinkButton from '../../../../components/LinkButton/LinkButton.component';
 import RichTextEditor from '../../../../components/RichTextEditor/RichTextEditor.component';
 
 import './AnswerForm.styles.scss';
 
-const AnswerForm = ({addAnswer, auth, postId}) => {
+const AnswerForm = ({ addAnswer, auth, postId }) => {
   const [formData, setFormData] = useState({
-    text: '',
+    text: ''
   });
 
   const richTextEditorRef = useRef(null);
 
-  const {text} = formData;
+  const { text } = formData;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addAnswer(postId, {text});
+    addAnswer(postId, { text });
     setFormData({
-      text: '',
+      text: ''
     });
     richTextEditorRef.current.cleanEditorState();
   };
 
   const updateConvertedContent = (htmlConvertedContent) => {
-    setFormData({...formData, text: htmlConvertedContent});
+    setFormData({ ...formData, text: htmlConvertedContent });
   };
 
   return (
     <Fragment>
       {!auth.loading && auth.isAuthenticated ? (
         <Fragment>
-          <form className='answer-form' onSubmit={(e) => handleSubmit(e)}>
-            <div className='answer-grid'>
-              <label className=' fc-black-800'>Your Answer</label>
-              <div className='s-textarea rich-text-editor-container'>
-                <RichTextEditor
-                  ref={richTextEditorRef}
-                  onChange={updateConvertedContent}
-                />
+          <form className="answer-form" onSubmit={(e) => handleSubmit(e)}>
+            <div className="answer-grid">
+              <label className=" fc-black-800">Your Answer</label>
+              <div className="s-textarea rich-text-editor-container">
+                <RichTextEditor ref={richTextEditorRef} onChange={updateConvertedContent} />
               </div>
               {/* <textarea
                 className='s-textarea'
@@ -53,7 +50,7 @@ const AnswerForm = ({addAnswer, auth, postId}) => {
                 placeholder='Enter body with minimum 30 characters'
                 id='text'
               /> */}
-              <button className='s-btn s-btn__primary'>Post Your Answer</button>
+              <button className="s-btn s-btn__primary">Post Your Answer</button>
             </div>
           </form>
         </Fragment>
@@ -72,7 +69,7 @@ const AnswerForm = ({addAnswer, auth, postId}) => {
 };
 
 AnswerForm.propTypes = {
-  addAnswer: PropTypes.func.isRequired,
+  addAnswer: PropTypes.func.isRequired
 };
 
-export default connect(null, {addAnswer})(AnswerForm);
+export default connect(null, { addAnswer })(AnswerForm);

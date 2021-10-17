@@ -1,7 +1,7 @@
-import React, {useEffect, Fragment, useState} from 'react';
-import {connect} from 'react-redux';
+import React, { useEffect, Fragment, useState } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {getTags} from '../../redux/tags/tags.actions';
+import { getTags } from '../../redux/tags/tags.actions';
 import handleSorting from '../../services/handleSorting';
 
 import TagPanel from './TagPanel/TagPanel.component';
@@ -15,7 +15,7 @@ import Pagination from '../../components/Pagination/Pagination';
 const itemsPerPage = 12;
 const showInline = 5;
 
-const TagsPage = ({getTags, tag: {tags, loading}}) => {
+const TagsPage = ({ getTags, tag: { tags, loading } }) => {
   useEffect(() => {
     getTags();
   }, [getTags]);
@@ -31,25 +31,25 @@ const TagsPage = ({getTags, tag: {tags, loading}}) => {
   const [currentTags, setCurrentTags] = useState([]);
 
   const handlePaginationChange = (currentPage) => {
-    setCurrentTags(tags.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage));
+    setCurrentTags(
+      tags.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage)
+    );
   };
 
-
   return loading || tags === null ? (
-    <Spinner type='page' width='75px' height='200px' />
+    <Spinner type="page" width="75px" height="200px" />
   ) : (
     <Fragment>
-      <div id='mainbar' className='tags-page fc-black-800'>
-        <h1 className='headline'>Tags</h1>
-        <p className='fs-body'>
-          A tag is a keyword or label that categorizes your question with other,
-          similar questions. Using the right tags makes it easier for others to
-          find and answer your question.
+      <div id="mainbar" className="tags-page fc-black-800">
+        <h1 className="headline">Tags</h1>
+        <p className="fs-body">
+          A tag is a keyword or label that categorizes your question with other, similar questions.
+          Using the right tags makes it easier for others to find and answer your question.
         </p>
-        <div className='headline-count'>
+        <div className="headline-count">
           <span>{new Intl.NumberFormat('en-IN').format(tags.length)} tags</span>
         </div>
-        <div className='tags-box pl16 pr16 pb16'>
+        <div className="tags-box pl16 pr16 pb16">
           <SearchBox
             placeholder={'filter by tag name'}
             handleChange={handleChange}
@@ -61,12 +61,10 @@ const TagsPage = ({getTags, tag: {tags, loading}}) => {
             setSelected={setSortType}
           />
         </div>
-        <div className='user-browser'>
-          <div className='grid-layout'>
+        <div className="user-browser">
+          <div className="grid-layout">
             {currentTags
-              .filter((tag) =>
-                tag.tagname.toLowerCase().includes(fetchSearch.toLowerCase())
-              )
+              .filter((tag) => tag.tagname.toLowerCase().includes(fetchSearch.toLowerCase()))
               ?.sort(handleSorting(sortType))
               .map((tag) => (
                 <TagPanel key={tag.tagname} tag={tag} />
@@ -77,9 +75,7 @@ const TagsPage = ({getTags, tag: {tags, loading}}) => {
           total={tags.length}
           elementsPerPage={itemsPerPage}
           showInline={showInline}
-          handlePaginationChange={(currentPage) =>
-            handlePaginationChange(currentPage)
-          }
+          handlePaginationChange={(currentPage) => handlePaginationChange(currentPage)}
           hideOnSinglePage={true}
         />
       </div>
@@ -89,11 +85,11 @@ const TagsPage = ({getTags, tag: {tags, loading}}) => {
 
 TagsPage.propTypes = {
   getTags: PropTypes.func.isRequired,
-  tag: PropTypes.object.isRequired,
+  tag: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  tag: state.tag,
+  tag: state.tag
 });
 
-export default connect(mapStateToProps, {getTags})(TagsPage);
+export default connect(mapStateToProps, { getTags })(TagsPage);

@@ -1,7 +1,7 @@
-import React, {Fragment, useEffect, useState} from 'react';
-import {connect} from 'react-redux';
+import React, { Fragment, useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {getUsers} from '../../redux/users/users.actions';
+import { getUsers } from '../../redux/users/users.actions';
 import handleSorting from '../../services/handleSorting';
 
 import UserPanel from './UserPanel/UserPanel.component';
@@ -10,12 +10,12 @@ import SearchBox from '../../components/SearchBox/SearchBox.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 
 import './UsersPage.styles.scss';
-import Pagination from "../../components/Pagination/Pagination";
+import Pagination from '../../components/Pagination/Pagination';
 
 const itemsPerPage = 12;
 const showInline = 5;
 
-const UsersPage = ({getUsers, user: {users, loading}}) => {
+const UsersPage = ({ getUsers, user: { users, loading } }) => {
   useEffect(() => {
     getUsers();
   }, [getUsers]);
@@ -26,7 +26,9 @@ const UsersPage = ({getUsers, user: {users, loading}}) => {
   const [currentUsers, setCurrentUsers] = useState([]);
 
   const handlePaginationChange = (currentPage) => {
-    setCurrentUsers(users.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage));
+    setCurrentUsers(
+      users.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage)
+    );
   };
 
   const handleChange = (e) => {
@@ -35,34 +37,26 @@ const UsersPage = ({getUsers, user: {users, loading}}) => {
   };
 
   return loading || users === null ? (
-    <Spinner type='page' width='75px' height='200px' />
+    <Spinner type="page" width="75px" height="200px" />
   ) : (
     <Fragment>
-      <div id='mainbar' className='users-page fc-black-800'>
-        <h1 className='headline'>Users</h1>
-        <div className='headline-count'>
-          <span>
-            {new Intl.NumberFormat('en-IN').format(users.length)} users
-          </span>
+      <div id="mainbar" className="users-page fc-black-800">
+        <h1 className="headline">Users</h1>
+        <div className="headline-count">
+          <span>{new Intl.NumberFormat('en-IN').format(users.length)} users</span>
         </div>
-        <div className='users-box pl16 pr16 pb16'>
-          <SearchBox
-            placeholder={'filter by user'}
-            handleChange={handleChange}
-            width={'200px'}
-          />
+        <div className="users-box pl16 pr16 pb16">
+          <SearchBox placeholder={'filter by user'} handleChange={handleChange} width={'200px'} />
           <ButtonGroup
             buttons={['Popular', 'Name', 'Active', 'New Users']}
             selected={sortType}
             setSelected={setSortType}
           />
         </div>
-        <div className='user-browser'>
-          <div className='grid-layout'>
+        <div className="user-browser">
+          <div className="grid-layout">
             {currentUsers
-              .filter((user) =>
-                user.username.toLowerCase().includes(fetchSearch.toLowerCase())
-              )
+              .filter((user) => user.username.toLowerCase().includes(fetchSearch.toLowerCase()))
               ?.sort(handleSorting(sortType, 'users'))
               .map((user) => (
                 <UserPanel key={user.id} user={user} />
@@ -73,9 +67,7 @@ const UsersPage = ({getUsers, user: {users, loading}}) => {
           total={users.length}
           elementsPerPage={itemsPerPage}
           showInline={showInline}
-          handlePaginationChange={(currentPage) =>
-            handlePaginationChange(currentPage)
-          }
+          handlePaginationChange={(currentPage) => handlePaginationChange(currentPage)}
           hideOnSinglePage={true}
         />
       </div>
@@ -85,11 +77,11 @@ const UsersPage = ({getUsers, user: {users, loading}}) => {
 
 UsersPage.propTypes = {
   getUsers: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  user: state.user,
+  user: state.user
 });
 
 export default connect(mapStateToProps, { getUsers })(UsersPage);

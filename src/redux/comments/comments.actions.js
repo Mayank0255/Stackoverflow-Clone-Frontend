@@ -1,12 +1,7 @@
-import {
-  GET_COMMENTS,
-  COMMENT_ERROR,
-  ADD_COMMENT,
-  DELETE_COMMENT,
-} from './comments.types';
+import { GET_COMMENTS, COMMENT_ERROR, ADD_COMMENT, DELETE_COMMENT } from './comments.types';
 
 import axios from 'axios';
-import {setAlert} from '../alert/alert.actions';
+import { setAlert } from '../alert/alert.actions';
 
 export const getComments = (id) => async (dispatch) => {
   try {
@@ -14,12 +9,12 @@ export const getComments = (id) => async (dispatch) => {
 
     dispatch({
       type: GET_COMMENTS,
-      payload: res.data.data,
+      payload: res.data.data
     });
   } catch (err) {
     dispatch({
       type: COMMENT_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };
@@ -28,20 +23,16 @@ export const getComments = (id) => async (dispatch) => {
 export const addComment = (postId, formData) => async (dispatch) => {
   const config = {
     headers: {
-      'Content-Type': 'application/json',
-    },
+      'Content-Type': 'application/json'
+    }
   };
 
   try {
-    const res = await axios.post(
-      `/api/posts/comments/${postId}`,
-      formData,
-      config
-    );
+    const res = await axios.post(`/api/posts/comments/${postId}`, formData, config);
 
     dispatch({
       type: ADD_COMMENT,
-      payload: res.data.data,
+      payload: res.data.data
     });
 
     dispatch(setAlert(res.data.message, 'success'));
@@ -52,7 +43,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
 
     dispatch({
       type: COMMENT_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };
@@ -64,7 +55,7 @@ export const deleteComment = (CommentId) => async (dispatch) => {
 
     dispatch({
       type: DELETE_COMMENT,
-      payload: CommentId,
+      payload: CommentId
     });
 
     dispatch(setAlert(res.data.message, 'success'));
@@ -73,7 +64,7 @@ export const deleteComment = (CommentId) => async (dispatch) => {
 
     dispatch({
       type: COMMENT_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };

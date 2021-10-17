@@ -15,11 +15,9 @@ const handleSorting = (sortType, page = '') => {
     case 'New Users':
       return (a, b) => new Date(b.created_at) - new Date(a.created_at);
     case 'Top':
-      return (a, b) =>
-        b.answer_count + b.comment_count - (a.answer_count + a.comment_count);
+      return (a, b) => b.answer_count + b.comment_count - (a.answer_count + a.comment_count);
     case 'Active':
-      return (a, b) =>
-        b.posts_count + b.tags_count - (a.posts_count + a.tags_count);
+      return (a, b) => b.posts_count + b.tags_count - (a.posts_count + a.tags_count);
     case 'Views':
       return (a, b) => b.views - a.views;
     case 'Oldest':

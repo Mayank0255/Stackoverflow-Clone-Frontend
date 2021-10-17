@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import React, { useCallback, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
-import "./Pagination.styles.scss";
+// import "./Pagination.styles.scss";
 
 const Pagination = ({
   total,
   elementsPerPage,
   showInline,
   handlePaginationChange,
-  hideOnSinglePage,
+  hideOnSinglePage
 }) => {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,12 +36,9 @@ const Pagination = ({
   const getPaginationItem = useCallback(
     (currentIdx, activeIdx) =>
       activeIdx === currentIdx + 1 ? (
-        <span class="s-pagination--item is-selected">{currentIdx + 1}</span>
+        <span className="s-pagination--item is-selected">{currentIdx + 1}</span>
       ) : (
-        <span
-          class="s-pagination--item"
-          onClick={() => handleChange(currentIdx + 1)}
-        >
+        <span className="s-pagination--item" onClick={() => handleChange(currentIdx + 1)}>
           {currentIdx + 1}
         </span>
       ),
@@ -54,11 +51,7 @@ const Pagination = ({
 
     const enableNextBtn = currentPage !== pages;
 
-    for (
-      let i = 1;
-      i <= showInline && i + currentPage - half - 1 < pages - 1;
-      i++
-    ) {
+    for (let i = 1; i <= showInline && i + currentPage - half - 1 < pages - 1; i++) {
       const idx = i + currentPage - half - 1;
 
       if (i + currentPage - half >= 1) {
@@ -69,13 +62,10 @@ const Pagination = ({
     // Add menu items with dots and last item.
     if (pages > showInline) {
       li.push([
-        <span
-          key="dots"
-          className="s-pagination--item s-pagination--item__clear"
-        >
+        <span key="dots" className="s-pagination--item s-pagination--item__clear">
           ...
         </span>,
-        getPaginationItem(pages - 1, currentPage),
+        getPaginationItem(pages - 1, currentPage)
       ]);
     }
 
@@ -84,24 +74,13 @@ const Pagination = ({
       <span
         key="next-btn"
         className={`s-pagination--item`}
-        onClick={
-          enableNextBtn ? () => handleChange(currentPage + 1) : undefined
-        }
-      >
+        onClick={enableNextBtn ? () => handleChange(currentPage + 1) : undefined}>
         Next
-      </span>,
+      </span>
     ]);
 
     setItems(li);
-  }, [
-    total,
-    elementsPerPage,
-    currentPage,
-    showInline,
-    handleChange,
-    pages,
-    getPaginationItem,
-  ]);
+  }, [total, elementsPerPage, currentPage, showInline, handleChange, pages, getPaginationItem]);
 
   useEffect(() => {
     handleChange(1);
@@ -111,7 +90,7 @@ const Pagination = ({
   // Only show if single page.
   if (!(hideOnSinglePage && pages === 1)) {
     return (
-      <div className="s-pagination" style={{ float: "right" }}>
+      <div className="s-pagination" style={{ float: 'right' }}>
         {items}
       </div>
     );
@@ -129,13 +108,13 @@ Pagination.propTypes = {
   // Whether to show the pagination, if only one page.
   hideOnSinglePage: PropTypes.bool,
   // Callback, for when the page changes.
-  handlePaginationChange: PropTypes.func.isRequired,
+  handlePaginationChange: PropTypes.func.isRequired
 };
 
 Pagination.defaultProps = {
   showInline: 5,
   elementsPerPage: 10,
-  hideOnSinglePage: true,
+  hideOnSinglePage: true
 };
 
 export default Pagination;

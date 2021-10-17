@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {setAlert} from '../alert/alert.actions';
+import { setAlert } from '../alert/alert.actions';
 import {
   GET_POSTS,
   GET_POST,
@@ -7,7 +7,7 @@ import {
   GET_TAG_POSTS,
   POST_ERROR,
   DELETE_POST,
-  ADD_POST,
+  ADD_POST
 } from './posts.types';
 
 // Get posts
@@ -17,14 +17,14 @@ export const getPosts = () => async (dispatch) => {
 
     dispatch({
       type: GET_POSTS,
-      payload: res.data.data,
+      payload: res.data.data
     });
   } catch (err) {
     dispatch(setAlert(err.response.data.message, 'danger'));
 
     dispatch({
       type: POST_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };
@@ -36,14 +36,14 @@ export const getPost = (id) => async (dispatch) => {
 
     dispatch({
       type: GET_POST,
-      payload: res.data.data,
+      payload: res.data.data
     });
   } catch (err) {
     dispatch(setAlert(err.response.data.message, 'danger'));
 
     dispatch({
       type: POST_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };
@@ -55,14 +55,14 @@ export const getTopPosts = () => async (dispatch) => {
 
     dispatch({
       type: GET_TOP_POSTS,
-      payload: res.data.data,
+      payload: res.data.data
     });
   } catch (err) {
     dispatch(setAlert(err.response.data.message, 'danger'));
 
     dispatch({
       type: POST_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };
@@ -74,14 +74,14 @@ export const getTagPosts = (tagName) => async (dispatch) => {
 
     dispatch({
       type: GET_TAG_POSTS,
-      payload: res.data.data,
+      payload: res.data.data
     });
   } catch (err) {
     dispatch(setAlert(err.response.data.message, 'danger'));
 
     dispatch({
       type: POST_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };
@@ -90,8 +90,8 @@ export const getTagPosts = (tagName) => async (dispatch) => {
 export const addPost = (formData) => async (dispatch) => {
   const config = {
     headers: {
-      'Content-Type': 'application/json',
-    },
+      'Content-Type': 'application/json'
+    }
   };
 
   try {
@@ -99,7 +99,7 @@ export const addPost = (formData) => async (dispatch) => {
 
     dispatch({
       type: ADD_POST,
-      payload: res.data.data,
+      payload: res.data.data
     });
 
     dispatch(setAlert(res.data.message, 'success'));
@@ -110,7 +110,7 @@ export const addPost = (formData) => async (dispatch) => {
 
     dispatch({
       type: POST_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };
@@ -122,7 +122,7 @@ export const deletePost = (id) => async (dispatch) => {
 
     dispatch({
       type: DELETE_POST,
-      payload: id,
+      payload: id
     });
 
     dispatch(setAlert(res.data.message, 'success'));
@@ -131,7 +131,7 @@ export const deletePost = (id) => async (dispatch) => {
 
     dispatch({
       type: POST_ERROR,
-      payload: {msg: err.response.statusText, status: err.response.status},
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };

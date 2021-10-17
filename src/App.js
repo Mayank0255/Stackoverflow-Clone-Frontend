@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
-import {Provider} from 'react-redux';
+import React, { useEffect } from 'react';
+import { Provider } from 'react-redux';
 import store from './redux/store';
 import setAuthToken from './redux/auth/auth.utils';
-import {loadUser} from './redux/auth/auth.actions';
+import { loadUser } from './redux/auth/auth.actions';
 import Routes from './routes';
 
 import Header from './components/Header/Header.component';
@@ -21,7 +21,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <div className='App'>
+      <div className="App">
         <Header />
         <Alert />
         <Routes />

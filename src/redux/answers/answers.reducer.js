@@ -1,14 +1,9 @@
-import {
-  GET_ANSWERS,
-  ANSWER_ERROR,
-  ADD_ANSWER,
-  DELETE_ANSWER,
-} from './answers.types';
+import { GET_ANSWERS, ANSWER_ERROR, ADD_ANSWER, DELETE_ANSWER } from './answers.types';
 
 const initialState = {
   answers: [],
   loading: true,
-  error: {},
+  error: {}
 };
 
 export default function (state = initialState, action) {
@@ -17,25 +12,25 @@ export default function (state = initialState, action) {
       return {
         ...state,
         answers: action.payload,
-        loading: false,
+        loading: false
       };
     case ADD_ANSWER:
       return {
         ...state,
         answers: [...state.answers, action.payload],
-        loading: false,
+        loading: false
       };
     case DELETE_ANSWER:
       return {
         ...state,
         answers: state.answers.filter((answer) => answer.id !== action.payload),
-        loading: false,
+        loading: false
       };
     case ANSWER_ERROR:
       return {
         ...state,
         error: action.payload,
-        loading: false,
+        loading: false
       };
     default:
       return state;

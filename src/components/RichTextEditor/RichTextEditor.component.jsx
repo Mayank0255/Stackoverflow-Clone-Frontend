@@ -1,4 +1,4 @@
-import React, {useState, forwardRef, useImperativeHandle} from 'react';
+import React, { useState, forwardRef, useImperativeHandle } from 'react';
 import RichTextEditor from 'react-rte';
 import './RichTextEditor.styles.scss';
 
@@ -8,7 +8,7 @@ const MyStatefulEditor = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     cleanEditorState() {
       setValue(RichTextEditor.createEmptyValue());
-    },
+    }
   }));
 
   const onChange = (newValue) => {
@@ -29,14 +29,14 @@ const MyStatefulEditor = forwardRef((props, ref) => {
     display: [
       'INLINE_STYLE_BUTTONS',
       'BLOCK_TYPE_BUTTONS',
-      'LINK_BUTTONS',
+      'LINK_BUTTONS'
       // 'BLOCK_TYPE_DROPDOWN',
       // 'HISTORY_BUTTONS',
     ],
     INLINE_STYLE_BUTTONS: [
-      {label: 'Bold', style: 'BOLD', className: 'button-format'},
-      {label: 'Italic', style: 'ITALIC', className: 'button-format'},
-      {label: 'Underline', style: 'UNDERLINE', className: 'button-format'},
+      { label: 'Bold', style: 'BOLD', className: 'button-format' },
+      { label: 'Italic', style: 'ITALIC', className: 'button-format' },
+      { label: 'Underline', style: 'UNDERLINE', className: 'button-format' }
       // {label: 'Monospace', style: 'CODE', className: 'button-format'},
     ],
     // BLOCK_TYPE_DROPDOWN: [
@@ -46,21 +46,21 @@ const MyStatefulEditor = forwardRef((props, ref) => {
     //   {label: 'Heading Small', style: 'header-three'},
     // ],
     BLOCK_TYPE_BUTTONS: [
-      {label: 'UL', style: 'unordered-list-item', className: 'button-format'},
-      {label: 'OL', style: 'ordered-list-item', className: 'button-format'},
-      {label: 'Blockquote', style: 'blockquote', className: 'button-format'},
+      { label: 'UL', style: 'unordered-list-item', className: 'button-format' },
+      { label: 'OL', style: 'ordered-list-item', className: 'button-format' },
+      { label: 'Blockquote', style: 'blockquote', className: 'button-format' },
       {
         label: 'Code Block',
         style: 'code-block',
-        className: 'button-format code-block',
-      },
-    ],
+        className: 'button-format code-block'
+      }
+    ]
   };
   return (
     <RichTextEditor
-      className='rich-text-editor-root'
-      toolbarClassName='rich-text-editor-toolbar'
-      editorClassName='rich-text-editor-editor'
+      className="rich-text-editor-root"
+      toolbarClassName="rich-text-editor-toolbar"
+      editorClassName="rich-text-editor-editor"
       toolbarConfig={toolbarConfig}
       value={value}
       onChange={onChange}

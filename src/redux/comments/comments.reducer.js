@@ -1,14 +1,9 @@
-import {
-  GET_COMMENTS,
-  COMMENT_ERROR,
-  ADD_COMMENT,
-  DELETE_COMMENT,
-} from './comments.types';
+import { GET_COMMENTS, COMMENT_ERROR, ADD_COMMENT, DELETE_COMMENT } from './comments.types';
 
 const initialState = {
   comments: [],
   loading: true,
-  error: {},
+  error: {}
 };
 
 export default function (state = initialState, action) {
@@ -17,27 +12,25 @@ export default function (state = initialState, action) {
       return {
         ...state,
         comments: action.payload,
-        loading: false,
+        loading: false
       };
     case ADD_COMMENT:
       return {
         ...state,
         comments: [action.payload, ...state.comments],
-        loading: false,
+        loading: false
       };
     case DELETE_COMMENT:
       return {
         ...state,
-        comments: state.comments.filter(
-          (answer) => answer.id !== action.payload
-        ),
-        loading: false,
+        comments: state.comments.filter((answer) => answer.id !== action.payload),
+        loading: false
       };
     case COMMENT_ERROR:
       return {
         ...state,
         error: action.payload,
-        loading: false,
+        loading: false
       };
     default:
       return state;

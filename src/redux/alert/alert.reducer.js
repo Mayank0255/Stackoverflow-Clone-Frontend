@@ -2,7 +2,7 @@ import {SET_ALERT, REMOVE_ALERT} from './alert.types';
 
 const InitialState = [];
 
-export default function (state = InitialState, action) {
+export default function alert(state = InitialState, action) {
   switch (action.type) {
     case SET_ALERT:
       return [...state, action.payload];

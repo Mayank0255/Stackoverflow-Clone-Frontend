@@ -60,7 +60,7 @@ const PostComponent = PageContainer({component: Post});
 const UserPageComponent = PageContainer({component: UserPage});
 const TagPageComponent = PageContainer({component: TagPage});
 
-const Routes = () => {
+const RoutesTree = () => {
   return (
     <Switch>
       <Route exact path='/' component={HomePageComponent} />
@@ -78,4 +78,4 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+export default RoutesTree;

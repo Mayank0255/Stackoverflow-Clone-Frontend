@@ -15,7 +15,7 @@ const initialState = {
   error: {},
 };
 
-export default function (state = initialState, action) {
+export default function posts(state = initialState, action) {
   switch (action.type) {
     case GET_POSTS:
     case GET_TOP_POSTS:

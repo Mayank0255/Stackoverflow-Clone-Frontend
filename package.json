@@ -9,7 +9,6 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.1",
     "moment": "^2.27.0",
-    "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -25,6 +24,7 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
+    "sass": "^1.45.2",
     "uuid": "^7.0.3"
   },
   "scripts": {
@@ -48,6 +48,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000",
-  "devDependencies": {}
+  "proxy": "http://localhost:5000"
 }

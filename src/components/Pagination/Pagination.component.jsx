@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import "./Pagination.styles.scss";
-
 const Pagination = ({
   total,
   elementsPerPage,

@@ -8,7 +8,7 @@ import PostItem from '../../components/PostItem/PostItem.component';
 import Spinner from '../../components/Spinner/Spinner.component';
 
 import './HomePage.styles.scss';
-import Pagination from '../../components/Pagination/Pagination';
+import Pagination from '../../components/Pagination/Pagination.component';
 
 const itemsPerPage = 12;
 const showInline = 5;

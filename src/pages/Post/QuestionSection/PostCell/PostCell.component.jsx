@@ -13,7 +13,7 @@ const PostCell = ({
   deletePost,
   auth,
   post: {
-    post: {id, post_body, tagname, user_id, username, created_at},
+    post: {id, post_body, tagname, gravatar, user_id, username, created_at},
   },
   postId,
 }) => {
@@ -65,6 +65,7 @@ const PostCell = ({
             <UserCard
               created_at={created_at}
               user_id={user_id}
+              gravatar={gravatar}
               username={username}
             />
           </div>

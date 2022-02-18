@@ -26,7 +26,7 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
           <img
             alt='user-logo'
             className='logo'
-            src={`https://secure.gravatar.com/avatar/${user.id}?s=164&d=identicon`}
+            src={`https://secure.gravatar.com/avatar/${user.gravatar}?s=164&d=identicon`}
           />
         </Link>
       )}

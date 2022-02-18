@@ -45,7 +45,7 @@ const UserPage = ({getUser, user: {user, loading}, match}) => {
                   <Link className='avatar-link' to={`/users/${user.id}`}>
                     <div className='logo-wrapper'>
                       <img
-                        src={`https://secure.gravatar.com/avatar/${user.id}?s=164&d=identicon`}
+                        src={`https://secure.gravatar.com/avatar/${user.gravatar}?s=164&d=identicon`}
                         alt='user-logo'
                       />
                     </div>

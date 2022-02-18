@@ -7,6 +7,7 @@ import './UserCard.styles.scss';
 const UserCard = ({
   created_at,
   user_id,
+  gravatar,
   username,
   dateType,
   float,
@@ -28,7 +29,7 @@ const UserCard = ({
               <div className='logo-wrapper'>
                 <img
                   alt='user_logo'
-                  src={`https://secure.gravatar.com/avatar/${user_id}?s=164&d=identicon`}
+                  src={`https://secure.gravatar.com/avatar/${gravatar}?s=164&d=identicon`}
                 />
               </div>
             </Link>

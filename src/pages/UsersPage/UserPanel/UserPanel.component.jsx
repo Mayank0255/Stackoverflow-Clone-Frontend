@@ -17,7 +17,7 @@ const UserPanel = ({
             <div className='logo-wrapper'>
               <img
                 alt='user-logo'
-                src={`https://secure.gravatar.com/avatar/${gravatar}?s=164&d=identicon`}
+                src={gravatar}
               />
             </div>
           </Link>

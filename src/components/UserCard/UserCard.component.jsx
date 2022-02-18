@@ -29,7 +29,7 @@ const UserCard = ({
               <div className='logo-wrapper'>
                 <img
                   alt='user_logo'
-                  src={`https://secure.gravatar.com/avatar/${gravatar}?s=164&d=identicon`}
+                  src={gravatar}
                 />
               </div>
             </Link>

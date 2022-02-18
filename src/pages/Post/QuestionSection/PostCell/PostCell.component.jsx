@@ -49,7 +49,7 @@ const PostCell = ({
                 </Link>
                 {!auth.loading &&
                   auth.isAuthenticated &&
-                  parseInt(user_id) === auth.user.id && (
+                  user_id === auth.user.id && (
                     <Link
                       className='s-link s-link__danger'
                       style={{paddingLeft: '4px'}}

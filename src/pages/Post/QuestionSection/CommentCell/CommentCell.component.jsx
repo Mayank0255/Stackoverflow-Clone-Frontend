@@ -75,7 +75,7 @@ const CommentCell = ({
                     </div>
                     {!auth.loading &&
                       auth.isAuthenticated &&
-                      parseInt(comment.user_id) === auth.user.id && (
+                      comment.user_id === auth.user.id && (
                         <Link
                           className='s-tag s-tag__moderator'
                           style={{marginTop: '4px'}}

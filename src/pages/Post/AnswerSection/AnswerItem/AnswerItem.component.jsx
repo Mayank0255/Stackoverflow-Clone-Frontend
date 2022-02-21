@@ -12,7 +12,7 @@ import './AnswerItem.styles.scss';
 
 const AnswerItem = ({
   deleteAnswer,
-  answer: {body, user_id, id, created_at, username},
+  answer: {body, user_id, gravatar, id, created_at, username},
   auth,
   postId,
 }) => {
@@ -58,7 +58,7 @@ const AnswerItem = ({
                 </Link>
                 {!auth.loading &&
                   auth.isAuthenticated &&
-                  parseInt(user_id) === auth.user.id && (
+                  user_id === auth.user.id && (
                     <Link
                       className='s-link s-link__danger'
                       style={{paddingLeft: '4px'}}
@@ -74,6 +74,7 @@ const AnswerItem = ({
             <UserCard
               created_at={created_at}
               user_id={user_id}
+              gravatar={gravatar}
               username={username}
               dateType={'answered'}
               backgroundColor={'transparent'}

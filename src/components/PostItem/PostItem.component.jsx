@@ -18,6 +18,7 @@ const PostItem = ({
     body,
     tagname,
     username,
+    gravatar,
     user_id,
     answer_count,
     comment_count,
@@ -66,6 +67,7 @@ const PostItem = ({
         <UserCard
           created_at={created_at}
           user_id={user_id}
+          gravatar={gravatar}
           username={username}
           float={'right'}
           backgroundColor={'transparent'}

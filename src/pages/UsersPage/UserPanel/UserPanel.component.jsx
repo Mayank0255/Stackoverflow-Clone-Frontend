@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import './UserPanel.styles.scss';
 
 const UserPanel = ({
-  user: {id, username, created_at, posts_count, tags_count, views},
+  user: {id, username, created_at, posts_count, tags_count, views, gravatar},
 }) => {
   return (
     <Fragment>
@@ -17,7 +17,7 @@ const UserPanel = ({
             <div className='logo-wrapper'>
               <img
                 alt='user-logo'
-                src={`https://secure.gravatar.com/avatar/${id}?s=164&d=identicon`}
+                src={gravatar}
               />
             </div>
           </Link>

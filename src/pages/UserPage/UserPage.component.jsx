@@ -81,7 +81,7 @@ const UserPage = ({getUser, user: {user, loading}, match}) => {
                       <div className='cells'>
                         <div className='column-grid'>
                           <div className='head fc-black-700'>
-                            {user.answer_count}
+                            {user.answers_count}
                           </div>
                           <div className='foot fc-black-500'>answers</div>
                         </div>
@@ -89,7 +89,7 @@ const UserPage = ({getUser, user: {user, loading}, match}) => {
                       <div className='cells'>
                         <div className='column-grid'>
                           <div className='head fc-black-700'>
-                            {user.post_count}
+                            {user.posts_count}
                           </div>
                           <div className='foot fc-black-500'>questions</div>
                         </div>
@@ -97,7 +97,7 @@ const UserPage = ({getUser, user: {user, loading}, match}) => {
                       <div className='cells'>
                         <div className='column-grid'>
                           <div className='head fc-black-700'>
-                            {user.comment_count}
+                            {user.comments_count}
                           </div>
                           <div className='foot fc-black-500'>comments</div>
                         </div>
@@ -105,7 +105,7 @@ const UserPage = ({getUser, user: {user, loading}, match}) => {
                       <div className='cells'>
                         <div className='column-grid'>
                           <div className='head fc-black-700'>
-                            {user.tag_count}
+                            {user.tags_count}
                           </div>
                           <div className='foot fc-black-500'>tags</div>
                         </div>

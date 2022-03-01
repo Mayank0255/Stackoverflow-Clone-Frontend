@@ -7,10 +7,11 @@ import {
 
 import axios from 'axios';
 import {setAlert} from '../alert/alert.actions';
+import config from "../../config";
 
 export const getAnswers = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/posts/answers/${id}`);
+    const res = await axios.get(config.BASE_URL + `/api/posts/answers/${id}`);
 
     dispatch({
       type: GET_ANSWERS,
@@ -26,7 +27,7 @@ export const getAnswers = (id) => async (dispatch) => {
 
 // Add Answer
 export const addAnswer = (postId, formData) => async (dispatch) => {
-  const config = {
+  const config_headers = {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -34,9 +35,9 @@ export const addAnswer = (postId, formData) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      `/api/posts/answers/${postId}`,
+      config.BASE_URL + `/api/posts/answers/${postId}`,
       formData,
-      config
+      config_headers
     );
 
     dispatch({
@@ -60,7 +61,7 @@ export const addAnswer = (postId, formData) => async (dispatch) => {
 // Delete Answer
 export const deleteAnswer = (AnswerId) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/api/posts/answers/${AnswerId}`);
+    const res = await axios.delete(config.BASE_URL + `/api/posts/answers/${AnswerId}`);
 
     dispatch({
       type: DELETE_ANSWER,

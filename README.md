@@ -21,13 +21,13 @@ This repo consists of the Frontend code of the project, the backend code is in [
 
 #### Back-end
 
-- For handling server requests: `Node.js with Express.js Framework`
+- For handling index requests: `Node.js with Express.js Framework`
 - As Database: `MySQL`
 - API tested using: `POSTMAN`
 
 ### Original Tech Stack
 
-- For handling server requests: `C#`
+- For handling index requests: `C#`
 - As Database: `Microsoft SQL Server`
 - `.NET` as well
 
@@ -63,7 +63,7 @@ This repo consists of the Frontend code of the project, the backend code is in [
      source ./data/seed.sql
      ```
 
-   - Run the server `npm start`.
+   - Run the index `npm start`.
 
 3. Open a new CLI terminal and goto the root `Stackoverflow-Clone` folder you created in the first step.
 4. Setup the Frontend code -
@@ -77,7 +77,7 @@ This repo consists of the Frontend code of the project, the backend code is in [
      npm install
      ```
 
-   - Run the client server `npm start`.
+   - Run the client index `npm start`.
 
 _Follow the steps properly and you are good to go._
 

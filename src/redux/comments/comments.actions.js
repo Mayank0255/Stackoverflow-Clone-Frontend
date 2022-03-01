@@ -1,3 +1,7 @@
+import axios from 'axios';
+
+import config from "../../config";
+import {setAlert} from '../alert/alert.actions';
 import {
   GET_COMMENTS,
   COMMENT_ERROR,
@@ -5,12 +9,9 @@ import {
   DELETE_COMMENT,
 } from './comments.types';
 
-import axios from 'axios';
-import {setAlert} from '../alert/alert.actions';
-
 export const getComments = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/posts/comments/${id}`);
+    const res = await axios.get(config.BASE_URL + `/api/posts/comments/${id}`);
 
     dispatch({
       type: GET_COMMENTS,
@@ -26,7 +27,7 @@ export const getComments = (id) => async (dispatch) => {
 
 // Add COMMENT
 export const addComment = (postId, formData) => async (dispatch) => {
-  const config = {
+  const config_headers = {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -34,9 +35,9 @@ export const addComment = (postId, formData) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      `/api/posts/comments/${postId}`,
+      config.BASE_URL + `/api/posts/comments/${postId}`,
       formData,
-      config
+      config_headers
     );
 
     dispatch({
@@ -60,7 +61,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
 // Delete Comment
 export const deleteComment = (CommentId) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/api/posts/comments/${CommentId}`);
+    const res = await axios.delete(config.BASE_URL + `/api/posts/comments/${CommentId}`);
 
     dispatch({
       type: DELETE_COMMENT,

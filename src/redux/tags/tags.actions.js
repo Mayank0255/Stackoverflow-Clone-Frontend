@@ -1,10 +1,11 @@
 import {GET_TAG, GET_TAGS, TAG_ERROR} from './tags.types';
 import axios from 'axios';
 import {setAlert} from '../alert/alert.actions';
+import config from "../../config";
 
 export const getTag = (tagName) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/tags/${tagName}`);
+    const res = await axios.get(config.BASE_URL + `/api/tags/${tagName}`);
 
     dispatch({
       type: GET_TAG,
@@ -23,7 +24,7 @@ export const getTag = (tagName) => async (dispatch) => {
 
 export const getTags = () => async (dispatch) => {
   try {
-    const res = await axios.get('/api/tags');
+    const res = await axios.get(config.BASE_URL + '/api/tags');
 
     dispatch({
       type: GET_TAGS,

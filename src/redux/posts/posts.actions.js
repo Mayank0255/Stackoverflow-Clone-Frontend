@@ -1,4 +1,6 @@
 import axios from 'axios';
+
+import config from "../../config";
 import {setAlert} from '../alert/alert.actions';
 import {
   GET_POSTS,
@@ -13,7 +15,7 @@ import {
 // Get posts
 export const getPosts = () => async (dispatch) => {
   try {
-    const res = await axios.get('/api/posts');
+    const res = await axios.get(config.BASE_URL + '/api/posts');
 
     dispatch({
       type: GET_POSTS,
@@ -32,7 +34,7 @@ export const getPosts = () => async (dispatch) => {
 // Get post
 export const getPost = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/posts/${id}`);
+    const res = await axios.get(config.BASE_URL + `/api/posts/${id}`);
 
     dispatch({
       type: GET_POST,
@@ -51,7 +53,7 @@ export const getPost = (id) => async (dispatch) => {
 //GET TOP POSTS
 export const getTopPosts = () => async (dispatch) => {
   try {
-    const res = await axios.get('/api/posts/top');
+    const res = await axios.get(config.BASE_URL + '/api/posts/top');
 
     dispatch({
       type: GET_TOP_POSTS,
@@ -70,7 +72,7 @@ export const getTopPosts = () => async (dispatch) => {
 //GET TAG POSTS
 export const getTagPosts = (tagName) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/posts/tag/${tagName}`);
+    const res = await axios.get(config.BASE_URL + `/api/posts/tag/${tagName}`);
 
     dispatch({
       type: GET_TAG_POSTS,
@@ -88,14 +90,14 @@ export const getTagPosts = (tagName) => async (dispatch) => {
 
 // Add post
 export const addPost = (formData) => async (dispatch) => {
-  const config = {
+  const config_headers = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
 
   try {
-    const res = await axios.post('/api/posts', formData, config);
+    const res = await axios.post(config.BASE_URL + '/api/posts', formData, config_headers);
 
     dispatch({
       type: ADD_POST,
@@ -118,7 +120,7 @@ export const addPost = (formData) => async (dispatch) => {
 // Delete post
 export const deletePost = (id) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/api/posts/${id}`);
+    const res = await axios.delete(config.BASE_URL + `/api/posts/${id}`);
 
     dispatch({
       type: DELETE_POST,

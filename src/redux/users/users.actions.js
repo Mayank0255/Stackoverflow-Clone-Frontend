@@ -1,11 +1,12 @@
-import {GET_USERS, GET_USER, USER_ERROR} from './users.types';
-
 import axios from 'axios';
+
+import config from "../../config";
+import {GET_USERS, GET_USER, USER_ERROR} from './users.types';
 
 // Get users
 export const getUsers = () => async (dispatch) => {
   try {
-    const res = await axios.get('/api/users');
+    const res = await axios.get(config.BASE_URL + '/api/users');
     dispatch({
       type: GET_USERS,
       payload: res.data.data,
@@ -21,9 +22,8 @@ export const getUsers = () => async (dispatch) => {
 // Get user
 export const getUser = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/users/${id}`);
+    const res = await axios.get(config.BASE_URL + `/api/users/${id}`);
 
-    console.log(res.data);
     dispatch({
       type: GET_USER,
       payload: res.data.data,

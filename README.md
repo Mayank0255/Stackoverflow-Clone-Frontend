@@ -6,11 +6,15 @@
 [![MYSQL](https://img.shields.io/static/v1?label=mysql&message=8.0.10&color=blueviolet)](https://shields.io/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://shields.io/)
 
-**[Demo Video](https://www.youtube.com/watch?v=3jDIEf5vNp8)**
+### [🌐 Website](https://stackoverflow-clone-client.vercel.app)  |  [📹 Demo Video](https://www.youtube.com/watch?v=3jDIEf5vNp8)
+
+### API Hosted On
+- __[stackoverflow-clone-api.onrender.com](https://stackoverflow-clone-api.onrender.com) (Primary)__
+- __[stackoverflow-clone-backend.herokuapp.com](https://stackoverflow-clone-backend.herokuapp.com)__
 
 As the name suggests, this project is a clone of a famous Q/A website for professional and enthusiast programmers built solely by me using a completely different stack.
 
-This repo consists of the Frontend code of the project, the backend code is in [Stackoverflow-Clone-Backend](https://github.com/Mayank0255/Stackoverflow-Clone-Backend)
+This repo consists of the Frontend code of the project, the backend code is in __[Stackoverflow-Clone-Backend](https://github.com/Mayank0255/Stackoverflow-Clone-Backend)__
 
 ## My Tech Stack (MERN)
 
@@ -22,7 +26,7 @@ This repo consists of the Frontend code of the project, the backend code is in [
 #### Back-end
 
 - For handling index requests: `Node.js with Express.js Framework`
-- As Database: `MySQL`
+- As Database: `MySQL with Sequelize`
 - API tested using: `POSTMAN`
 
 ### Original Tech Stack
@@ -31,11 +35,11 @@ This repo consists of the Frontend code of the project, the backend code is in [
 - As Database: `Microsoft SQL Server`
 - `.NET` as well
 
-## Contributing
-
-- Go to `Contributing.md`
-
 ## Guidelines to setup
+
+There are two ways to setup the project: manually or using the Dockerfile. Read below for more details:
+
+### Manual Setup
 
 1. Open your local CLI -
 
@@ -59,9 +63,9 @@ This repo consists of the Frontend code of the project, the backend code is in [
    - Open your MySQL Client -
 
      ```
-     source ./data/databaseConfig.sql
-     source ./data/seed.sql
+     CREATE DATABASE stack_overflow;
      ```
+     NOTE: Don't forget to keep the database name same in the `.env` and here.
 
    - Run the index `npm start`.
 
@@ -79,7 +83,30 @@ This repo consists of the Frontend code of the project, the backend code is in [
 
    - Run the client index `npm start`.
 
-_Follow the steps properly and you are good to go._
+### Docker Setup
+
+The back-end has support for Docker. So if you want to run the back-end in a container, you need do:
+
+- Setup environment variables in `.env` file. Note when you use Docker setup and run the database in localhost (host machine), you need to setup the environment variables for use correct IP of MySQL Database. Please, read [here](https://docs.docker.com/compose/environment-variables/) and [here](https://docs.docker.com/desktop/windows/networking/) for more details.
+
+- Build the Docker image:
+  ```
+  docker build -t stackoverflowclone .
+  ```
+- Run the container. For example, if you want to run the container in a new terminal, you can do:
+  ```
+  docker run -d -p 5000:5000 stackoverflowclone
+  ```
+
+The default port of api is 5000. After running the container, you can access the api by typing:
+
+    http://localhost:5000/api/<endpoint that you request - see next section>
+
+_Follow the steps properly (manual or Docker) and you are good to go._
+
+## Contributing
+
+- Go to `Contributing.md`
 
 ## DEMO
 

@@ -10,7 +10,7 @@ import './QuestionSection.styles.scss';
 
 const QuestionSection = ({
   post: {
-    post: {id, answer_count, comment_count},
+    post: {answer_count, comment_count},
   },
   postId,
 }) => {

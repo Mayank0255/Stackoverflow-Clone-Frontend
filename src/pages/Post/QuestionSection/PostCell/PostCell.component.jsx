@@ -13,7 +13,7 @@ const PostCell = ({
   deletePost,
   auth,
   post: {
-    post: {id, post_body, tagname, gravatar, user_id, username, created_at},
+    post: {id, post_body, tags, gravatar, user_id, username, created_at},
   },
   postId,
 }) => {
@@ -27,7 +27,9 @@ const PostCell = ({
       <div className='post-cell'>
         <div className='post-text fc-black-800' dangerouslySetInnerHTML={{__html: post_body}}></div>
         <div className='post-tags fc-black-800'>
-          <TagBadge tag_name={tagname} size={'s-tag'} float={'left'} />
+          {tags.map((tag, index) => (
+            <TagBadge key={index} tag_name={tag.tagname} size={'s-tag'} float={'left'} />
+          ))}
         </div>
         <div className='post-actions fc-black-800'>
           <div className='post-actions-extended'>

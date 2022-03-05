@@ -11,9 +11,9 @@ import ButtonGroup from '../../../components/ButtonGroup/ButtonGroup.component';
 
 import './AnswerSection.styles.scss';
 
-const AnswerSection = ({getAnswers, auth, answer, postId}) => {
+const AnswerSection = ({getAnswers, answer, post: {post}}) => {
   useEffect(() => {
-    getAnswers(postId);
+    getAnswers(post.id);
     // eslint-disable-next-line
   }, [getAnswers]);
 
@@ -39,12 +39,12 @@ const AnswerSection = ({getAnswers, auth, answer, postId}) => {
         ) : (
           answer.answers?.sort(handleSorting(sortType)).map((answer) => (
             <div key={answer.id} className='answers'>
-              <AnswerItem answer={answer} auth={auth} postId={postId} />
+              <AnswerItem answer={answer}/>
             </div>
           ))
         )}
         <div className='add-answer'>
-          <AnswerForm auth={auth} postId={postId} />
+          <AnswerForm/>
         </div>
       </div>
     </Fragment>
@@ -52,14 +52,14 @@ const AnswerSection = ({getAnswers, auth, answer, postId}) => {
 };
 
 AnswerSection.propTypes = {
-  auth: PropTypes.object.isRequired,
   getAnswers: PropTypes.func.isRequired,
   answer: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
   answer: state.answer,
+  post: state.post,
 });
 
 export default connect(mapStateToProps, {getAnswers})(AnswerSection);

@@ -8,7 +8,7 @@ import RichTextEditor from '../../../../components/RichTextEditor/RichTextEditor
 
 import './AnswerForm.styles.scss';
 
-const AnswerForm = ({addAnswer, auth, postId}) => {
+const AnswerForm = ({addAnswer, auth, post: {post}}) => {
   const [formData, setFormData] = useState({
     text: '',
   });
@@ -19,7 +19,7 @@ const AnswerForm = ({addAnswer, auth, postId}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addAnswer(postId, {text});
+    addAnswer(post.id, {text});
     setFormData({
       text: '',
     });
@@ -43,16 +43,6 @@ const AnswerForm = ({addAnswer, auth, postId}) => {
                   onChange={updateConvertedContent}
                 />
               </div>
-              {/* <textarea
-                className='s-textarea'
-                name='text'
-                cols='30'
-                rows='12'
-                value={text}
-                onChange={(e) => handleChange(e)}
-                placeholder='Enter body with minimum 30 characters'
-                id='text'
-              /> */}
               <button className='s-btn s-btn__primary'>Post Your Answer</button>
             </div>
           </form>
@@ -72,7 +62,14 @@ const AnswerForm = ({addAnswer, auth, postId}) => {
 };
 
 AnswerForm.propTypes = {
+  auth: PropTypes.object.isRequired,
   addAnswer: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired,
 };
 
-export default connect(null, {addAnswer})(AnswerForm);
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  post: state.post,
+});
+
+export default connect(mapStateToProps, {addAnswer})(AnswerForm);

@@ -21,10 +21,10 @@ const CommentCell = ({
   getComments,
   auth,
   comment,
-  postId,
+  post: {post},
 }) => {
   useEffect(() => {
-    getComments(postId);
+    getComments(post.id);
     // eslint-disable-next-line
   }, [getComments]);
 
@@ -39,7 +39,7 @@ const CommentCell = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addComment(postId, {body});
+    addComment(post.id, {body});
     setFormData({
       body: '',
     });
@@ -81,7 +81,7 @@ const CommentCell = ({
                           style={{marginTop: '4px'}}
                           title='Delete the comment'
                           onClick={(e) => deleteComment(comment.id)}
-                          to={`/questions/${postId}`}
+                          to={`/questions/${post.id}`}
                         >
                           delete
                         </Link>
@@ -125,6 +125,7 @@ const CommentCell = ({
 
 CommentCell.propTypes = {
   auth: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
   addComment: PropTypes.func.isRequired,
   deleteComment: PropTypes.func.isRequired,
   getComments: PropTypes.func.isRequired,
@@ -133,6 +134,7 @@ CommentCell.propTypes = {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  post: state.post,
   comment: state.comment,
 });
 

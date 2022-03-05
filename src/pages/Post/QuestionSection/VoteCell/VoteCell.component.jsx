@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 
 import './VoteCell.styles.scss';
 
-const VoteCell = ({answerCount, commentCount}) => {
+const VoteCell = ({answerCount, commentCount, tagCount}) => {
   return (
     <Fragment>
       <div className='vote-cell fc-black-800'>
@@ -16,7 +16,7 @@ const VoteCell = ({answerCount, commentCount}) => {
             <div className='count-text'>comments</div>
           </div>
           <div className='vote'>
-            <span className='vote-count'>1</span>
+            <span className='vote-count'>{tagCount}</span>
             <div className='count-text'>tags</div>
           </div>
         </div>

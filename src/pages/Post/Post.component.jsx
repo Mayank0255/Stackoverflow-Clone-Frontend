@@ -43,8 +43,8 @@ const Post = ({getPost, post: {post, loading}, match}) => {
           </div>
         </div>
         <div className='question-main pl24 pt16'>
-          <QuestionSection postId={match.params.id} />
-          <AnswerSection postId={match.params.id} />
+          <QuestionSection/>
+          <AnswerSection/>
         </div>
       </div>
     </Fragment>

@@ -13,8 +13,8 @@ import './AnswerItem.styles.scss';
 const AnswerItem = ({
   deleteAnswer,
   answer: {body, user_id, gravatar, id, created_at, username},
+  post: {post},
   auth,
-  postId,
 }) => {
   return (
     <Fragment>
@@ -64,7 +64,7 @@ const AnswerItem = ({
                       style={{paddingLeft: '4px'}}
                       title='Delete the answer'
                       onClick={(e) => deleteAnswer(id)}
-                      to={`/questions/${postId}`}
+                      to={`/questions/${post.id}`}
                     >
                       delete
                     </Link>
@@ -87,8 +87,15 @@ const AnswerItem = ({
 };
 
 AnswerItem.propTypes = {
-  deleteAnswer: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
   answer: PropTypes.object.isRequired,
+  deleteAnswer: PropTypes.func.isRequired,
 };
 
-export default connect(null, {deleteAnswer})(AnswerItem);
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  post: state.post,
+});
+
+export default connect(mapStateToProps, {deleteAnswer})(AnswerItem);

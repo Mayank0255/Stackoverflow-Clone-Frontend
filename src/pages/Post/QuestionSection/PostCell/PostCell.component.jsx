@@ -1,8 +1,8 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {getPost, deletePost} from '../../../../redux/posts/posts.actions';
+import {deletePost} from '../../../../redux/posts/posts.actions';
 
 import TagBadge from '../../../../components/TagBadge/TagBadge.component';
 import UserCard from '../../../../components/UserCard/UserCard.component';
@@ -13,21 +13,17 @@ const PostCell = ({
   deletePost,
   auth,
   post: {
-    post: {id, post_body, tagname, gravatar, user_id, username, created_at},
+    post: {id, post_body, tags, gravatar, user_id, username, created_at},
   },
-  postId,
 }) => {
-  useEffect(() => {
-    getPost(postId);
-    // eslint-disable-next-line
-  }, [getPost]);
-
   return (
     <Fragment>
       <div className='post-cell'>
         <div className='post-text fc-black-800' dangerouslySetInnerHTML={{__html: post_body}}></div>
         <div className='post-tags fc-black-800'>
-          <TagBadge tag_name={tagname} size={'s-tag'} float={'left'} />
+          {tags.map((tag, index) => (
+            <TagBadge key={index} tag_name={tag.tagname} size={'s-tag'} float={'left'} />
+          ))}
         </div>
         <div className='post-actions fc-black-800'>
           <div className='post-actions-extended'>
@@ -78,7 +74,6 @@ const PostCell = ({
 PostCell.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
-  getPost: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
 };
 
@@ -87,4 +82,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, {getPost, deletePost})(PostCell);
+export default connect(mapStateToProps, {deletePost})(PostCell);

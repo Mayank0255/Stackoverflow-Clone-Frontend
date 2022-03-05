@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {getTopPosts} from '../../redux/posts/posts.actions';
+import {getPosts} from '../../redux/posts/posts.actions';
 
 import LinkButton from '../../components/LinkButton/LinkButton.component';
 import PostItem from '../../components/PostItem/PostItem.component';
@@ -9,14 +9,15 @@ import Spinner from '../../components/Spinner/Spinner.component';
 
 import './HomePage.styles.scss';
 import Pagination from '../../components/Pagination/Pagination.component';
+import handleSorting from "../../services/handleSorting";
 
 const itemsPerPage = 12;
 const showInline = 5;
 
-const HomePage = ({getTopPosts, post: {posts, loading}}) => {
+const HomePage = ({getPosts, post: {posts, loading}}) => {
   useEffect(() => {
-    getTopPosts();
-  }, [getTopPosts]);
+    getPosts();
+  }, [getPosts]);
 
   const [currentPosts, setCurrentPosts] = useState([]);
 
@@ -45,7 +46,9 @@ const HomePage = ({getTopPosts, post: {posts, loading}}) => {
           </span>
         </div>
         <div className="questions">
-          {currentPosts.map((post) => (
+          {currentPosts
+            .sort(handleSorting('Top'))
+            .map((post) => (
             <PostItem key={post.id} post={post} />
           ))}
         </div>
@@ -62,7 +65,7 @@ const HomePage = ({getTopPosts, post: {posts, loading}}) => {
 };
 
 HomePage.propTypes = {
-  getTopPosts: PropTypes.func.isRequired,
+  getPosts: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
 };
 
@@ -70,4 +73,4 @@ const mapStateToProps = (state) => ({
   post: state.post,
 });
 
-export default connect(mapStateToProps, { getTopPosts })(HomePage);
+export default connect(mapStateToProps, { getPosts })(HomePage);

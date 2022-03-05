@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
+import './TagBadge.styles.scss';
+
 const TagBadge = ({tag_name, size, display, float, link, href}) => {
   return (
     <Fragment>

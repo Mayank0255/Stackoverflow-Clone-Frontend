@@ -16,7 +16,6 @@ const PostItem = ({
     id,
     title,
     body,
-    tagname,
     username,
     gravatar,
     user_id,
@@ -24,6 +23,7 @@ const PostItem = ({
     comment_count,
     views,
     created_at,
+    tags,
   },
 }) => {
   const answerVoteUp = (
@@ -50,7 +50,7 @@ const PostItem = ({
           </div>
           {answer_count > 0 ? answerVoteUp : answerVoteDown}
           <div className='vote'>
-            <span className='vote-count'>{tagname ? 1 : 0}</span>
+            <span className='vote-count'>{tags.length}</span>
             <div className='count-text'>tags</div>
           </div>
           <div className='vote'>
@@ -63,7 +63,9 @@ const PostItem = ({
           <Link to={`/questions/${id}`}>{title}</Link>
         </h3>
         <div className='brief' dangerouslySetInnerHTML={{__html: injectEllipsis(htmlSubstring(body, 200))}}></div>
-        <TagBadge tag_name={tagname} size={'s-tag'} float={'left'} />
+        {tags.map((tag) => (
+          <TagBadge tag_name={tag.tagname} size={'s-tag'} float={'left'} />
+        ))}
         <UserCard
           created_at={created_at}
           user_id={user_id}

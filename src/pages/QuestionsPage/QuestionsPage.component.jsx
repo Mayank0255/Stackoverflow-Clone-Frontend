@@ -82,8 +82,8 @@ const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
               post.title.toLowerCase().includes(searchQuery ? searchQuery : '')
             )
             ?.sort(handleSorting(sortType))
-            .map((post) => (
-              <PostItem key={post.id} post={post} />
+            .map((post, index) => (
+              <PostItem key={index} post={post} />
             ))}
         </div>
         <Pagination

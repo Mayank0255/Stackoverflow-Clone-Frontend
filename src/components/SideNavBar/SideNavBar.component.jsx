@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import { ReactComponent as Hamburger } from "../../assets/Hamburger.svg";
+import { ReactComponent as Hamburger } from "../../assets/LogoGlyphMd.svg";
 import { ReactComponent as Stack } from "../../assets/LogoMd.svg";
-
 import { ReactComponent as GlobalIcon } from "../../assets/Globe.svg";
+
 import "./SideNavBar.styles.scss";
 
 const SidebarUI = ({ isOpen, ...rest }) => {

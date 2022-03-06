@@ -1,8 +1,8 @@
 .rich-text-editor-root {
-  background-color: transparent;
-  border: none;
-  font-family: inherit;
-  font-size: inherit;
+  background-color: transparent !important;
+  border: none !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
 
   .rich-text-editor-toolbar {
     border-bottom: 1px solid var(--black-200);

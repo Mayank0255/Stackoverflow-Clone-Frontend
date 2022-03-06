@@ -94,7 +94,7 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
   ) : (
     <Fragment>
       <nav className='navbar fixed-top navbar-expand-lg navbar-light bs-md'>
-        <div class="hamburger">
+        <div className="hamburger">
           <SideNavBar hasOverlay />
         </div>
         <div className='header-brand-div'>

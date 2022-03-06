@@ -9,6 +9,13 @@
   justify-content: space-between;
 }
 
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
 .s-navigation {
   padding: 2px 2px;
 }
@@ -216,6 +223,7 @@
   }
   .hamburger {
     display: block;
+    padding-top: 6px;
   }
   .header-search-div, .header-brand-div {
     transform: scale(0.8);

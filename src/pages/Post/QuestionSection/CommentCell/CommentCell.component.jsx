@@ -53,8 +53,8 @@ const CommentCell = ({
             {comment.loading === null ? (
               <Spinner width='25px' height='25px' />
             ) : (
-              comment.comments.map((comment) => (
-                <li className='comments-item' key={comment.id}>
+              comment.comments.map((comment, index) => (
+                <li key={index} className='comments-item'>
                   <div className='comment-text fc-black-800'>
                     <div className='comment-body'>
                       <span className='body'>{comment.body}</span>

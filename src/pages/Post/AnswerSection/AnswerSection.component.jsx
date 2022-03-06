@@ -37,8 +37,8 @@ const AnswerSection = ({getAnswers, answer, post: {post}}) => {
         {answer.loading === null ? (
           <Spinner width='25px' height='25px' />
         ) : (
-          answer.answers?.sort(handleSorting(sortType)).map((answer) => (
-            <div key={answer.id} className='answers'>
+          answer.answers?.sort(handleSorting(sortType)).map((answer, index) => (
+            <div key={index} className='answers'>
               <AnswerItem answer={answer}/>
             </div>
           ))

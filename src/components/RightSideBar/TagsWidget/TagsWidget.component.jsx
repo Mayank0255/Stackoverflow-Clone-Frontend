@@ -32,8 +32,8 @@ const TagsWidget = ({getTags, tag: {tags, loading}}) => {
     <Fragment>
       <div className='side-bar-tags'>
         <h4 className='tag-headline'>Top {numList[tags.length - 1]} Tags</h4>
-        {tags.slice(0, 10).map((tag) => (
-          <div key={tag.tagname} className='tag-content'>
+        {tags.slice(0, 10).map((tag, index) => (
+          <div key={index} className='tag-content'>
             <TagBadge
               tag_name={tag.tagname}
               size={'s-tag s-tag__md'}

@@ -8,6 +8,7 @@ import AskWidget from './AskWidget/AskWidget.component';
 
 import './PostForm.styles.scss';
 import AskForm from './AskForm/AskForm.component';
+import Footer from "../../components/Footer/Footer.component";
 
 const PostForm = ({auth: {isAuthenticated, loading}}) => {
   if (!isAuthenticated) {
@@ -37,6 +38,7 @@ const PostForm = ({auth: {isAuthenticated, loading}}) => {
           </div>
         </div>
       </div>
+      <Footer/>
     </Fragment>
   );
 };

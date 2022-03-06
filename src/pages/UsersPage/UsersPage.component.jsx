@@ -64,8 +64,8 @@ const UsersPage = ({getUsers, user: {users, loading}}) => {
                 user.username.toLowerCase().includes(fetchSearch.toLowerCase())
               )
               ?.sort(handleSorting(sortType, 'users'))
-              .map((user) => (
-                <UserPanel key={user.id} user={user} />
+              .map((user, index) => (
+                <UserPanel key={index} user={user} />
               ))}
           </div>
         </div>

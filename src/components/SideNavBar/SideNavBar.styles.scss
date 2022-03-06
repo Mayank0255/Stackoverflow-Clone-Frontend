@@ -15,13 +15,12 @@
 	.SidebarContent {
 		position: fixed;
 		z-index: 100;
-		background-color: white;
 		transition: 300ms ease-in-out;
 		transition-property: left, right, top, bottom;
 		overflow-x: hidden;
 		overflow-y: auto;
 		scroll-behavior: smooth;
-		background-color: gray;
+		background-color: #333;
 	}
 
 	&.is-open {
@@ -43,7 +42,6 @@
 	}
 	.ham {
 		margin-left: 1rem;
-		filter: invert(1);
 		&:hover {
 			cursor: pointer;
 		}
@@ -51,12 +49,12 @@
 
 	.content-logo {
 		padding: 1rem 2rem;
-		background-color: #5a5959;
+		background-color: #4d4d4d;
 		box-shadow: 2px -2px 8px 3px black;
 	}
 
 	.content-inner {
-		padding: 2rem;
+		padding: 2rem 0;
 		filter: contrast(1.4);
 		.side-bar-tabs {
 			float: right;

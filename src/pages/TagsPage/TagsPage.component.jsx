@@ -68,8 +68,8 @@ const TagsPage = ({getTags, tag: {tags, loading}}) => {
                 tag.tagname.toLowerCase().includes(fetchSearch.toLowerCase())
               )
               ?.sort(handleSorting(sortType))
-              .map((tag) => (
-                <TagPanel key={tag.tagname} tag={tag} />
+              .map((tag, index) => (
+                <TagPanel key={index} tag={tag} />
               ))}
           </div>
         </div>

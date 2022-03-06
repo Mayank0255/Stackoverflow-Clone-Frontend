@@ -63,8 +63,8 @@ const PostItem = ({
           <Link to={`/questions/${id}`}>{title}</Link>
         </h3>
         <div className='brief' dangerouslySetInnerHTML={{__html: injectEllipsis(htmlSubstring(body, 200))}}></div>
-        {tags.map((tag) => (
-          <TagBadge tag_name={tag.tagname} size={'s-tag'} float={'left'} />
+        {tags.map((tag, index) => (
+          <TagBadge key={index} tag_name={tag.tagname} size={'s-tag'} float={'left'} />
         ))}
         <UserCard
           created_at={created_at}

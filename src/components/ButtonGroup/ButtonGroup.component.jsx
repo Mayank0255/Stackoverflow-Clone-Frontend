@@ -6,9 +6,9 @@ const ButtonGroup = ({buttons, selected, setSelected}) => {
     <Fragment>
       <div className='grid--cell'>
         <div className=' grid s-btn-group js-filter-btn'>
-          {buttons.map((button) => (
+          {buttons.map((button, index) => (
             <BaseButton
-              key={button}
+              key={index}
               text={button}
               selected={selected}
               onClick={() => setSelected(button)}

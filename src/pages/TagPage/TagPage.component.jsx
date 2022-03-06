@@ -70,7 +70,7 @@ const TagPage = ({getTag, getTagPosts, tag, post: {posts, loading}, match}) => {
           ) : (
             posts
               ?.sort(handleSorting(sortType))
-              .map((post) => <PostItem key={post.id} post={post} />)
+              .map((post, index) => <PostItem key={index} post={post} />)
           )}
         </div>
       </div>

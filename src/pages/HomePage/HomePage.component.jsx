@@ -48,8 +48,8 @@ const HomePage = ({getPosts, post: {posts, loading}}) => {
         <div className="questions">
           {currentPosts
             .sort(handleSorting('Top'))
-            .map((post) => (
-            <PostItem key={post.id} post={post} />
+            .map((post, index) => (
+            <PostItem key={index} post={post} />
           ))}
         </div>
         <Pagination

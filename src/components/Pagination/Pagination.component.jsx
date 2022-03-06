@@ -34,10 +34,11 @@ const Pagination = ({
   const getPaginationItem = useCallback(
     (currentIdx, activeIdx) =>
       activeIdx === currentIdx + 1 ? (
-        <span class="s-pagination--item is-selected">{currentIdx + 1}</span>
+        <span key={currentIdx} className="s-pagination--item is-selected">{currentIdx + 1}</span>
       ) : (
         <span
-          class="s-pagination--item"
+          key={currentIdx}
+          className="s-pagination--item"
           onClick={() => handleChange(currentIdx + 1)}
         >
           {currentIdx + 1}

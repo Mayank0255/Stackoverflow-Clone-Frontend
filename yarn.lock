@@ -3043,7 +3043,7 @@
   "resolved" "https://registry.npmjs.org/core-js/-/core-js-2.6.12.tgz"
   "version" "2.6.12"
 
-"core-js@^3.19.2", "core-js@^3.6.4":
+"core-js@^3.1.3", "core-js@^3.19.2", "core-js@^3.6.4":
   "integrity" "sha512-btdpStYFQScnNVQ5slVcr858KP0YWYjV16eGJQw8Gg7CWtu/2qNvIM3qVRIR3n1pK2R9NNOrTevbvAYxajwEjg=="
   "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.20.1.tgz"
   "version" "3.20.1"
@@ -4254,6 +4254,14 @@
     "promise" "^7.1.1"
     "setimmediate" "^1.0.5"
     "ua-parser-js" "^0.7.18"
+
+"feather-icons@^4.28.0":
+  "integrity" "sha512-gRdqKESXRBUZn6Nl0VBq2wPHKRJgZz7yblrrc2lYsS6odkNFDnA4bqvrlEVRUPjE1tFax+0TdbJKZ31ziJuzjg=="
+  "resolved" "https://registry.npmjs.org/feather-icons/-/feather-icons-4.28.0.tgz"
+  "version" "4.28.0"
+  dependencies:
+    "classnames" "^2.2.5"
+    "core-js" "^3.1.3"
 
 "file-entry-cache@^6.0.1":
   "integrity" "sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg=="

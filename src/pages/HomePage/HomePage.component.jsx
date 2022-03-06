@@ -6,10 +6,10 @@ import {getPosts} from '../../redux/posts/posts.actions';
 import LinkButton from '../../components/LinkButton/LinkButton.component';
 import PostItem from '../../components/PostItem/PostItem.component';
 import Spinner from '../../components/Spinner/Spinner.component';
-
-import './HomePage.styles.scss';
 import Pagination from '../../components/Pagination/Pagination.component';
 import handleSorting from "../../services/handleSorting";
+
+import './HomePage.styles.scss';
 
 const itemsPerPage = 12;
 const showInline = 5;

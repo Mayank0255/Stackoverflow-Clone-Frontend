@@ -7,6 +7,7 @@
 }
 
 #content {
+  max-width: none;
   width: 100vw;
   padding: 0;
   margin-right: 60px;
@@ -56,6 +57,7 @@
 
 @media (max-width: 1100px) {
   #content {
+    max-width: none;
     width: calc(100vw - 220px);
   }
 
@@ -71,6 +73,7 @@
 
 @media (max-width: 768px) {
   #content {
+    max-width: none;
     width: 99%;
   }
 
@@ -86,6 +89,7 @@
 
 @media (min-width: 1350px) {
   #content {
+    max-width: none;
     margin-right: 11.5vw;
   }
 }

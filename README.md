@@ -6,7 +6,7 @@
 [![MYSQL](https://img.shields.io/static/v1?label=mysql&message=8.0.10&color=blueviolet)](https://shields.io/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://shields.io/)
 
-### [🌐 Website](https://stackoverflow-clone-client.vercel.app)  |  [📹 Demo Video](https://www.youtube.com/watch?v=3jDIEf5vNp8)
+### [🌐 Website](https://stackoverflow-clone-client.vercel.app)  |  [📹 Demo Video](https://www.youtube.com/watch?v=bUAAgfGOfYg)
 
 ### API Hosted On
 - __[stackoverflow-clone-api.onrender.com](https://stackoverflow-clone-api.onrender.com) (Primary)__
@@ -28,12 +28,6 @@ This repo consists of the Frontend code of the project, the backend code is in _
 - For handling index requests: `Node.js with Express.js Framework`
 - As Database: `MySQL with Sequelize`
 - API tested using: `POSTMAN`
-
-### Original Tech Stack
-
-- For handling index requests: `C#`
-- As Database: `Microsoft SQL Server`
-- `.NET` as well
 
 ## Guidelines to setup
 
@@ -110,9 +104,9 @@ _Follow the steps properly (manual or Docker) and you are good to go._
 
 ## DEMO
 
-#### VIDEO - [Watch the video](https://www.youtube.com/watch?v=3jDIEf5vNp8)
+#### VIDEO - [Watch the video](https://www.youtube.com/watch?v=bUAAgfGOfYg)
 
-_Video Last Updated on 22nd March, 2020_
+_Video Last Updated on 7th March, 2022_
 
 #### IMAGES
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 import {getTags} from '../../../redux/tags/tags.actions';
-import TagBadge from '../../TagBadge/TagBadge.component';
+import TagsWidgetItem from "./TagsWidgetItem.component";
 
 import './TagsWidget.styles.scss';
 
@@ -33,20 +33,7 @@ const TagsWidget = ({getTags, tag: {tags, loading}}) => {
       <div className='side-bar-tags'>
         <h4 className='tag-headline'>Top {numList[tags.length - 1]} Tags</h4>
         {tags.slice(0, 10).map((tag, index) => (
-          <div key={index} className='tag-content'>
-            <TagBadge
-              tag_name={tag.tagname}
-              size={'s-tag s-tag__md'}
-              display={'inline'}
-              href={true}
-            />
-            &nbsp;
-            <span className='tag-mult'>
-              <span>&times;</span>
-              &nbsp;
-              <span>{tag.posts_count}</span>
-            </span>
-          </div>
+          <TagsWidgetItem key={index} tagname={tag.tagname} posts_count={tag.posts_count}/>
         ))}
         <Link className='show-tags' to='/tags'>
           show more tags

@@ -6,9 +6,9 @@ import {setAlert} from '../../redux/alert/alert.actions';
 
 import Caption from './Caption/Caption.component';
 import AuthForm from '../../components/AuthForm/AuthForm.component';
+import Footer from "../../components/Footer/Footer.component";
 
 import './Register.styles.scss';
-import Footer from "../../components/Footer/Footer.component";
 
 const Register = ({isAuthenticated}) => {
   if (isAuthenticated) {

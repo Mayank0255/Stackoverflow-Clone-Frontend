@@ -8,9 +8,9 @@ import TagPanel from './TagPanel/TagPanel.component';
 import Spinner from '../../components/Spinner/Spinner.component';
 import SearchBox from '../../components/SearchBox/SearchBox.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
+import Pagination from '../../components/Pagination/Pagination.component';
 
 import './TagsPage.styles.scss';
-import Pagination from '../../components/Pagination/Pagination.component';
 
 const itemsPerPage = 12;
 const showInline = 5;

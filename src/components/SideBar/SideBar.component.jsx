@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 
 import {ReactComponent as GlobalIcon} from '../../assets/Globe.svg';
+
 import './SideBar.styles.scss';
 
 const SideBar = () => (

@@ -2,7 +2,7 @@ import React, {Fragment, useState, useRef} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {addPost} from '../../../redux/posts/posts.actions';
-import RichTextEditor from '../../../components/RichTextEditor/RichTextEditor.component';
+import MarkdownEditor from '../../../components/MarkdownEditor/MarkdownEditor.component';
 
 import './AskForm.styles.scss';
 
@@ -13,7 +13,7 @@ const AskForm = ({addPost}) => {
     tagname: '',
   });
 
-  const richTextEditorRef = useRef(null);
+  const markdownEditorRef = useRef(null);
 
   const {title, body, tagname} = formData;
 
@@ -28,7 +28,7 @@ const AskForm = ({addPost}) => {
       body: '',
       tagname: '',
     });
-    richTextEditorRef.current.cleanEditorState();
+    markdownEditorRef.current.cleanEditorState();
   };
 
   const updateConvertedContent = (htmlConvertedContent) => {
@@ -68,22 +68,11 @@ const AskForm = ({addPost}) => {
                 </p>
               </label>
               <div className='s-textarea rich-text-editor-container'>
-                <RichTextEditor
-                  ref={richTextEditorRef}
+                <MarkdownEditor
+                  ref={markdownEditorRef}
                   onChange={updateConvertedContent}
                 />
               </div>
-              {/* <textarea
-                className='s-textarea'
-                name='body'
-                cols='30'
-                rows='12'
-                value={body}
-                onChange={(e) => onChange(e)}
-                placeholder='Enter body with minimum 30 characters'
-                id='body'
-                required
-              /> */}
             </div>
             <div className='tag-grid'>
               <label className='form-label s-label'>

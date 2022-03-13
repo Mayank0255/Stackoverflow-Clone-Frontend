@@ -1,9 +1,9 @@
 import React, {useState, forwardRef, useImperativeHandle} from 'react';
 import RichTextEditor from 'react-rte';
 
-import './RichTextEditor.styles.scss';
+import './MarkdownEditor.styles.scss';
 
-const MyStatefulEditor = forwardRef((props, ref) => {
+const MarkdownEditor = forwardRef((props, ref) => {
   const [value, setValue] = useState(RichTextEditor.createEmptyValue());
 
   useImperativeHandle(ref, () => ({
@@ -69,4 +69,4 @@ const MyStatefulEditor = forwardRef((props, ref) => {
   );
 });
 
-export default MyStatefulEditor;
+export default MarkdownEditor;

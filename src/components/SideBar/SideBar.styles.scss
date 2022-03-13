@@ -12,6 +12,10 @@
     float: right;
     margin-top:25px;
 
+    .public-tabs {
+      margin-bottom: 12px;
+    }
+
     .home-link {
       text-decoration: none;
       color: #c4c8cc;
@@ -19,6 +23,7 @@
       li {
         border-right: 3px;
         font-size: 13px;
+        margin-bottom: 12px;
 
         .menu-list-text {
           margin: 0 !important;
@@ -61,24 +66,9 @@
       }
     }
 
-    .link {
-      text-decoration: none;
-      color: #c4c8cc;
-
-      li {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        font-size: 13px;
-      }
-      &:hover {
-        color: #f2f2f3;
-      }
-    }
-
-
     .title {
       font-size: 12px;
+      padding-left: 8px;
       margin-bottom: 5px;
     }
 
@@ -100,6 +90,9 @@
         color: #f2f2f3;
       }
 
+      .menu-list-text > span {
+        font-weight: 700;
+      }
     }
   }
 }

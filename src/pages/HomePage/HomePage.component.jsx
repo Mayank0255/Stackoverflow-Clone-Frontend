@@ -1,8 +1,8 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {getPosts} from '../../redux/posts/posts.actions';
 
+import {getPosts} from '../../redux/posts/posts.actions';
 import LinkButton from '../../components/LinkButton/LinkButton.component';
 import PostItem from '../../components/PostItem/PostItem.component';
 import Spinner from '../../components/Spinner/Spinner.component';

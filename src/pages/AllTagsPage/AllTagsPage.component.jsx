@@ -10,12 +10,12 @@ import SearchBox from '../../components/SearchBox/SearchBox.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 import Pagination from '../../components/Pagination/Pagination.component';
 
-import './TagsPage.styles.scss';
+import './AllTagsPage.styles.scss';
 
 const itemsPerPage = 12;
 const showInline = 5;
 
-const TagsPage = ({getTags, tag: {tags, loading}}) => {
+const AllTagsPage = ({getTags, tag: {tags, loading}}) => {
   useEffect(() => {
     getTags();
   }, [getTags]);
@@ -87,7 +87,7 @@ const TagsPage = ({getTags, tag: {tags, loading}}) => {
   );
 };
 
-TagsPage.propTypes = {
+AllTagsPage.propTypes = {
   getTags: PropTypes.func.isRequired,
   tag: PropTypes.object.isRequired,
 };
@@ -96,4 +96,4 @@ const mapStateToProps = (state) => ({
   tag: state.tag,
 });
 
-export default connect(mapStateToProps, {getTags})(TagsPage);
+export default connect(mapStateToProps, {getTags})(AllTagsPage);

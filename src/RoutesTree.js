@@ -5,8 +5,8 @@ import withPageTitle from './services/withPageTitle';
 import PageContainer from './components/PageContainer/PageContainer.component';
 import HomePage from './pages/HomePage/HomePage.component';
 import QuestionsPage from './pages/QuestionsPage/QuestionsPage.component';
-import TagsPage from './pages/AllTagsPage/TagsPage.component';
-import UsersPage from './pages/AllUsersPage/UsersPage.component';
+import AllTagsPage from './pages/AllTagsPage/AllTagsPage.component';
+import AllUsersPage from './pages/AllUsersPage/AllUsersPage.component';
 import Register from './pages/Register/Register.component';
 import Login from './pages/Login/Login.component';
 import Post from './pages/Post/Post.component';
@@ -26,13 +26,13 @@ const QuestionsPageComponent = withPageTitle({
   title: 'All Questions - CLONE Stack Overflow',
 });
 
-const TagsPageComponent = withPageTitle({
-  component: PageContainer({component: TagsPage}),
+const AllTagsPageComponent = withPageTitle({
+  component: PageContainer({component: AllTagsPage}),
   title: 'Tags - CLONE Stack Overflow',
 });
 
-const UsersPageComponent = withPageTitle({
-  component: PageContainer({component: UsersPage}),
+const AllUsersPageComponent = withPageTitle({
+  component: PageContainer({component: AllUsersPage}),
   title: 'Users - CLONE Stack Overflow',
 });
 
@@ -65,8 +65,8 @@ const RoutesTree = () => {
     <Switch>
       <Route exact path='/' component={HomePageComponent} />
       <Route exact path='/questions' component={QuestionsPageComponent} />
-      <Route exact path='/tags' component={TagsPageComponent} />
-      <Route exact path='/users' component={UsersPageComponent} />
+      <Route exact path='/tags' component={AllTagsPageComponent} />
+      <Route exact path='/users' component={AllUsersPageComponent} />
       <Route exact path='/register' component={RegisterComponent} />
       <Route exact path='/login' component={LoginComponent} />
       <Route exact path='/questions/:id' component={PostComponent} />

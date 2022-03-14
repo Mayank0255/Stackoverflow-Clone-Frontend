@@ -10,12 +10,12 @@ import SearchBox from '../../components/SearchBox/SearchBox.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 import Pagination from "../../components/Pagination/Pagination.component";
 
-import './UsersPage.styles.scss';
+import './AllUsersPage.styles.scss';
 
 const itemsPerPage = 12;
 const showInline = 5;
 
-const UsersPage = ({getUsers, user: {users, loading}}) => {
+const AllUsersPage = ({getUsers, user: {users, loading}}) => {
   useEffect(() => {
     getUsers();
   }, [getUsers]);
@@ -83,7 +83,7 @@ const UsersPage = ({getUsers, user: {users, loading}}) => {
   );
 };
 
-UsersPage.propTypes = {
+AllUsersPage.propTypes = {
   getUsers: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
 };
@@ -92,4 +92,4 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, { getUsers })(UsersPage);
+export default connect(mapStateToProps, { getUsers })(AllUsersPage);

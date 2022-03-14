@@ -2,7 +2,7 @@ import React, {useEffect, Fragment} from 'react';
 import moment from 'moment';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {getUser} from '../../redux/users/users.actions';
+import {getProfile} from '../../redux/users/users.actions';
 import {Link} from 'react-router-dom';
 
 import {ReactComponent as Logo} from '../../assets/LogoGlyphMd.svg';
@@ -11,13 +11,13 @@ import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Spinner from '../../components/Spinner/Spinner.component';
 import TagBadge from '../../components/TagBadge/TagBadge.component';
 
-import './UserPage.styles.scss';
+import './ProfilePage.styles.scss';
 
-const UserPage = ({getUser, user: {user, loading}, match}) => {
+const ProfilePage = ({getProfile, user: {user, loading}, match}) => {
   useEffect(() => {
-    getUser(match.params.id);
+    getProfile(match.params.id);
     // eslint-disable-next-line
-  }, [getUser]);
+  }, [getProfile]);
 
   return loading || user === null ? (
     <Spinner type='page' width='75px' height='200px' />
@@ -239,8 +239,8 @@ const UserPage = ({getUser, user: {user, loading}, match}) => {
   );
 };
 
-UserPage.propTypes = {
-  getUser: PropTypes.func.isRequired,
+ProfilePage.propTypes = {
+  getProfile: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
 };
 
@@ -248,4 +248,4 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, {getUser})(UserPage);
+export default connect(mapStateToProps, {getProfile})(ProfilePage);

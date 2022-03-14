@@ -5,14 +5,14 @@ import withPageTitle from './services/withPageTitle';
 import PageContainer from './components/PageContainer/PageContainer.component';
 import HomePage from './pages/HomePage/HomePage.component';
 import QuestionsPage from './pages/QuestionsPage/QuestionsPage.component';
-import TagsPage from './pages/TagsPage/TagsPage.component';
-import UsersPage from './pages/UsersPage/UsersPage.component';
+import TagsPage from './pages/AllTagsPage/TagsPage.component';
+import UsersPage from './pages/AllUsersPage/UsersPage.component';
 import Register from './pages/Register/Register.component';
 import Login from './pages/Login/Login.component';
 import Post from './pages/Post/Post.component';
 import PostForm from './pages/PostForm/PostForm.component';
 import TagPage from './pages/TagPage/TagPage.component';
-import UserPage from './pages/UserPage/UserPage.component';
+import ProfilePage from './pages/ProfilePage/ProfilePage.component';
 import NotFound from './pages/NotFound/NotFound.component';
 
 const HomePageComponent = withPageTitle({
@@ -57,7 +57,7 @@ const NotFoundComponent = withPageTitle({
 });
 
 const PostComponent = PageContainer({component: Post});
-const UserPageComponent = PageContainer({component: UserPage});
+const ProfilePageComponent = PageContainer({component: ProfilePage});
 const TagPageComponent = PageContainer({component: TagPage});
 
 const RoutesTree = () => {
@@ -70,7 +70,7 @@ const RoutesTree = () => {
       <Route exact path='/register' component={RegisterComponent} />
       <Route exact path='/login' component={LoginComponent} />
       <Route exact path='/questions/:id' component={PostComponent} />
-      <Route exact path='/users/:id' component={UserPageComponent} />
+      <Route exact path='/users/:id' component={ProfilePageComponent} />
       <Route exact path='/tags/:tagname' component={TagPageComponent} />
       <Route exact path='/add/question' component={PostFormComponent} />
       <Route path='*' component={NotFoundComponent} />

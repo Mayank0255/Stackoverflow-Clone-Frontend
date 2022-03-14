@@ -4,14 +4,19 @@ import {connect} from 'react-redux';
 
 import './Alert.styles.scss';
 
-const Alert = ({alerts}) =>
-  alerts !== null &&
-  alerts.length > 0 &&
-  alerts.map((alert, index) => (
-    <div key={index} className={`alert alert-${alert.alertType} fw-normal`}>
-      {alert.msg}
-    </div>
-  ));
+const Alert = ({ alerts }) => {
+  return alerts.length > 0 &&
+    alerts.map((alert, index) => (
+      <div
+        key={index}
+        className={`alert alert-${alert.alertType} fw-normal`}
+        style={{ top: `79px` }}
+      >
+        {alert.msg}
+      </div>
+    )
+  )
+}
 
 Alert.propTypes = {
   alerts: PropTypes.array.isRequired,

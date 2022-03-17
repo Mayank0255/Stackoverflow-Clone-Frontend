@@ -72,6 +72,7 @@ const AllTagsPage = ({getTags, tag: {tags, loading}}) => {
           </div>
         </div>
         <Pagination
+          style={{ float: 'right', margin: '0 13px 16px 0' }}
           count={Math.ceil(tags.filter((tag) => tag.tagname.toLowerCase().includes(fetchSearch.toLowerCase())).length/itemsPerPage)}
           page={page}
           variant="outlined"

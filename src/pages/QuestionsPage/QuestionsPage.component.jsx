@@ -5,32 +5,30 @@ import PropTypes from 'prop-types';
 import {getPosts} from '../../redux/posts/posts.actions';
 import handleSorting from '../../services/handleSorting';
 
+import { Pagination, PaginationItem } from "@mui/material";
+
 import LinkButton from '../../components/LinkButton/LinkButton.component';
 import PostItem from '../../components/PostItem/PostItem.component';
 import Spinner from '../../components/Spinner/Spinner.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 import SearchBox from '../../components/SearchBox/SearchBox.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
-import Pagination from '../../components/Pagination/Pagination.component';
 
 import './QuestionsPage.styles.scss';
 
-const itemsPerPage = 12;
-const showInline = 5;
+const itemsPerPage = 10;
 
 const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
 
+  const [page, setPage] = useState(1);
   const [sortType, setSortType] = useState('Newest');
+
   let searchQuery = new URLSearchParams(useLocation().search).get('search');
 
-  const [currentPosts, setCurrentPosts] = useState([]);
-
-  const handlePaginationChange = (currentPage) => {
-    setCurrentPosts(posts.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage));
-  };
+  const handlePaginationChange = (e, value) => setPage(value);
 
   return loading || posts === null ? (
     <Spinner type='page' width='75px' height='200px' />
@@ -77,23 +75,24 @@ const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
           />
         </div>
         <div className='questions'>
-          {currentPosts
-            .filter((post) =>
-              post.title.toLowerCase().includes(searchQuery ? searchQuery : '')
-            )
+          {posts
+            .filter((post) => post.title.toLowerCase().includes(searchQuery ? searchQuery : ''))
             ?.sort(handleSorting(sortType))
+            .slice((page - 1) * itemsPerPage, (page - 1) * itemsPerPage + itemsPerPage)
             .map((post, index) => (
               <PostItem key={index} post={post} />
             ))}
         </div>
         <Pagination
-          total={posts.length}
-          elementsPerPage={itemsPerPage}
-          showInline={showInline}
-          handlePaginationChange={(currentPage) =>
-            handlePaginationChange(currentPage)
-          }
-          hideOnSinglePage={true}
+          style={{ float: 'right', margin: '0 13px 16px 0' }}
+          count={Math.ceil(posts.filter((post) => post.title.toLowerCase().includes(searchQuery ? searchQuery : '')).length/itemsPerPage)}
+          page={page}
+          variant="outlined"
+          shape="rounded"
+          onChange={handlePaginationChange}
+          renderItem={(item) => (
+            <PaginationItem {...item} sx={{ color: '#cfd2d6', border: '1px solid #4c4f52' }}/>
+          )}
         />
       </div>
     </Fragment>

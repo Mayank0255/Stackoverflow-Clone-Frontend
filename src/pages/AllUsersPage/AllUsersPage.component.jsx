@@ -69,6 +69,7 @@ const AllUsersPage = ({getUsers, user: {users, loading}}) => {
           </div>
         </div>
         <Pagination
+          style={{ float: 'right', margin: '0 13px 16px 0' }}
           count={Math.ceil(users.filter((user) => user.username.toLowerCase().includes(fetchSearch.toLowerCase())).length/itemsPerPage)}
           page={page}
           variant="outlined"

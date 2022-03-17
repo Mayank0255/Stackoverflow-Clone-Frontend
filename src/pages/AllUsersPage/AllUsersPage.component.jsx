@@ -4,12 +4,11 @@ import PropTypes from 'prop-types';
 import {getUsers} from '../../redux/users/users.actions';
 import handleSorting from '../../services/handleSorting';
 
-import { Pagination, PaginationItem } from '@mui/material';
-
 import UserPanel from './UserPanel/UserPanel.component';
 import Spinner from '../../components/Spinner/Spinner.component';
 import SearchBox from '../../components/SearchBox/SearchBox.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
+import Pagination from "../../components/Pagination/Pagination.component";
 
 import './AllUsersPage.styles.scss';
 
@@ -69,15 +68,10 @@ const AllUsersPage = ({getUsers, user: {users, loading}}) => {
           </div>
         </div>
         <Pagination
-          style={{ float: 'right', margin: '0 13px 16px 0' }}
-          count={Math.ceil(users.filter((user) => user.username.toLowerCase().includes(fetchSearch.toLowerCase())).length/itemsPerPage)}
           page={page}
-          variant="outlined"
-          shape="rounded"
-          onChange={handlePaginationChange}
-          renderItem={(item) => (
-            <PaginationItem {...item} sx={{ color: '#cfd2d6', border: '1px solid #4c4f52' }}/>
-          )}
+          itemList={users.filter((user) => user.username.toLowerCase().includes(fetchSearch.toLowerCase()))}
+          itemsPerPage={itemsPerPage}
+          handlePaginationChange={handlePaginationChange}
         />
       </div>
     </Fragment>

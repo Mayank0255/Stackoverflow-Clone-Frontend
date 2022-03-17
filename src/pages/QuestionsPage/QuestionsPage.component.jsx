@@ -5,14 +5,13 @@ import PropTypes from 'prop-types';
 import {getPosts} from '../../redux/posts/posts.actions';
 import handleSorting from '../../services/handleSorting';
 
-import { Pagination, PaginationItem } from "@mui/material";
-
 import LinkButton from '../../components/LinkButton/LinkButton.component';
 import PostItem from '../../components/PostItem/PostItem.component';
 import Spinner from '../../components/Spinner/Spinner.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 import SearchBox from '../../components/SearchBox/SearchBox.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
+import Pagination from "../../components/Pagination/Pagination.component";
 
 import './QuestionsPage.styles.scss';
 
@@ -84,15 +83,10 @@ const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
             ))}
         </div>
         <Pagination
-          style={{ float: 'right', margin: '0 13px 16px 0' }}
-          count={Math.ceil(posts.filter((post) => post.title.toLowerCase().includes(searchQuery ? searchQuery : '')).length/itemsPerPage)}
           page={page}
-          variant="outlined"
-          shape="rounded"
-          onChange={handlePaginationChange}
-          renderItem={(item) => (
-            <PaginationItem {...item} sx={{ color: '#cfd2d6', border: '1px solid #4c4f52' }}/>
-          )}
+          itemList={posts.filter((post) => post.title.toLowerCase().includes(searchQuery ? searchQuery : ''))}
+          itemsPerPage={itemsPerPage}
+          handlePaginationChange={handlePaginationChange}
         />
       </div>
     </Fragment>

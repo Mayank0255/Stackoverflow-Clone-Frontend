@@ -2,13 +2,12 @@ import React, {Fragment, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Pagination, PaginationItem } from "@mui/material";
-
 import {getPosts} from '../../redux/posts/posts.actions';
 import LinkButton from '../../components/LinkButton/LinkButton.component';
 import PostItem from '../../components/PostItem/PostItem.component';
 import Spinner from '../../components/Spinner/Spinner.component';
 import handleSorting from "../../services/handleSorting";
+import Pagination from "../../components/Pagination/Pagination.component";
 
 import './HomePage.styles.scss';
 
@@ -52,15 +51,10 @@ const HomePage = ({getPosts, post: {posts, loading}}) => {
           ))}
         </div>
         <Pagination
-          style={{ float: 'right', margin: '0 13px 16px 0' }}
-          count={Math.ceil(posts.length/itemsPerPage)}
           page={page}
-          variant="outlined"
-          shape="rounded"
-          onChange={handlePaginationChange}
-          renderItem={(item) => (
-            <PaginationItem {...item} sx={{ color: '#cfd2d6', border: '1px solid #4c4f52' }}/>
-          )}
+          itemList={posts}
+          itemsPerPage={itemsPerPage}
+          handlePaginationChange={handlePaginationChange}
         />
       </div>
     </Fragment>

@@ -27,7 +27,7 @@ const HomeItem = ({ link, text }) => (
   <NavLink
     exact
     activeClassName='active'
-    className='home-link'
+    className='home-link nav-link'
     to={link}
   >
     <ListItem disablePadding>
@@ -41,7 +41,7 @@ const HomeItem = ({ link, text }) => (
 const DefaultItem = ({ link, icon, text }) => (
   <NavLink
     activeClassName='active'
-    className='icon-link'
+    className='icon-link nav-link'
     to={link}
   >
     <ListItem disablePadding>

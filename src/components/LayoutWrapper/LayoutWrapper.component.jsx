@@ -1,12 +1,11 @@
 import React, {Fragment} from 'react';
 
-import SideBar from '../SideBar/SideBar.component';
-import RightSideBar from '../RightSideBar/RightSideBar.component';
+import SideBar from './SideBar/SideBar.component';
+import RightSideBar from './RightSideBar/RightSideBar.component';
 import Footer from "../Footer/Footer.component";
 
-const PageContainer = ({component: Component}) => {
-  return class DefaultPageContainer extends React.Component {
-
+const LayoutWrapper = ({component: Component}) => {
+  return class DefaultLayoutWrapper extends React.Component {
     render() {
       return (
         <Fragment>
@@ -24,4 +23,4 @@ const PageContainer = ({component: Component}) => {
   };
 };
 
-export default PageContainer;
+export default LayoutWrapper;

@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import PageTitle from '../components/PageTitle/PageTitle.component';
+import PageTitle from '../PageTitle/PageTitle.component';
 
 const withPageTitle = ({component: Component, title}) => {
   return class Title extends React.Component {

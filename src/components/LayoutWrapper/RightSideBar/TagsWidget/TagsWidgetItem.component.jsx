@@ -1,6 +1,6 @@
 import React, {Fragment} from "react";
 
-import TagBadge from "../../TagBadge/TagBadge.component";
+import TagBadge from "../../../TagBadge/TagBadge.component";
 
 import './TagsWidgetItem.styles.scss';
 

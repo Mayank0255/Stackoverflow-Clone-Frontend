@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { ListItem, ListItemButton, ListItemText } from '@mui/material';
 
 import SideBarItem from "./SideBarItem.component";
-import { ReactComponent as GlobalIcon } from '../../assets/Globe.svg';
+import { ReactComponent as GlobalIcon } from '../../../assets/Globe.svg';
 
 import './SideBar.styles.scss';
 

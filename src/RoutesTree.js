@@ -1,8 +1,8 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import withPageTitle from './services/withPageTitle';
+import withPageTitle from './components/withPageTitle/withPageTitle';
 
-import PageContainer from './components/PageContainer/PageContainer.component';
+import LayoutWrapper from './components/LayoutWrapper/LayoutWrapper.component';
 import HomePage from './pages/HomePage/HomePage.component';
 import QuestionsPage from './pages/QuestionsPage/QuestionsPage.component';
 import AllTagsPage from './pages/AllTagsPage/AllTagsPage.component';
@@ -16,23 +16,23 @@ import ProfilePage from './pages/ProfilePage/ProfilePage.component';
 import NotFound from './pages/NotFound/NotFound.component';
 
 const HomePageComponent = withPageTitle({
-  component: PageContainer({component: HomePage}),
+  component: LayoutWrapper({component: HomePage}),
   title:
     'CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers',
 });
 
 const QuestionsPageComponent = withPageTitle({
-  component: PageContainer({component: QuestionsPage}),
+  component: LayoutWrapper({component: QuestionsPage}),
   title: 'All Questions - CLONE Stack Overflow',
 });
 
 const AllTagsPageComponent = withPageTitle({
-  component: PageContainer({component: AllTagsPage}),
+  component: LayoutWrapper({component: AllTagsPage}),
   title: 'Tags - CLONE Stack Overflow',
 });
 
 const AllUsersPageComponent = withPageTitle({
-  component: PageContainer({component: AllUsersPage}),
+  component: LayoutWrapper({component: AllUsersPage}),
   title: 'Users - CLONE Stack Overflow',
 });
 
@@ -56,9 +56,9 @@ const NotFoundComponent = withPageTitle({
   title: 'Error 404',
 });
 
-const PostComponent = PageContainer({component: Post});
-const ProfilePageComponent = PageContainer({component: ProfilePage});
-const TagPageComponent = PageContainer({component: TagPage});
+const PostComponent = LayoutWrapper({component: Post});
+const ProfilePageComponent = LayoutWrapper({component: ProfilePage});
+const TagPageComponent = LayoutWrapper({component: TagPage});
 
 const RoutesTree = () => {
   return (

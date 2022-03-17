@@ -20,6 +20,7 @@ const AllTagsPage = ({getTags, tag: {tags, loading}}) => {
     getTags();
   }, [getTags]);
 
+  const [page, setPage] = useState(1);
   const [fetchSearch, setSearch] = useState('');
   const [sortType, setSortType] = useState('Popular');
 
@@ -28,12 +29,7 @@ const AllTagsPage = ({getTags, tag: {tags, loading}}) => {
     setSearch(e.target.value);
   };
 
-  const [currentTags, setCurrentTags] = useState([]);
-
-  const handlePaginationChange = (currentPage) => {
-    setCurrentTags(tags.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage));
-  };
-
+  const handlePaginationChange = (currentPage) => setPage(currentPage);
 
   return loading || tags === null ? (
     <Spinner type='page' width='75px' height='200px' />
@@ -63,23 +59,22 @@ const AllTagsPage = ({getTags, tag: {tags, loading}}) => {
         </div>
         <div className='user-browser'>
           <div className='grid-layout'>
-            {currentTags
+            {tags
               .filter((tag) =>
                 tag.tagname.toLowerCase().includes(fetchSearch.toLowerCase())
               )
               ?.sort(handleSorting(sortType))
+              .slice((page - 1) * itemsPerPage, (page - 1) * itemsPerPage + itemsPerPage)
               .map((tag, index) => (
                 <TagPanel key={index} tag={tag} />
               ))}
           </div>
         </div>
         <Pagination
-          total={tags.length}
+          total={tags.filter((tag) => tag.tagname.toLowerCase().includes(fetchSearch.toLowerCase())).length}
           elementsPerPage={itemsPerPage}
           showInline={showInline}
-          handlePaginationChange={(currentPage) =>
-            handlePaginationChange(currentPage)
-          }
+          handlePaginationChange={(currentPage) => handlePaginationChange(currentPage)}
           hideOnSinglePage={true}
         />
       </div>

@@ -13,8 +13,8 @@ const Pagination = ({
 
   const pages =
     total % elementsPerPage === 0
-      ? Math.floor(total / elementsPerPage)
-      : Math.floor(total / elementsPerPage) + 1;
+      ? Math.ceil(total / elementsPerPage)
+      : Math.ceil(total / elementsPerPage) + 1;
 
   const handleChange = useCallback(
     (current) => {

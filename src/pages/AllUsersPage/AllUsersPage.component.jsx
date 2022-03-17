@@ -20,14 +20,11 @@ const AllUsersPage = ({getUsers, user: {users, loading}}) => {
     getUsers();
   }, [getUsers]);
 
+  const [page, setPage] = useState(1);
   const [fetchSearch, setSearch] = useState('');
   const [sortType, setSortType] = useState('Popular');
 
-  const [currentUsers, setCurrentUsers] = useState([]);
-
-  const handlePaginationChange = (currentPage) => {
-    setCurrentUsers(users.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage));
-  };
+  const handlePaginationChange = (currentPage) => setPage(currentPage);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -59,23 +56,22 @@ const AllUsersPage = ({getUsers, user: {users, loading}}) => {
         </div>
         <div className='user-browser'>
           <div className='grid-layout'>
-            {currentUsers
+            {users
               .filter((user) =>
                 user.username.toLowerCase().includes(fetchSearch.toLowerCase())
               )
               ?.sort(handleSorting(sortType, 'users'))
+              .slice((page - 1) * itemsPerPage, (page - 1) * itemsPerPage + itemsPerPage)
               .map((user, index) => (
                 <UserPanel key={index} user={user} />
               ))}
           </div>
         </div>
         <Pagination
-          total={users.length}
+          total={users.filter((user) => user.username.toLowerCase().includes(fetchSearch.toLowerCase())).length}
           elementsPerPage={itemsPerPage}
           showInline={showInline}
-          handlePaginationChange={(currentPage) =>
-            handlePaginationChange(currentPage)
-          }
+          handlePaginationChange={(currentPage) => handlePaginationChange(currentPage)}
           hideOnSinglePage={true}
         />
       </div>

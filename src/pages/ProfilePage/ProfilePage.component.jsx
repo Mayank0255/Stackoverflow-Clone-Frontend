@@ -6,6 +6,7 @@ import {getProfile} from '../../redux/users/users.actions';
 import {Link} from 'react-router-dom';
 
 import {ReactComponent as Logo} from '../../assets/LogoGlyphMd.svg';
+import {ReactComponent as StackExchangeLogo} from '../../assets/StackExchange.svg';
 
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Spinner from '../../components/Spinner/Spinner.component';
@@ -123,24 +124,7 @@ const ProfilePage = ({getProfile, user: {user, loading}, match}) => {
               <div className='community'>
                 <h3 className='bc-black-3'>
                   <span className='icon'>
-                    <svg
-                      aria-hidden='true'
-                      className='svg-icon native icon-logo-sex'
-                      width='18'
-                      height='18'
-                      viewBox='0 0 18 18'
-                    >
-                      <path
-                        d='M3 4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2H3z'
-                        fill='#8FD8F7'
-                      />
-                      <path
-                        d='M15 11H3c0 1.1.9 2 2 2h5v3l3-3a2 2 0 0 0 2-2z'
-                        fill='#155397'
-                      />
-                      <path fill='#46A2D9' d='M3 5h12v2H3z' />
-                      <path fill='#2D6DB5' d='M3 8h12v2H3z' />
-                    </svg>
+                    <StackExchangeLogo/>
                   </span>
                   <span className='text fw-bold fc-dark bc-black-3'>
                     Communities

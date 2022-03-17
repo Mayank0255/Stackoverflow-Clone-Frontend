@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import {getUsers} from '../../redux/users/users.actions';
 import handleSorting from '../../services/handleSorting';
 
+import { Pagination, PaginationItem } from '@mui/material';
+
 import UserPanel from './UserPanel/UserPanel.component';
 import Spinner from '../../components/Spinner/Spinner.component';
 import SearchBox from '../../components/SearchBox/SearchBox.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
-import Pagination from "../../components/Pagination/Pagination.component";
 
 import './AllUsersPage.styles.scss';
 
 const itemsPerPage = 12;
-const showInline = 5;
 
 const AllUsersPage = ({getUsers, user: {users, loading}}) => {
   useEffect(() => {
@@ -24,11 +24,12 @@ const AllUsersPage = ({getUsers, user: {users, loading}}) => {
   const [fetchSearch, setSearch] = useState('');
   const [sortType, setSortType] = useState('Popular');
 
-  const handlePaginationChange = (currentPage) => setPage(currentPage);
+  const handlePaginationChange = (e, value) => setPage(value);
 
   const handleChange = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
+    setPage(1)
   };
 
   return loading || users === null ? (
@@ -68,11 +69,14 @@ const AllUsersPage = ({getUsers, user: {users, loading}}) => {
           </div>
         </div>
         <Pagination
-          total={users.filter((user) => user.username.toLowerCase().includes(fetchSearch.toLowerCase())).length}
-          elementsPerPage={itemsPerPage}
-          showInline={showInline}
-          handlePaginationChange={(currentPage) => handlePaginationChange(currentPage)}
-          hideOnSinglePage={true}
+          count={Math.ceil(users.filter((user) => user.username.toLowerCase().includes(fetchSearch.toLowerCase())).length/itemsPerPage)}
+          page={page}
+          variant="outlined"
+          shape="rounded"
+          onChange={handlePaginationChange}
+          renderItem={(item) => (
+            <PaginationItem {...item} sx={{ color: '#cfd2d6', border: '1px solid #4c4f52' }}/>
+          )}
         />
       </div>
     </Fragment>

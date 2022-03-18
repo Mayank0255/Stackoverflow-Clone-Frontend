@@ -12,7 +12,7 @@ import Pagination from "../../components/Pagination/Pagination.component";
 
 import './AllUsersPage.styles.scss';
 
-const itemsPerPage = 12;
+const itemsPerPage = 16;
 
 const AllUsersPage = ({getUsers, user: {users, loading}}) => {
   useEffect(() => {
@@ -36,6 +36,12 @@ const AllUsersPage = ({getUsers, user: {users, loading}}) => {
   ) : (
     <Fragment>
       <div id='mainbar' className='users-page fc-black-800'>
+        {/*<aside style={{position: "fixed"}} className="s-notice s-notice__success s-notice__important" role="alert">*/}
+        {/*  TESTING TESTING*/}
+        {/*</aside>*/}
+        <aside className="s-notice s-notice__success s-notice__important" role="alert">
+          TESTING TESTING
+        </aside>
         <h1 className='headline'>Users</h1>
         <div className='headline-count'>
           <span>

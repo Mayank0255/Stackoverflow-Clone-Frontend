@@ -1,0 +1,62 @@
+.img-card {
+  box-sizing: border-box;
+  margin: 12px;
+  width: 210px;
+  overflow: hidden;
+
+  .avatar-card {
+    box-shadow: inset 0 10em 0 #3d3d3d !important;
+    text-align: center;
+    padding: 12px !important;
+    margin-bottom: 16px;
+    border: 1px solid #4a4e51 !important;
+    border-radius: 3px;
+    background-color: #2d2d2d;
+
+    .avatar {
+      width: 164px;
+      height: 164px;
+      overflow: hidden !important;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 16px;
+      color: #242729;
+
+      .avatar-link {
+
+
+        .logo-wrapper {
+          border-radius: 3px;
+          width: 164px;
+          height: 164px;
+
+          img {
+            width: 164px;
+            height: 164px;
+            border-radius: 3px;
+          }
+        }
+      }
+    }
+
+    .title {
+      font-weight: 400;
+      margin-top: 12px !important;
+      margin-bottom: 12px !important;
+
+      .grid {
+        color: #0c0d0e;
+        font-size: 21px;
+        display: flex;
+        margin: -4px;
+        justify-content: center !important;
+        align-items: center !important;
+
+        span {
+          color: #6a737c;
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}

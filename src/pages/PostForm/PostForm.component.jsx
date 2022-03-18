@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 
 import Spinner from '../../components/Spinner/Spinner.component';
 import AskWidget from './AskWidget/AskWidget.component';
-
-import './PostForm.styles.scss';
 import AskForm from './AskForm/AskForm.component';
 import Footer from "../../components/Footer/Footer.component";
+
+import './PostForm.styles.scss';
 
 const PostForm = ({auth: {isAuthenticated, loading}}) => {
   if (!isAuthenticated) {

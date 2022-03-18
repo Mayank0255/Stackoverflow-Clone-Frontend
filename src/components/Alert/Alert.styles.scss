@@ -1,21 +1,10 @@
 .alert {
+  top: 75px;
+  z-index: 10;
   position: fixed;
-  padding: .75rem 1.25rem;
-  border: 1px solid transparent;
-  border-radius: .25rem;
-  width: 50%;
-  top: 79px;
-  left: 22.5%;
-  z-index: 4;
-  font-size: 15px;
-}
-
-.alert-success {
-  background-color: #48a868;
-  color: #2d2d2d;
-}
-
-.alert-danger {
-  background-color: #c4524f;
-  color: #2d2d2d;
+  width: 70%;
+  max-width: 1000px;
+  min-width: 320px;
+  left: 50%;
+  transform: translateX(-50%);
 }

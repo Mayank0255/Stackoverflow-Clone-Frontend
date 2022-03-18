@@ -7,7 +7,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Liberation Sans",sans-serif !important;
     transition: all 300ms ease-in-out;
 }
 

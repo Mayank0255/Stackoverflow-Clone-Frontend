@@ -20,7 +20,7 @@ export const getUsers = () => async (dispatch) => {
 };
 
 // Get user
-export const getUser = (id) => async (dispatch) => {
+export const getProfile = (id) => async (dispatch) => {
   try {
     const res = await axios.get(config.BASE_URL + `/api/users/${id}`);
 

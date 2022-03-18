@@ -1,0 +1,24 @@
+.page {
+  display: flex;
+}
+
+.user-main-bar {
+  width: calc(100% - 300px - 24px);
+  padding: 24px 0 24px 0;
+  float: left;
+  margin: 0;
+
+  .user-card {
+    box-sizing: border-box;
+    display: block;
+    color: #242729;
+  }
+
+  .row-grid {
+    padding-bottom: 30px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: -12px;
+    display: flex;
+  }
+}

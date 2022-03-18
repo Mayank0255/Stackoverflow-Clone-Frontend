@@ -11,26 +11,23 @@ import Spinner from '../../components/Spinner/Spinner.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 import SearchBox from '../../components/SearchBox/SearchBox.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
+import Pagination from "../../components/Pagination/Pagination.component";
 
 import './QuestionsPage.styles.scss';
-import Pagination from '../../components/Pagination/Pagination.component';
 
-const itemsPerPage = 12;
-const showInline = 5;
+const itemsPerPage = 10;
 
 const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
 
+  const [page, setPage] = useState(1);
   const [sortType, setSortType] = useState('Newest');
+
   let searchQuery = new URLSearchParams(useLocation().search).get('search');
 
-  const [currentPosts, setCurrentPosts] = useState([]);
-
-  const handlePaginationChange = (currentPage) => {
-    setCurrentPosts(posts.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage));
-  };
+  const handlePaginationChange = (e, value) => setPage(value);
 
   return loading || posts === null ? (
     <Spinner type='page' width='75px' height='200px' />
@@ -77,23 +74,19 @@ const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
           />
         </div>
         <div className='questions'>
-          {currentPosts
-            .filter((post) =>
-              post.title.toLowerCase().includes(searchQuery ? searchQuery : '')
-            )
+          {posts
+            .filter((post) => post.title.toLowerCase().includes(searchQuery ? searchQuery : ''))
             ?.sort(handleSorting(sortType))
+            .slice((page - 1) * itemsPerPage, (page - 1) * itemsPerPage + itemsPerPage)
             .map((post, index) => (
               <PostItem key={index} post={post} />
             ))}
         </div>
         <Pagination
-          total={posts.length}
-          elementsPerPage={itemsPerPage}
-          showInline={showInline}
-          handlePaginationChange={(currentPage) =>
-            handlePaginationChange(currentPage)
-          }
-          hideOnSinglePage={true}
+          page={page}
+          itemList={posts.filter((post) => post.title.toLowerCase().includes(searchQuery ? searchQuery : ''))}
+          itemsPerPage={itemsPerPage}
+          handlePaginationChange={handlePaginationChange}
         />
       </div>
     </Fragment>

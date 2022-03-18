@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {addAnswer} from '../../../../redux/answers/answers.actions';
 
 import LinkButton from '../../../../components/LinkButton/LinkButton.component';
-import RichTextEditor from '../../../../components/RichTextEditor/RichTextEditor.component';
+import MarkdownEditor from '../../../../components/MarkdownEditor/MarkdownEditor.component';
 
 import './AnswerForm.styles.scss';
 
@@ -13,7 +13,7 @@ const AnswerForm = ({addAnswer, auth, post: {post}}) => {
     text: '',
   });
 
-  const richTextEditorRef = useRef(null);
+  const markdownEditorRef = useRef(null);
 
   const {text} = formData;
 
@@ -23,7 +23,7 @@ const AnswerForm = ({addAnswer, auth, post: {post}}) => {
     setFormData({
       text: '',
     });
-    richTextEditorRef.current.cleanEditorState();
+    markdownEditorRef.current.cleanEditorState();
   };
 
   const updateConvertedContent = (htmlConvertedContent) => {
@@ -38,8 +38,8 @@ const AnswerForm = ({addAnswer, auth, post: {post}}) => {
             <div className='answer-grid'>
               <label className=' fc-black-800'>Your Answer</label>
               <div className='s-textarea rich-text-editor-container'>
-                <RichTextEditor
-                  ref={richTextEditorRef}
+                <MarkdownEditor
+                  ref={markdownEditorRef}
                   onChange={updateConvertedContent}
                 />
               </div>

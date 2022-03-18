@@ -1,0 +1,23 @@
+.side-bar-tags {
+  word-wrap: break-word;
+  margin-bottom: 20px;
+  color: #242729;
+  margin-top: 24px;
+
+  .tag-headline {
+    color: #3c4146;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 18px;
+    margin-top: 0;
+  }
+}
+
+.show-tags {
+  display: block;
+  margin: 5px 0;
+  color: #0077cc;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 13px;
+}

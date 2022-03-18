@@ -6,6 +6,7 @@ import {login} from '../../redux/auth/auth.actions';
 import {register} from '../../redux/auth/auth.actions';
 
 import {ReactComponent as Logo} from '../../assets/LogoGlyphMd.svg';
+import {ReactComponent as ExternalLink} from '../../assets/ExternalLink.svg';
 
 import './AuthForm.styles.scss';
 
@@ -128,16 +129,7 @@ const AuthForm = ({register, login, action}) => {
               name='talent'
             >
               Sign up on Talent{' '}
-              <svg
-                aria-hidden='true'
-                className='svg-icon va-text-bottom sm-d-none icon-share-sm'
-                width='14'
-                height='14'
-                viewBox='0 0 14 14'
-              >
-                <path d='M5 1H3a2 2 0 0 0-2 2v8c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V9h-2v2H3V3h2V1z' />
-                <path d='M7 1h6v6h-2V4.5L6.5 9 5 7.5 9.5 3H7V1z' />
-              </svg>
+              <ExternalLink/>
             </Link>
           </div>
         </div>

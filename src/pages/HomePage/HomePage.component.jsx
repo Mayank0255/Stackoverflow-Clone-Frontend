@@ -1,29 +1,26 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {getPosts} from '../../redux/posts/posts.actions';
 
+import {getPosts} from '../../redux/posts/posts.actions';
 import LinkButton from '../../components/LinkButton/LinkButton.component';
 import PostItem from '../../components/PostItem/PostItem.component';
 import Spinner from '../../components/Spinner/Spinner.component';
-import Pagination from '../../components/Pagination/Pagination.component';
 import handleSorting from "../../services/handleSorting";
+import Pagination from "../../components/Pagination/Pagination.component";
 
 import './HomePage.styles.scss';
 
-const itemsPerPage = 12;
-const showInline = 5;
+const itemsPerPage = 10;
 
 const HomePage = ({getPosts, post: {posts, loading}}) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
 
-  const [currentPosts, setCurrentPosts] = useState([]);
+  const [page, setPage] = useState(1);
 
-  const handlePaginationChange = (currentPage) => {
-    setCurrentPosts(posts.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage));
-  };
+  const handlePaginationChange = (e, value) => setPage(value);
   
   return loading || posts === null ? (
     <Spinner type='page' width='75px' height='200px' />
@@ -46,18 +43,18 @@ const HomePage = ({getPosts, post: {posts, loading}}) => {
           </span>
         </div>
         <div className="questions">
-          {currentPosts
+          {posts
             .sort(handleSorting('Top'))
+            .slice((page - 1) * itemsPerPage, (page - 1) * itemsPerPage + itemsPerPage)
             .map((post, index) => (
             <PostItem key={index} post={post} />
           ))}
         </div>
         <Pagination
-          total={posts.length}
-          elementsPerPage={itemsPerPage}
-          showInline={showInline}
-          handlePaginationChange={(currentPage) => handlePaginationChange(currentPage)}
-          hideOnSinglePage={true}
+          page={page}
+          itemList={posts}
+          itemsPerPage={itemsPerPage}
+          handlePaginationChange={handlePaginationChange}
         />
       </div>
     </Fragment>

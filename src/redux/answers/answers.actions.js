@@ -7,7 +7,7 @@ import {
 
 import axios from 'axios';
 import {setAlert} from '../alert/alert.actions';
-import config from "../../config";
+import config from '../../config';
 
 export const getAnswers = (id) => async (dispatch) => {
   try {

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Spinner from '../../components/Spinner/Spinner.component';
 import AskWidget from './AskWidget/AskWidget.component';
 import AskForm from './AskForm/AskForm.component';
-import Footer from "../../components/Footer/Footer.component";
+import Footer from '../../components/Footer/Footer.component';
 
 import './PostForm.styles.scss';
 

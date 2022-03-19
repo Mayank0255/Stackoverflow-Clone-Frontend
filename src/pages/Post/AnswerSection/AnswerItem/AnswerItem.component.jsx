@@ -59,16 +59,16 @@ const AnswerItem = ({
                 {!auth.loading &&
                   auth.isAuthenticated &&
                   user_id === auth.user.id && (
-                    <Link
-                      className='s-link s-link__danger'
-                      style={{paddingLeft: '4px'}}
-                      title='Delete the answer'
-                      onClick={(e) => deleteAnswer(id)}
-                      to={`/questions/${post.id}`}
-                    >
+                  <Link
+                    className='s-link s-link__danger'
+                    style={{paddingLeft: '4px'}}
+                    title='Delete the answer'
+                    onClick={() => deleteAnswer(id)}
+                    to={`/questions/${post.id}`}
+                  >
                       delete
-                    </Link>
-                  )}
+                  </Link>
+                )}
               </div>
             </div>
             <UserCard

@@ -11,7 +11,7 @@ import Spinner from '../../components/Spinner/Spinner.component';
 import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 import SearchBox from '../../components/SearchBox/SearchBox.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
-import Pagination from "../../components/Pagination/Pagination.component";
+import Pagination from '../../components/Pagination/Pagination.component';
 
 import './QuestionsPage.styles.scss';
 

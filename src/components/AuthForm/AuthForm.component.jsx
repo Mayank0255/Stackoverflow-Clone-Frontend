@@ -41,7 +41,7 @@ const AuthForm = ({register, login, action}) => {
 
   const logInLink = (
     <Fragment>
-      Don't have an account?{' '}
+      Don&apos;t have an account?{' '}
       <Link to='/register' name='register'>
         Sign up
       </Link>

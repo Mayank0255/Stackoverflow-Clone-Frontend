@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
-import { SideBarWidgetData } from "./SideBarWidgetData";
+import { SideBarWidgetData } from './SideBarWidgetData';
 
 import './SideBarWidget.styles.scss';
 

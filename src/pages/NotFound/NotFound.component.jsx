@@ -35,7 +35,7 @@ const NotFound = () => {
             <div className='box__description-container'>
               <div className='box__description-title fc-black-800'>Whoops!</div>
               <div className='box__description-text fc-black-500'>
-                It seems like we couldn't find the page you were looking for
+                It seems like we couldn&apos;t find the page you were looking for
               </div>
             </div>
             <Link to='/' className='box__button'>

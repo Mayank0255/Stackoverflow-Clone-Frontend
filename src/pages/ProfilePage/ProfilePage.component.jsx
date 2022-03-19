@@ -1,14 +1,14 @@
 import React, {useEffect, Fragment} from 'react';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getProfile } from '../../redux/users/users.actions';
 
-import UserSection from "./UserSection/UserSection.component";
+import UserSection from './UserSection/UserSection.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Spinner from '../../components/Spinner/Spinner.component';
-import ExternalUserDetails from "./ExternalUserDetails/ExternalUserDetails.component";
-import UserActivity from "./UserActivity/UserActivity.component";
+import ExternalUserDetails from './ExternalUserDetails/ExternalUserDetails.component';
+import UserActivity from './UserActivity/UserActivity.component';
 
 import './ProfilePage.styles.scss';
 

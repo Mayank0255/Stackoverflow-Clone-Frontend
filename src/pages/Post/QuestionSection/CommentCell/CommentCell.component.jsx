@@ -76,16 +76,16 @@ const CommentCell = ({
                     {!auth.loading &&
                       auth.isAuthenticated &&
                       comment.user_id === auth.user.id && (
-                        <Link
-                          className='s-tag s-tag__moderator'
-                          style={{marginTop: '4px'}}
-                          title='Delete the comment'
-                          onClick={(e) => deleteComment(comment.id)}
-                          to={`/questions/${post.id}`}
-                        >
+                      <Link
+                        className='s-tag s-tag__moderator'
+                        style={{marginTop: '4px'}}
+                        title='Delete the comment'
+                        onClick={() => deleteComment(comment.id)}
+                        to={`/questions/${post.id}`}
+                      >
                           delete
-                        </Link>
-                      )}
+                      </Link>
+                    )}
                   </div>
                 </li>
               ))

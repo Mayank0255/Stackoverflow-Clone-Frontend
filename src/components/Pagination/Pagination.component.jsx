@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Pagination as MuiPagination, PaginationItem } from "@mui/material";
+import React, { Fragment } from 'react';
+import { Pagination as MuiPagination, PaginationItem } from '@mui/material';
 
 const Pagination = ({
   page,

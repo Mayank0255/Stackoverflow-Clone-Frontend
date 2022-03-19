@@ -75,15 +75,15 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
         className='small-search-form'
         autoComplete='off'
       >
-          <input
-            className='small-search'
-            autoComplete='off'
-            type='text'
-            name='search'
-            maxLength='35'
-            placeholder='Search...'
-          />
-          <Search className="small-search-icon" />
+        <input
+          className='small-search'
+          autoComplete='off'
+          type='text'
+          name='search'
+          maxLength='35'
+          placeholder='Search...'
+        />
+        <Search className="small-search-icon" />
       </form>
     );
   }

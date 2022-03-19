@@ -19,7 +19,7 @@ const PostCell = ({
   return (
     <Fragment>
       <div className='post-cell'>
-        <div className='post-text fc-black-800' dangerouslySetInnerHTML={{__html: post_body}}></div>
+        <div className='post-text fc-black-800' dangerouslySetInnerHTML={{__html: post_body}}/>
         <div className='post-tags fc-black-800'>
           {tags.map((tag, index) => (
             <TagBadge key={index} tag_name={tag.tagname} size={'s-tag'} float={'left'} />
@@ -46,16 +46,16 @@ const PostCell = ({
                 {!auth.loading &&
                   auth.isAuthenticated &&
                   user_id === auth.user.id && (
-                    <Link
-                      className='s-link s-link__danger'
-                      style={{paddingLeft: '4px'}}
-                      title='Delete the post'
-                      onClick={(e) => deletePost(id)}
-                      to='/questions'
-                    >
+                  <Link
+                    className='s-link s-link__danger'
+                    style={{paddingLeft: '4px'}}
+                    title='Delete the post'
+                    onClick={() => deletePost(id)}
+                    to='/questions'
+                  >
                       delete
-                    </Link>
-                  )}
+                  </Link>
+                )}
               </div>
             </div>
             <UserCard

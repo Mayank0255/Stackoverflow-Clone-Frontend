@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import config from "../../config";
+import config from '../../config';
 import setAuthToken from './auth.utils';
 import {setAlert} from '../alert/alert.actions';
 import {
@@ -37,7 +37,7 @@ export const register = ({username, password}) => async (dispatch) => {
   const config_headers = {
     headers: {
       'Content-Type': 'application/json',
-      Accept: "application/json",
+      Accept: 'application/json',
     },
   };
 
@@ -68,7 +68,7 @@ export const login = ({username, password}) => async (dispatch) => {
   const config_headers = {
     headers: {
       'Content-Type': 'application/json',
-      Accept: "application/json",
+      Accept: 'application/json',
     },
   };
 

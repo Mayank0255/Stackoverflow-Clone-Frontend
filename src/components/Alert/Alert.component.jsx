@@ -21,7 +21,7 @@ const Alert = ({ alerts }) => {
         )
       }
     }
-  )
+    )
 }
 
 Alert.propTypes = {

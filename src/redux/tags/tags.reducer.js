@@ -10,28 +10,28 @@ const initialState = {
 
 export default function tags(state = initialState, action) {
   switch (action.type) {
-    case GET_TAG:
-      return {
-        ...state,
-        tag: action.payload,
-        loading: false,
-        redirect: false,
-      };
-    case GET_TAGS:
-      return {
-        ...state,
-        tags: action.payload,
-        loading: false,
-        redirect: false,
-      };
-    case TAG_ERROR:
-      return {
-        ...state,
-        error: action.payload,
-        loading: false,
-        redirect: true,
-      };
-    default:
-      return state;
+  case GET_TAG:
+    return {
+      ...state,
+      tag: action.payload,
+      loading: false,
+      redirect: false,
+    };
+  case GET_TAGS:
+    return {
+      ...state,
+      tags: action.payload,
+      loading: false,
+      redirect: false,
+    };
+  case TAG_ERROR:
+    return {
+      ...state,
+      error: action.payload,
+      loading: false,
+      redirect: true,
+    };
+  default:
+    return state;
   }
 }

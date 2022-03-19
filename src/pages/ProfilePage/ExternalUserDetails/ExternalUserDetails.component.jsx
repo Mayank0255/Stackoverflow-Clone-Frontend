@@ -1,8 +1,8 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-import {ReactComponent as StackExchangeLogo} from "../../../assets/StackExchange.svg";
-import {ReactComponent as Logo} from "../../../assets/LogoGlyphMd.svg";
+import {ReactComponent as StackExchangeLogo} from '../../../assets/StackExchange.svg';
+import {ReactComponent as Logo} from '../../../assets/LogoGlyphMd.svg';
 
 import './ExternalUserDetails.styles.scss';
 

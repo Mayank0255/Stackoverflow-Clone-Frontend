@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import config from "../../config";
+import config from '../../config';
 import {setAlert} from '../alert/alert.actions';
 import {
   GET_COMMENTS,

@@ -6,8 +6,8 @@ import {getPosts} from '../../redux/posts/posts.actions';
 import LinkButton from '../../components/LinkButton/LinkButton.component';
 import PostItem from '../../components/PostItem/PostItem.component';
 import Spinner from '../../components/Spinner/Spinner.component';
-import handleSorting from "../../services/handleSorting";
-import Pagination from "../../components/Pagination/Pagination.component";
+import handleSorting from '../../services/handleSorting';
+import Pagination from '../../components/Pagination/Pagination.component';
 
 import './HomePage.styles.scss';
 
@@ -47,8 +47,8 @@ const HomePage = ({getPosts, post: {posts, loading}}) => {
             .sort(handleSorting('Top'))
             .slice((page - 1) * itemsPerPage, (page - 1) * itemsPerPage + itemsPerPage)
             .map((post, index) => (
-            <PostItem key={index} post={post} />
-          ))}
+              <PostItem key={index} post={post} />
+            ))}
         </div>
         <Pagination
           page={page}

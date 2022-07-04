@@ -8,6 +8,7 @@ import {
   deleteComment,
   addComment,
 } from '../../../../redux/comments/comments.actions';
+import censorBadWords from '../../../../services/censorBadWords'
 
 import Spinner from '../../../../components/Spinner/Spinner.component';
 import TagBadge from '../../../../components/TagBadge/TagBadge.component';
@@ -39,7 +40,7 @@ const CommentCell = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addComment(post.id, {body});
+    addComment(post.id, censorBadWords({body}));
     setFormData({
       body: '',
     });

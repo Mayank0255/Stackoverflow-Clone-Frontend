@@ -2,6 +2,8 @@ import React, {Fragment, useState, useRef} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {addAnswer} from '../../../../redux/answers/answers.actions';
+import censorBadWords from '../../../../services/censorBadWords'
+
 
 import LinkButton from '../../../../components/LinkButton/LinkButton.component';
 import MarkdownEditor from '../../../../components/MarkdownEditor/MarkdownEditor.component';
@@ -19,7 +21,7 @@ const AnswerForm = ({addAnswer, auth, post: {post}}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addAnswer(post.id, {text});
+    addAnswer(post.id, censorBadWords({text}));
     setFormData({
       text: '',
     });

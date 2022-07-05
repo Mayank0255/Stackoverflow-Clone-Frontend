@@ -21,6 +21,9 @@ const SideBar = () => (
           />
         ))}
       </div>
+      <div className='collective-tabs'>
+        <p className='collective fc-light'>COLLECTIVES</p>
+      </div>
       <div className='teams-tabs'>
         <p className='title fc-light'>TEAMS</p>
       </div>

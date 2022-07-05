@@ -1,3 +1,4 @@
+// import moment from 'moment';
 const handleSorting = (sortType, page = '') => {
   let temp = sortType;
 
@@ -6,6 +7,7 @@ const handleSorting = (sortType, page = '') => {
   } else if (page === 'users' && temp === 'Popular') {
     temp = 'Popular users';
   }
+
 
   switch (temp) {
     case 'Newest':
@@ -29,12 +31,45 @@ const handleSorting = (sortType, page = '') => {
     case 'Name':
       return (a, b) => a.tagname.localeCompare(b.tagname);
     case 'Username':
-      return (a, b) => a.username.localeCompare(b.username);
+      return (a, b) => a.localeCompare(b.username);
     case 'Popular users':
       return (a, b) => b.views - a.views;
+    case 'Today':
+      return (a,b) => {
+        const aDate = Date.now() - new Date(a.created_at).getTime()
+        const bDate = Date.now() - new Date(b.created_at).getTime()
+  
+        if (aDate < 86300000 && bDate < 86300000) {
+          return b.answer_count + b.comment_count - (a.answer_count + a.comment_count);
+        }
+      }
+    case 'Week':
+      return (a, b) => {
+        const aDate = Date.now() - new Date(a.created_at).getTime()
+        const bDate = Date.now() - new Date(b.created_at).getTime()
+        if (aDate < 604800000 && bDate < 604800000) {
+          return b.answer_count + b.comment_count - (a.answer_count + a.comment_count);
+        }
+      }
+    case 'Month':
+      return (a, b) => {
+        const aDate = Date.now() - new Date(a.created_at).getTime()
+        const bDate = Date.now() - new Date(b.created_at).getTime()
+        if (aDate < 2628000000 && bDate < 2628000000) {
+          return b.answer_count + b.comment_count - (a.answer_count + a.comment_count);
+        }
+      }
+    case 'Year':
+      return (a, b) => {
+        const aDate = Date.now() - new Date(a.created_at).getTime()
+        const bDate = Date.now() - new Date(b.created_at).getTime()
+        if (aDate < 31540000000 && bDate < 31540000000) {
+          return b.answer_count + b.comment_count - (a.answer_count + a.comment_count);
+        }
+      }
     default:
       break;
   }
-};
+}
 
 export default handleSorting;

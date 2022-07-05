@@ -25,10 +25,11 @@ const PostItem = ({
     created_at,
     tags,
   },
-}) => {
+},) => {
   const answerVoteUp = (
     <div className='vote answer'>
-      <span className='vote-count fc-green-500'>{answer_count}</span>
+      
+      <span className='vote-count'>{answer_count}</span>
       <div className='count-text'>answers</div>
     </div>
   );
@@ -53,8 +54,8 @@ const PostItem = ({
             <span className='vote-count'>{tags.length}</span>
             <div className='count-text'>tags</div>
           </div>
-          <div className='vote'>
-            <div className='count-text'>{views} views</div>
+          <div className='views'>
+            <div className='count-text'><p>{views} views</p></div>
           </div>
         </div>
       </div>

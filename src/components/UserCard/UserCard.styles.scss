@@ -9,12 +9,12 @@
 
   .user-block {
     box-sizing: border-box;
-    padding: 5px 6px 0 7px;
+    padding: 5px 6px 0 0;
     color: #6a737c;
+    display: flex;
 
     .action-time {
-      margin-top: 1px;
-      margin-bottom: 4px;
+      margin: 1px 0px 4px 3px;
       font-size: 12px;
       white-space: nowrap;
     }
@@ -48,7 +48,6 @@
 
     .user-profile {
       margin-left: 8px;
-      width: calc(100% - 40px);
       float: left;
       line-height: 17px;
       word-wrap: break-word;

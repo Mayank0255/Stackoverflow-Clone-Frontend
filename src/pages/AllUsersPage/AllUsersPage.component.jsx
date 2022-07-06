@@ -12,7 +12,7 @@ import Pagination from "../../components/Pagination/Pagination.component";
 
 import "./AllUsersPage.styles.scss";
 
-const itemsPerPage = 15;
+const itemsPerPage = 18;
 
 const AllUsersPage = ({ getUsers, user: { users, loading } }) => {
   useEffect(() => {

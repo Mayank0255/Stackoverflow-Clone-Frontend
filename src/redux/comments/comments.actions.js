@@ -9,13 +9,15 @@ import {
   DELETE_COMMENT,
 } from './comments.types';
 
+import censorBadWords from '../../services/censorBadWords'
+
 export const getComments = (id) => async (dispatch) => {
   try {
     const res = await axios.get(config.BASE_URL + `/api/posts/comments/${id}`);
 
     dispatch({
       type: GET_COMMENTS,
-      payload: res.data.data,
+      payload: res.data.data.map(({body, ...rest})=>({...censorBadWords({body}), ...rest})),
     });
   } catch (err) {
     dispatch({

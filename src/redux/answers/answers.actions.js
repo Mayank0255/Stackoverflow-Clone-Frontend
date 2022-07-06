@@ -9,13 +9,15 @@ import axios from 'axios';
 import {setAlert} from '../alert/alert.actions';
 import config from "../../config";
 
+import censorBadWords from '../../services/censorBadWords'
+
 export const getAnswers = (id) => async (dispatch) => {
   try {
     const res = await axios.get(config.BASE_URL + `/api/posts/answers/${id}`);
 
     dispatch({
       type: GET_ANSWERS,
-      payload: res.data.data,
+      payload: res.data.data.map(({body, ...rest})=>({...censorBadWords({body}), ...rest})),
     });
   } catch (err) {
     dispatch({

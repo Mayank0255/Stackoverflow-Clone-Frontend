@@ -10,14 +10,13 @@ const UserCard = ({
   gravatar,
   username,
   dateType,
-  float,
   backgroundColor,
 }) => {
   return (
     <Fragment>
       <div
         className='owner'
-        style={{float: float, backgroundColor: backgroundColor}}
+        style={{backgroundColor: backgroundColor}}
       >
         <div className='user-block fc-black-500'>
           <div className='user-logo'>
@@ -30,6 +29,7 @@ const UserCard = ({
               </div>
             </Link>
           </div>
+          <div className="profile-text">
           <div className='user-profile'>
             <Link
               className='user-profile-link fc-blue-600'
@@ -41,6 +41,7 @@ const UserCard = ({
           <div className='action-time'>
             {dateType ? dateType : 'asked'} {moment(created_at).fromNow(true)}{' '}
             ago
+          </div>
           </div>
         </div>
       </div>

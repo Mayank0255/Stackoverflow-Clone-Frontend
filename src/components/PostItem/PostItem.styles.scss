@@ -5,6 +5,10 @@
   display: flex;
   border-bottom: 1px solid #4a4e51;
 
+  .profile-tags{
+    display: flex;
+  }
+
   .stats {
     display: flex;
     flex-direction: column;
@@ -135,3 +139,4 @@
     }
   }
 }
+

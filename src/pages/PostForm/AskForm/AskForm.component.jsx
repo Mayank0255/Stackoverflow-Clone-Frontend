@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addPost } from "../../../redux/posts/posts.actions";
 import MarkdownEditor from "../../../components/MarkdownEditor/MarkdownEditor.component";
-import censorBadWords, {
+import {
   badWordsFilter,
 } from "../../../services/censorBadWords";
 
@@ -68,7 +68,7 @@ const AskForm = ({ addPost }) => {
     // if there are errors, don't submit
     if (errors.length > 0) return;
 
-    addPost(censorBadWords({ title, body, tagname }));
+    addPost({ title, body, tagname });
 
     setFormData({
       title: "",

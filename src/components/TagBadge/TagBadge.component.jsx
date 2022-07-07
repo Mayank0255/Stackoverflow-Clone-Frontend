@@ -8,7 +8,7 @@ const TagBadge = ({ tag_name, size, display, link, href }) => {
     <Fragment>
         <div className='tags-badge' style={{ display }}>
           {href === true ? (
-            <Link className={`${size}`} href={link ? link : `/tags/${tag_name}`}>
+            <Link className={`${size}`} to={link ? link : `/tags/${tag_name}`}>
               {tag_name}
             </Link>
           ) : (

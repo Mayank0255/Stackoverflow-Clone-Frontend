@@ -1,4 +1,3 @@
-// import moment from 'moment';
 const handleSorting = (sortType, page = '') => {
   let temp = sortType;
 
@@ -42,6 +41,7 @@ const handleSorting = (sortType, page = '') => {
         if (aDate < 86300000 && bDate < 86300000) {
           return b.answer_count + b.comment_count - (a.answer_count + a.comment_count);
         }
+        
       }
     case 'Week':
       return (a, b) => {

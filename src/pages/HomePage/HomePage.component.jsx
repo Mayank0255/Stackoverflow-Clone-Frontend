@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -9,6 +8,7 @@ import LinkButton from '../../components/LinkButton/LinkButton.component';
 import PostItem from '../../components/PostItem/PostItem.component';
 import Spinner from '../../components/Spinner/Spinner.component';
 import handleSorting from "../../services/handleSorting";
+import handleFilters from "../../services/handleFilters";
 import Pagination from "../../components/Pagination/Pagination.component";
 
 import './HomePage.styles.scss';
@@ -21,9 +21,7 @@ const HomePage = ({ getPosts, post: { posts, loading } }) => {
   }, [getPosts]);
 
   const [page, setPage] = useState(1);
-  const [sortType, setSortType] = useState('Today');
-
-  let searchQuery = new URLSearchParams(useLocation().search).get('search');
+  const [sortType, setSortType] = useState('Today')
 
   const handlePaginationChange = (e, value) => setPage(value);
 
@@ -55,8 +53,8 @@ const HomePage = ({ getPosts, post: { posts, loading } }) => {
         <div className="questions">
           <div className="postQues">
             {posts
-              .filter((post) => post.title.toLowerCase().includes(searchQuery ? searchQuery : ''))
               .sort(handleSorting(sortType))
+              .filter(handleFilters(sortType))
               .slice((page - 1) * itemsPerPage, (page - 1) * itemsPerPage + itemsPerPage)
               .map((post, index) => (
                 <PostItem key={index} post={post} />

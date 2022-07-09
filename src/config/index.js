@@ -3,7 +3,7 @@ const config = {
 };
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-  config.BASE_URL = 'https://stackoverflow-clone-backend.herokuapp.com';
+  config.BASE_URL = 'http://localhost:5000';
 }
 
 export default config;

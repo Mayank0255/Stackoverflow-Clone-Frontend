@@ -21,14 +21,13 @@ const HomePage = ({ getPosts, post: { posts, loading } }) => {
   }, [getPosts]);
 
   const [page, setPage] = useState(1);
-  const [sortType, setSortType] = useState('Today')
+  const [sortType, setSortType] = useState('Month')
 
   const handlePaginationChange = (e, value) => setPage(value);
 
   return loading || posts === null ? (
     <Spinner type='page' width='75px' height='200px' />
   ) : (
-    // <ButtonGroup/>
     <Fragment>
       <div id='mainbar' className='homepage fc-black-800'>
         <div className='questions-grid'>
@@ -42,6 +41,9 @@ const HomePage = ({ getPosts, post: { posts, loading } }) => {
           </div>
         </div>
         <div className='questions-tabs'>
+          <span>
+            {new Intl.NumberFormat('en-IN').format(posts.length)} questions
+          </span>
           <div className="btns-filter">
             <ButtonGroup
               buttons={['Today', 'Week', 'Month', 'Year']}
@@ -63,7 +65,8 @@ const HomePage = ({ getPosts, post: { posts, loading } }) => {
         </div>
         <Pagination
           page={page}
-          itemList={posts}
+          itemList={posts.sort(handleSorting(sortType))
+            .filter(handleFilters(sortType))}
           itemsPerPage={itemsPerPage}
           handlePaginationChange={handlePaginationChange}
         />

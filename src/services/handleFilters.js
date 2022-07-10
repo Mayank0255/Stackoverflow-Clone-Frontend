@@ -7,24 +7,35 @@ const handleFilters = (sortType, page = '') => {
         temp = 'Popular users';
     }
 
+    const todayDate = Date.now()
+    function getTime(a) {
+        return new Date(a).getTime()
+    }
+    const milliSecSec = 1000
+    const milliSecDay = 86300000
+    const milliSecWeek = 604800000
+    const milliSecMonth = 2628000000
+    const milliSecYear = 31540000000
+
+
     let handleToday = function(a) {
-        const aDate = Date.now() - new Date(a.created_at).getTime()
-        return aDate < 86300000 && aDate > 1000
+        const aDate = todayDate - getTime(a.created_at)
+        return aDate < milliSecDay && aDate > milliSecSec
     }
 
     let handleWeek = function(a) {
-        const aDate = Date.now() - new Date(a.created_at).getTime()
-        return aDate < 604800000
+        const aDate = todayDate - getTime(a.created_at)
+        return aDate < milliSecWeek
     }
 
     let handleMonth = function(a) {
-        const aDate = Date.now() - new Date(a.created_at).getTime()
-        return aDate < 2628000000
+        const aDate = todayDate - getTime(a.created_at)
+        return aDate < milliSecMonth
     }
 
     let handleYear = function(a) {
-        const aDate = Date.now() - new Date(a.created_at).getTime()
-        return aDate < 31540000000
+        const aDate = todayDate - getTime(a.created_at)
+        return aDate < milliSecYear
     }
 
 

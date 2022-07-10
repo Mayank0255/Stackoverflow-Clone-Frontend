@@ -2,11 +2,13 @@ import React, {Fragment, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {getPosts} from '../../redux/posts/posts.actions';
+import { getPosts } from '../../redux/posts/posts.actions';
+import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
 import LinkButton from '../../components/LinkButton/LinkButton.component';
 import PostItem from '../../components/PostItem/PostItem.component';
 import Spinner from '../../components/Spinner/Spinner.component';
 import handleSorting from "../../services/handleSorting";
+import handleFilters from "../../services/handleFilters";
 import Pagination from "../../components/Pagination/Pagination.component";
 
 import './HomePage.styles.scss';
@@ -19,6 +21,7 @@ const HomePage = ({getPosts, post: {posts, loading}}) => {
   }, [getPosts]);
 
   const [page, setPage] = useState(1);
+  const [sortType, setSortType] = useState('Month')
 
   const handlePaginationChange = (e, value) => setPage(value);
   
@@ -41,18 +44,29 @@ const HomePage = ({getPosts, post: {posts, loading}}) => {
           <span>
             {new Intl.NumberFormat('en-IN').format(posts.length)} questions
           </span>
+          <div className="btns-filter">
+            <ButtonGroup
+              buttons={['Today', 'Week', 'Month', 'Year']}
+              selected={sortType}
+              setSelected={setSortType}
+            />
+          </div>
         </div>
         <div className="questions">
-          {posts
-            .sort(handleSorting('Top'))
-            .slice((page - 1) * itemsPerPage, (page - 1) * itemsPerPage + itemsPerPage)
-            .map((post, index) => (
-            <PostItem key={index} post={post} />
-          ))}
+        <div className="postQues">
+            {posts
+              .sort(handleSorting(sortType))
+              .filter(handleFilters(sortType))
+              .slice((page - 1) * itemsPerPage, (page - 1) * itemsPerPage + itemsPerPage)
+              .map((post, index) => (
+                <PostItem key={index} post={post} />
+              ))}
+          </div>
         </div>
         <Pagination
           page={page}
-          itemList={posts}
+          itemList={posts.sort(handleSorting(sortType))
+            .filter(handleFilters(sortType))}
           itemsPerPage={itemsPerPage}
           handlePaginationChange={handlePaginationChange}
         />

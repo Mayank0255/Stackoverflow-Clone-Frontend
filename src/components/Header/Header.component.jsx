@@ -1,19 +1,19 @@
-import React, {Fragment, useState} from 'react';
-import {Link, useHistory} from 'react-router-dom';
-import {connect} from 'react-redux';
+import React, { Fragment, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {logout} from '../../redux/auth/auth.actions';
+import { logout } from '../../redux/auth/auth.actions';
 
-import {ReactComponent as Search} from '../../assets/Search.svg';
-import {ReactComponent as Logo} from '../../assets/LogoMd.svg';
-import {ReactComponent as SmallLogo} from '../../assets/LogoGlyphMd.svg';
+import { ReactComponent as Search } from '../../assets/Search.svg';
+import { ReactComponent as Logo } from '../../assets/LogoMd.svg';
+import { ReactComponent as SmallLogo } from '../../assets/LogoGlyphMd.svg';
 import Spinner from '../Spinner/Spinner.component';
 import LinkButton from '../LinkButton/LinkButton.component';
 import MobileSideBar from '../MobileSideBar/MobileSideBar.component';
 
 import './Header.styles.scss';
 
-const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
+const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   let history = useHistory();
   const [searchState, setSearchState] = useState(false);
 
@@ -75,15 +75,15 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
         className='small-search-form'
         autoComplete='off'
       >
-          <input
-            className='small-search'
-            autoComplete='off'
-            type='text'
-            name='search'
-            maxLength='35'
-            placeholder='Search...'
-          />
-          <Search className="small-search-icon" />
+        <input
+          className='small-search'
+          autoComplete='off'
+          type='text'
+          name='search'
+          maxLength='35'
+          placeholder='Search...'
+        />
+        <Search className="small-search-icon" />
       </form>
     );
   }
@@ -106,7 +106,10 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
             <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>
           )}
         </div>
+<<<<<<< HEAD
         
+=======
+>>>>>>> origin/burhanraja
           <form
             id='search'
             onSubmit={() => history.push('/questions')}
@@ -125,8 +128,13 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
               <Search />
             </div>
           </form>
+<<<<<<< HEAD
           <Search className="search-icon" onClick={() => setSearchState(!searchState)} />
           <div className="header-search-div">
+=======
+        <Search className="search-icon" onClick={() => setSearchState(!searchState)} />
+        <div className="header-search-div">
+>>>>>>> origin/burhanraja
           {!loading && (
             <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
           )}
@@ -146,4 +154,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, {logout})(Header);
+export default connect(mapStateToProps, { logout })(Header);

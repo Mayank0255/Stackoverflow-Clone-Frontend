@@ -1,5 +1,5 @@
-import React, {Fragment, useEffect, useState} from 'react';
-import {connect} from 'react-redux';
+import React, { Fragment, useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { getPosts } from '../../redux/posts/posts.actions';
@@ -15,7 +15,7 @@ import './HomePage.styles.scss';
 
 const itemsPerPage = 10;
 
-const HomePage = ({getPosts, post: {posts, loading}}) => {
+const HomePage = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
@@ -24,7 +24,7 @@ const HomePage = ({getPosts, post: {posts, loading}}) => {
   const [sortType, setSortType] = useState('Month')
 
   const handlePaginationChange = (e, value) => setPage(value);
-  
+
   return loading || posts === null ? (
     <Spinner type='page' width='75px' height='200px' />
   ) : (
@@ -53,7 +53,11 @@ const HomePage = ({getPosts, post: {posts, loading}}) => {
           </div>
         </div>
         <div className="questions">
+<<<<<<< HEAD
         <div className="postQues">
+=======
+          <div className="postQues">
+>>>>>>> origin/burhanraja
             {posts
               .sort(handleSorting(sortType))
               .filter(handleFilters(sortType))

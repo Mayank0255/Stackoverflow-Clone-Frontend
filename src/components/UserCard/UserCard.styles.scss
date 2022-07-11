@@ -9,6 +9,10 @@
   justify-content: flex-end;
 
   .user-block {
+<<<<<<< HEAD
+    box-sizing: border-box;
+=======
+>>>>>>> origin/burhanraja
     padding-right: 10px;
     color: #6a737c;
     display: flex;
@@ -16,7 +20,10 @@
     .profile-text {
       display: flex;
       justify-content: right;
+<<<<<<< HEAD
+=======
       // align-items: center;
+>>>>>>> origin/burhanraja
     }
 
     .action-time {
@@ -73,7 +80,11 @@
 
 @media only screen and (max-width: 414px) {
   .owner {
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/burhanraja
     margin: 8px;
 
     .user-logo {
@@ -87,5 +98,8 @@
     flex-direction: column;
     }
   }
+<<<<<<< HEAD
+=======
   
+>>>>>>> origin/burhanraja
 }

@@ -28,7 +28,10 @@ const PostItem = ({
 },) => {
   const answerVoteUp = (
     <div className='vote answer'>
+<<<<<<< HEAD
+=======
       
+>>>>>>> origin/burhanraja
       <span className='vote-count'>{answer_count}</span>
       <div className='count-text'>answers</div>
     </div>

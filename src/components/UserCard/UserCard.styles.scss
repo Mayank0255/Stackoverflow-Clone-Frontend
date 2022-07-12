@@ -9,6 +9,8 @@
   justify-content: flex-end;
 
   .user-block {
+
+    box-sizing: border-box;
     padding-right: 10px;
     color: #6a737c;
     display: flex;
@@ -72,7 +74,6 @@
 
 @media only screen and (max-width: 414px) {
   .owner {
-    
     margin: 8px;
 
     .user-logo {
@@ -86,5 +87,4 @@
     flex-direction: column;
     }
   }
-  
 }

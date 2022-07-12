@@ -53,11 +53,7 @@ const HomePage = ({ getPosts, post: { posts, loading } }) => {
           </div>
         </div>
         <div className="questions">
-<<<<<<< HEAD
-        <div className="postQues">
-=======
           <div className="postQues">
->>>>>>> origin/burhanraja
             {posts
               .sort(handleSorting(sortType))
               .filter(handleFilters(sortType))

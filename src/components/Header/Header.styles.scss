@@ -93,12 +93,8 @@
 
 .header-search-div {
   display: flex;
-<<<<<<< HEAD
-  justify-content: flex-end;
-=======
   //margin-left: 10%;
   justify-content:flex-end;
->>>>>>> origin/burhanraja
   align-items: center
 }
 
@@ -188,19 +184,6 @@
   .header-search-div {
     justify-content: space-around;
   }
-<<<<<<< HEAD
-  .search-icon {
-    display: block;
-    margin-right: 1rem;
-    position: absolute;
-    left: 77%;
-    top: 30%;
-  }
-  
-  .searchbar {
-    display: none;
-  }
-=======
   .searchbar {
       display: none;
     }
@@ -212,7 +195,6 @@
       top: 30%;
     }
 
->>>>>>> origin/burhanraja
   .btns {
     margin-right: 20px;
   }
@@ -229,10 +211,6 @@
   .full-logo {
     display: none;
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/burhanraja
   .search-icon {
     display: block;
     position: relative;
@@ -258,11 +236,7 @@
   .search-icon {
     display: block;
     position: relative;
-<<<<<<< HEAD
     left: 5%;
-=======
-    left: 10%;
->>>>>>> origin/burhanraja
     top: 30%;
   }
   .hamburger {
@@ -286,11 +260,7 @@
   .search-icon {
     display: block;
     position: relative;
-<<<<<<< HEAD
     left: 5%;
-=======
-    left: 10%;
->>>>>>> origin/burhanraja
     top: 30%;
   }
 }

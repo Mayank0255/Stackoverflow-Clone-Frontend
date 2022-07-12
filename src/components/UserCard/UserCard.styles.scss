@@ -5,22 +5,28 @@
   background-color: #3e4a52;
   text-align: left;
   vertical-align: top;
-  width: 200px;
+  display: flex;
+  justify-content: flex-end;
 
   .user-block {
+
     box-sizing: border-box;
-    padding: 5px 6px 0 7px;
+    padding-right: 10px;
     color: #6a737c;
+    display: flex;
+
+    .profile-text {
+      display: flex;
+      justify-content: right;
+    }
 
     .action-time {
-      margin-top: 1px;
-      margin-bottom: 4px;
+      margin: 1px 0px 4px 5px;
       font-size: 12px;
       white-space: nowrap;
     }
 
     .user-logo {
-      float: left;
       width: 32px;
       height: 32px;
       border-radius: 1px;
@@ -48,7 +54,6 @@
 
     .user-profile {
       margin-left: 8px;
-      width: calc(100% - 40px);
       float: left;
       line-height: 17px;
       word-wrap: break-word;
@@ -63,6 +68,23 @@
           color:#0095ff;
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .owner {
+    margin: 8px;
+
+    .user-logo {
+      width: 28px;
+      height: auto;
+    }
+
+    .profile-text{
+    //   display: block;
+    display: flex;
+    flex-direction: column;
     }
   }
 }

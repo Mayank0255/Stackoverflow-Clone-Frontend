@@ -76,7 +76,7 @@ const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
         <div className='questions'>
           {posts
             .filter((post) => post.title.toLowerCase().includes(searchQuery ? searchQuery : ''))
-            ?.sort(handleSorting(sortType))
+            .sort(handleSorting(sortType))
             .slice((page - 1) * itemsPerPage, (page - 1) * itemsPerPage + itemsPerPage)
             .map((post, index) => (
               <PostItem key={index} post={post} />

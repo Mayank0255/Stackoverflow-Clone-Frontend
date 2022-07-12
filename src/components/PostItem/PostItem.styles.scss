@@ -5,37 +5,77 @@
   display: flex;
   border-bottom: 1px solid #4a4e51;
 
+  .profile-tags{
+    display: flex;
+  }
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
   .stats-container {
-    margin-right: 16px;
     width: 58px;
     color:#6a737c;
-    margin-left: 8px;
+    margin-left: 20px;
     font-size: 11px;
+    
+    .vote  {
+      padding: 0;
+      margin-bottom: 8px;
+      text-align: center;
+      display: flex;
+      
+      .vote-count {
+        font-size: 14px;
+        margin-right: 2px;
+      }
+      .count-text {
+        font-size: 12px;
+      }
+    }
 
-      .vote  {
-        padding: 0;
-        margin-bottom: 8px;
-        text-align: center;
+    .vote  {
+      padding: 0;
+      margin-bottom: 8px;
+      text-align: center;
+      display: flex;
 
-        .vote-count {
-          font-size: 20px;
-        }
-
-        .count-text {
-          font-size: 12px;
-        }
+      .vote-count {
+        font-size: 14px;
+        margin-right: 2px;
+      }
+      .count-text {
+        font-size: 12px;
       }
 
+      .views {
+        .count-text {
+          font-size: 12px;
+          color: #ffa600;
+        }
+      }
+    }
+
     .answer {
-      color: #63b47c;
-      border: 1px solid #63b47c;
+      border: 2px solid #63b47c;
+      background-color: #63b47c;
+      color: white;
       border-radius: 3px;
+      padding: 3px;
+
+      .vote-count{
+        color: white;
+      }
     }
   }
 
   .summary {
-    flex: 1 auto;
-    width: 630px;
+    margin-left: 30px;
+    width: 600px;
 
     h3 {
       font-weight: 400;
@@ -113,5 +153,11 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 420px) {
+  .owner .user-block .user-profile .user-profile-link {
+    font-size: 11px;
   }
 }

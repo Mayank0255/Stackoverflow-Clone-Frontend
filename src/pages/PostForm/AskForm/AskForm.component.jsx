@@ -50,7 +50,7 @@ const AskForm = ({ addPost }) => {
     });
 
     if (badWordsFilter.isProfane(formData.tagname)) {
-      errors.push({ tagname: "Tags cannot contain inappropriate words." });
+      errors.push({ tagname: "Inappropriate words are not allowed." });
     }
 
     errors

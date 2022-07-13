@@ -1,50 +1,51 @@
-import React, {useEffect, Fragment} from 'react';
-import moment from 'moment';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import {getPost} from '../../redux/posts/posts.actions';
+import React, { useEffect, Fragment } from "react";
+import moment from "moment";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getPost } from "../../redux/posts/posts.actions";
 
-import PageTitle from '../../components/PageTitle/PageTitle.component';
-import LinkButton from '../../components/LinkButton/LinkButton.component';
-import Spinner from '../../components/Spinner/Spinner.component';
-import AnswerSection from './AnswerSection/AnswerSection.component';
-import QuestionSection from './QuestionSection/QuestionSection.component';
+import PageTitle from "../../components/PageTitle/PageTitle.component";
+import LinkButton from "../../components/LinkButton/LinkButton.component";
+import Spinner from "../../components/Spinner/Spinner.component";
+import AnswerSection from "./AnswerSection/AnswerSection.component";
+import QuestionSection from "./QuestionSection/QuestionSection.component";
 
-import './Post.styles.scss';
+import "./Post.styles.scss";
+import censorBadWords from "../../services/censorBadWords";
 
-const Post = ({getPost, post: {post, loading}, match}) => {
+const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
     getPost(match.params.id);
     // eslint-disable-next-line
   }, [getPost]);
 
   return loading || post === null ? (
-    <Spinner type='page' width='75px' height='200px' />
+    <Spinner type="page" width="75px" height="200px" />
   ) : (
     <Fragment>
       <PageTitle title={`${post.title} - CLONE Stack Overflow`} />
-      <div id='mainbar' className='post'>
-        <div className='question-header fc-black-800 pl24'>
-          <h1>{post.title}</h1>
+      <div id="mainbar" className="post">
+        <div className="question-header fc-black-800 pl24">
+          <h1>{censorBadWords(post.title)}</h1>
           <div>
             <LinkButton
-              text={'Ask Question'}
-              link={'/add/question'}
-              type={'s-btn__primary'}
+              text={"Ask Question"}
+              link={"/add/question"}
+              type={"s-btn__primary"}
             />
           </div>
         </div>
-        <div className='question-date fc-black-800 pl24'>
-          <div className='grid-cell'>
-            <span className='fc-light'>Asked</span>
+        <div className="question-date fc-black-800 pl24">
+          <div className="grid-cell">
+            <span className="fc-light">Asked</span>
             <time dateTime={moment(post.created_at).fromNow(true)}>
               {moment(post.created_at).fromNow(true)} ago
             </time>
           </div>
         </div>
-        <div className='question-main pl24 pt16'>
-          <QuestionSection/>
-          <AnswerSection/>
+        <div className="question-main pl24 pt16">
+          <QuestionSection />
+          <AnswerSection />
         </div>
       </div>
     </Fragment>
@@ -60,4 +61,4 @@ const mapStateToProps = (state) => ({
   post: state.post,
 });
 
-export default connect(mapStateToProps, {getPost})(Post);
+export default connect(mapStateToProps, { getPost })(Post);

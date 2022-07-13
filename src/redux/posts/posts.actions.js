@@ -12,8 +12,6 @@ import {
   ADD_POST,
 } from "./posts.types";
 
-import censorBadWords from "../../services/censorBadWords";
-
 // Get posts
 export const getPosts = () => async (dispatch) => {
   try {
@@ -22,7 +20,6 @@ export const getPosts = () => async (dispatch) => {
     dispatch({
       type: GET_POSTS,
       payload: res.data.data,
-      // payload: res.data.data.map(({title, body, ...rest})=>({...censorBadWords({title, body}), ...rest})),
     });
   } catch (err) {
     dispatch(setAlert(err.response.data.message, "danger"));
@@ -39,14 +36,9 @@ export const getPost = (id) => async (dispatch) => {
   try {
     const res = await axios.get(config.BASE_URL + `/api/posts/${id}`);
 
-    const { title, post_body, ...rest } = res.data.data;
-
     dispatch({
       type: GET_POST,
-      payload: {
-        ...censorBadWords({ title, post_body }),
-        ...rest,
-      },
+      payload: res.data.data,
     });
   } catch (err) {
     dispatch(setAlert(err.response.data.message, "danger"));

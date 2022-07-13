@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addPost } from "../../../redux/posts/posts.actions";
 import MarkdownEditor from "../../../components/MarkdownEditor/MarkdownEditor.component";
-import {
-  badWordsFilter,
-} from "../../../services/censorBadWords";
+import { badWordsFilter } from "../../../services/censorBadWords";
 
 import "./AskForm.styles.scss";
 
@@ -135,7 +133,7 @@ const AskForm = ({ addPost }) => {
                 value={tagname}
                 onChange={(e) => onChange(e)}
                 id="tagname"
-                placeholder="e.g. (ajax django string)"
+                placeholder="e.g. (ajax, django, string)"
                 required
               />
               <p className="fc-error fw-bold ml8 mt4">{formErrors.tagname}</p>

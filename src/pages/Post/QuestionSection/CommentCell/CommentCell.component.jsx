@@ -1,19 +1,20 @@
-import React, {useEffect, Fragment, useState} from 'react';
-import moment from 'moment';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import React, { useEffect, Fragment, useState } from "react";
+import moment from "moment";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import {
   getComments,
   deleteComment,
   addComment,
-} from '../../../../redux/comments/comments.actions';
+} from "../../../../redux/comments/comments.actions";
 
-import Spinner from '../../../../components/Spinner/Spinner.component';
-import TagBadge from '../../../../components/TagBadge/TagBadge.component';
-import LinkButton from '../../../../components/LinkButton/LinkButton.component';
+import Spinner from "../../../../components/Spinner/Spinner.component";
+import TagBadge from "../../../../components/TagBadge/TagBadge.component";
+import LinkButton from "../../../../components/LinkButton/LinkButton.component";
 
-import './CommentCell.styles.scss';
+import "./CommentCell.styles.scss";
+import censorBadWords from "../../../../services/censorBadWords";
 
 const CommentCell = ({
   deleteComment,
@@ -21,7 +22,7 @@ const CommentCell = ({
   getComments,
   auth,
   comment,
-  post: {post},
+  post: { post },
 }) => {
   useEffect(() => {
     getComments(post.id);
@@ -29,46 +30,48 @@ const CommentCell = ({
   }, [getComments]);
 
   const [formData, setFormData] = useState({
-    body: '',
+    body: "",
   });
 
-  const {body} = formData;
+  const { body } = formData;
 
   const handleChange = (e) =>
-    setFormData({...formData, [e.target.name]: e.target.value});
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addComment(post.id, {body});
+    addComment(post.id, { body });
     setFormData({
-      body: '',
+      body: "",
     });
   };
 
   return (
     <Fragment>
-      <div className='comments-cell'>
-        <div className='comments'>
-          <ul className='comments-list'>
+      <div className="comments-cell">
+        <div className="comments">
+          <ul className="comments-list">
             {comment.loading === null ? (
-              <Spinner width='25px' height='25px' />
+              <Spinner width="25px" height="25px" />
             ) : (
               comment.comments.map((comment, index) => (
-                <li key={index} className='comments-item'>
-                  <div className='comment-text fc-black-800'>
-                    <div className='comment-body'>
-                      <span className='body'>{comment.body}</span>
+                <li key={index} className="comments-item">
+                  <div className="comment-text fc-black-800">
+                    <div className="comment-body">
+                      <span className="body">
+                        {censorBadWords(comment.body)}
+                      </span>
                       &nbsp;&ndash;&nbsp;
                       <TagBadge
                         tag_name={comment.username}
-                        size={'s-tag'}
+                        size={"s-tag"}
                         link={`/users/${comment.user_id}`}
-                        display={'inline'}
+                        display={"inline"}
                       />
                       <span
                         title={moment(comment.created_at).fromNow(true)}
-                        style={{color: '#959ca3 !important'}}
-                        className='date fs-body1'
+                        style={{ color: "#959ca3 !important" }}
+                        className="date fs-body1"
                       >
                         {moment(comment.created_at).fromNow(true)} ago
                       </span>
@@ -77,9 +80,9 @@ const CommentCell = ({
                       auth.isAuthenticated &&
                       comment.user_id === auth.user.id && (
                         <Link
-                          className='s-tag s-tag__moderator'
-                          style={{marginTop: '4px'}}
-                          title='Delete the comment'
+                          className="s-tag s-tag__moderator"
+                          style={{ marginTop: "4px" }}
+                          title="Delete the comment"
                           onClick={(e) => deleteComment(comment.id)}
                           to={`/questions/${post.id}`}
                         >
@@ -92,19 +95,19 @@ const CommentCell = ({
             )}
           </ul>
         </div>
-        <div className='add-comment'>
+        <div className="add-comment">
           {!auth.loading && auth.isAuthenticated ? (
             <Fragment>
-              <form className='comment-form' onSubmit={(e) => handleSubmit(e)}>
+              <form className="comment-form" onSubmit={(e) => handleSubmit(e)}>
                 <div>
                   <input
-                    className='title-input s-input'
-                    type='text'
-                    name='body'
+                    className="title-input s-input"
+                    type="text"
+                    name="body"
                     value={body}
                     onChange={(e) => handleChange(e)}
-                    id='title'
-                    placeholder='Leave a comment'
+                    id="title"
+                    placeholder="Leave a comment"
                   />
                 </div>
               </form>
@@ -112,8 +115,8 @@ const CommentCell = ({
           ) : (
             <Fragment>
               <LinkButton
-                text={'You need to login to add a comment'}
-                link={'/login'}
+                text={"You need to login to add a comment"}
+                link={"/login"}
               />
             </Fragment>
           )}

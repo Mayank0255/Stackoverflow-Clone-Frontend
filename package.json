@@ -12,6 +12,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.24.0",
+    "bad-words": "^3.0.4",
     "feather-icons": "^4.28.0",
     "moment": "^2.29.4",
     "prop-types": "^15.8.0",

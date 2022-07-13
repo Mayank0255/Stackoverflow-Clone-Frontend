@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import {Link} from 'react-router-dom';
 
 import { SideBarWidgetData } from "./SideBarWidgetData";
 
@@ -43,11 +42,11 @@ const WidgetItem = ({ icon, title, link }) => (
       {icon}
     </div>
     <div className="flex--item wmn0 ow-break-word">
-      <Link
-        to={link}
+      <a
+        href={link}
         className="js-gps-track"
         data-ga={`[&quot;community bulletin board&quot;,&quot;The Overflow Blog&quot;,&quot;${link}&quot;,null,null]`}
-        data-gps-track="communitybulletin.click({ priority: 1, position: 0 })">{title}</Link>
+        data-gps-track="communitybulletin.click({ priority: 1, position: 0 })">{title}</a>
     </div>
   </li>
 )

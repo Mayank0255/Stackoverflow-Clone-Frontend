@@ -34,7 +34,7 @@ const PostItem = ({
   );
 
   const answerVoteDown = (
-    <div className='vote answer'>
+    <div className='vote'>
       <span className='vote-count'>{answer_count}</span>
       <div className='count-text'>answers</div>
     </div>

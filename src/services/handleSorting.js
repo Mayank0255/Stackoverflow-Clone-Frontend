@@ -40,7 +40,7 @@ const handleSorting = (sortType, page = '') => {
     case 'Name':
       return (a, b) => a.tagname.localeCompare(b.tagname);
     case 'Username':
-      return (a, b) => a.localeCompare(b.username);
+      return (a, b) => a.username.localeCompare(b.username);
     case 'Popular users':
       return (a, b) => b.views - a.views;
     case 'Today':

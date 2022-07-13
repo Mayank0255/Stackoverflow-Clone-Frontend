@@ -4,7 +4,7 @@ export const SideBarData = [
   {
     link: '/questions',
     icon: <GlobalIcon className='icon' />,
-    text: 'Stack Overflow',
+    text: 'Questions',
   },
   {
     link: '/tags',

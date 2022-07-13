@@ -106,7 +106,7 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
             <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>
           )}
         </div>
-        <div className="header-search-div">
+        
           <form
             id='search'
             onSubmit={() => history.push('/questions')}
@@ -125,6 +125,7 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
               <Search />
             </div>
           </form>
+          <div className="header-search-div">
           <Search className="search-icon" onClick={() => setSearchState(!searchState)} />
           {!loading && (
             <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>

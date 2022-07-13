@@ -43,6 +43,8 @@ There are two ways to setup the project: manually or using the Dockerfile. Read 
    ```
 
 2. Setup the backend code -
+   
+   __NOTE:__ For Frontend Developers, if they dont want to setup the Backend Code, they can skip the Step 2, and make sure they follow the optional step mentioned in Step 4
 
    - Create a `.env` file and the format should be as given in `.env.example`.
    - Clone the code & install the modules-
@@ -76,6 +78,11 @@ There are two ways to setup the project: manually or using the Dockerfile. Read 
      ```
 
    - Run the client index `npm start`.
+   
+   __OPTIONAL (Recommended For Frontend Developers):__ Can just change the path [here](https://github.com/Mayank0255/Stackoverflow-Clone-Frontend/blob/53b64c37981c618802547cd17483525532de83f0/src/config/index.js#L6) to this `https://stackoverflow-clone-backend.herokuapp.com`
+   Now, it will hit PROD
+
+Let me know if you are interested and would want me to assign it to you
 
 ### Docker Setup
 

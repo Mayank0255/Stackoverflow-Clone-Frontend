@@ -28,7 +28,7 @@ const PostItem = ({
 }) => {
   const answerVoteUp = (
     <div className='vote answer'>
-      <span className='vote-count fc-green-500'>{answer_count}</span>
+      <span className='vote-count'>{answer_count}</span>
       <div className='count-text'>answers</div>
     </div>
   );
@@ -63,9 +63,11 @@ const PostItem = ({
           <Link to={`/questions/${id}`}>{title}</Link>
         </h3>
         <div className='brief' dangerouslySetInnerHTML={{__html: injectEllipsis(htmlSubstring(body, 200))}}></div>
+        <div className="profile-tags">
         {tags.map((tag, index) => (
-          <TagBadge key={index} tag_name={tag.tagname} size={'s-tag'} float={'left'} />
+          <TagBadge key={index} tag_name={tag.tagname} size={'s-tag'} />
         ))}
+        </div>
         <UserCard
           created_at={created_at}
           user_id={user_id}

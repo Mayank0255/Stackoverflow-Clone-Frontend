@@ -5,9 +5,9 @@ import { getUsers } from "../../redux/users/users.actions";
 import handleSorting from "../../services/handleSorting";
 
 import UserPanel from "./UserPanel/UserPanel.component";
-import Spinner from "../../components/Spinner/Spinner.component";
+import Spinner from "../../components/molecules/Spinner/Spinner.component";
 import SearchBox from "../../components/SearchBox/SearchBox.component";
-import ButtonGroup from "../../components/ButtonGroup/ButtonGroup.component";
+import ButtonGroup from "../../components/molecules/ButtonGroup/ButtonGroup.component";
 import Pagination from "../../components/Pagination/Pagination.component";
 
 import "./AllUsersPage.styles.scss";

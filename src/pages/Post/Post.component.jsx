@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import { getPost } from "../../redux/posts/posts.actions";
 
 import PageTitle from "../../components/PageTitle/PageTitle.component";
-import LinkButton from "../../components/LinkButton/LinkButton.component";
-import Spinner from "../../components/Spinner/Spinner.component";
+import LinkButton from "../../components/molecules/LinkButton/LinkButton.component";
+import Spinner from "../../components/molecules/Spinner/Spinner.component";
 import AnswerSection from "./AnswerSection/AnswerSection.component";
 import QuestionSection from "./QuestionSection/QuestionSection.component";
 

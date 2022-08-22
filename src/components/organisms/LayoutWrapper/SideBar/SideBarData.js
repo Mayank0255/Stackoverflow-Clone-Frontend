@@ -1,4 +1,4 @@
-import { ReactComponent as GlobalIcon } from '../../../assets/Globe.svg';
+import { ReactComponent as GlobalIcon } from '../../../../assets/Globe.svg';
 
 export const SideBarData = [
   {

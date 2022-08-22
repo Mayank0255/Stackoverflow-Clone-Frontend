@@ -6,7 +6,7 @@ import { getProfile } from '../../redux/users/users.actions';
 
 import UserSection from "./UserSection/UserSection.component";
 import PageTitle from '../../components/PageTitle/PageTitle.component';
-import Spinner from '../../components/Spinner/Spinner.component';
+import Spinner from '../../components/molecules/Spinner/Spinner.component';
 import ExternalUserDetails from "./ExternalUserDetails/ExternalUserDetails.component";
 import UserActivity from "./UserActivity/UserActivity.component";
 

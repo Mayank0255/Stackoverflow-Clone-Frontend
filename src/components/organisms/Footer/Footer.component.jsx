@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
-import {ReactComponent as GitHub} from "../../assets/GitHub.svg";
-import {ReactComponent as Database} from "../../assets/Database.svg";
+import {ReactComponent as GitHub} from "../../../assets/GitHub.svg";
+import {ReactComponent as Database} from "../../../assets/Database.svg";
 
 import './Footer.styles.scss';
 

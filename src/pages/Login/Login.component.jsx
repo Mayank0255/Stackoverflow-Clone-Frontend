@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import AuthForm from '../../components/AuthForm/AuthForm.component';
-import Footer from "../../components/Footer/Footer.component";
+import Footer from "../../components/organisms/Footer/Footer.component";
 
 const Login = ({isAuthenticated}) => {
   if (isAuthenticated) {

@@ -2,14 +2,14 @@ import React, {Fragment, useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {logout} from '../../redux/auth/auth.actions';
+import { logout } from '../../../redux/auth/auth.actions';
 
-import {ReactComponent as Search} from '../../assets/Search.svg';
-import {ReactComponent as Logo} from '../../assets/LogoMd.svg';
-import {ReactComponent as SmallLogo} from '../../assets/LogoGlyphMd.svg';
-import Spinner from '../Spinner/Spinner.component';
-import LinkButton from '../LinkButton/LinkButton.component';
-import MobileSideBar from '../MobileSideBar/MobileSideBar.component';
+import {ReactComponent as Search} from '../../../assets/Search.svg';
+import {ReactComponent as Logo} from '../../../assets/LogoMd.svg';
+import {ReactComponent as SmallLogo} from '../../../assets/LogoGlyphMd.svg';
+import Spinner from '../../molecules/Spinner/Spinner.component';
+import LinkButton from '../../molecules/LinkButton/LinkButton.component';
+import MobileSideBar from '../../organisms/MobileSideBar/MobileSideBar.component';
 
 import './Header.styles.scss';
 

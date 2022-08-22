@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import { ReactComponent as Hamburger } from "../../assets/LogoGlyphMd.svg";
-import { ReactComponent as Stack } from "../../assets/LogoMd.svg";
-import { ReactComponent as GlobalIcon } from "../../assets/Globe.svg";
+import { ReactComponent as Hamburger } from "../../../assets/LogoGlyphMd.svg";
+import { ReactComponent as Stack } from "../../../assets/LogoMd.svg";
+import { ReactComponent as GlobalIcon } from "../../../assets/Globe.svg";
 
 import "./MobileSideBar.styles.scss";
 

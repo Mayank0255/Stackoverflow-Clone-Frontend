@@ -9,9 +9,9 @@ import {
   addComment,
 } from "../../../../redux/comments/comments.actions";
 
-import Spinner from "../../../../components/Spinner/Spinner.component";
-import TagBadge from "../../../../components/TagBadge/TagBadge.component";
-import LinkButton from "../../../../components/LinkButton/LinkButton.component";
+import Spinner from "../../../../components/molecules/Spinner/Spinner.component";
+import TagBadge from "../../../../components/molecules/TagBadge/TagBadge.component";
+import LinkButton from "../../../../components/molecules/LinkButton/LinkButton.component";
 
 import "./CommentCell.styles.scss";
 import censorBadWords from "../../../../services/censorBadWords";

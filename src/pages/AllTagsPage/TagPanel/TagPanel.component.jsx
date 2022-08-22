@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import TagBadge from '../../../components/TagBadge/TagBadge.component';
+import TagBadge from '../../../components/molecules/TagBadge/TagBadge.component';
 
 const TagPanel = ({tag: {tagname, description, created_at, posts_count}}) => {
   return (

@@ -9,7 +9,7 @@ import htmlSubstring from "../../services/htmlSubstring";
 import injectEllipsis from "../../services/injectEllipsis";
 
 import UserCard from "../UserCard/UserCard.component";
-import TagBadge from "../TagBadge/TagBadge.component";
+import TagBadge from "../molecules/TagBadge/TagBadge.component";
 
 import "./PostItem.styles.scss";
 

@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Spinner from '../../components/Spinner/Spinner.component';
+import Spinner from '../../components/molecules/Spinner/Spinner.component';
 import AskWidget from './AskWidget/AskWidget.component';
 import AskForm from './AskForm/AskForm.component';
-import Footer from "../../components/Footer/Footer.component";
+import Footer from "../../components/organisms/Footer/Footer.component";
 
 import './PostForm.styles.scss';
 

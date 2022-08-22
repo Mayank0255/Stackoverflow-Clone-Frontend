@@ -1,6 +1,6 @@
 import React from "react";
 
-import {ReactComponent as EditLogo} from "../../../../assets/Edit.svg";
+import { ReactComponent as EditLogo } from "../../../../../assets/Edit.svg";
 
 export const SideBarWidgetData = [
   {

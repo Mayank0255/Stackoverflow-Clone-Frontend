@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
-import {getTags} from '../../../../redux/tags/tags.actions';
+import {getTags} from '../../../../../redux/tags/tags.actions';
 import TagsWidgetItem from "./TagsWidgetItem.component";
 
 import './TagsWidget.styles.scss';

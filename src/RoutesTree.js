@@ -1,8 +1,8 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import withPageTitle from './components/withPageTitle/withPageTitle';
+import usePageTitle from './hooks/usePageTitle';
 
-import LayoutWrapper from './components/LayoutWrapper/LayoutWrapper.component';
+import LayoutWrapper from './components/organisms/LayoutWrapper/LayoutWrapper.component';
 import HomePage from './pages/HomePage/HomePage.component';
 import QuestionsPage from './pages/QuestionsPage/QuestionsPage.component';
 import AllTagsPage from './pages/AllTagsPage/AllTagsPage.component';
@@ -15,52 +15,52 @@ import TagPage from './pages/TagPage/TagPage.component';
 import ProfilePage from './pages/ProfilePage/ProfilePage.component';
 import NotFound from './pages/NotFound/NotFound.component';
 
-const HomePageComponent = withPageTitle({
-  component: LayoutWrapper({component: HomePage}),
-  title:
-    'CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers',
-});
-
-const QuestionsPageComponent = withPageTitle({
-  component: LayoutWrapper({component: QuestionsPage}),
-  title: 'All Questions - CLONE Stack Overflow',
-});
-
-const AllTagsPageComponent = withPageTitle({
-  component: LayoutWrapper({component: AllTagsPage}),
-  title: 'Tags - CLONE Stack Overflow',
-});
-
-const AllUsersPageComponent = withPageTitle({
-  component: LayoutWrapper({component: AllUsersPage}),
-  title: 'Users - CLONE Stack Overflow',
-});
-
-const RegisterComponent = withPageTitle({
-  component: Register,
-  title: 'Sign Up - CLONE Stack Overflow',
-});
-
-const LoginComponent = withPageTitle({
-  component: Login,
-  title: 'Log In - CLONE Stack Overflow',
-});
-
-const PostFormComponent = withPageTitle({
-  component: PostForm,
-  title: 'Ask a Question - CLONE Stack Overflow',
-});
-
-const NotFoundComponent = withPageTitle({
-  component: NotFound,
-  title: 'Error 404',
-});
-
-const PostComponent = LayoutWrapper({component: Post});
-const ProfilePageComponent = LayoutWrapper({component: ProfilePage});
-const TagPageComponent = LayoutWrapper({component: TagPage});
-
 const RoutesTree = () => {
+  const HomePageComponent = usePageTitle({
+    component: LayoutWrapper({component: HomePage}),
+    title:
+      'CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers',
+  });
+  
+  const QuestionsPageComponent = usePageTitle({
+    component: LayoutWrapper({component: QuestionsPage}),
+    title: 'All Questions - CLONE Stack Overflow',
+  });
+  
+  const AllTagsPageComponent = usePageTitle({
+    component: LayoutWrapper({component: AllTagsPage}),
+    title: 'Tags - CLONE Stack Overflow',
+  });
+  
+  const AllUsersPageComponent = usePageTitle({
+    component: LayoutWrapper({component: AllUsersPage}),
+    title: 'Users - CLONE Stack Overflow',
+  });
+  
+  const RegisterComponent = usePageTitle({
+    component: Register,
+    title: 'Sign Up - CLONE Stack Overflow',
+  });
+  
+  const LoginComponent = usePageTitle({
+    component: Login,
+    title: 'Log In - CLONE Stack Overflow',
+  });
+  
+  const PostFormComponent = usePageTitle({
+    component: PostForm,
+    title: 'Ask a Question - CLONE Stack Overflow',
+  });
+  
+  const NotFoundComponent = usePageTitle({
+    component: NotFound,
+    title: 'Error 404',
+  });
+  
+  const PostComponent = LayoutWrapper({component: Post});
+  const ProfilePageComponent = LayoutWrapper({component: ProfilePage});
+  const TagPageComponent = LayoutWrapper({component: TagPage});
+  
   return (
     <Switch>
       <Route exact path='/' component={HomePageComponent} />

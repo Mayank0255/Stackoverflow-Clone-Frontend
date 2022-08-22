@@ -3,12 +3,12 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import {getPosts} from '../../redux/posts/posts.actions';
-import LinkButton from '../../components/LinkButton/LinkButton.component';
+import LinkButton from '../../components/molecules/LinkButton/LinkButton.component';
 import PostItem from '../../components/PostItem/PostItem.component';
-import Spinner from '../../components/Spinner/Spinner.component';
+import Spinner from '../../components/molecules/Spinner/Spinner.component';
 import handleSorting from "../../services/handleSorting";
 import Pagination from "../../components/Pagination/Pagination.component";
-import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
+import ButtonGroup from '../../components/molecules/ButtonGroup/ButtonGroup.component';
 import handleFilter from '../../services/handleFilter'
 
 import './HomePage.styles.scss';

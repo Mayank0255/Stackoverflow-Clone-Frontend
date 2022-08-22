@@ -5,9 +5,9 @@ import {getTags} from '../../redux/tags/tags.actions';
 import handleSorting from '../../services/handleSorting';
 
 import TagPanel from './TagPanel/TagPanel.component';
-import Spinner from '../../components/Spinner/Spinner.component';
+import Spinner from '../../components/molecules/Spinner/Spinner.component';
 import SearchBox from '../../components/SearchBox/SearchBox.component';
-import ButtonGroup from '../../components/ButtonGroup/ButtonGroup.component';
+import ButtonGroup from '../../components/molecules/ButtonGroup/ButtonGroup.component';
 import Pagination from "../../components/Pagination/Pagination.component";
 
 import './AllTagsPage.styles.scss';

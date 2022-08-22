@@ -1,6 +1,6 @@
 import React from "react";
 
-import TagBadge from "../../../components/TagBadge/TagBadge.component";
+import TagBadge from "../../../components/molecules/TagBadge/TagBadge.component";
 
 import './UserActivity.styles.scss';
 

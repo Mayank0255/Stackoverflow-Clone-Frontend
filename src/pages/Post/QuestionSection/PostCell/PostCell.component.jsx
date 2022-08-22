@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { deletePost } from "../../../../redux/posts/posts.actions";
 
-import TagBadge from "../../../../components/TagBadge/TagBadge.component";
+import TagBadge from "../../../../components/molecules/TagBadge/TagBadge.component";
 import UserCard from "../../../../components/UserCard/UserCard.component";
 
 import "./PostCell.styles.scss";

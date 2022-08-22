@@ -5,7 +5,7 @@ import setAuthToken from './redux/auth/auth.utils';
 import {loadUser} from './redux/auth/auth.actions';
 import RoutesTree from './RoutesTree';
 
-import Header from './components/Header/Header.component';
+import Header from './components/organisms/Header/Header.component';
 import Alert from './components/Alert/Alert.component';
 
 import './App.css';

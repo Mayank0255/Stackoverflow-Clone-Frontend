@@ -3,17 +3,17 @@ import {Switch, Route} from 'react-router-dom';
 import usePageTitle from './hooks/usePageTitle';
 
 import LayoutWrapper from './components/organisms/LayoutWrapper/LayoutWrapper.component';
-import HomePage from './pages/HomePage/HomePage.component';
-import QuestionsPage from './pages/QuestionsPage/QuestionsPage.component';
-import AllTagsPage from './pages/AllTagsPage/AllTagsPage.component';
-import AllUsersPage from './pages/AllUsersPage/AllUsersPage.component';
-import Register from './pages/Register/Register.component';
-import Login from './pages/Login/Login.component';
-import Post from './pages/Post/Post.component';
-import PostForm from './pages/PostForm/PostForm.component';
-import TagPage from './pages/TagPage/TagPage.component';
-import ProfilePage from './pages/ProfilePage/ProfilePage.component';
-import NotFound from './pages/NotFound/NotFound.component';
+import HomePage from './modules/HomePage/HomePage.component';
+import QuestionsPage from './modules/QuestionsPage/QuestionsPage.component';
+import AllTagsPage from './modules/AllTagsPage/AllTagsPage.component';
+import AllUsersPage from './modules/AllUsersPage/AllUsersPage.component';
+import Register from './modules/Register/Register.component';
+import Login from './modules/Login/Login.component';
+import Post from './modules/Post/Post.component';
+import PostForm from './modules/PostForm/PostForm.component';
+import TagPage from './modules/TagPage/TagPage.component';
+import ProfilePage from './modules/ProfilePage/ProfilePage.component';
+import NotFound from './modules/NotFound/NotFound.component';
 
 const RoutesTree = () => {
   const HomePageComponent = usePageTitle({

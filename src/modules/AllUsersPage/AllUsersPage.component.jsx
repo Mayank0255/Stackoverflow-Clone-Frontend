@@ -6,9 +6,9 @@ import handleSorting from "../../services/handleSorting";
 
 import UserPanel from "./UserPanel/UserPanel.component";
 import Spinner from "../../components/molecules/Spinner/Spinner.component";
-import SearchBox from "../../components/SearchBox/SearchBox.component";
+import SearchBox from "../../components/molecules/SearchBox/SearchBox.component";
 import ButtonGroup from "../../components/molecules/ButtonGroup/ButtonGroup.component";
-import Pagination from "../../components/Pagination/Pagination.component";
+import Pagination from "../../components/organisms/Pagination/Pagination.component";
 
 import "./AllUsersPage.styles.scss";
 

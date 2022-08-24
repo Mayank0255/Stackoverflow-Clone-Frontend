@@ -7,7 +7,7 @@ import {getTag} from '../../redux/tags/tags.actions';
 import handleSorting from '../../services/handleSorting';
 
 import LinkButton from '../../components/molecules/LinkButton/LinkButton.component';
-import PostItem from '../../components/PostItem/PostItem.component';
+import PostItem from '../../components/molecules/PostItem/PostItem.component';
 import Spinner from '../../components/molecules/Spinner/Spinner.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import ButtonGroup from '../../components/molecules/ButtonGroup/ButtonGroup.component';

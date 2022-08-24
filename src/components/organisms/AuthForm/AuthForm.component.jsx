@@ -2,11 +2,11 @@ import React, {Fragment, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {login} from '../../redux/auth/auth.actions';
-import {register} from '../../redux/auth/auth.actions';
+import {login} from '../../../redux/auth/auth.actions';
+import {register} from '../../../redux/auth/auth.actions';
 
-import {ReactComponent as Logo} from '../../assets/LogoGlyphMd.svg';
-import {ReactComponent as ExternalLink} from '../../assets/ExternalLink.svg';
+import {ReactComponent as Logo} from '../../../assets/LogoGlyphMd.svg';
+import {ReactComponent as ExternalLink} from '../../../assets/ExternalLink.svg';
 
 import './AuthForm.styles.scss';
 

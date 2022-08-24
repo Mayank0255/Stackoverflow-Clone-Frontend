@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {ReactComponent as Search} from '../../assets/Search.svg';
+import {ReactComponent as Search} from '../../../assets/Search.svg';
 
 const SearchBox = ({
   placeholder,

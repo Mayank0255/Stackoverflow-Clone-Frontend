@@ -6,7 +6,7 @@ import { deleteAnswer } from "../../../../redux/answers/answers.actions";
 
 import { ReactComponent as UpVote } from "../../../../assets/ArrowUpLg.svg";
 import { ReactComponent as DownVote } from "../../../../assets/ArrowDownLg.svg";
-import UserCard from "../../../../components/UserCard/UserCard.component";
+import UserCard from "../../../../components/molecules/UserCard/UserCard.component";
 
 import "./AnswerItem.styles.scss";
 import censorBadWords from "../../../../services/censorBadWords";

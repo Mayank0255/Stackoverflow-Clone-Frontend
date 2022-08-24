@@ -6,12 +6,12 @@ import {getPosts} from '../../redux/posts/posts.actions';
 import handleSorting from '../../services/handleSorting';
 
 import LinkButton from '../../components/molecules/LinkButton/LinkButton.component';
-import PostItem from '../../components/PostItem/PostItem.component';
+import PostItem from '../../components/molecules/PostItem/PostItem.component';
 import Spinner from '../../components/molecules/Spinner/Spinner.component';
 import ButtonGroup from '../../components/molecules/ButtonGroup/ButtonGroup.component';
-import SearchBox from '../../components/SearchBox/SearchBox.component';
+import SearchBox from '../../components/molecules/SearchBox/SearchBox.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
-import Pagination from "../../components/Pagination/Pagination.component";
+import Pagination from "../../components/organisms/Pagination/Pagination.component";
 
 import './QuestionsPage.styles.scss';
 

@@ -5,7 +5,7 @@ import {addAnswer} from '../../../../redux/answers/answers.actions';
 
 
 import LinkButton from '../../../../components/molecules/LinkButton/LinkButton.component';
-import MarkdownEditor from '../../../../components/MarkdownEditor/MarkdownEditor.component';
+import MarkdownEditor from '../../../../components/organisms/MarkdownEditor/MarkdownEditor.component';
 
 import './AnswerForm.styles.scss';
 

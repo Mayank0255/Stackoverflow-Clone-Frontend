@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addPost } from "../../../redux/posts/posts.actions";
-import MarkdownEditor from "../../../components/MarkdownEditor/MarkdownEditor.component";
+import MarkdownEditor from "../../../components/organisms/MarkdownEditor/MarkdownEditor.component";
 import { badWordsFilter } from "../../../services/censorBadWords";
 
 import "./AskForm.styles.scss";

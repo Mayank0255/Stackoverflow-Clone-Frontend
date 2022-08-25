@@ -1,5 +1,6 @@
 import React, { useEffect, Fragment } from "react";
 import moment from "moment";
+import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getPost } from "../../redux/posts/posts.actions";
@@ -12,9 +13,11 @@ import QuestionSection from "./QuestionSection/QuestionSection.component";
 import "./Post.styles.scss";
 import censorBadWords from "../../services/censorBadWords";
 
-const Post = ({ getPost, post: { post, loading }, match }) => {
+const Post = ({ getPost, post: { post, loading } }) => {
+  const { id } = useParams();
+
   useEffect(() => {
-    getPost(match.params.id);
+    getPost(id);
     // eslint-disable-next-line
   }, [getPost]);
 

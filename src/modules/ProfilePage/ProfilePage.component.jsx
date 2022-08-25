@@ -1,6 +1,6 @@
 import React, {useEffect, Fragment} from 'react';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { getProfile } from '../../redux/users/users.actions';
 
@@ -11,9 +11,11 @@ import UserActivity from "./UserActivity/UserActivity.component";
 
 import './ProfilePage.styles.scss';
 
-const ProfilePage = ({getProfile, user: {user, loading}, match}) => {
+const ProfilePage = ({getProfile, user: {user, loading}}) => {
+  const { id } = useParams();
+
   useEffect(() => {
-    getProfile(match.params.id);
+    getProfile(id);
     // eslint-disable-next-line
   }, [getProfile]);
 

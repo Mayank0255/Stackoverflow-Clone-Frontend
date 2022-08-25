@@ -1,6 +1,6 @@
 import React, {useEffect, Fragment, useState} from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {Redirect, useParams} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {getTagPosts} from '../../redux/posts/posts.actions';
 import {getTag} from '../../redux/tags/tags.actions';
@@ -13,10 +13,12 @@ import ButtonGroup from '../../components/molecules/ButtonGroup/ButtonGroup.comp
 
 import './TagPage.styles.scss';
 
-const TagPage = ({getTag, getTagPosts, tag, post: {posts, loading}, match}) => {
+const TagPage = ({getTag, getTagPosts, tag, post: {posts, loading}}) => {
+  const { tagname } = useParams();
+
   useEffect(() => {
-    getTagPosts(match.params.tagname);
-    getTag(match.params.tagname);
+    getTagPosts(tagname);
+    getTag(tagname);
     // eslint-disable-next-line
   }, [getTag, getTagPosts]);
 

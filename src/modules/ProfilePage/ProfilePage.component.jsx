@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { getProfile } from '../../redux/users/users.actions';
 
 import UserSection from "./UserSection/UserSection.component";
-import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Spinner from '../../components/molecules/Spinner/Spinner.component';
 import ExternalUserDetails from "./ExternalUserDetails/ExternalUserDetails.component";
 import UserActivity from "./UserActivity/UserActivity.component";
@@ -22,7 +21,6 @@ const ProfilePage = ({getProfile, user: {user, loading}, match}) => {
     <Spinner type='page' width='75px' height='200px' />
   ) : (
     <Fragment>
-      {/* <PageTitle title={`User ${user.username} - CLONE Stack Overflow`} /> */}
       <div id='mainbar' className='user-main-bar pl24 pt24'>
         <div className='user-card'>
           <div className='grid--cell s-navigation mb16'>

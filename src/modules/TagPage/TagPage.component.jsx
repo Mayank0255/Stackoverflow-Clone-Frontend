@@ -9,7 +9,6 @@ import handleSorting from '../../services/handleSorting';
 import LinkButton from '../../components/molecules/LinkButton/LinkButton.component';
 import PostItem from '../../components/molecules/PostItem/PostItem.component';
 import Spinner from '../../components/molecules/Spinner/Spinner.component';
-import PageTitle from '../../components/PageTitle/PageTitle.component';
 import ButtonGroup from '../../components/molecules/ButtonGroup/ButtonGroup.component';
 
 import './TagPage.styles.scss';
@@ -31,9 +30,6 @@ const TagPage = ({getTag, getTagPosts, tag, post: {posts, loading}, match}) => {
     <Spinner type='page' width='75px' height='200px' />
   ) : (
     <Fragment>
-      {/* <PageTitle
-        title={`Questions tagged [${tag.tag.tagname}] - CLONE Stack Overflow`}
-      /> */}
       <div id='mainbar' className='questions-page fc-black-800'>
         <div className='questions-grid'>
           <h3 className='questions-headline'>

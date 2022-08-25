@@ -10,7 +10,6 @@ import PostItem from '../../components/molecules/PostItem/PostItem.component';
 import Spinner from '../../components/molecules/Spinner/Spinner.component';
 import ButtonGroup from '../../components/molecules/ButtonGroup/ButtonGroup.component';
 import SearchBox from '../../components/molecules/SearchBox/SearchBox.component';
-import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Pagination from "../../components/organisms/Pagination/Pagination.component";
 
 import './QuestionsPage.styles.scss';
@@ -33,13 +32,6 @@ const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
     <Spinner type='page' width='75px' height='200px' />
   ) : (
     <Fragment>
-      {/* {searchQuery ? (
-        <PageTitle
-          title={`Search Results for ${searchQuery} - CLONE Stack Overflow`}
-        />
-      ) : (
-        ''
-      )} */}
       <div id='mainbar' className='questions-page fc-black-800'>
         <div className='questions-grid'>
           <h3 className='questions-headline'>

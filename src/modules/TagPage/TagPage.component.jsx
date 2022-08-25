@@ -31,9 +31,9 @@ const TagPage = ({getTag, getTagPosts, tag, post: {posts, loading}, match}) => {
     <Spinner type='page' width='75px' height='200px' />
   ) : (
     <Fragment>
-      <PageTitle
+      {/* <PageTitle
         title={`Questions tagged [${tag.tag.tagname}] - CLONE Stack Overflow`}
-      />
+      /> */}
       <div id='mainbar' className='questions-page fc-black-800'>
         <div className='questions-grid'>
           <h3 className='questions-headline'>

@@ -33,13 +33,13 @@ const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
     <Spinner type='page' width='75px' height='200px' />
   ) : (
     <Fragment>
-      {searchQuery ? (
+      {/* {searchQuery ? (
         <PageTitle
           title={`Search Results for ${searchQuery} - CLONE Stack Overflow`}
         />
       ) : (
         ''
-      )}
+      )} */}
       <div id='mainbar' className='questions-page fc-black-800'>
         <div className='questions-grid'>
           <h3 className='questions-headline'>

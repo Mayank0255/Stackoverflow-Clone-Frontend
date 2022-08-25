@@ -1,8 +1,7 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import usePageTitle from './hooks/usePageTitle';
 
-import LayoutWrapper from './components/organisms/LayoutWrapper/LayoutWrapper.component';
+import { BaseRoute, LayoutRoute } from './CustomRoutes';
 import HomePage from './modules/HomePage/HomePage.component';
 import QuestionsPage from './modules/QuestionsPage/QuestionsPage.component';
 import AllTagsPage from './modules/AllTagsPage/AllTagsPage.component';
@@ -16,64 +15,84 @@ import ProfilePage from './modules/ProfilePage/ProfilePage.component';
 import NotFound from './modules/NotFound/NotFound.component';
 
 const RoutesTree = () => {
-  const HomePageComponent = usePageTitle({
-    component: LayoutWrapper({component: HomePage}),
-    title:
-      'CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers',
-  });
-  
-  const QuestionsPageComponent = usePageTitle({
-    component: LayoutWrapper({component: QuestionsPage}),
-    title: 'All Questions - CLONE Stack Overflow',
-  });
-  
-  const AllTagsPageComponent = usePageTitle({
-    component: LayoutWrapper({component: AllTagsPage}),
-    title: 'Tags - CLONE Stack Overflow',
-  });
-  
-  const AllUsersPageComponent = usePageTitle({
-    component: LayoutWrapper({component: AllUsersPage}),
-    title: 'Users - CLONE Stack Overflow',
-  });
-  
-  const RegisterComponent = usePageTitle({
-    component: Register,
-    title: 'Sign Up - CLONE Stack Overflow',
-  });
-  
-  const LoginComponent = usePageTitle({
-    component: Login,
-    title: 'Log In - CLONE Stack Overflow',
-  });
-  
-  const PostFormComponent = usePageTitle({
-    component: PostForm,
-    title: 'Ask a Question - CLONE Stack Overflow',
-  });
-  
-  const NotFoundComponent = usePageTitle({
-    component: NotFound,
-    title: 'Error 404',
-  });
-  
-  const PostComponent = LayoutWrapper({component: Post});
-  const ProfilePageComponent = LayoutWrapper({component: ProfilePage});
-  const TagPageComponent = LayoutWrapper({component: TagPage});
-  
   return (
     <Switch>
-      <Route exact path='/' component={HomePageComponent} />
-      <Route exact path='/questions' component={QuestionsPageComponent} />
-      <Route exact path='/tags' component={AllTagsPageComponent} />
-      <Route exact path='/users' component={AllUsersPageComponent} />
-      <Route exact path='/register' component={RegisterComponent} />
-      <Route exact path='/login' component={LoginComponent} />
-      <Route exact path='/questions/:id' component={PostComponent} />
-      <Route exact path='/users/:id' component={ProfilePageComponent} />
-      <Route exact path='/tags/:tagname' component={TagPageComponent} />
-      <Route exact path='/add/question' component={PostFormComponent} />
-      <Route path='*' component={NotFoundComponent} />
+      <LayoutRoute
+        exact
+        path='/'
+        title='CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers'
+      >
+        <HomePage/>
+      </LayoutRoute>
+      <LayoutRoute
+        exact
+        path='/questions'
+        title='All Questions - CLONE Stack Overflow'
+      >
+        <QuestionsPage/>
+      </LayoutRoute>
+      <LayoutRoute
+        exact
+        path='/tags'
+        title='Tags - CLONE Stack Overflow'
+      >
+        <AllTagsPage/>
+      </LayoutRoute>
+      <LayoutRoute
+        exact
+        path='/users'
+        title='Users - CLONE Stack Overflow'
+      >
+        <AllUsersPage/>
+      </LayoutRoute>
+      <BaseRoute
+        exact
+        path='/register'
+        title='Sign Up - CLONE Stack Overflow'
+      >
+        <Register/>
+      </BaseRoute>
+      <BaseRoute
+        exact
+        path='/login'
+        title='Log In - CLONE Stack Overflow'
+      >
+        <Login/>
+      </BaseRoute>
+      <LayoutRoute
+        exact
+        path='/questions/:id'
+        title='Users - CLONE Stack Overflow'
+      >
+        <Post/>
+      </LayoutRoute>
+      <LayoutRoute
+        exact
+        path='/users/:id'
+        title='Users - CLONE Stack Overflow'
+      >
+        <ProfilePage/>
+      </LayoutRoute>
+      <LayoutRoute
+        exact
+        path='/tags/:tagname'
+        title='Users - CLONE Stack Overflow'
+      >
+        <TagPage/>
+      </LayoutRoute>
+      <BaseRoute
+        exact
+        path='/add/question'
+        title='Ask a Question - CLONE Stack Overflow'
+      >
+        <PostForm/>
+      </BaseRoute>
+      <BaseRoute
+        path='*'
+        title='Error 404'
+      >
+        <NotFound/>
+      </BaseRoute>
     </Switch>
   );
 };

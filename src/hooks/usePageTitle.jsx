@@ -1,21 +1,9 @@
-import React, {Fragment} from 'react';
-import Helmet from 'react-helmet';
+import { useEffect } from 'react';
 
-const usePageTitle = ({ component: Component, title }) => {
-  let defaultTitle = 'CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers';
-
-  return class Title extends React.Component {
-    render() {
-      return (
-        <Fragment>
-          <Helmet>
-            <title>{title ? title : defaultTitle}</title>
-          </Helmet>
-          <Component {...this.props} />
-        </Fragment>
-      );
-    }
-  };
+const usePageTitle = (title, prevailOnUnmount = false) => {
+  useEffect(() => {
+    document.title = title;
+  }, [title])
 };
 
 export default usePageTitle;

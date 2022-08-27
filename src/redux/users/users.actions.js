@@ -1,12 +1,10 @@
-import axios from 'axios';
-
-import config from "../../config";
 import {GET_USERS, GET_USER, USER_ERROR} from './users.types';
+import { usersData, profileData } from '../../api/usersApi';
 
 // Get users
 export const getUsers = () => async (dispatch) => {
   try {
-    const res = await axios.get(config.BASE_URL + '/api/users');
+    const res = await usersData();
     dispatch({
       type: GET_USERS,
       payload: res.data.data,
@@ -22,7 +20,7 @@ export const getUsers = () => async (dispatch) => {
 // Get user
 export const getProfile = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(config.BASE_URL + `/api/users/${id}`);
+    const res = await profileData(id);
 
     dispatch({
       type: GET_USER,

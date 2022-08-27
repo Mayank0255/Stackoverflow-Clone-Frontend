@@ -1,17 +1,15 @@
+import { setAlert } from "../alert/alert.actions";
 import {
   GET_ANSWERS,
   ANSWER_ERROR,
   ADD_ANSWER,
   DELETE_ANSWER,
 } from "./answers.types";
-
-import axios from "axios";
-import { setAlert } from "../alert/alert.actions";
-import config from "../../config";
+import { allAnswersData, createSingleAnswer, deleteSingleAnswer } from "../../api/answersApi";
 
 export const getAnswers = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(config.BASE_URL + `/api/posts/answers/${id}`);
+    const res = await allAnswersData(id);
 
     dispatch({
       type: GET_ANSWERS,
@@ -27,18 +25,8 @@ export const getAnswers = (id) => async (dispatch) => {
 
 // Add Answer
 export const addAnswer = (postId, formData) => async (dispatch) => {
-  const config_headers = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
   try {
-    const res = await axios.post(
-      config.BASE_URL + `/api/posts/answers/${postId}`,
-      formData,
-      config_headers
-    );
+    const res = await createSingleAnswer(postId, formData);
 
     dispatch({
       type: ADD_ANSWER,
@@ -61,9 +49,7 @@ export const addAnswer = (postId, formData) => async (dispatch) => {
 // Delete Answer
 export const deleteAnswer = (AnswerId) => async (dispatch) => {
   try {
-    const res = await axios.delete(
-      config.BASE_URL + `/api/posts/answers/${AnswerId}`
-    );
+    const res = await deleteSingleAnswer(AnswerId);
 
     dispatch({
       type: DELETE_ANSWER,

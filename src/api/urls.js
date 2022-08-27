@@ -12,7 +12,6 @@ export const loginUser = config.BASE_URL + '/api/auth';
 // Posts
 export const allPostsData = config.BASE_URL + '/api/posts';
 export const singlePostData = config.BASE_URL + '/api/posts/{id}';
-export const allTopPostsData = config.BASE_URL + '/api/posts/top';
 export const allTagPostsData = config.BASE_URL + '/api/posts/tag/{tagName}';
 export const createSinglePost = config.BASE_URL + '/api/posts';
 export const deleteSinglePost = config.BASE_URL + '/api/posts/{id}';

@@ -1,7 +1,6 @@
 import {
   GET_POSTS,
   GET_POST,
-  GET_TOP_POSTS,
   GET_TAG_POSTS,
   POST_ERROR,
   DELETE_POST,
@@ -18,7 +17,6 @@ const initialState = {
 export default function posts(state = initialState, action) {
   switch (action.type) {
     case GET_POSTS:
-    case GET_TOP_POSTS:
     case GET_TAG_POSTS:
       return {
         ...state,

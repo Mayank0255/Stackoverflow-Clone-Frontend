@@ -3,7 +3,6 @@ import axios from 'axios';
 import {
   allPostsData as _allPostsData,
   singlePostData as _singlePostData,
-  allTopPostsData as _allTopPostsData,
   allTagPostsData as _allTagPostsData,
   createSinglePost as _createSinglePost,
   deleteSinglePost as _deleteSinglePost
@@ -15,10 +14,6 @@ export const allPostsData = () => {
 
 export const singlePostData = (id) => {
   return axios.get(_singlePostData.replace('{id}', id));
-}
-
-export const allTopPostsData = () => {
-  return axios.get(_allTopPostsData);
 }
 
 export const allTagPostsData = (tagName) => {

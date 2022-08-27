@@ -11,7 +11,6 @@ export const getTag = (tagName) => async (dispatch) => {
       payload: res.data.data,
     });
   } catch (err) {
-    // dispatch(() => history.push('/questions'))
     dispatch(setAlert(err.response.data.message, 'danger'));
 
     dispatch({

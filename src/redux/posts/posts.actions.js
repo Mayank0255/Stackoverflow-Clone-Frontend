@@ -1,6 +1,3 @@
-import axios from "axios";
-
-import config from "../../config";
 import { setAlert } from "../alert/alert.actions";
 import {
   GET_POSTS,
@@ -11,11 +8,19 @@ import {
   DELETE_POST,
   ADD_POST,
 } from "./posts.types";
+import {
+  allPostsData,
+  singlePostData,
+  allTopPostsData,
+  allTagPostsData,
+  createSinglePost,
+  deleteSinglePost
+} from "../../api/postsApis";
 
 // Get posts
 export const getPosts = () => async (dispatch) => {
   try {
-    const res = await axios.get(config.BASE_URL + "/api/posts");
+    const res = await allPostsData();
 
     dispatch({
       type: GET_POSTS,
@@ -34,7 +39,7 @@ export const getPosts = () => async (dispatch) => {
 // Get post
 export const getPost = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(config.BASE_URL + `/api/posts/${id}`);
+    const res = await singlePostData(id);
 
     dispatch({
       type: GET_POST,
@@ -53,7 +58,7 @@ export const getPost = (id) => async (dispatch) => {
 //GET TOP POSTS
 export const getTopPosts = () => async (dispatch) => {
   try {
-    const res = await axios.get(config.BASE_URL + "/api/posts/top");
+    const res = await allTopPostsData();
 
     dispatch({
       type: GET_TOP_POSTS,
@@ -72,7 +77,7 @@ export const getTopPosts = () => async (dispatch) => {
 //GET TAG POSTS
 export const getTagPosts = (tagName) => async (dispatch) => {
   try {
-    const res = await axios.get(config.BASE_URL + `/api/posts/tag/${tagName}`);
+    const res = await allTagPostsData(tagName);
 
     dispatch({
       type: GET_TAG_POSTS,
@@ -90,18 +95,8 @@ export const getTagPosts = (tagName) => async (dispatch) => {
 
 // Add post
 export const addPost = (formData) => async (dispatch) => {
-  const config_headers = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
   try {
-    const res = await axios.post(
-      config.BASE_URL + "/api/posts",
-      formData,
-      config_headers
-    );
+    const res = await createSinglePost(formData);
 
     dispatch({
       type: ADD_POST,
@@ -124,7 +119,7 @@ export const addPost = (formData) => async (dispatch) => {
 // Delete post
 export const deletePost = (id) => async (dispatch) => {
   try {
-    const res = await axios.delete(config.BASE_URL + `/api/posts/${id}`);
+    const res = await deleteSinglePost(id);
 
     dispatch({
       type: DELETE_POST,

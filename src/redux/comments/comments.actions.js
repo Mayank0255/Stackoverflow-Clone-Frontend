@@ -1,6 +1,3 @@
-import axios from "axios";
-
-import config from "../../config";
 import { setAlert } from "../alert/alert.actions";
 import {
   GET_COMMENTS,
@@ -8,10 +5,11 @@ import {
   ADD_COMMENT,
   DELETE_COMMENT,
 } from "./comments.types";
+import { allCommentsData, createSingleComment, deleteSingleComment } from "../../api/commentsApi";
 
 export const getComments = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(config.BASE_URL + `/api/posts/comments/${id}`);
+    const res = await allCommentsData(id);
 
     dispatch({
       type: GET_COMMENTS,
@@ -27,18 +25,8 @@ export const getComments = (id) => async (dispatch) => {
 
 // Add COMMENT
 export const addComment = (postId, formData) => async (dispatch) => {
-  const config_headers = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
   try {
-    const res = await axios.post(
-      config.BASE_URL + `/api/posts/comments/${postId}`,
-      formData,
-      config_headers
-    );
+    const res = await createSingleComment(postId, formData);
 
     dispatch({
       type: ADD_COMMENT,
@@ -61,9 +49,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
 // Delete Comment
 export const deleteComment = (CommentId) => async (dispatch) => {
   try {
-    const res = await axios.delete(
-      config.BASE_URL + `/api/posts/comments/${CommentId}`
-    );
+    const res = await deleteSingleComment(CommentId);
 
     dispatch({
       type: DELETE_COMMENT,

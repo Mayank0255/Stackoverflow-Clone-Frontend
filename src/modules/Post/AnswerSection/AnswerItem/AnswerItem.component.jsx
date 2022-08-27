@@ -9,7 +9,7 @@ import { ReactComponent as DownVote } from "../../../../assets/ArrowDownLg.svg";
 import UserCard from "../../../../components/molecules/UserCard/UserCard.component";
 
 import "./AnswerItem.styles.scss";
-import censorBadWords from "../../../../services/censorBadWords";
+import censorBadWords from "../../../../utils/censorBadWords";
 
 const AnswerItem = ({
   deleteAnswer,

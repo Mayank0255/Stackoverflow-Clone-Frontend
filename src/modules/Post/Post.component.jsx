@@ -11,7 +11,7 @@ import AnswerSection from "./AnswerSection/AnswerSection.component";
 import QuestionSection from "./QuestionSection/QuestionSection.component";
 
 import "./Post.styles.scss";
-import censorBadWords from "../../services/censorBadWords";
+import censorBadWords from "../../utils/censorBadWords";
 
 const Post = ({ getPost, post: { post, loading } }) => {
   const { id } = useParams();

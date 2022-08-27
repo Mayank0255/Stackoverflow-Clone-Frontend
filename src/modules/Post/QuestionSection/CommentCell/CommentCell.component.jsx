@@ -14,7 +14,7 @@ import TagBadge from "../../../../components/molecules/TagBadge/TagBadge.compone
 import LinkButton from "../../../../components/molecules/LinkButton/LinkButton.component";
 
 import "./CommentCell.styles.scss";
-import censorBadWords from "../../../../services/censorBadWords";
+import censorBadWords from "../../../../utils/censorBadWords";
 
 const CommentCell = ({
   deleteComment,

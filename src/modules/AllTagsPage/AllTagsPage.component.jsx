@@ -2,7 +2,7 @@ import React, {useEffect, Fragment, useState} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getTags} from '../../redux/tags/tags.actions';
-import handleSorting from '../../services/handleSorting';
+import handleSorting from '../../utils/handleSorting';
 
 import TagPanel from './TagPanel/TagPanel.component';
 import Spinner from '../../components/molecules/Spinner/Spinner.component';

@@ -2,7 +2,7 @@ import React, {Fragment, useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getAnswers} from '../../../redux/answers/answers.actions';
-import handleSorting from '../../../services/handleSorting';
+import handleSorting from '../../../utils/handleSorting';
 
 import AnswerItem from './AnswerItem/AnswerItem.component';
 import Spinner from '../../../components/molecules/Spinner/Spinner.component';

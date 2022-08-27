@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getUsers } from "../../redux/users/users.actions";
-import handleSorting from "../../services/handleSorting";
+import handleSorting from "../../utils/handleSorting";
 
 import UserPanel from "./UserPanel/UserPanel.component";
 import Spinner from "../../components/molecules/Spinner/Spinner.component";

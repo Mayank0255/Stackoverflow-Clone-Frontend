@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import censorBadWords from "../../../services/censorBadWords";
+import censorBadWords from "../../../utils/censorBadWords";
 
-import htmlSubstring from "../../../services/htmlSubstring";
-import injectEllipsis from "../../../services/injectEllipsis";
+import htmlSubstring from "../../../utils/htmlSubstring";
+import injectEllipsis from "../../../utils/injectEllipsis";
 
 import UserCard from "../UserCard/UserCard.component";
 import TagBadge from "../TagBadge/TagBadge.component";

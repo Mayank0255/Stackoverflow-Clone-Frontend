@@ -3,7 +3,7 @@ import {useLocation} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getPosts} from '../../redux/posts/posts.actions';
-import handleSorting from '../../services/handleSorting';
+import handleSorting from '../../utils/handleSorting';
 
 import LinkButton from '../../components/molecules/LinkButton/LinkButton.component';
 import PostItem from '../../components/molecules/PostItem/PostItem.component';

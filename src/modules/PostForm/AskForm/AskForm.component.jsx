@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addPost } from "../../../redux/posts/posts.actions";
 import MarkdownEditor from "../../../components/organisms/MarkdownEditor/MarkdownEditor.component";
-import { badWordsFilter } from "../../../services/censorBadWords";
+import { badWordsFilter } from "../../../utils/censorBadWords";
 
 import "./AskForm.styles.scss";
 

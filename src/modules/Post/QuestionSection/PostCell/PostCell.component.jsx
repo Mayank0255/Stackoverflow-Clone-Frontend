@@ -8,7 +8,7 @@ import TagBadge from "../../../../components/molecules/TagBadge/TagBadge.compone
 import UserCard from "../../../../components/molecules/UserCard/UserCard.component";
 
 import "./PostCell.styles.scss";
-import censorBadWords from "../../../../services/censorBadWords";
+import censorBadWords from "../../../../utils/censorBadWords";
 
 const PostCell = ({
   deletePost,

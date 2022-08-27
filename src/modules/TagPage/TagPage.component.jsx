@@ -4,7 +4,7 @@ import {Redirect, useParams} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {getTagPosts} from '../../redux/posts/posts.actions';
 import {getTag} from '../../redux/tags/tags.actions';
-import handleSorting from '../../services/handleSorting';
+import handleSorting from '../../utils/handleSorting';
 
 import LinkButton from '../../components/molecules/LinkButton/LinkButton.component';
 import PostItem from '../../components/molecules/PostItem/PostItem.component';

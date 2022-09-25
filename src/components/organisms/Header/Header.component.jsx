@@ -4,12 +4,13 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../../redux/auth/auth.actions';
 
-import {ReactComponent as Search} from '../../../assets/Search.svg';
-import {ReactComponent as Logo} from '../../../assets/LogoMd.svg';
-import {ReactComponent as SmallLogo} from '../../../assets/LogoGlyphMd.svg';
+import { ReactComponent as Search } from '../../../assets/Search.svg';
+import IconLogo from '../../../assets/IconLogo.svg';
+import TextLogo from '../../../assets/TextLogo.svg';
 import Spinner from '../../molecules/Spinner/Spinner.component';
 import LinkButton from '../../molecules/LinkButton/LinkButton.component';
 import MobileSideBar from '../../organisms/MobileSideBar/MobileSideBar.component';
+import CustomIcon from '../../molecules/CustomIcon';
 
 import './Header.styles.scss';
 
@@ -89,18 +90,16 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
   }
 
 
-  return loading ? (
-    ''
-  ) : (
+  return !loading && (
     <Fragment>
-      <nav className='navbar fixed-top navbar-expand-lg navbar-light bs-md'>
+      <nav className='navbar navbar-expand-lg navbar-light'>
         <div className="hamburger">
           <MobileSideBar hasOverlay />
         </div>
         <div className='header-brand-div'>
           <Link className='navbar-brand' to='/'>
-            <Logo className='full-logo' />
-            <SmallLogo className='glyph-logo' />
+            <CustomIcon src={IconLogo}/>
+            <CustomIcon src={TextLogo}/>
           </Link>
           {!loading && (
             <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>

@@ -20,6 +20,8 @@ import TagPage from './modules/TagPage/TagPage.component';
 import ProfilePage from './modules/ProfilePage/ProfilePage.component';
 import NotFound from './modules/NotFound/NotFound.component';
 
+import { Box } from './components/atoms/box.atom';
+
 import { BaseRoute, LayoutRoute } from './Router';
 
 import './App.css';
@@ -35,7 +37,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <div className='App'>
+      <Box className='App'>
         <Header />
         <Alert />
         <Switch>
@@ -116,7 +118,7 @@ const App = () => {
             <NotFound/>
           </BaseRoute>
         </Switch>
-      </div>
+      </Box>
     </Provider>
   );
 };

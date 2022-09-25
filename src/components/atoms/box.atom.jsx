@@ -8,6 +8,7 @@ import {
   typography,
   border,
   background,
+  shadow,
 } from 'styled-system';
 
 export const Box = styled.div`
@@ -21,6 +22,9 @@ export const Box = styled.div`
   ${typography}
   ${border}
   ${background}
+  ${shadow}
+  transform: ${({ transform = 'none' }) => transform};
+  visibility: ${({ visibility = 'visible' }) => visibility};
 `;
 
 export const FlexBox = styled(Box)`

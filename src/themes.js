@@ -1,3 +1,6 @@
+export const white = '#FFFFFF';
+export const black = '#000000';
+
 export const slate = {
   _50: '#f8fafc',
 }
@@ -21,6 +24,8 @@ export const blue = {
   _700: '#1d4ed8',
   _800: '#1e40af',
   _900: '#1e3a8a',
+  _1000: '#18338c',
+  _1100: '#152d7a'
 }
 
 export const red = {

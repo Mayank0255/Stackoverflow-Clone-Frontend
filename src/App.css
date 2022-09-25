@@ -1,25 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 :root {
-    --yellow-200: #675c37;
-    --yellow-050: #464236;
+  --yellow-200: #675c37;
+  --yellow-050: #464236;
 }
 
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Liberation Sans",sans-serif !important;
-    transition: all 300ms ease-in-out;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 300ms ease-in-out;
+  font-family: 'inter', sans-serif, serif !important;
 }
 
 body {
-    background-color: #2d2d2d !important;
-    padding-top: 0 !important;
+  background-color: #2548A7 !important;
+  padding-top: 0 !important;
+  overflow: hidden;
 }
 
 a {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 button {
-    margin: 3px;
+  margin: 3px;
 }

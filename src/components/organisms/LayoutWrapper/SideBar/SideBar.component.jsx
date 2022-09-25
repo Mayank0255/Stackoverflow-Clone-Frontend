@@ -1,31 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse, faChevronRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
 import SideBarItem from "./SideBarItem.component";
 import { SideBarData } from "./SideBarData";
+import { Box, FlexBox, FlexBoxColumn } from '../../../atoms/box.atom';
+import Circle from '../../../atoms/circle.atom';
 
 import './SideBar.styles.scss';
+import { SidebarContainer } from './styles'
+import { blue } from '../../../../themes';
 
-const SideBar = () => (
-  <div className='side-bar-container'>
-    <div className='side-bar-tabs'>
-      <SideBarItem isHome={true} link='/' text='Home'/>
+const SideBar = () => {
+  const [open, setOpen] = useState(true);
 
-      <div className='public-tabs'>
-        <p className='title fc-light'>PUBLIC</p>
-        {SideBarData.map(({ link, icon, text}, index) => (
-          <SideBarItem
-            key={index}
-            link={link}
-            icon={icon}
-            text={text}
-          />
-        ))}
-      </div>
-      <div className='teams-tabs'>
-        <p className='title fc-light'>TEAMS</p>
-      </div>
-    </div>
-  </div>
-);
+  const toggleSidebar = () => {
+    setOpen(!open);
+  };
+
+  return (
+    <SidebarContainer
+      position='relative'
+      width={open ? "250px" : "68px"}
+      minWidth={open ? "200px" : "68px"}
+      bg={blue._1100}
+      boxShadow='2px 4px 4px rgba(0, 0, 0, 0.25)'
+    >
+      <Circle
+        radius='16px'
+        position='absolute'
+        top='45%'
+        right='-16px'
+        display='flex'
+        bg={blue._100}
+        transform={`rotate(${open ? 0 : 180}deg)`}
+        onClick={toggleSidebar}
+      >
+        <FontAwesomeIcon icon={faAngleLeft} color={blue._1100} size='lg'/>
+      </Circle>
+      <FlexBoxColumn
+        py='24px'
+        px='16px'
+        height='100%'
+        justifyContent='space-between'
+      >
+        <FlexBoxColumn>
+          {SideBarData.map(({ link, icon, text}, index) => (
+            <SideBarItem
+              key={index}
+              link={link}
+              icon={icon}
+              text={text}
+              open={open}
+            />
+          ))}
+        </FlexBoxColumn>
+
+      </FlexBoxColumn>
+    </SidebarContainer>
+  )
+};
 
 export default SideBar;

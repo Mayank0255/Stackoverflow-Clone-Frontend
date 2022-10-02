@@ -1,20 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Box, FlexBox } from '../../../atoms/box.atom';
+import { Box, FlexBox } from '../../atoms/box.atom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { blue } from '../../../../themes';
+import { blue } from '../../../themes';
 import { SidebarBox } from './styles'
-
-import './SideBar.styles.scss';
 
 const SideBarItem = ({ link, icon, text, open }) => {
   return (
     <NavLink
       exact
       activeClassName='active'
-      // className='home-link nav-link'
       to={link}
     >
       <SidebarBox
@@ -29,7 +26,6 @@ const SideBarItem = ({ link, icon, text, open }) => {
             icon={icon}
             color={blue._50}
             size='xl'
-            // width='20px'
           />
         </FlexBox>
         <Box
@@ -37,8 +33,6 @@ const SideBarItem = ({ link, icon, text, open }) => {
           fontWeight={600}
           fontSize='16px'
           ml={2}
-          // ml={3}
-          // visibility={open ? 'visible' : 'hidden'}
           display={open ? 'flex' : 'none'}
           style={{ transitionDuration: '300ms' }}
         >

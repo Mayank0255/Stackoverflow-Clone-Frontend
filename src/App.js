@@ -7,6 +7,7 @@ import setAuthToken from './redux/auth/auth.utils';
 import {loadUser} from './redux/auth/auth.actions';
 
 import Header from './components/organisms/Header/Header.component';
+import SideBar from './components/organisms/SideBar/SideBar.component';
 import Alert from './components/Alert/Alert.component';
 import HomePage from './modules/HomePage/HomePage.component';
 import QuestionsPage from './modules/QuestionsPage/QuestionsPage.component';
@@ -20,9 +21,9 @@ import TagPage from './modules/TagPage/TagPage.component';
 import ProfilePage from './modules/ProfilePage/ProfilePage.component';
 import NotFound from './modules/NotFound/NotFound.component';
 
-import { Box } from './components/atoms/box.atom';
+import { FlexBox, Box } from './components/atoms/box.atom';
 
-import { BaseRoute, LayoutRoute } from './Router';
+import { PrivateRoute } from './Router';
 
 import './App.css';
 
@@ -38,86 +39,94 @@ const App = () => {
   return (
     <Provider store={store}>
       <Box className='App'>
-        <Header />
-        <Alert />
-        <Switch>
-          <LayoutRoute
-            exact
-            path='/'
-            title='Devcomm - Where Developers Learn, Share, & Build Careers'
-          >
-            <HomePage/>
-          </LayoutRoute>
-          <LayoutRoute
-            exact
-            path='/questions'
-            title='All Questions - Devcomm'
-          >
-            <QuestionsPage/>
-          </LayoutRoute>
-          <LayoutRoute
-            exact
-            path='/tags'
-            title='Tags - Devcomm'
-          >
-            <AllTagsPage/>
-          </LayoutRoute>
-          <LayoutRoute
-            exact
-            path='/users'
-            title='Users - Devcomm'
-          >
-            <AllUsersPage/>
-          </LayoutRoute>
-          <BaseRoute
-            exact
-            path='/register'
-            title='Sign Up - Devcomm'
-          >
-            <Register/>
-          </BaseRoute>
-          <BaseRoute
-            exact
-            path='/login'
-            title='Log In - Devcomm'
-          >
-            <Login/>
-          </BaseRoute>
-          <LayoutRoute
-            exact
-            path='/questions/:id'
-            title='Users - Devcomm'
-          >
-            <Post/>
-          </LayoutRoute>
-          <LayoutRoute
-            exact
-            path='/users/:id'
-            title='Users - Devcomm'
-          >
-            <ProfilePage/>
-          </LayoutRoute>
-          <LayoutRoute
-            exact
-            path='/tags/:tagname'
-            title='Users - Devcomm'
-          >
-            <TagPage/>
-          </LayoutRoute>
-          <BaseRoute
-            exact
-            path='/add/question'
-            title='Ask a Question - Devcomm'
-          >
-            <PostForm/>
-          </BaseRoute>
-          <BaseRoute
-            path='*'
-            title='Error 404'
-          >
-            <NotFound/>
-          </BaseRoute>
-        </Switch>
+        <Header/>
+        <Alert/>
+        <FlexBox height={`calc(100vh - 80px)`}>
+          <SideBar/>
+          <Box flex='1 1 0%' overflowY='scroll'>
+            <Switch>
+              <PrivateRoute
+                exact
+                path='/'
+                title='Devcomm - Where Developers Learn, Share, & Build Careers'
+              >
+                <HomePage/>
+              </PrivateRoute>
+              <PrivateRoute
+                exact
+                path='/questions'
+                title='All Questions - Devcomm'
+              >
+                <QuestionsPage/>
+              </PrivateRoute>
+              <PrivateRoute
+                exact
+                path='/tags'
+                title='Tags - Devcomm'
+              >
+                <AllTagsPage/>
+              </PrivateRoute>
+              <PrivateRoute
+                exact
+                path='/users'
+                title='Users - Devcomm'
+              >
+                <AllUsersPage/>
+              </PrivateRoute>
+              <PrivateRoute
+                exact
+                path='/register'
+                title='Sign Up - Devcomm'
+                withRightSideBar={false}
+              >
+                <Register/>
+              </PrivateRoute>
+              <PrivateRoute
+                exact
+                path='/login'
+                title='Log In - Devcomm'
+                withRightSideBar={false}
+              >
+                <Login/>
+              </PrivateRoute>
+              <PrivateRoute
+                exact
+                path='/questions/:id'
+                title='Users - Devcomm'
+              >
+                <Post/>
+              </PrivateRoute>
+              <PrivateRoute
+                exact
+                path='/users/:id'
+                title='Users - Devcomm'
+              >
+                <ProfilePage/>
+              </PrivateRoute>
+              <PrivateRoute
+                exact
+                path='/tags/:tagname'
+                title='Users - Devcomm'
+              >
+                <TagPage/>
+              </PrivateRoute>
+              <PrivateRoute
+                exact
+                path='/add/question'
+                title='Ask a Question - Devcomm'
+                withRightSideBar={false}
+              >
+                <PostForm/>
+              </PrivateRoute>
+              <PrivateRoute
+                path='*'
+                title='Error 404'
+              >
+                <NotFound/>
+              </PrivateRoute>
+            </Switch>
+          </Box>
+        </FlexBox>
       </Box>
     </Provider>
   );

@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faChevronRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
 import SideBarItem from "./SideBarItem.component";
 import { SideBarData } from "./SideBarData";
-import { Box, FlexBox, FlexBoxColumn } from '../../../atoms/box.atom';
-import Circle from '../../../atoms/circle.atom';
+import { FlexBoxColumn } from '../../atoms/box.atom';
+import Circle from '../../atoms/circle.atom';
 
-import './SideBar.styles.scss';
 import { SidebarContainer } from './styles'
-import { blue } from '../../../../themes';
+import { blue } from '../../../themes';
 
 const SideBar = () => {
   const [open, setOpen] = useState(true);

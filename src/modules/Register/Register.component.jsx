@@ -6,7 +6,6 @@ import {setAlert} from '../../redux/alert/alert.actions';
 
 import Caption from './Caption/Caption.component';
 import AuthForm from '../../components/organisms/AuthForm/AuthForm.component';
-import Footer from "../../components/organisms/Footer/Footer.component";
 
 import './Register.styles.scss';
 
@@ -25,7 +24,6 @@ const Register = ({isAuthenticated}) => {
           </div>
         </div>
       </div>
-      <Footer/>
     </Fragment>
   );
 };

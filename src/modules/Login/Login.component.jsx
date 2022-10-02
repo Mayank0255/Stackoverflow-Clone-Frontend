@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import AuthForm from '../../components/organisms/AuthForm/AuthForm.component';
-import Footer from "../../components/organisms/Footer/Footer.component";
 
 const Login = ({isAuthenticated}) => {
   if (isAuthenticated) {
@@ -20,7 +19,6 @@ const Login = ({isAuthenticated}) => {
           </div>
         </div>
       </div>
-      <Footer/>
     </Fragment>
   );
 };

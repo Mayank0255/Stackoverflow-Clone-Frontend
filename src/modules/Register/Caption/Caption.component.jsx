@@ -12,7 +12,7 @@ const Caption = () => {
   return (
     <Fragment>
       <div className='caption fc-black-600'>
-        <h3>Join the Stack Overflow community</h3>
+        <h3>Join the devcomm community</h3>
         <div className='caption-item'>
           <div className='grid-icon'>
             <QuoteLogo/>
@@ -43,11 +43,11 @@ const Caption = () => {
         </div>
         <div className='caption-item fc-black-600'>
           <div>
-            Use the power of Stack Overflow inside your organization.
+            Use the power of Devcomm inside your organization.
             <br />
             Try a{' '}
             <Link to='https://stackoverflow.com/teams?utm_source=so-owned&utm_medium=product&utm_campaign=public-sign-up&utm_content=teams'>
-              free trial of Stack Overflow for Teams
+              free trial of Devcomm for Teams
             </Link>
             .
           </div>

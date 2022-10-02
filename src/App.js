@@ -44,70 +44,70 @@ const App = () => {
           <LayoutRoute
             exact
             path='/'
-            title='CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers'
+            title='Devcomm - Where Developers Learn, Share, & Build Careers'
           >
             <HomePage/>
           </LayoutRoute>
           <LayoutRoute
             exact
             path='/questions'
-            title='All Questions - CLONE Stack Overflow'
+            title='All Questions - Devcomm'
           >
             <QuestionsPage/>
           </LayoutRoute>
           <LayoutRoute
             exact
             path='/tags'
-            title='Tags - CLONE Stack Overflow'
+            title='Tags - Devcomm'
           >
             <AllTagsPage/>
           </LayoutRoute>
           <LayoutRoute
             exact
             path='/users'
-            title='Users - CLONE Stack Overflow'
+            title='Users - Devcomm'
           >
             <AllUsersPage/>
           </LayoutRoute>
           <BaseRoute
             exact
             path='/register'
-            title='Sign Up - CLONE Stack Overflow'
+            title='Sign Up - Devcomm'
           >
             <Register/>
           </BaseRoute>
           <BaseRoute
             exact
             path='/login'
-            title='Log In - CLONE Stack Overflow'
+            title='Log In - Devcomm'
           >
             <Login/>
           </BaseRoute>
           <LayoutRoute
             exact
             path='/questions/:id'
-            title='Users - CLONE Stack Overflow'
+            title='Users - Devcomm'
           >
             <Post/>
           </LayoutRoute>
           <LayoutRoute
             exact
             path='/users/:id'
-            title='Users - CLONE Stack Overflow'
+            title='Users - Devcomm'
           >
             <ProfilePage/>
           </LayoutRoute>
           <LayoutRoute
             exact
             path='/tags/:tagname'
-            title='Users - CLONE Stack Overflow'
+            title='Users - Devcomm'
           >
             <TagPage/>
           </LayoutRoute>
           <BaseRoute
             exact
             path='/add/question'
-            title='Ask a Question - CLONE Stack Overflow'
+            title='Ask a Question - Devcomm'
           >
             <PostForm/>
           </BaseRoute>

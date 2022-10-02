@@ -2,15 +2,17 @@ import React, {Fragment, useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import { logout } from '../../../redux/auth/auth.actions';
 
-import { ReactComponent as Search } from '../../../assets/Search.svg';
-import IconLogo from '../../../assets/IconLogo.svg';
-import TextLogo from '../../../assets/TextLogo.svg';
 import Spinner from '../../molecules/Spinner/Spinner.component';
 import LinkButton from '../../molecules/LinkButton/LinkButton.component';
 import MobileSideBar from '../../organisms/MobileSideBar/MobileSideBar.component';
+
+import { logout } from '../../../redux/auth/auth.actions';
+
 import CustomIcon from '../../molecules/CustomIcon';
+import { ReactComponent as Search } from '../../../assets/Search.svg';
+import IconLogo from '../../../assets/IconLogo.svg';
+import TextLogo from '../../../assets/TextLogo.svg';
 
 import './Header.styles.scss';
 
@@ -37,28 +39,6 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
         type={'s-btn__filled'}
         handleClick={logout}
       />
-    </div>
-  );
-
-  const authTabs = (
-    <div className='s-navigation'>
-      <Link to='/' className='s-navigation--item is-selected'>
-        Products
-      </Link>
-    </div>
-  );
-
-  const guestTabs = (
-    <div className='s-navigation'>
-      <Link to='/' className='s-navigation--item is-selected'>
-        Products
-      </Link>
-      <Link to='/' className='s-navigation--item not-selected'>
-        Customers
-      </Link>
-      <Link to='/' className='s-navigation--item not-selected'>
-        Use cases
-      </Link>
     </div>
   );
 
@@ -101,11 +81,7 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
             <CustomIcon src={IconLogo}/>
             <CustomIcon src={TextLogo}/>
           </Link>
-          {!loading && (
-            <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>
-          )}
         </div>
-        
           <form
             id='search'
             onSubmit={() => history.push('/questions')}

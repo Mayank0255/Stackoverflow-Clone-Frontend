@@ -25,7 +25,7 @@ const ExternalUserDetails = () => (
                 <Logo className='logo' />
               </span>
               <span className='fc-blue-600 fs-body2'>
-                Stack Overflow
+                Devcomm
               </span>
             </Link>
           </li>

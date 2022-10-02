@@ -1,17 +1,12 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { Box, FlexBox } from '../../../atoms/box.atom';
-import CustomIcon from '../../../molecules/CustomIcon';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
-
-import IconLogo from '../../../../assets/IconLogo.svg';
-import { blue, white, slate, neutral } from '../../../../themes';
-
+import { blue } from '../../../../themes';
 import { SidebarBox } from './styles'
+
 import './SideBar.styles.scss';
 
 const SideBarItem = ({ link, icon, text, open }) => {

@@ -1,0 +1,36 @@
+.UAT_div {
+    width: 90%;
+    margin-top: 20px;
+    padding: 0.3rem 0.5rem;
+}
+
+.UAT_head {
+    width: 100%;
+}
+
+.UAT_list {
+    width: 100%;
+    border: 1px solid white;
+    margin-bottom: 3rem;
+}
+
+.UAT {
+    display: flex;
+    width: 90%;
+    margin: 0.5rem auto 0;
+    justify-content: space-between;
+}
+
+.tagname {
+    background-color: #8BBCCC;
+    color: #4C6793;
+    padding: 0.4rem;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.score_tag {
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
+}

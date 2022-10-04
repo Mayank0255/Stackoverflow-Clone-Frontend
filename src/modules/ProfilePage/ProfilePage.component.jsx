@@ -1,4 +1,4 @@
-import React, {useEffect, Fragment} from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link, useParams } from "react-router-dom";
 import PropTypes from 'prop-types';
@@ -8,10 +8,12 @@ import UserSection from "./UserSection/UserSection.component";
 import Spinner from '../../components/molecules/Spinner/Spinner.component';
 import ExternalUserDetails from "./ExternalUserDetails/ExternalUserDetails.component";
 import UserActivity from "./UserActivity/UserActivity.component";
+import QuestionByUser from './UserQuestions/QuestionByUser.component';
+import TagsByUser from './TagsUsedByUser/TagsByUser.component';
 
 import './ProfilePage.styles.scss';
 
-const ProfilePage = ({getProfile, user: {user, loading}}) => {
+const ProfilePage = ({ getProfile, user: { user, loading } }) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -37,11 +39,15 @@ const ProfilePage = ({getProfile, user: {user, loading}}) => {
               Activity
             </Link>
           </div>
-          <UserSection user={user}/>
+          <UserSection user={user} />
         </div>
         <div className='row-grid'>
-          <ExternalUserDetails/>
-          <UserActivity/>
+          <ExternalUserDetails />
+          <UserActivity />
+        </div>
+        <div className='User_Questions'>
+          <QuestionByUser user={user} />
+          <TagsByUser user={user} />
         </div>
       </div>
     </Fragment>
@@ -57,4 +63,4 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, {getProfile})(ProfilePage);
+export default connect(mapStateToProps, { getProfile })(ProfilePage);

@@ -1,0 +1,61 @@
+.User_Asked_Qdiv {
+    width: 90%;
+}
+
+.UAQ_headdiv {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.UAQ_Filterdiv {
+    display: flex;
+    width: 50%;
+    border: 1px solid white;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.UAQ_Filterdiv p {
+    font-size: 10px;
+    text-align: center;
+    height: 100%;
+    width: 25%;
+    justify-content: center;
+    border-right: 1px solid white;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    margin: 0;
+}
+
+.UAQ_list {
+    width: 100%;
+    border: 1px solid white;
+    margin-top: 10px;
+}
+
+.UAQ {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    height: 40px;
+    margin: 10px 0px 0px;
+}
+
+.UAQ p:nth-child(1) {
+    border: 1px solid white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+}
+
+
+.UAQ_showMore p {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}

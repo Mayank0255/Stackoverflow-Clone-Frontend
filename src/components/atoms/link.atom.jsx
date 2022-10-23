@@ -11,7 +11,9 @@ import {
   shadow,
 } from 'styled-system';
 
-export const Image = styled.img`
+import {Link} from 'react-router-dom';
+
+export const CustomLink = styled(Link)`
   ${space}
   ${color}
   ${layout}

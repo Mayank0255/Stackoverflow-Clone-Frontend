@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
-import {Provider} from 'react-redux';
-import {Switch} from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Provider } from 'react-redux';
+import { Switch, Redirect } from 'react-router-dom';
 
 import store from './redux/store';
 import setAuthToken from './redux/auth/auth.utils';
-import {loadUser} from './redux/auth/auth.actions';
+import { loadUser } from './redux/auth/auth.actions';
 
 import Header from './components/organisms/Header/Header.component';
 import SideBar from './components/organisms/SideBar/SideBar.component';
@@ -48,6 +48,13 @@ const App = () => {
               <PrivateRoute
                 exact
                 path='/'
+                title='Devcomm - Where Developers Learn, Share, & Build Careers'
+              >
+                <Redirect to='/home' />
+              </PrivateRoute>
+              <PrivateRoute
+                exact
+                path='/home'
                 title='Devcomm - Where Developers Learn, Share, & Build Careers'
               >
                 <HomePage/>

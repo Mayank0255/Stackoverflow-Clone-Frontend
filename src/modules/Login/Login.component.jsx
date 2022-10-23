@@ -7,7 +7,7 @@ import AuthForm from '../../components/organisms/AuthForm/AuthForm.component';
 
 const Login = ({isAuthenticated}) => {
   if (isAuthenticated) {
-    return <Redirect to='/' />;
+    return <Redirect to='/home' />;
   }
 
   return (

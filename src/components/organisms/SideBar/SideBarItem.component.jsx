@@ -7,10 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { blue } from '../../../themes';
 import { SidebarBox } from './styles'
 
+import './styles.scss'
+
 const SideBarItem = ({ link, icon, text, open }) => {
   return (
     <NavLink
-      exact
       activeClassName='active'
       to={link}
     >

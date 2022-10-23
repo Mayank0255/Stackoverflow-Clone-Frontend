@@ -11,7 +11,7 @@ import './Register.styles.scss';
 
 const Register = ({isAuthenticated}) => {
   if (isAuthenticated) {
-    return <Redirect to='/' />;
+    return <Redirect to='/home' />;
   }
 
   return (

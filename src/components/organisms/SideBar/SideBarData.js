@@ -2,7 +2,7 @@ import { faHouse, faCircleQuestion, faTags, faIdCard, faBuilding } from '@fortaw
 
 export const SideBarData = [
   {
-    link: '/',
+    link: '/home',
     icon: faHouse,
     text: 'Home',
   },

@@ -21,6 +21,7 @@ const SideBarItem = ({ link, icon, text, open }) => {
         alignItems='center'
         borderRadius='6px'
         height='40px'
+        title={text}
       >
         <FlexBox width='36px' justifyContent='center'>
           <FontAwesomeIcon

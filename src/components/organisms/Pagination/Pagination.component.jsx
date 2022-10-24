@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import { Pagination as MuiPagination, PaginationItem } from "@mui/material";
 
+import { blue } from "../../../themes";
+
 const Pagination = ({
   page,
   itemList,
@@ -17,7 +19,14 @@ const Pagination = ({
         onChange={handlePaginationChange}
         style={{ float: 'right', margin: '0 13px 16px 0' }}
         renderItem={(item) => (
-          <PaginationItem {...item} sx={{ color: '#cfd2d6', border: '1px solid #4c4f52' }}/>
+          <PaginationItem
+            {...item}
+            sx={{
+              color: blue._100,
+              border: `1px solid ${blue._800}`,
+              fontWeight: 600
+            }}
+          />
         )}
       />
     </Fragment>

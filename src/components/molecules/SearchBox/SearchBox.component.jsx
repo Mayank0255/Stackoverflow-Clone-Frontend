@@ -1,5 +1,12 @@
-import React, {Fragment} from 'react';
-import {ReactComponent as Search} from '../../../assets/Search.svg';
+import React from 'react';
+
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { FlexBox } from '../../atoms/box.atom';
+import { blue } from '../../../themes';
+
+import { SearchInput } from './styles';
 
 const SearchBox = ({
   placeholder,
@@ -12,29 +19,33 @@ const SearchBox = ({
   width,
 }) => {
   return (
-    <Fragment>
-      <form
-        id='search'
-        onSubmit={handleSubmit}
-        className={`grid--cell fl-grow1 searchbar ${pt} ${px} js-searchbar`}
+    <FlexBox
+      bg={`${blue._50}26`}
+      borderRadius='8px'
+      alignItems='center'
+      pl='24px'
+      pr='8px'
+    >
+      <FontAwesomeIcon
+        icon={faMagnifyingGlass}
+        color={blue._50}
+        size='xl'
+      />
+      <SearchInput
+        fontWeight={500}
+        bg='transparent'
+        color={blue._50}
+        width='100%'
         autoComplete='off'
-      >
-        <div className='ps-relative search-frame' style={{width}}>
-          <input
-            className='s-input s-input__search h100 search-box'
-            autoComplete='off'
-            type='text'
-            name={name}
-            maxLength='35'
-            placeholder={placeholder}
-            onChange={handleChange}
-            value={value}
-          />
-          <Search />
-        </div>
-      </form>
-    </Fragment>
-  );
+        type='text'
+        maxLength='35'
+        name={name}
+        placeholder={placeholder}
+        onChange={handleChange}
+        value={value}
+      />
+    </FlexBox>
+  )
 };
 
 export default SearchBox;

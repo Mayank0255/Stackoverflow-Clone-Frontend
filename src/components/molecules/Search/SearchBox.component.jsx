@@ -9,18 +9,14 @@ import { blue } from '../../../themes';
 import { SearchInput } from './styles';
 
 const SearchBox = ({
-  placeholder,
+  formBg = `${blue._50}26`,
   value,
-  name,
   handleSubmit,
-  handleChange,
-  pt,
-  px,
-  width,
+  ...props
 }) => {
   return (
     <FlexBox
-      bg={`${blue._50}26`}
+      bg={formBg}
       borderRadius='8px'
       alignItems='center'
       pl='24px'
@@ -32,16 +28,9 @@ const SearchBox = ({
         size='xl'
       />
       <SearchInput
-        fontWeight={500}
-        bg='transparent'
-        color={blue._50}
-        width='100%'
+        {...props}
         autoComplete='off'
         type='text'
-        maxLength='35'
-        name={name}
-        placeholder={placeholder}
-        onChange={handleChange}
         value={value}
       />
     </FlexBox>

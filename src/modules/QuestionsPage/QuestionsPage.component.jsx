@@ -9,7 +9,7 @@ import LinkButton from '../../components/molecules/LinkButton/LinkButton.compone
 import PostItem from '../../components/molecules/PostItem/PostItem.component';
 import Spinner from '../../components/molecules/Spinner/Spinner.component';
 import ButtonGroup from '../../components/molecules/ButtonGroup/ButtonGroup.component';
-import SearchBox from '../../components/molecules/SearchBox/SearchBox.component';
+import SearchForm from '../../components/molecules/Search/SearchForm.component';
 import Pagination from "../../components/organisms/Pagination/Pagination.component";
 
 import './QuestionsPage.styles.scss';
@@ -50,7 +50,7 @@ const QuestionsPage = ({getPosts, post: {posts, loading}}) => {
             <span style={{color: '#acb2b8', fontSize: '12px'}}>
               Results for {searchQuery}
             </span>
-            <SearchBox placeholder={'Search...'} name={'search'} pt={'mt8'} />
+            <SearchForm placeholder={'Search...'} name={'search'} />
           </div>
         ) : (
           ''

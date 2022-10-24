@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -7,7 +7,7 @@ import Spinner from '../../molecules/Spinner/Spinner.component';
 import LinkButton from '../../molecules/LinkButton/LinkButton.component';
 import MobileSideBar from '../../organisms/MobileSideBar/MobileSideBar.component';
 import { Box, FlexBox } from '../../atoms/box.atom';
-import SearchBar from './SearchBar.component';
+import SearchForm from '../../molecules/Search/SearchForm.component';
 
 import { logout } from '../../../redux/auth/auth.actions';
 
@@ -20,6 +20,8 @@ import { blue } from '../../../themes';
 import './Header.styles.scss';
 
 const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
+  let history = useHistory();
+
   const authLinks = (
     <FlexBox
       justifyContent="center"
@@ -83,11 +85,15 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
         justifyContent='space-between'
       >
         <Box px='16px' width='100%'>
-          <SearchBar/>
+          <SearchForm
+            name='search'
+            placeholder='Search...'
+            handleSubmit={() => history.push('/questions')}
+          />
         </Box>
         <FlexBox
           maxWidth='300px'
-          width='25%'
+          width='30%'
           minWidth='200px'
           justifyContent='flex-end'
         >

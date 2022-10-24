@@ -6,7 +6,7 @@ import handleSorting from "../../utils/handleSorting";
 
 import UserPanel from "./UserPanel/UserPanel.component";
 import Spinner from "../../components/molecules/Spinner/Spinner.component";
-import SearchBox from "../../components/molecules/SearchBox/SearchBox.component";
+import SearchBox from "../../components/molecules/Search/SearchBox.component";
 import ButtonGroup from "../../components/molecules/ButtonGroup/ButtonGroup.component";
 import Pagination from "../../components/organisms/Pagination/Pagination.component";
 
@@ -45,8 +45,7 @@ const AllUsersPage = ({ getUsers, user: { users, loading } }) => {
         <div className="users-box pl16 pr16 pb16">
           <SearchBox
             placeholder={"filter by user"}
-            handleChange={handleChange}
-            width={"200px"}
+            onChange={handleChange}
           />
           <ButtonGroup
             buttons={["Popular", "Name", "Active", "New Users"]}

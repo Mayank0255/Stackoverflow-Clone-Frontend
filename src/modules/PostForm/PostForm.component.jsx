@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import Spinner from '../../components/molecules/Spinner/Spinner.component';
 import AskWidget from './AskWidget/AskWidget.component';
 import AskForm from './AskForm/AskForm.component';
-import Footer from "../../components/organisms/Footer/Footer.component";
 
 import './PostForm.styles.scss';
 
@@ -38,7 +37,6 @@ const PostForm = ({auth: {isAuthenticated, loading}}) => {
           </div>
         </div>
       </div>
-      <Footer/>
     </Fragment>
   );
 };

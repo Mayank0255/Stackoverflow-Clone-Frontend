@@ -14,7 +14,7 @@ https://user-images.githubusercontent.com/43780137/158059050-481ffa30-e415-4156-
 
 As the name suggests, this project is a clone of a famous Q/A website for professional and enthusiast programmers built solely by me using a completely different stack.
 
-This repo consists of the Frontend code of the project, the backend code is in __[Stackoverflow-Clone-Backend](https://github.com/Mayank0255/Stackoverflow-Clone-Backend)__
+This repo consists of the Frontend code of the project, the backend code is in __[Devcomm-Backend](https://github.com/Mayank0255/Stackoverflow-Clone-Backend)__
 
 ## My Tech Stack (MERN)
 
@@ -38,8 +38,8 @@ There are two ways to setup the project: manually or using the Dockerfile. Read 
 1. Open your local CLI -
 
    ```
-   mkdir Stackoverflow-Clone
-   cd Stackoverflow-Clone
+   mkdir Devcomm
+   cd Devcomm
    ```
 
 2. Setup the backend code -
@@ -65,7 +65,7 @@ There are two ways to setup the project: manually or using the Dockerfile. Read 
 
    - Run the index `npm start`.
 
-3. Open a new CLI terminal and goto the root `Stackoverflow-Clone` folder you created in the first step.
+3. Open a new CLI terminal and goto the root `Devcomm` folder you created in the first step.
 4. Setup the Frontend code -
 
    - Clone the code & install the modules-

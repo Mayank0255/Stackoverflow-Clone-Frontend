@@ -4,11 +4,10 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import AuthForm from '../../components/organisms/AuthForm/AuthForm.component';
-import Footer from "../../components/organisms/Footer/Footer.component";
 
 const Login = ({isAuthenticated}) => {
   if (isAuthenticated) {
-    return <Redirect to='/' />;
+    return <Redirect to='/home' />;
   }
 
   return (
@@ -20,7 +19,6 @@ const Login = ({isAuthenticated}) => {
           </div>
         </div>
       </div>
-      <Footer/>
     </Fragment>
   );
 };

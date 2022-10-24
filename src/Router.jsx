@@ -1,28 +1,17 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import LayoutWrapper from './components/organisms/LayoutWrapper/LayoutWrapper.component';
+import RightSideBar from './components/organisms/RightSideBar/RightSideBar.component';
 
 import usePageTitle from './hooks/usePageTitle';
 
-export const LayoutRoute = ({ title, children, ...props }) => {
-  usePageTitle(title);
-
-  return (
-    <Route {...props}>
-      <LayoutWrapper>
-        {children}
-      </LayoutWrapper>
-    </Route>
-  )
-}
-
-export const BaseRoute = ({ title, children, ...props }) => {
+export const PrivateRoute = ({ title, withRightSideBar = true, children, ...props }) => {
   usePageTitle(title);
 
   return (
     <Route {...props}>
       {children}
+      {withRightSideBar && <RightSideBar/>}
     </Route>
   )
 }

@@ -1,34 +1,50 @@
-import React, {Fragment, useState} from 'react';
-import {Link, useHistory} from 'react-router-dom';
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import { logout } from '../../../redux/auth/auth.actions';
 
-import {ReactComponent as Search} from '../../../assets/Search.svg';
-import {ReactComponent as Logo} from '../../../assets/LogoMd.svg';
-import {ReactComponent as SmallLogo} from '../../../assets/LogoGlyphMd.svg';
 import Spinner from '../../molecules/Spinner/Spinner.component';
 import LinkButton from '../../molecules/LinkButton/LinkButton.component';
 import MobileSideBar from '../../organisms/MobileSideBar/MobileSideBar.component';
+import { Box, FlexBox } from '../../atoms/box.atom';
+import SearchForm from '../../molecules/Search/SearchForm.component';
+
+import { logout } from '../../../redux/auth/auth.actions';
+
+import { Image } from '../../atoms/image.atom';
+import { CustomLink } from '../../atoms/link.atom';
+import IconLogo from '../../../assets/IconLogo.svg';
+import TextLogo from '../../../assets/TextLogo.svg';
+import { blue } from '../../../themes';
 
 import './Header.styles.scss';
 
 const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
   let history = useHistory();
-  const [searchState, setSearchState] = useState(false);
 
   const authLinks = (
-    <div className='btns'>
+    <FlexBox
+      justifyContent="center"
+      alignItems="center"
+    >
       {loading || user === null ? (
         <Spinner width='50px' height='50px' />
       ) : (
-        <Link to={`/users/${user.id}`} title={user.username}>
-          <img
+        <CustomLink
+          display='flex'
+          alignItems='center'
+          to={`/users/${user.id}`}
+          title={user.username}
+        >
+          <Image
+            height='32px'
+            width='32px'
+            borderRadius='3px'
+            mr='9px'
             alt='user-logo'
-            className='logo'
             src={user.gravatar}
           />
-        </Link>
+        </CustomLink>
       )}
       <LinkButton
         text={'Log out'}
@@ -36,104 +52,59 @@ const Header = ({auth: {isAuthenticated, loading, user}, logout}) => {
         type={'s-btn__filled'}
         handleClick={logout}
       />
-    </div>
-  );
-
-  const authTabs = (
-    <div className='s-navigation'>
-      <Link to='/' className='s-navigation--item is-selected'>
-        Products
-      </Link>
-    </div>
-  );
-
-  const guestTabs = (
-    <div className='s-navigation'>
-      <Link to='/' className='s-navigation--item is-selected'>
-        Products
-      </Link>
-      <Link to='/' className='s-navigation--item not-selected'>
-        Customers
-      </Link>
-      <Link to='/' className='s-navigation--item not-selected'>
-        Use cases
-      </Link>
-    </div>
+    </FlexBox>
   );
 
   const guestLinks = (
-    <div className='btns'>
+    <FlexBox>
       <LinkButton text={'Log in'} link={'/login'} type={'s-btn__primary'} />
       <LinkButton text={'Sign up'} link={'/register'} type={'s-btn__filled'} />
-    </div>
+    </FlexBox>
   );
 
-  const SearchBar = () => {
-    return (
-      <form
-        onSubmit={() => history.push('/questions')}
-        className='small-search-form'
-        autoComplete='off'
+  return !loading && (
+    <FlexBox
+      height='80px'
+      bg={blue._1100}
+      px='16px'
+      py='16px'
+      alignItems='center'
+      boxShadow='2px 4px 4px rgba(0, 0, 0, 0.25)'
+    >
+      <div className="hamburger">
+        <MobileSideBar hasOverlay />
+      </div>
+      <Box width='234px' minWidth='184px'>
+        <Link to='/home'>
+          <Image src={IconLogo}/>
+          <Image src={TextLogo}/>
+        </Link>
+      </Box>
+      <FlexBox
+        width='calc(100% - 234px)'
+        justifyContent='space-between'
       >
-          <input
-            className='small-search'
-            autoComplete='off'
-            type='text'
+        <Box px='16px' width='100%'>
+          <SearchForm
             name='search'
-            maxLength='35'
             placeholder='Search...'
+            handleSubmit={() => history.push('/questions')}
           />
-          <Search className="small-search-icon" />
-      </form>
-    );
-  }
-
-
-  return loading ? (
-    ''
-  ) : (
-    <Fragment>
-      <nav className='navbar fixed-top navbar-expand-lg navbar-light bs-md'>
-        <div className="hamburger">
-          <MobileSideBar hasOverlay />
-        </div>
-        <div className='header-brand-div'>
-          <Link className='navbar-brand' to='/'>
-            <Logo className='full-logo' />
-            <SmallLogo className='glyph-logo' />
-          </Link>
+        </Box>
+        <FlexBox
+          maxWidth='300px'
+          width='30%'
+          minWidth='200px'
+          justifyContent='flex-end'
+        >
           {!loading && (
-            <Fragment>{isAuthenticated ? authTabs : guestTabs}</Fragment>
+            <Box>
+              {isAuthenticated ? authLinks : guestLinks}
+            </Box>
           )}
-        </div>
-        
-          <form
-            id='search'
-            onSubmit={() => history.push('/questions')}
-            className={`grid--cell fl-grow1 searchbar px12 js-searchbar`}
-            autoComplete='off'
-          >
-            <div className='ps-relative search-frame'>
-              <input
-                className='s-input s-input__search h100 search-box'
-                autoComplete='off'
-                type='text'
-                name='search'
-                maxLength='35'
-                placeholder='Search...'
-              />
-              <Search />
-            </div>
-          </form>
-          <div className="header-search-div">
-          <Search className="search-icon" onClick={() => setSearchState(!searchState)} />
-          {!loading && (
-            <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
-          )}
-        </div>
-      </nav>
-      {searchState && <SearchBar />}
-    </Fragment>
+        </FlexBox>
+      </FlexBox>
+    </FlexBox>
   );
 };
 

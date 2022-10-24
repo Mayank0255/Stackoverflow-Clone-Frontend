@@ -20,12 +20,12 @@ const ExternalUserDetails = () => (
         </h3>
         <ul>
           <li className='item'>
-            <Link to='/'>
+            <Link to='/home'>
               <span>
                 <Logo className='logo' />
               </span>
               <span className='fc-blue-600 fs-body2'>
-                Stack Overflow
+                Devcomm
               </span>
             </Link>
           </li>

@@ -38,7 +38,7 @@ const NotFound = () => {
                 It seems like we couldn't find the page you were looking for
               </div>
             </div>
-            <Link to='/' className='box__button'>
+            <Link to='/home' className='box__button'>
               Back to home page
             </Link>
           </div>
